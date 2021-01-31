@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
+
+:root {
+    /*
+    --dark-header-background: rgba(0, 214, 170, .85);
+    */
+    --dark-header-background: rgba(34, 34, 34, 0.85);
+    --dark-global-background: rgb(34, 34, 34);
+    --dark-content-background: rgb(51, 51, 51);
+    --dark-menu-background: rgba(34, 34, 34, 0.8);
+    --dark-hs-font: #e8e8e8;
+    --dark-body-font: #afafaf;
+    --header-height: 90px;
+    --mobile-padding: 3vw;
+    --desktop-padding: 8vw;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: 'Work Sans', sans-serif;
+    font-size: 22px;
+	font-weight: 400;
+    color: var(--dark-body-font);
+    background: var(--dark-global-background);
+}
+
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding-inline: var(--mobile-padding);
+}
+
+.content {
+    height: 200vh;
+    background-color: var(--dark-content-background);
+}
+
+/* navigation styles start here */
+
+header {
+    background: var(--dark-header-background);
+    border-style: none none solid none;
+    border-width: 3px;
+    border-color: var(--dark-hs-font);
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    height: var(--header-height);
+    padding-inline: var(--mobile-padding);
+      /* Add the blur effect */
+    backdrop-filter: blur(8px);
+}
+
+hr.header-limit {
+    margin: var(--header-height) 0px 0px 0px;
+    border-width: 0px;
+}
+
+.toc {
+    display: inline-block;
+    position: fixed;
+    top: var(--header-height);
+    z-index: 10;
+    background-color: var(--dark-menu-background);
+    padding-inline-start: 2em;
+    padding-inline-end: 1em;
+    max-width: 75vw;
+    transform: scale(0, 1);
+    transform-origin: left;
+    transition: transform 400ms ease-in-out;
+}
+
+.toc-toggle {
+    z-index: 12;
+    position: sticky;
+    top: var(--header-height);
+    display:none;
+}
+
+.toc-toggle-label {
+    position: sticky;
+    top: var(--header-height);
+    z-index: 12;
+    padding-block-start: 1.5em;
+    padding-block-end: 0.5em;
+    height: 2.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.toc-toggle-label span,
+.toc-toggle-label span::before,
+.toc-toggle-label span::after {
+    display: block;
+    background: var(--dark-hs-font);
+    height: 2px;
+    width: 2em;
+    border-radius: 2px;
+    position: relative;
+    content: "TOC";
+}
+
+.toc-toggle-label span::before,
+.toc-toggle-label span::after {
+    content: '';
+    position: absolute;
+    width: 1.5em;
+    margin-left: 0.5em;
+}
+
+.toc ul {
+  padding-left: 20px;
+}
+
+.toc li {
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+.toc a {
+  color: var(--dark-hs-font-color);
+  text-decoration: none;
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+.toc a:hover {
+  font-weight: 600;
+}
+
+.toc-toggle:checked ~ .toc {
+    transform: scale(1, 1);
+}
+
+.toc-toggle:checked ~ .toc a {
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 250ms;
+}
+
+.toc-toggle:checked ~ .toc-toggle-label span::before {
+    transform: translate(0, 8px);
+    transition: transform 150ms ease-in-out;
+}
+
+.toc-toggle:checked ~ .toc-toggle-label span::after {
+    transform: translate(0, 16px);
+    transition: transform 150ms ease-in-out;
+}
+
+@media screen and (min-width: 1200px) {
+    header {
+        padding-inline: var(--desktop-padding);
+    }
+
+    .container {
+        padding-inline: var(--desktop-padding);
+    }
+}
+
+
+@media screen and (min-width: 800px) {
+    .toc-toggle-label {
+        display: none;
+    }
+
+    .toc {
+        all: unset;
+        position: sticky;
+        top: var(--header-height);
+        background-color: var(--dark-global-background);
+        padding-inline: 1em;
+        flex-basis: 60%;
+        /*
+        border-style: none solid none none;
+        border-width: 3px;
+        border-color: var(--dark-hs-font);
+        */
+    }
+
+    .toc a {
+        opacity: 1;
+    }
+}
+
