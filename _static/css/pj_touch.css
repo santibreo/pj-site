@@ -6,18 +6,29 @@
     */
     --dark-header-background: rgba(34, 34, 34, 0.85);
     --dark-global-background: rgb(34, 34, 34);
-    --dark-content-background: rgb(51, 51, 51);
+    --dark-content-background: rgb(40, 40, 40);
     --dark-menu-background: rgba(34, 34, 34, 0.8);
     --dark-hs-font: #e8e8e8;
     --dark-body-font: #afafaf;
+    --dark-link-hover: #3c6293;
     --header-height: 90px;
     --mobile-padding: 3vw;
-    --desktop-padding: 8vw;
+    --desktop-padding: 18vw;
+    --span-icons-length: 1.6em;
 }
 
 *, *::before, *::after {
     box-sizing: border-box;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
+
+
+/* Hide scrollbar for Chrome, Safari and Opera
+*::-webkit-scrollbar {
+  display: none;
+}
+*/
 
 body {
 	margin: 0;
@@ -32,7 +43,9 @@ body {
 .container {
     display: flex;
     flex-direction: row;
+    align-content: stretch;
     align-items: flex-start;
+    flex-wrap: nowrap;
     padding-inline: var(--mobile-padding);
 }
 
@@ -50,13 +63,134 @@ header {
     border-color: var(--dark-hs-font);
     text-align: center;
     position: fixed;
+    z-index: 13;
     top: 0;
     width: 100%;
-    display: flex;
     height: var(--header-height);
     padding-inline: var(--mobile-padding);
-      /* Add the blur effect */
-    backdrop-filter: blur(8px);
+    /* Add the blur effect */
+    backdrop-filter: blur(3px);
+}
+
+nav {
+    background: var(--dark-header-background);
+    position: absolute;
+    text-align: right;
+    top: var(--header-height);
+    width: calc(100% - 2 * var(--mobile-padding));
+    padding-top: 1em;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 400ms ease-in-out;
+    /* Add the blur effect */
+    backdrop-filter: blur(3px);
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    margin-bottom: 1em;
+    margin-left: 1em;
+}
+
+nav a {
+    color: var(--dark-hs-font)
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+}
+
+nav a:hover {
+  color: ;
+}
+
+/* changed this from the tutorial video to
+   allow it to gain focus, making it tabbable */
+.nav-toggle {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.nav-toggle:focus ~ .nav-toggle-label {
+  outline: 3px solid rgba(lightblue, .75);
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  right: var(--mobile-padding);
+  margin-left: 1em;
+  height: 100%;
+  width: 1.2em;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-toggle-label span {
+    display: block;
+    background: var(--dark-hs-font);
+    height: var(--span-icons-length);
+    width: 2px;
+    border-radius: 2px;
+    position: relative;
+}
+
+
+span.nav-toggle-m1 {
+    right: 1em;
+}
+
+span.nav-toggle-m2 {
+    height: calc(0.6 * var(--span-icons-length));
+    margin-bottom: 0.7em;
+    transform: rotate(-45deg);
+    right: 16px;
+}
+
+span.nav-toggle-m3 {
+    height: calc(0.6 * var(--span-icons-length));
+    margin-bottom: 0.7em;
+    transform: rotate(45deg);
+    right: 6px;
+}
+
+span.nav-toggle-mvert {
+    transform: scale(1, 1);
+    transform-origin: top;
+    transition: transform 250ms ease-in-out;
+}
+
+span.nav-toggle-mdiag {
+  margin-top: 0px;
+  transition: margin-top 250ms ease-in-out;
+}
+
+.nav-toggle:checked ~ .nav-toggle-label span.nav-toggle-mvert {
+  transform: scale(1, 0.5);
+  transform-origin: top;
+  transition: transform 250ms ease-in-out;
+}
+
+.nav-toggle:checked ~ .nav-toggle-label span.nav-toggle-mdiag {
+  margin-top: 1.3em;
+  transition: margin-top 250ms ease-in-out;
+}
+
+.nav-toggle:checked ~ nav {
+  transform: scale(1,1);
+}
+
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
 }
 
 hr.header-limit {
@@ -68,7 +202,7 @@ hr.header-limit {
     display: inline-block;
     position: fixed;
     top: var(--header-height);
-    z-index: 10;
+    z-index: 9;
     background-color: var(--dark-menu-background);
     padding-inline-start: 2em;
     padding-inline-end: 1em;
@@ -91,7 +225,7 @@ hr.header-limit {
     z-index: 12;
     padding-block-start: 1.5em;
     padding-block-end: 0.5em;
-    height: 2.5em;
+    height: calc(1.5 * var(--span-icons-length));
     display: flex;
     flex-direction: column;
 }
@@ -102,7 +236,7 @@ hr.header-limit {
     display: block;
     background: var(--dark-hs-font);
     height: 2px;
-    width: 2em;
+    width: var(--span-icons-length);
     border-radius: 2px;
     position: relative;
     content: "TOC";
@@ -112,8 +246,8 @@ hr.header-limit {
 .toc-toggle-label span::after {
     content: '';
     position: absolute;
-    width: 1.5em;
-    margin-left: 0.5em;
+    width: calc(0.75 * var(--span-icons-length));
+    margin-left: calc(0.25 * var(--span-icons-length));
 }
 
 .toc ul {
@@ -126,7 +260,7 @@ hr.header-limit {
 }
 
 .toc a {
-  color: var(--dark-hs-font-color);
+  color: var(--dark-hs-font);
   text-decoration: none;
   font-size: 1.2rem;
   opacity: 0;
@@ -147,12 +281,12 @@ hr.header-limit {
 }
 
 .toc-toggle:checked ~ .toc-toggle-label span::before {
-    transform: translate(0, 8px);
+    transform: translate(0, calc(0.3 * var(--span-icons-length)));
     transition: transform 150ms ease-in-out;
 }
 
 .toc-toggle:checked ~ .toc-toggle-label span::after {
-    transform: translate(0, 16px);
+    transform: translate(0, calc(0.6 * var(--span-icons-length)));
     transition: transform 150ms ease-in-out;
 }
 
@@ -168,6 +302,14 @@ hr.header-limit {
 
 
 @media screen and (min-width: 800px) {
+    .content {
+        max-width: 70%;
+    }
+
+    .nav-toggle-label {
+        display: none;
+    }
+
     .toc-toggle-label {
         display: none;
     }
@@ -186,8 +328,38 @@ hr.header-limit {
         */
     }
 
-    .toc a {
+    .toc a, nav a {
         opacity: 1;
+    }
+
+    header {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav {
+        all: unset;
+    }
+
+    nav ul {
+        display: flex;
+        align-items: stretch;
+        height: var(--header-height);
+    }
+
+    nav ul li {
+        margin-bottom: 0px;
+        margin-left: 2em;
+        display: flex;
+        align-items: center
+    }
+
+    .logo {
+        margin-left: 1em;
+        margin-block: 0px;
     }
 }
 
