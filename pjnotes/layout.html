@@ -13,18 +13,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 {% endblock %}
 
-{# top+bottom related navs; we also have our own in sidebar #}
-{%- macro rellink_markup() %}
-      {%- if prev %}
-      <a href="{{ prev.link|e }}" title="previous document">&lArr;</a>
-      {%- endif %}
-      {%- if next %}
-      <a href="{{ next.link|e }}" title="next document">&rArr;</a>
-      {%- endif %}
+{%- macro sidebar() %}
+    {%- if sidebars != None %}
+    {#- new style sidebar: explicitly include/exclude templates #}
+    {%- for sidebartemplate in sidebars %}
+    {%- include sidebartemplate %}
+    {%- endfor %}
+    {%- else %}
+    {#- old style sidebars: using blocks -- should be deprecated #}
+    {%- block sidebartoc %}
+    {%- include "localtoc.html" %}
+    {%- endblock %}
+    {%- block sidebarrel %}
+    {%- include "relations.html" %}
+    {%- endblock %}
+    {%- block sidebarsourcelink %}
+    {%- include "sourcelink.html" %}
+    {%- endblock %}
+    {%- if customsidebar %}
+    {%- include customsidebar %}
+    {%- endif %}
+    {%- block sidebarsearch %}
+    {%- include "searchbox.html" %}
+    {%- endblock %}
+    {%- endif %}
 {%- endmacro %}
 
-{%- set theme_show_relbar_top = theme_show_relbar_top or theme_show_relbars %}
-{%- set theme_show_relbar_bottom = theme_show_relbar_bottom or theme_show_relbars %}
 
 {# removed existing top+bottom related nav, and embed in sidebar #}
 {%- block relbar1 %}{% endblock %}
@@ -67,29 +81,13 @@
         </label>
     </header>
     <div class="container">
+        {% if render_sidebar %}
         <input id="sidebar-toggle" type="checkbox" class="sidebar-toggle">
-        <div class="sidebar">
-            {%- block relbar_top %}
-              {%- if theme_show_relbar|tobool %}
-                <h3>{{ _('Navigate: ') }}{{- rellink_markup () }}</h3>
-              {%- endif %}
-            {% endblock %}
-            {%- if display_toc %}
-            <h3>{{ _('Table of Contents:') }}</h3>
-            <div class="toc">
-                {{ toc }}
-            </div>
-            {%- endif %}
-            <hr/>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-            </div>
-        </div>
+        <div class="sidebar">{{ sidebar() }}</div>
         <label for="sidebar-toggle" class="sidebar-toggle-label">
             <span></span>
         </label>
+        {% endif %}
         <div class="content">
         {% block body %} {% endblock %}
         </div>

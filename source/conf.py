@@ -68,10 +68,21 @@ html_theme_path = [
 html_context = {
     "author": author
 }
-
-theme_fixed_sidebar = True
-theme_show_relbars = True
-
+html_sidebars = {
+    'posts/*': ['sb_navigation.html', 'sb_toc.html', 'sb_searchbox.html', 'sb_socialicons.html'],
+    'index': ['sb_searchbox.html', 'sb_socialicons.html'],
+    'search': [],
+    'about': [],
+    'recommendations': [],
+    'cv': ['sb_cv.html', 'sb_toc.html', 'sb_socialicons.html']
+}
+html_theme_options = {
+    "social_urls": {
+        "github": "#",
+        "twitter": "#",
+        "linkedin": "#",
+    }
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

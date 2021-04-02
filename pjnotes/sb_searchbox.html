@@ -9,13 +9,11 @@
 #}
 {%- if pagename != "search" and builder != "singlehtml" %}
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">{{ _('Quick search') }}</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="{{ pathto('search') }}" method="get">
+  <h3 id="searchlabel">{{ _('Quick search:') }}</h3>
+  <form class="search" action="{{ pathto('search') }}" method="get">
       <input class="search-box" type="text" name="q" aria-labelledby="searchlabel" />
       <input class="search-button" type="submit" value="&lt;" />
-    </form>
-    </div>
+  </form>
 </div>
 <script>$('#searchbox').show(0);</script>
 {%- endif %}

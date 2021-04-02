@@ -31,9 +31,9 @@
     {% trans %}Searching for multiple words only shows matches that contain
     all words.{% endtrans %}
   </p>
-  <form action="" method="get">
-    <input type="text" name="q" aria-labelledby="search-documentation" value="" />
-    <input type="submit" value="{{ _('search') }}" />
+  <form class="search" action="" method="get">
+    <input class="search-box" type="text" name="q" aria-labelledby="search-documentation" value="" />
+    <input class="search-button" type="submit" value="&lt;" />
     <span id="search-progress" style="padding-left: 10px"></span>
   </form>
   {% if search_performed %}
@@ -44,7 +44,7 @@
   {% endif %}
   <div id="search-results">
   {% if search_results %}
-    <ul>
+    <ul class="container">
     {% for href, caption, context in search_results %}
       <li><a href="{{ pathto(item.href) }}">{{ caption }}</a>
         <div class="context">{{ context|e }}</div>
