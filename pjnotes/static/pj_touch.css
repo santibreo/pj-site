@@ -10,6 +10,12 @@
     --hs-font: #202020;
     --body-font: #444444;
     /* This is independent of the selected theme */
+    --info-color: rgb(67, 146, 216);
+    --info-bg-color: rgba(67, 146, 216, 0.1);
+    --warning-color: rgb(206, 155, 59);
+    --warning-bg-color: rgba(206, 155, 59, 0.1);
+    --error-color: rgb(224, 49, 75);
+    --error-bg-color: rgba(224, 49, 75, 0.1);
     --special-words: #ad3939;
     --link: #1f8bba;
     --header-height: 90px;
@@ -30,6 +36,9 @@
     }
 }
 
+/*=============================================================================
+BASIC SETUP
+=============================================================================*/
 *, *::before, *::after {
     box-sizing: border-box;
     -ms-overflow-style: none;  /* IE and Edge */
@@ -54,6 +63,10 @@ body {
     color: var(--body-font);
     background: var(--global-background);
     scroll-padding-top: var(--header-height); /* height of sticky header */
+}
+
+p, li {
+    text-align: justify;
 }
 
 a {
@@ -81,6 +94,57 @@ pre {
 
 .footnote * {
     margin-block: 0px;
+}
+
+.admonition {
+    border: solid 2px;
+    border-radius: 10px;
+    padding-inline: 10px;
+    font-family: Helvetica;
+    font-weight: 500;
+}
+
+.admonition p {
+    margin-block: 0.5em;
+}
+
+.admonition-title {
+    font-weight: 800;
+}
+
+.admonition-title::after {
+    content: ":";
+}
+
+.admonition-title::before {
+    margin-right: 0.3em;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 0.9em;
+}
+
+.hint,
+.note,
+.tip,
+.seealso {
+    background-color: var(--info-bg-color);
+    color: var(--info-color);
+    border-color: var(--info-color);
+}
+.warning,
+.attention,
+.important,
+.caution {
+    background-color: var(--warning-bg-color);
+    color: var(--warning-color);
+    border-color: var(--warning-color);
+}
+.danger,
+.error {
+    background-color: var(--error-bg-color);
+    color: var(--error-color);
+    border-color: var(--error-color);
 }
 
 .logo-box {
@@ -179,6 +243,7 @@ nav ul {
 nav li {
     margin-bottom: 1em;
     margin-left: 1em;
+    text-align: right;
 }
 
 nav a {

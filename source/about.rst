@@ -4,7 +4,7 @@ Why another blog?
 
 After over-thinking the idea of doing a blog for too much time I decided to
 make a step and start writing this. At the beginning this was just an excuse to
-learn [**blogdown**](https://github.com/rstudio/blogdown) and collect some
+learn `blogdown <https://github.com/rstudio/blogdown>`_ and collect some
 how-to-use guides of programs that I was using every now and then. Probably
 that's what this still is. But I hope that it becomes a powerful tool for
 people learning technology related things and coming from a science field, as I
