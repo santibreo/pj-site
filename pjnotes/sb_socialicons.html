@@ -2,10 +2,11 @@
     Links to social media as font-awesome icons
 #}
 {% if theme_social_urls != None %}
-<hr/>
+<hr>
 <div class="social-icons">
     {% for key, link in theme_social_urls.items() %}
     <a href={{ link }}><i class="fab fa-{{ key }}"></i></a>
     {% endfor %}
 </div>
+<hr>
 {% endif %}

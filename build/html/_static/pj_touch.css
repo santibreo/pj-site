@@ -9,6 +9,7 @@
     --code-background: rgba(60, 60, 60);
     --hs-font: #202020;
     --body-font: #444444;
+    --progress-bar: #686868;
     /* This is independent of the selected theme */
     --info-color: rgb(67, 146, 216);
     --info-bg-color: rgba(67, 146, 216, 0.1);
@@ -33,6 +34,7 @@
         --menu-background: rgba(34, 34, 34, 0.9);
         --hs-font: #e8e8e8;
         --body-font: #afafaf;
+        --progress-bar: #9f9f9f
     }
 }
 
@@ -52,9 +54,12 @@ BASIC SETUP
 
 /* Ultimately, this is the correct place for scroll-padding */
 html {
-  scroll-padding-top: var(--header-height); /* height of sticky header */
+  scroll-padding-top: calc(var(--header-height) + 0.75em); /* height of sticky header */
 }
 
+/*=============================================================================
+ARTICLES APPEARANCE
+=============================================================================*/
 body {
 	margin: 0;
 	font-family: 'Work Sans', sans-serif;
@@ -147,29 +152,59 @@ pre {
     border-color: var(--error-color);
 }
 
-.logo-box {
-    display: flex;
-    max-height: calc(var(--header-height) - 5px);
-    flex-direction: row;
-    align-content: space-between;
-    align-items: center;
-    max-width: 150px;
+/*=============================================================================
+ARTICLES LIST
+=============================================================================*/
+
+.toctree-wrapper ul, ul.search{
+    display: block;
+    padding-inline-start: 0.1em;
+    list-style-position: inside;
 }
 
-.logo-box path {
-    stroke: var(--hs-font)
-}
-
-.logo-box a {
-    color: var(--body-font);
-    font-size: 18px;
-    font-family: Monospace;
-    text-align: left;
-    text-decoration: none;
+li.toctree-l1 a, ul.search li a {
+    color: var(--hs-font);
     margin-left: 0.3em;
-    line-height: 1.2em;
+    font-size: 18px;
+    vertical-align: 0.15em;
 }
 
+li.toctree-l1::marker, ul.search li::marker {
+    content: "\270f";
+    font-size: 25px;
+}
+
+/*=============================================================================
+SEARCH APPEARANCE
+=============================================================================*/
+.search {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+ul.search {
+    display: block;
+}
+
+.search-box {
+    width: min(600px, 90%);
+    background: none;
+    color: var(--hs-font);
+    border: solid 1px var(--hs-font);
+}
+
+.search-button {
+    max-width: 30px;
+    min-width: 25px;
+    background: none;
+    color: var(--hs-font);
+    font-size: 20px;
+    border: solid 1px var(--hs-font);
+}
+
+/*=============================================================================
+CONTENT APPEARANCE
+=============================================================================*/
 .container, .footer {
     display: flex;
     flex-direction: row;
@@ -196,6 +231,92 @@ pre {
     margin-left: auto;
     width: calc(100vw - 2 * var(--mobile-padding) - var(--span-icons-length));
     background-color: var(--content-background);
+}
+
+/*=============================================================================
+CV APPEARANCE
+=============================================================================*/
+.cv-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block-start: 1.4em;
+}
+
+.cv-main img {
+    max-width: 150px;
+}
+
+.cv-main h3 {
+    font-weight: normal;
+    margin-block-end: 0.3em;
+}
+
+.cv-surname {
+    font-weight: bold;
+}
+
+.cv-info h4 {
+    margin-block: 0.9em;
+}
+
+.cv-info ul {
+    font-size: 14px;
+}
+
+.cv-main p {
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: space-between;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-block: 0.5em;
+}
+
+.progress-bar-out {
+    display: inline-block;
+    border: solid 1px;
+    border-radius: 0.6em;
+    width: -webkit-fill-available;
+    margin-top: 0.3em;
+    height: 0.9em;
+}
+
+.progress-bar-in {
+    background-color: var(--progress-bar);
+    border-radius: 0.6em;
+    text-align: end;
+    padding-inline-end: 0.3em;
+    color: var(--global-background);
+    height: 1em;
+    font-size: 0.9em;
+    font-family: helvetica;
+}
+
+/*=============================================================================
+HEADER APPEARANCE
+=============================================================================*/
+.logo-box {
+    display: flex;
+    max-height: calc(var(--header-height) - 5px);
+    flex-direction: row;
+    align-content: space-between;
+    align-items: center;
+    max-width: 150px;
+}
+
+.logo-box path {
+    stroke: var(--hs-font)
+}
+
+.logo-box a {
+    color: var(--body-font);
+    font-size: 18px;
+    font-family: Monospace;
+    text-align: left;
+    text-decoration: none;
+    margin-left: 0.3em;
+    line-height: 1.2em;
 }
 
 
@@ -347,31 +468,9 @@ hr.header-limit {
     border-width: 0px;
 }
 
-.search {
-    display: flex;
-    flex-wrap: nowrap;
-}
-
-ul.search {
-    display: block;
-}
-
-.search-box {
-    width: min(600px, 90%);
-    background: none;
-    color: var(--hs-font);
-    border: solid 1px var(--hs-font);
-}
-
-.search-button {
-    max-width: 30px;
-    min-width: 25px;
-    background: none;
-    color: var(--hs-font);
-    font-size: 20px;
-    border: solid 1px var(--hs-font);
-}
-
+/*=============================================================================
+SIDEBAR APPEARANCE
+=============================================================================*/
 .sidebar {
     display: inline-block;
     position: fixed;
@@ -382,7 +481,6 @@ ul.search {
     background-color: var(--menu-background);
     padding-inline-start: 2.7em;
     padding-inline-end: 1em;
-    max-width: 75vw;
     transform: scale(0, 1);
     transform-origin: left;
     transition: transform 400ms ease-in-out;
@@ -433,24 +531,37 @@ ul.search {
     list-style-type: circle;
 }
 
+.sidebar hr {
+    margin-block: 1.2em;
+}
+
+.sidebar li .toc-visible {
+    list-style-type: disc;
+    font-weight: bold;
+    transform: scale(1.05, 1.05);
+    transition: transform 200ms ease-in-out;
+}
+
 .sidebar ul, li {
-  margin-block: 0.6em;
-  margin-left: 0.3em;
+    margin-block: 0.6em;
+    margin-left: 0.3em;
 }
 
 .sidebar a {
   color: var(--hs-font);
+}
+
+.sidebar * {
   opacity: 0;
   transition: opacity 150ms ease-in-out;
 }
 
 .social-icons {
     display: flex;
-    font-size: 24px;
+    font-size: 22px;
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: nowrap;
-    margin-bottom: 0.3em;
     margin-inline: auto;
     max-width: 180px;
     min-width: 120px;
@@ -464,9 +575,9 @@ ul.search {
     transform: scale(1, 1);
 }
 
-.sidebar-toggle:checked ~ .sidebar a {
+.sidebar-toggle:checked ~ .sidebar * {
     opacity: 1;
-    transition: opacity 250ms ease-in-out 250ms;
+    transition: opacity 150ms ease-in-out 250ms;
 }
 
 .sidebar-toggle:checked ~ .sidebar-toggle-label span::before {
@@ -515,11 +626,11 @@ ul.search {
         max-height: calc(100vh - var(--header-height));
         overflow-y: auto;
         background-color: var(--menu-background);
-        min-width: 25%;
+        min-width: 28%;
         padding-inline: 1em;
     }
 
-    .sidebar a, nav a {
+    nav a, .sidebar * {
         opacity: 1;
     }
 

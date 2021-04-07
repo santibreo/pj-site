@@ -7,11 +7,12 @@ Slow Growth Blog
 ===================================
 
 Welcome to my personal site. The idea is to add posts down here at a reasonable
-frequency.
+frequency:
 
 .. toctree::
    :maxdepth: 1
    :glob:
+   :reversed:
    :titlesonly:
 
    posts/*

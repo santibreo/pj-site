@@ -74,13 +74,22 @@ html_sidebars = {
     'search': [],
     'about': [],
     'recommendations': [],
-    'cv': ['sb_cv.html', 'sb_toc.html', 'sb_socialicons.html']
+    'cv': ['sb_cv.html', 'sb_socialicons.html', 'sb_toc.html']
 }
 html_theme_options = {
     "social_urls": {
         "github": "#",
         "twitter": "#",
         "linkedin": "#",
+    },
+    "cv_main_info": {
+        "languages": {
+            "english": 8,
+            "spanish": 10,
+        },
+        "Useful info": {
+            "driving-license": "B"
+        }
     }
 }
 
