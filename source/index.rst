@@ -3,17 +3,23 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+================
 Slow Growth Blog
-===================================
+================
 
 Welcome to my personal site. The idea is to add posts down here at a reasonable
 frequency:
 
 .. toctree::
-   :maxdepth: 1
+   :hidden:
    :glob:
-   :reversed:
-   :titlesonly:
 
-   posts/*
+   cv
+   about
+   recommendations
+   posts/learning/*
+   posts/math/*
 
+
+.. posts:: posts/
+..   :opposite:

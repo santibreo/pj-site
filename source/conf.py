@@ -10,9 +10,9 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+sys.path.insert(0, os.path.abspath('..'))
 
 
 # -- Project information -----------------------------------------------------
@@ -37,6 +37,7 @@ extensions = [
     "sphinx.ext.mathjax",
     "sphinx.ext.viewcode",
     "sphinx.ext.githubpages",
+    "pjnotes"
 ]
 
 # The name of the Pygments (syntax highlighting) style to use.
@@ -56,31 +57,31 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 
+html_theme_path = [
+    ".."
+]
 html_theme = 'pjnotes'
 html_permalinks = True
 html_permalinks_icon = ' &sect;'
 html_favicon = "_static/favicon.ico"
 html_copy_source = False
 html_show_source_link = False
-html_theme_path = [
-    ".."
-]
-html_context = {
-    "author": author
-}
 html_sidebars = {
-    'posts/*': ['sb_navigation.html', 'sb_toc.html', 'sb_searchbox.html', 'sb_socialicons.html'],
+    '**': ['sb_navigation.html', 'sb_toc.html', 'sb_searchbox.html', 'sb_socialicons.html'],
     'index': ['sb_searchbox.html', 'sb_socialicons.html'],
     'search': [],
     'about': [],
     'recommendations': [],
-    'cv': ['sb_cv.html', 'sb_socialicons.html', 'sb_toc.html']
+    'cv': ['sb_cv.html', 'sb_socialicons.html']#, 'sb_toc.html']
 }
+
 html_theme_options = {
+    "owner": author,
+    "contact_email": "santibreo@gmail.com",
     "social_urls": {
-        "github": "#",
-        "twitter": "#",
-        "linkedin": "#",
+        "github": "https://github.com/santibreo",
+        "twitter": "https://twitter.com/santibreo",
+        "linkedin": "https://www.linkedin.com/in/santibreo/",
     },
     "cv_main_info": {
         "languages": {
@@ -88,7 +89,31 @@ html_theme_options = {
             "spanish": 10,
         },
         "Useful info": {
-            "driving-license": "B"
+            "bIrthdate": "25 July 1992",
+            "driving-license": "B2"
+        }
+    },
+    "cv_apptitudes": {
+        "hard-skills": {
+            "Python": 10,
+            "R": 8,
+            "Latex": 8,
+            "Linux": 8,
+            "Matlab": 7,
+            "SQL": 7,
+            "Ms Office": 7,
+            "MongoDB": 6,
+            "Web": 6,
+            "C": 6,
+            "C++": 4,
+            "Scala": 2,
+            "Go": 2,
+            "Rust": 1,
+        },
+        "soft-skills": {
+            "teamwork": 8,
+            "enthusiast": 7,
+            "communicative": 6
         }
     }
 }

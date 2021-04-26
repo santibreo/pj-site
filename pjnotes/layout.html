@@ -12,32 +12,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 {% endblock %}
 
-{%- macro sidebar() %}
+{%- macro pj_sidebar() %}
     {%- if sidebars != None %}
-    {#- new style sidebar: explicitly include/exclude templates #}
-    {%- for sidebartemplate in sidebars %}
-    {%- include sidebartemplate %}
-    {%- endfor %}
+        {#- new style sidebar: explicitly include/exclude templates #}
+        {%- for sidebartemplate in sidebars %}
+            {%- include sidebartemplate %}
+        {%- endfor %}
     {%- else %}
     {#- old style sidebars: using blocks -- should be deprecated #}
-    {%- block sidebartoc %}
-    {%- include "localtoc.html" %}
-    {%- endblock %}
-    {%- block sidebarrel %}
-    {%- include "relations.html" %}
-    {%- endblock %}
-    {%- block sidebarsourcelink %}
-    {%- include "sourcelink.html" %}
-    {%- endblock %}
-    {%- if customsidebar %}
-    {%- include customsidebar %}
-    {%- endif %}
-    {%- block sidebarsearch %}
-    {%- include "searchbox.html" %}
-    {%- endblock %}
+        {%- block sidebartoc %}
+        {%- include "localtoc.html" %}
+        {%- endblock %}
+        {%- block sidebarrel %}
+        {%- include "relations.html" %}
+        {%- endblock %}
+        {%- block sidebarsourcelink %}
+        {%- include "sourcelink.html" %}
+        {%- endblock %}
+        {%- if customsidebar %}
+            {%- include customsidebar %}
+        {%- endif %}
+        {%- block sidebarsearch %}
+        {%- include "searchbox.html" %}
+        {%- endblock %}
     {%- endif %}
 {%- endmacro %}
-
 
 {# removed existing top+bottom related nav, and embed in sidebar #}
 {%- block relbar1 %}{% endblock %}
@@ -58,7 +57,7 @@
                      l 0 20" stroke="black" stroke-width="2" fill="none"/>
             </svg>
             <a href="{{ pathto(master_doc) }}">
-                {{- '<br>'.join(author.split()) ~ "'s" }}<br>
+                {{- '<br>'.join(theme_owner.split()) ~ "'s" }}<br>
                 <span style="font-family:PT Serif Caption; color:var(--special-words); font-size:20px">
                     notes
                 </span>
@@ -82,7 +81,7 @@
     <div class="container">
         {% if render_sidebar %}
         <input id="sidebar-toggle" type="checkbox" class="sidebar-toggle">
-        <div class="sidebar">{{ sidebar() }}</div>
+        <div class="sidebar">{{ pj_sidebar() }}</div>
         <label for="sidebar-toggle" class="sidebar-toggle-label">
             <span></span>
         </label>
@@ -98,7 +97,7 @@
       {%- if show_copyright %}&copy;{{ copyright }}.{% endif %}
       {%- if theme_show_powered_by|lower == 'true' %}
        Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx {{ sphinx_version }}</a>
-       &nbsp;&amp;&nbsp;<a href="https://github.com/bitprophet/alabaster">PJnotes {{ pjnotes_version }}</a>
+       &nbsp;&amp;&nbsp;<a href="https://github.com/santibreo">PJnotes {{ pjnotes_version }}</a>
       {% endif %}
     </div>
 
