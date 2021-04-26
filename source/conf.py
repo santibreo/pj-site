@@ -12,8 +12,8 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('..'))
-
+sys.path.insert(0, os.path.abspath('../..'))
+print(sys.path)
 
 # -- Project information -----------------------------------------------------
 
@@ -37,7 +37,7 @@ extensions = [
     "sphinx.ext.mathjax",
     "sphinx.ext.viewcode",
     "sphinx.ext.githubpages",
-    "pjnotes"
+    "pjnotes_theme"
 ]
 
 # The name of the Pygments (syntax highlighting) style to use.
@@ -58,9 +58,9 @@ exclude_patterns = []
 # a list of builtin themes.
 
 html_theme_path = [
-    ".."
+    "../.."
 ]
-html_theme = 'pjnotes'
+html_theme = 'pjnotes_theme'
 html_permalinks = True
 html_permalinks_icon = ' &sect;'
 html_favicon = "_static/favicon.ico"
