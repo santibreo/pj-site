@@ -20,6 +20,7 @@
     --error-bg-color: rgba(224, 49, 75, 0.1);
     --special-words: #ad3939;
     --link: #1f8bba;
+    --highlight-color: #999e1a;
     --header-height: 90px;
     --mobile-padding: 3vw;
     --desktop-padding: 18vw;
@@ -89,6 +90,11 @@ a:hover {
 
 .headerlink:hover {
     text-decoration: none;
+}
+
+/* HIGHLIGHT SEARCH */
+span.highlighted {
+    outline: 1px solid var(--highlight-color);
 }
 
 /* EQUATIONS */
