@@ -10,6 +10,7 @@ Slow Growth Blog
 Welcome to my personal site. The idea is to add posts down here at a reasonable
 frequency:
 
+
 .. toctree::
    :hidden:
    :glob:

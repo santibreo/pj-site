@@ -98,6 +98,7 @@ The plots are already telling us that these regressions are really good, and fit
 
 .. raw:: html
 
+    <div class="hscroll-table">
     <table>
       <caption>Models main statistics</caption>
       <thead>
@@ -126,6 +127,7 @@ The plots are already telling us that these regressions are really good, and fit
         </tr>
       </tbody>
     </table>
+    </div>
 
 
 
