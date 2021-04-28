@@ -255,7 +255,7 @@ must be somehow true too, *theoretically* true.
 
 * Here we can say that terms on :math:`dt` which's order is higher than 1 won't
   be considered. Furthermore we can replace :math:`dW^2` with :math:`dt` (this is also
-  called [the Itô's lemma](https://en.wikipedia.org/wiki/It%C3%B4%27s_lemma)):
+  called `the Itô's lemma <https://en.wikipedia.org/wiki/It%C3%B4%27s_lemma>`_):
 
 
 .. math::

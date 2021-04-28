@@ -5,17 +5,11 @@
 Curriculum Vitae
 ================
 
-Here is all the information that you might need to figure out if I could fit
-in your company / business / project.
-
-
-About me
-========
-
-During the last year of my Physics degree, an exercise on the Ising Model put
-me in contact with Linux, programming and modelling complex systems. Soon after
-I was into the world of data science, always trying to increase my practical
-knowledge without neglecting the theoretical part.
+Probably the turning point that drives me here was when, during the last year
+of my Physics degree, an exercise on the Ising Model put me in contact with
+Linux, programming and modelling complex systems. Soon after I was into the
+world of data science, always trying to increase my practical knowledge without
+neglecting the theoretical part.
 
 
 Experience
@@ -66,8 +60,8 @@ Intern at Santander Analytics (2018 - 2019)
 * Translation of risk coefficient calculator (VisualBasic & Python)
 
 
-Freelance by force (2015 - 2018)
---------------------------------
+On my own (2015 - 2018)
+-----------------------
 
 * Private and academy teacher of Mathematics, Physics, Chemistry and Technical
   Drawing.
@@ -99,7 +93,7 @@ Personal Projects (I am proud of)
 =================================
 
 * San Carlos Hospital colaboration (*still working on*)
-* Cripto Trading Bot (but I am not rich yet)
+* Cripto Trading Bot
 * This Sphinx theme and extension
 * > 95% (0.8222) score in
   `Pump it Up: Data Mining the Water Table <https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/leaderboard/>`_
