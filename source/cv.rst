@@ -71,10 +71,11 @@ On my own (2015 - 2018)
 Education
 =========
 
-* **MA in BigData & Business Analytics**
+* **MSc in BigData & Business Analytics**
 
   (2018 - 2019) Universidad Complutense de Madrid
   [`Here is what I did <https://santibreo.github.io/2019-BigData_master/>`_]
+
 * **University degree in Physics**
 
   (2013 - 2018) Universidad Complutense de Madrid
