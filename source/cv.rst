@@ -84,17 +84,28 @@ Education
   (2010 - 2013) Universidad Politécnica de Madrid
 * **Technological Baccalaureate**
 
-  (2009 - 2010) Ramiro de Maeztu
-* **European Baccalaureate**
-
-  (2008 - 2009) Ramiro de Maeztu
+  (2008 - 2010) Ramiro de Maeztu
 
 
-Personal Projects (I am proud of)
-=================================
+Courses and certifications
+==========================
+
+* *Quantum Computing Introduction*. 200 hours. Universidad Autónoma de Madrid.
+* *Web development Introduction*. 20 hours. Universidad Politécnica de Madrid.
+
+
+Personal Projects
+=================
 
 * San Carlos Hospital colaboration (*still working on*)
 * Cripto Trading Bot
 * This Sphinx theme and extension
 * > 95% (0.8222) score in
   `Pump it Up: Data Mining the Water Table <https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/leaderboard/>`_
+
+
+Aptitudes
+=========
+
+.. aptitudes:: cv-aptitudes.json
+

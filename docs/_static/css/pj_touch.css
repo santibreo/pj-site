@@ -409,7 +409,7 @@ CV APPEARANCE
     font-family: helvetica;
 }
 
-ul.cv-apptitudes {
+ul.cv-aptitudes {
     margin: unset;
     padding: unset;
     display: flex;
@@ -418,7 +418,7 @@ ul.cv-apptitudes {
     list-style-type: none;
 }
 
-li.cv-apptitude {
+li.cv-aptitude {
     margin: unset;
     margin-bottom: 0.4em;
     width: calc(96% / 4);
@@ -427,14 +427,14 @@ li.cv-apptitude {
     justify-content: space-between;
 }
 
-li.cv-apptitude p {
+li.cv-aptitude p {
     margin: 0;
     border-bottom: 3px solid var(--progress-bar);
     width: 100%;
     margin-inline-start: 1em;
 }
 
-li.cv-apptitude span{
+li.cv-aptitude span{
     border-bottom: 3px solid var(--global-background);
     flex: auto;
 }

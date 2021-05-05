@@ -13,7 +13,6 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../..'))
-print(sys.path)
 
 # -- Project information -----------------------------------------------------
 
@@ -93,29 +92,6 @@ html_theme_options = {
             "driving-license": "B2"
         }
     },
-    "cv_apptitudes": {
-        "hard-skills": {
-            "Python": 10,
-            "R": 8,
-            "Latex": 8,
-            "Linux": 8,
-            "Matlab": 7,
-            "SQL": 7,
-            "Ms Office": 7,
-            "MongoDB": 6,
-            "Web": 6,
-            "C": 6,
-            "C++": 4,
-            "Scala": 2,
-            "Go": 2,
-            "Rust": 1,
-        },
-        "soft-skills": {
-            "teamwork": 8,
-            "enthusiast": 7,
-            "communicative": 6
-        }
-    }
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
