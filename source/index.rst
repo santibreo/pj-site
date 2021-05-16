@@ -23,4 +23,3 @@ frequency:
 
 
 .. posts:: posts/
-..   :opposite:
