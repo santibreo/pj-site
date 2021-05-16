@@ -123,9 +123,9 @@ the total payment. For simplicity I am going to use
 
 In view of the formula it is clear that the instalment to be paid declines
 linearly with the number of payments due only to the payment of interest.
-If we suppose a fixed annual Interest Rate ($r$) of 3%, a monthly payment
-frequency (it is $\beta = 0.0025$) and 20 years as time to maturity of the
-loan ($n=240$); we can evaluate what percentage of each installment will
+If we suppose a fixed annual Interest Rate (:math:`r`) of 3%, a monthly payment
+frequency (it is :math:`\beta = 0.0025`) and 20 years as time to maturity of the
+loan (:math:`n=240`); we can evaluate what percentage of each installment will
 represent the interest:
 
 .. math::
@@ -180,7 +180,7 @@ Now I can apply the cumulative product formula that has been developed previousl
    \end{aligned}
 
 This expression doesn't allow further simplification because :math:`\beta_k` is
-different for each payment, but if we use a constant $\beta$, which could be
+different for each payment, but if we use a constant :math:`\beta`, which could be
 think about as an approximation that is true when the interest is fixed (as in
 our example). Then we have:
 
@@ -206,7 +206,7 @@ between 2 outstanding amounts:
 .. math::
    A_k = O_{k-1} - O_k = N \cdot \frac{(1+\beta)^{k-1} \cdot \beta}{(1+\beta)^n - 1}
 
-As the time the amortization depends on the payment ($k$) we need to compute the percentage of the notional finally paid as interest by hand doing (remember $I_k = \beta_k \cdot O_k$):
+As the time the amortization depends on the payment (:math:`k`) we need to compute the percentage of the notional finally paid as interest by hand doing (remember :math:`I_k = \beta_k \cdot O_k`):
 
 .. math::
    TIR = \sum_{k=1}^n \frac{I_k}{N} = \beta \cdot \sum_{k=1}^n \frac{(1+\beta)^n - (1+\beta)^k}{(1 + \beta)^n - 1}

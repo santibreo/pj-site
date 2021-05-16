@@ -199,9 +199,9 @@ P_k = \frac{N}{n} \cdot \left(1 + \beta_k \cdot (n-k+1) \right)
 \end{aligned}\end{split}\]</div>
 <p>In view of the formula it is clear that the instalment to be paid declines
 linearly with the number of payments due only to the payment of interest.
-If we suppose a fixed annual Interest Rate ($r$) of 3%, a monthly payment
-frequency (it is $beta = 0.0025$) and 20 years as time to maturity of the
-loan ($n=240$); we can evaluate what percentage of each installment will
+If we suppose a fixed annual Interest Rate (<span class="math notranslate nohighlight">\(r\)</span>) of 3%, a monthly payment
+frequency (it is <span class="math notranslate nohighlight">\(\beta = 0.0025\)</span>) and 20 years as time to maturity of the
+loan (<span class="math notranslate nohighlight">\(n=240\)</span>); we can evaluate what percentage of each installment will
 represent the interest:</p>
 <div class="math notranslate nohighlight">
 \[IR_k = \frac{I_k}{P_k} = \frac{\beta \cdot (n-k+1)}{1 + \beta \cdot (n-k+1)}\]</div>
@@ -238,7 +238,7 @@ O_k &amp;= N \cdot \prod_{i=1}^k \left(1 - \frac{\beta_i}{(1 + \beta_i)^{n-i+1} 
 &amp;= N \cdot \left[ \prod_{i=1}^k (1+\beta_i) \cdot \frac{(1 + \beta_i)^{n-i} - 1}{(1 + \beta_i)^{n-i+1} - 1} \right]
 \end{aligned}\end{split}\]</div>
 <p>This expression doesn’t allow further simplification because <span class="math notranslate nohighlight">\(\beta_k\)</span> is
-different for each payment, but if we use a constant $beta$, which could be
+different for each payment, but if we use a constant <span class="math notranslate nohighlight">\(\beta\)</span>, which could be
 think about as an approximation that is true when the interest is fixed (as in
 our example). Then we have:</p>
 <div class="math notranslate nohighlight">
@@ -254,7 +254,7 @@ zero, as it must be. And the amortization can be evaluated using the difference
 between 2 outstanding amounts:</p>
 <div class="math notranslate nohighlight">
 \[A_k = O_{k-1} - O_k = N \cdot \frac{(1+\beta)^{k-1} \cdot \beta}{(1+\beta)^n - 1}\]</div>
-<p>As the time the amortization depends on the payment ($k$) we need to compute the percentage of the notional finally paid as interest by hand doing (remember $I_k = beta_k cdot O_k$):</p>
+<p>As the time the amortization depends on the payment (<span class="math notranslate nohighlight">\(k\)</span>) we need to compute the percentage of the notional finally paid as interest by hand doing (remember <span class="math notranslate nohighlight">\(I_k = \beta_k \cdot O_k\)</span>):</p>
 <div class="math notranslate nohighlight">
 \[TIR = \sum_{k=1}^n \frac{I_k}{N} = \beta \cdot \sum_{k=1}^n \frac{(1+\beta)^n - (1+\beta)^k}{(1 + \beta)^n - 1}\]</div>
 <p>Which, for the figures given in our example, is: <strong>32,853%</strong>. Almost 273 bps
