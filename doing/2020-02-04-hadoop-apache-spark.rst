@@ -11,7 +11,7 @@ knowledge that I want to consolidate.
 I could start this post like many others, talking about how much the world has
 changed in the last 20 years (since 2003), showing some cool diagrams about the
 data that nowadays is generated in a minute in the Internet and explaining how
-now _everything_, literally _everything_, is collecting data. I somehow hate
+now `everything`, literally `everything`, is collecting data. I somehow hate
 this kind of talks because I think that they create the biggest possible hype
 and what comes after that is always someone selling a product. Of course
 there's a lot of people living from selling technical solutions, but let's try
