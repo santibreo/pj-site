@@ -4,7 +4,7 @@
 :root {
     --header-background: rgba(221, 221, 221, 0.88);
     --global-background: rgb(221, 221, 221);
-    --content-background: rgb(215, 215, 215);
+    --content-background: rgb(205, 205, 205);
     --menu-background: rgba(221, 221, 221, 0.9);
     --code-background: rgba(60, 60, 60);
     --hs-font: #202020;
@@ -32,7 +32,7 @@
     :root {
         --header-background: rgba(34, 34, 34, 0.88);
         --global-background: rgb(34, 34, 34);
-        --content-background: rgb(40, 40, 40);
+        --content-background: rgb(42, 42, 42);
         --code-background: rgba(34, 34, 34);
         --menu-background: rgba(34, 34, 34, 0.9);
         --hs-font: #e8e8e8;
@@ -391,7 +391,7 @@ CV APPEARANCE
 
 .progress-bar-out {
     display: inline-block;
-    border: solid 1px;
+    background: var(--content-background);
     border-radius: 0.6em;
     width: -webkit-fill-available;
     margin-top: 0.3em;
