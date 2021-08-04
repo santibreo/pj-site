@@ -88,6 +88,10 @@ a:hover {
     text-decoration: underline;
 }
 
+.headerlink {
+    color: #1f8bba1a;
+}
+
 .headerlink:hover {
     text-decoration: none;
 }

@@ -92,6 +92,8 @@ Courses and certifications
 
 * *Quantum Computing Introduction*. 200 hours. Universidad Autónoma de Madrid.
 * *Web development Introduction*. 20 hours. Universidad Politécnica de Madrid.
+* *IBM Containers and Kubernetes Introduction*. 80 hours.
+  `IBM Certification <https://www.credly.com/badges/a165823c-0b13-45af-804e-eb5e4f549f5d/public_url>`_.
 
 
 Personal Projects
