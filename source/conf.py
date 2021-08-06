@@ -82,13 +82,19 @@ html_theme_options = {
         "twitter": "https://twitter.com/santibreo",
         "linkedin": "https://www.linkedin.com/in/santibreo/",
     },
+    "cv_name": "Santiago Breogán",
+    "cv_surname": "Pérez Pita",
+    "cv_profile_pic": "cv_profile.png",
+    "cv_job_position": "Data Scientist (aspirational)",
+    "cv_phone": "600 395 845",
+    "cv_location": "Madrid",
     "cv_main_info": {
         "languages": {
             "english": 8,
             "spanish": 10,
         },
         "Useful info": {
-            "bIrthdate": "25 July 1992",
+            "birthdate": "25 July 1992",
             "driving-license": "B2"
         }
     },
