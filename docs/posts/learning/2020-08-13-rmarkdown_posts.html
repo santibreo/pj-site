@@ -12,7 +12,6 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -115,7 +114,7 @@
         <div class="content">
         
   <div class="section" id="rmarkdown-nice-posts">
-<h1>Rmarkdown (nice) posts<a class="headerlink" href="#rmarkdown-nice-posts" title="Permalink to this headline">¶</a></h1>
+<h1>Rmarkdown (nice) posts<a class="headerlink" href="#rmarkdown-nice-posts" title="Permalink to this headline"> &sect;</a></h1>
 <p>In this post I am going to explain how I have prepared my Rmarkdown posts to
 look exactly as the standard Markdown posts. It is not as straightforward as
 you could suppose because Rmarkdown is becoming a framework fast, you need to
@@ -124,7 +123,7 @@ look the documentation for <a class="reference external" href="https://bookdown.
 <a class="reference external" href="https://www.bookdown.org/">bookdown</a>, and then find the logic that is hidden
 behind.</p>
 <div class="section" id="same-toc">
-<h2>Same TOC<a class="headerlink" href="#same-toc" title="Permalink to this headline">¶</a></h2>
+<h2>Same TOC<a class="headerlink" href="#same-toc" title="Permalink to this headline"> &sect;</a></h2>
 <p>I love my nice-looking Table Of Contents which I have found in the Internet.
 I had to make minimal changes in the javascript (I know no javascript) to make
 that worm behave exactly as I want. Of course I have read the way of <a class="reference external" href="https://bookdown.org/yihui/blogdown/templates.html#how-to">dealing
@@ -167,7 +166,7 @@ worm is underneath so that’s all, it works perfectly.</p>
 </ol>
 </div>
 <div class="section" id="nice-alerts">
-<h2>Nice alerts<a class="headerlink" href="#nice-alerts" title="Permalink to this headline">¶</a></h2>
+<h2>Nice alerts<a class="headerlink" href="#nice-alerts" title="Permalink to this headline"> &sect;</a></h2>
 <p>One of the things that I missed the most in the standard markdown and makes
 me document my code (when using <a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a>)
 with ReStructuredText is the nice alerts, notes and errors that you can put all
@@ -179,38 +178,38 @@ am writting about everything I learn. So the solution is pure Rmarkdown.</p>
 input as html, inside the <cite>divs</cite> with the corresponding <cite>alert</cite> class. As
 R has already a <cite>message</cite>, <cite>warning</cite>, and <cite>stop</cite> function, I will just adapt
 them for my purpose. Here is the code that I have used:</p>
-<div class="highlight-r notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Nice warnings, errors and messages</span>
+<div class="highlight-r notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Nice warnings, errors and messages</span>
  <span class="n">knitr</span><span class="o">::</span><span class="n">knit_hooks</span><span class="o">$</span><span class="nf">set</span><span class="p">(</span>
      <span class="c1"># To watch error use error=T and stop function</span>
      <span class="n">error</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="p">{</span>
@@ -255,7 +254,7 @@ like:</p>
 </div>
 </div>
 <div class="section" id="pictures">
-<h2>Pictures<a class="headerlink" href="#pictures" title="Permalink to this headline">¶</a></h2>
+<h2>Pictures<a class="headerlink" href="#pictures" title="Permalink to this headline"> &sect;</a></h2>
 <p>The last function <cite>class</cite> in the code chunk is there because I use to add
 pictures using R code, and when I do it, I want to be able to choose the html
 <cite>div</cite> inside which they will be placed. So using the following code chunk:</p>
@@ -283,7 +282,7 @@ with all this technologies, it was a bit challenging.</p>
         </div>
     </div>
     <div class="footer">&copy;2021, Prophet Jeremy.
-       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 3.5.3</a>
        &nbsp;&amp;&nbsp;<a href="https://github.com/santibreo">PJnotes 1.0.0</a>
       
     </div>
