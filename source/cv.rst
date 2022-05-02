@@ -15,8 +15,15 @@ neglecting the theoretical part.
 Experience
 ==========
 
-Risk Analyst I for Santander Internal Validation (2020 - now)
--------------------------------------------------------------
+ALM Analyst and developer (2020 - now)
+--------------------------------------
+
+* Implementation of QALM (ALM tool) on different clients.
+* Compliance of clients ALM and IRRBB models with corresponding supervisory authority guidances.
+
+
+Risk Analyst I for Santander Internal Validation (2020 - 2021)
+--------------------------------------------------------------
 
 * Development of a Latex template for the generation of validation reports
 * Validation of ALM and IRRBB models (Prepayments, Non-maturity Deposits /

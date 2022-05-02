@@ -1,0 +1,40 @@
+---
+title: "Valoración Derivados"
+author: "Santi"
+date: "9/4/2019"
+output: html_document
+---
+
+## Valoración Mixta
+
+Cada deal tiene un valor para cada timestep en cada escenario simulado $MTM_i(ts, sim)$. Definimos un **Superdeal** cuyo Mark to Market se define como:
+$$
+MTM_{super}(ts, sim) = \frac{\sum_{i=1}^{n\ deals} MTM_i(ts, sim)}{n\ deals}
+$$
+
+Y se calculan las métricas propias del motor analítico, lo que podemos hacer para cualquier deal avanzado (incluido el superdeal) de la siguiente forma:
+$$
+MTM_{deal}(ts) = \frac{\sum_{i=1}^{n\ sims} MTM_{deal}(ts, i)}{n\ sims}\\
+REC_{deal}(ts) = \max\left(0,\ perc\ _{97.5}^{sim}(MTM_{deal}(ts, sim)) \right)
+$$
+
+De esta forma ya tenemos los deals que vienen por avanzado con las métricas propias del motor analítico, únicamente nos queda pasar los *timesteps* a *timebands*, para ello **tomamos siempre el máximo valor alcanzado en el intervalo de timesteps que englobe el timeband**:
+$$
+MTM_{deal}(tb) = \max^{ts\ \in\ tb}\left(MTM_{deal}(ts)\right) \\
+REC_{deal}(tb) = \max^{ts\ \in\ tb}\left(REC_{deal}(ts)\right) \\
+AddOn_{deal}(tb) = REC_{deal}(tb) - \max\left(0,\ MTM_{deal}(tb)\right)
+$$
+
+Dados estos pasos se procede a la agregación, que consiste en agregar **todos los deals que vayan por avanzado** formando el **superdeal** cuyo Mark to Market describimos al principio. A ese **superdeal** le calculamos las métricas propias del motor analítico y las timebanizamos como hemos descrito. Finalmente agregamos ese **superdeal** con los deals que tengamos en analítico, calculando las siguientes métricas:
+$$
+MTM_{neto}^{aggr}(tb) = \max\left(0,\ \sum_{i=1}^{n\ deals}MTM_{i}(tb)\right)\\
+MTM_{positivo}^{aggr}(tb) = \sum_{i=1}^{n\ deals} \max\left(0 ,\ MTM_{i}(tb)\right)\\
+AddOn^{aggr}(tb) = \sum_{i=1}^{n\ deals}AddOn_{i}(tb)
+$$
+
+Y a partir de estas métricas agregadas se calculan la **NGR** y la **Exposición máxima**:
+$$
+NGR(tb) = \frac{MTM_{neto}^{aggr}(tb)}{MTM_{positivo}^{aggr}(tb)}\\
+ME(tb) = MTM_{neto}^{aggr}(tb) + (0.4 + 0.6 \cdot NGR(tb)) \cdot AddOn^{aggr}(tb) = \\
+= MTM_{neto}^{aggr}(tb) \left(1 + \frac{0.6 \cdot AddOn^{aggr}(tb)}{MTM_{positivo}^{aggr}(tb)}\right) + 0.4 \cdot AddOn^{aggr}(tb)
+$$

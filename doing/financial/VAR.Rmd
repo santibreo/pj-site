@@ -1,0 +1,29 @@
+---
+title: "C++ For C Programmers"
+author: "Santiago Breogán Pérez Pita - <santibreo@gmail.com>"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    number_sections: false
+    fig_width: 7
+    fig_height: 6
+    fig_caption: true
+    df_print: kable
+    highlight: zenburn
+options:
+    scipen: 1
+    digits: 2
+urlcolor: blue
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r echo=FALSE, eval=FALSE}
+highlight_ options = c("default", "tango", "pygments", "kate", "monochrome", "espresso",
+                       "zenburn", "haddock", "textmate")
+```
+
+Máxima pérdida de una cartera. Particularidad del modelo, es global, común a todas las unidades. AIRE es la herramienta que lo calcula. Se hace una validación global y luego se mira la implementación en cada país. El link es el del documento global, y luego conviene mirar el de España. 

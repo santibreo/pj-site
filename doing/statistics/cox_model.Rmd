@@ -1,0 +1,536 @@
+---
+title: "Survival Models"
+author: "Santiago B. Pérez Pita - <`r paste0(Sys.getenv('USERNAME'), '@gruposantander.com')`>"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: false
+    fig_width: 7
+    fig_height: 6
+    fig_caption: true
+    df_print: kable
+    highlight: zenburn # default, tango, pygments, kate, monochrome, espresso, zenburn, haddock textmate
+options:
+    scipen: 1
+    digits: 2
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+# Install commonly used packages
+options(repos="https://cran.rstudio.com" )
+list_of_packages <- c(
+  "knitr",
+  "kableExtra",
+  "ggplot2",
+  "png"
+  )
+new_packages <- list_of_packages[
+  !(list_of_packages %in% installed.packages()[,"Package"])
+  ]
+if (length(new_packages) > 0){
+  install.packages(new_packages)
+}
+
+# Load needed packages
+for (load_this in list_of_packages){
+  library(load_this, character.only = TRUE)
+}
+
+# Template setup
+knitr::opts_chunk$set(echo = TRUE, error = TRUE)
+
+# Nice warnings, errors and messages
+knitr::knit_hooks$set(
+    # To watch error use error=T and stop function
+    error = function(x, options) {
+        paste('\n\n<div class="alert alert-danger">',
+              gsub('##', ' ',
+                gsub('^##\ Error in eval\\(expr, envir, enclos\\):',
+                     "\U0001f480 **ERROR**: ", x)),
+              '</div>', sep = '\n')
+    },
+    # To watch warning use warning function
+    warning = function(x, options) {
+        paste('\n\n<div class="alert alert-warning">',
+              gsub('##', ' ',
+                   gsub('^##\ Warning:', '\U26a0\Ufe0f **WARNING**: ', x)),
+              '</div>', sep = '\n')
+    },
+    # To watch message use message function
+    message = function(x, options) {
+        paste('\n\n<div class="alert alert-info">',
+              gsub('##', ' ',
+                   gsub('^##\ ', '\U0001f4ac **INFO**: ', x)),
+              '</div>', sep = '\n')
+    },
+    class = function(before, options, envir) {
+        if(before){
+            sprintf("<div class = '%s'>", options$class)
+        }else{
+            "</div>"
+        }
+    }
+)
+```
+
+<!-- Add my touch to the basic output -->
+<style>
+    p {
+        text-align: justify;
+    }
+    
+    li {
+        text-align: justify;
+    }
+    
+    .alert a {
+      font-weight: bold;
+    }
+    
+    .sourceCode {
+        overflow: inherit;
+    }
+    
+    .center-pic img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+    }
+</style>
+
+<!-- 
+HOW TO
+What are you able to do now:
+    + Use:
+        ```{r, eval=TRUE, echo=FALSE}
+            message("A standard message")
+        ```
+        ```{r, eval=TRUE, echo=FALSE}
+            warning("A warning message")
+        ```
+        ```{r, eval=TRUE, echo=FALSE}
+            stop("A error message")
+        ```
+    To add really cool formatted messages to your document.
+    You can still use standard markdown syntax inside that messages. AWESOME!
+    
+    + Use:
+        ```{r echo=FALSE, out.width = "70%", class = "center-pic"}
+            include_graphics("/path/to/your/image.png")
+        ```
+    To show centered and not too wide pictures.
+
+FEATURES
+How your document will be rendered:
+    + Justified: Because we hate chaotic line lengths.
+    + Dark Code theme: Because it is how we are used to write it.
+    + Floating TOC: Because it is what makes it useful.
+
+FOR REALS
+If you have previous knowledge:
+    + You can add style features editing the CSS code between <style> tags.
+    Don't use a standalone file for a template, it will be copied everywhere.
+    + If you use the Vim shortcuts you have B(egin) at first edit line.
+
+TODOS
+Every help would be welcomed:
+    + A header and footer will probably make html looking better.
+
+
+ENJOY IT!
+--->
+
+# Review these links
+
+* [R survival demo](http://rstudio-pubs-static.s3.amazonaws.com/5096_0880aaaf0df94f3b8533a1c024738246.html)
+
+
+# Survival Models
+
+Cox model is one of the most common model used for survival analysis. It's
+commonly used because it is a **semi-parametric** model, so you can avoid the
+risk of being using a wrong function. But this strength is also a weakness
+because it doesn't allow you to measure absolute probabilities, just relative.
+
+Once that is said, there's a lot of models to analyze survival data, and
+following concepts are common to all of them.
+
+The probability of one event to occur before $t$ is **the cumulative density
+function (c.d.f.)**:
+$$
+F(t) = prob(T \leq t) = \int_0^tf(s)ds\\
+where\ T\ is\ the\ \pmb{event\ time}\\
+f(t)\ is\ the\ event\ \pmb{probability\ density\ function\ (p.d.f.)}
+$$
+
+Consequently, **the survival probability** is:
+$$
+S(t) = 1 - F(t) = Prob(T \gt t) = \int_t^\infty f(s)ds
+$$
+
+We now define the **hazard rate** as the probability that the duration will end
+$dt$ time after $t$, given that it has lasted until time $t$. In other words,
+the hazard rate is the probability that one individual will experience the
+event at time $t$ while that individual is at risk for experiencing the event. 
+$$
+\begin{align}
+\lambda (t) &= \lim_{dt \rightarrow 0} \frac{Prob(t \leq T \leq t + dt\ |\ T \gt t)}{dt}\\
+&= \lim_{dt \rightarrow 0} \frac{F(t+dt) - F(t)}{S(t) dt}\\
+&= \lim_{dt \rightarrow 0} \frac{f(t) dt}{S(t) dt}\\
+&= \frac{f(t)}{S(t)}\\
+\end{align}
+$$
+
+Now using that $\tfrac{dS(t)}{dt} = -f(t)$ we can say:
+$$
+\lambda (t) = -\frac{d}{dt}\log(S(t)) \iff S(t) = \exp \left( -\int_0^t \lambda(x)dx \right)
+$$ 
+
+And finally we called **the cumulative hazard rate function**:
+$$
+\Lambda(t) = \int_0^t\lambda(x)dx = -\log(S(t))
+$$
+
+All these concepts can be evaluated directly from the data, doing what is
+called the **non parametric model**, which is useful to describe our data.
+
+## Likelihood function
+
+First of all we can define the **expected life** as:
+$$
+\begin{align}
+\mu &= \int_0^\infty t \cdot f(t) dt\\
+&= -\Big[ t \cdot S(t) \Big]_0^\infty + \int_0^\infty S(t) dt\\
+&= \int_0^\infty S(t) dt
+\end{align}
+$$
+
+But doing this, we have suppossed that we have $\lim_{t \rightarrow \infty}
+S(t) = 0$ and that is not correct. In many cases we will found that the envents
+that we are studying should not happen for the whole set that we are
+considering. We can evaluate the hazard ratios, as they are well defined but
+our probability density function won't converge, so it fails to integrate to
+one. Therefore the expected life won't be properly defined too and so on. This
+is a limitation of no great consequence because we can always evaluate this
+quantities for a portion of the population in which we know the event has
+happened. To solve the problem we can just define a conditional version of our
+parameters:
+$$
+\begin{align}
+f^*(t) &= \frac{f(t)}{1-S(\infty)}\\
+S^*(t) &= \frac{S(t) - S(\infty)}{1-S(\infty)}\\
+\lambda^*(t) &= \frac{f^*(t)}{S^*(t)} = \frac{f(t)}{S(t) - S(\infty)}
+\end{align}
+$$
+
+Reader must notice that $\lambda^*(t) \geq \lambda(t)$ so what approach are we
+using must be specified.
+
+## The likelihood function
+
+The contribution to the likelihood function of one element that has died at
+$t_n$ is the density function in that moment, what we can write as:
+$$
+L_n = f(t_n) = S(t_n) \cdot \lambda(t_n)
+$$
+
+The contribution of one element that has kept alive after $t_i$ (non
+informative censoring) is just:
+$$
+L_n = S(t_n)
+$$
+
+One indicator will become very handy now, **fail / censored /dead status
+indicator** of each subject that can be define as:
+$$
+\begin{align}
+\delta_n &= 
+\begin{cases}
+0\ if\ n\ subject\ is\ alive\\
+1\ if\ n\ subject\ is\ dead / censored
+\end{cases}
+\end{align}
+$$
+
+Using it we can define our **likelihood function** (and its logarithm) as
+follows:
+$$
+\begin{align}
+L &= \prod_{n=1}^{N} L_n = S(t_n) \cdot \lambda(t_n)^{\delta_n}\\
+\ell &= \log(L) = \sum_{n=1}^N \log(L_n) = \sum_{n=1}^N \ell_n\\
+&= \sum_{n=1}^N \Big[ \delta_n \cdot \log(\lambda(t_n))\ +\ \log(S(t_n)) \Big] \\
+&= \sum_{n=1}^N \Big[ \delta_n \cdot \log(\lambda(t_n))\ - \Lambda(t_n) \Big]
+\end{align}
+$$
+
+To find the value of $\lambda$ that maximizes this function we just need to
+check first and second derivatives:
+$$
+\begin{align}
+\frac{\partial \ell}{\partial \lambda} &= \sum_{n=1}^{N}\frac{\delta_n}{\lambda(t_n)} - \sum_{n=1}^{N}\frac{\partial \Lambda(t_n)}{\partial \lambda(t_n)}\\
+&= \sum_{n=1}^{N}\frac{\delta_n}{\lambda(t_n)} - \sum_{n=1}^{N}t_n\\
+\frac{\partial^2 \ell}{\partial \lambda^2} &= - \sum_{n=1}^{N}\frac{\delta_n}{\lambda(t_n)^2}
+\end{align}
+$$
+
+# Notation
+
+* $\{i,\ j,\ k\}$ indexes stand to differenciate risk factors, $J$ is the total
+  number of risk factors
+* $\{m,\ p,\ q\}$ indexes stand to differenciate event times, $M$ is the total
+  number of event times.
+* $R(t_m)$ if the set of individuals at risk at time $t_m$:
+  - $n_m$ is the number of subjects in the set.
+  - $d_m$ is the number of events that occur during the event time.
+* $\{n,\ a,\ b\}$ indexes stand to differenciate subjects, $N$ is the total
+  number of subjects. $\{\lambda_n = \lambda(t, \textbf{X}_{n})\}$ factors.
+
+# Cox model
+
+The Cox model is a regression model used to predict survival times from a set
+of covariates / risk factors.
+
+$$
+\begin{align}
+\lambda(t, \textbf{X}) = \lambda(t, X_1, X_2, \ldots, X_J) &= \lambda_0(t)\exp\left(\sum_{j=1}^{J}\beta_jX_j\right)\\
+where:\ \ t\ &is\ the\ time\\
+\textbf{X}\ &is\ the\ risk\ factors\ set\\
+\lambda_0(t)\ &is\ the\ baseline\ hazard\ function\\\
+\lambda(t, \textbf{X})\ &is\ the\ hazard\ function
+\end{align}
+$$
+
+We can evaluate a _hazard function_ for each subject (mortgage in our case) and
+see how it behaves.
+
+## Baseline hazard function
+
+The **baseline hazard function** corresponds to a subject with no risk factors
+($\textbf{X} = \textbf{0} \equiv X_j = 0\ \forall\ j$) and is the term that
+carries the time dependency of the model. The **baseline hazard function** is
+the non-parametric part of the model, and we estimate it after adjusting the
+parametric part (which corresponds to $\eta = \pmb{\beta} \cdot \pmb{X}$).
+
+The Cox model is semi-parametric (it doesn't have  $\lambda_0(t)$ predefined),
+some particular cases of Cox model have special names (e.g. if $\lambda_0(t) =
+pt^{p-1} \ where\ p\ is\ a\ new\ parameter$ is called Weibull, which is a
+parametric model). Being semi-parametric allow Cox model to fit multiple cases,
+but it is also a limitation, because we can measure just relative risks.
+
+$$
+S(t, \pmb{X}) = \exp \left( -\int_0^t \lambda_0(s)\exp\left(\pmb{\beta} \cdot \pmb{X}\right)ds \right) = \exp \left( -\exp\left(\pmb{\beta} \cdot \pmb{X}\right) \int_0^t \lambda_0(s)ds \right) = S(t, \pmb{0})^{\exp\left(\pmb{\beta} \cdot \pmb{X} \right)}
+$$
+
+## Main assumptions
+
+* The death times have continuous distributions.
+* The probability associated to $X_{j}$ is different from the probability
+  associated to $X_{i}$ for any: $1 \leq j \leq J$,  $1\leq i \leq J$ and $j
+  \neq i$.
+* The covariates vector $\textbf{X}$ is time independent.
+* $\beta_j \lt 0$ means increasing $X_j$ is associated with lower risk and thus
+  longer survival times. $\beta_j \gt 0$ means the opposite.
+* The *hazard ratio* for any 2 subjects:
+  
+  $$
+  \widehat{HR} = \frac{\lambda_a(t, \textbf{X}_a)}{\lambda_b(t, \textbf{X}_b)} = \exp\left( \pmb{\beta} \cdot (\pmb{X}_a - \pmb{X}_b) \right)\\
+  if\ X_{ja} = X_{jb}\ \forall\ j\ -\ \{j = i\}\ and\ \pmb{X}_{ia} = \pmb{X}_{ib} - 1\  then:\\
+  \widehat{HR} = \exp\left( \beta_i \right)
+  $$
+  
+  This is why the model is called **proportional hazard ratios** and $\beta_j$
+  the **log hazard ratio**. If 3 subjects share all the risk factor values but
+  one and have identical increments one with respect to each other in that risk
+  factor, their hazard functions will be related by a constant, which is the
+  hazard ratio and **is time independent**. To probe this assumption is
+  fulfilled:
+  - Use graphic methods (curves for different groups must be parallel).
+  - Check that each covariate effect is time independent.
+  - Use [Schoenfeld residuals](#Schoenfeld).
+
+## &beta; <space> estimation
+
+Here I am going to expose how to estimate the $\beta_j$ coefficients by partial
+maximum likelihood argument. This method is called "partial" because it doesn't
+include censored data but that data affects the number at risk so it is somehow
+considered. Let's call:
+
+$$
+L = L(\pmb{\beta}) = L(\beta_1,\ \dots,\ \beta_J)
+$$
+
+Our **partial likelihood function**. Let's suppose we have $N$ subjects and $M$
+death times (so $N - M$  times censored, in our case $N = M$ but this notation
+will become handy later). Death times sorted are $t_1,\ \dots,\ t_M$. We can
+define our function like:
+$$
+L = \prod_{m=1}^M L_{t_m} = \prod_{m=1}^M L_m\\
+L_{m} = \frac{\lambda(t_m, \pmb{X}_m)}{\sum_{p\ \in\ R(t_m)}\lambda(t_m, X_p)} = \frac{\exp(\pmb{\beta} \ \cdot \pmb{X}_m)}{\sum_{p\ \in\ R(t_m)} \exp(\pmb{\beta}\ \cdot \pmb{X}_p)}
+$$
+
+The partial likelihood is a product over the observed failure times of
+conditional probabilities, of seeing the observed failure, given the **risk
+set** ($R(t_m)$) at that time and that one failure is to happen. In other
+words, these are the conditional probabilities of the observed individual being
+chosen from the risk set to fail. We can rewrite our likelihood function
+equation in a more understandable way:
+$$
+L_{m} = \frac{\lambda(t_m, \pmb{X}_m)}{\sum_{n=1}^N \delta_n \cdot \lambda(t_m, X_n)} = \frac{\exp(\pmb{\beta} \ \cdot \pmb{X}_m)}{\sum_{n=1}^N \delta_n \cdot \exp(\pmb{\beta}\ \cdot \pmb{X}_n)}\\
+$$
+
+And now is we can evaluate **the log likelihood**:
+$$
+\ell = \log\left(\prod_{m=1}^M L_m\right) = \sum_{m=1}^M \log(L_m) = \sum_{m=1}^M \ell_m\\
+\ell_m  = \pmb{\beta} \ \cdot \pmb{X}_m - \log\left(\sum_{n=1}^N \delta_n \cdot \exp(\pmb{\beta}\ \cdot \pmb{X}_n)\right)
+$$
+
+Here I have to point that the $\log$ is monotonous on its argument, so it
+preserve the same maximums and minimums. We are looking for:
+$$
+\frac{\partial \ell}{\partial \beta_j} = 0\ \forall\ j \text{ and }\ \frac{\partial^2 \ell}{\partial\beta_i\partial\beta_j} \leq 0\ \forall\ j,\ i
+$$
+
+We can now define the **observed information matrix** and the **variance and
+co-variance matrix** as:
+$$
+I_{ij}(\pmb{\beta}) = -\frac{\partial^2\ell}{\partial\beta_i\partial\beta_j} \Rightarrow\ \hat{\Sigma} = I^{-1}_{ij}(\pmb{\beta})
+$$
+
+Which help us to measure the precision with which we can adjust our parameters.
+
+# To be clear
+The Cox model is a relative risk model; predictions of type "linear predictor",
+"risk", and "terms" are all relative to the sample from which they came. By
+default, the reference value for each of these is the mean covariate within
+strata. The primary underlying reason is statistical: a Cox model only predicts
+relative risks between pairs of subjects within the same strata, and hence the
+addition of a constant to any covariate, either overall or only within a
+particular stratum, has no effect on the fitted results. Using the
+reference="strata" option causes this to be true for predictions as well.
+(There have been occasional requests for reference="zero", i.e., a hypothetical
+subject with all covariates equal to zero, in order to match certain other
+packages' results. The issue is that the results are often silly, e.g., risk
+relative to a subject with height, weight, or blood pressure of zero).
+
+# Recurrent events
+
+There are a few ways to adapt the model to recursive events. I have found 5:
+
+1. **The Andersen Gil model (AG)**: It is formulated in terms of increments in
+   the number of events along the time line. It uses a **common hazard baseline
+   function**($\lambda_0(t)$) for all events and estimates **global
+   parameters** ($\beta_j$) for the factors of interest. This is a suitable
+   model when correlations among events for each individual can be induced by
+   measured covariates. Dependence is captured by appropiate specification of
+   time-dependent covariates, such as number of previous events.
+
+2. **Prentice, William and Peterson model (PWT)**: It reccurs to
+   stratification, based on the prior number of events during the follow up
+   period. In the first stratum all individuals are at risk, in the next one
+   only those with an event in the previous and so on. The data will usually be
+   limited to specific number of recurrent events, avoiding a too small risk
+   set. The time resets after each event.
+
+3. **Marginal means / rates model**: This is the simplest model and consists in
+   considering only the mean number of events for each subject. This approach
+   does not specify dependence structures among recurrent event times within a
+   subject.
+
+    However, since the model does not require time-varying covariates this
+    model is more flexible. 
+
+4. **The frailty model**: This model introduces a random covariate that induces
+   dependence among recurrent event times. It is common to use random effects
+   that follow a gamma distribution with mean equal to one and unknown
+   variance.
+
+5. **Multi-state models**: In this model we call change events to transitions,
+   which are fully characterized throught estimation of transition
+   probabilities between states and transition intensities that are defined as
+   instantaneous hazards of progression to one state. This model is common when
+   we are facing events of different nature (e.g. hospitalization / death).
+
+# Interpolation
+When we are working on survival models we can find several interpolation
+methods, that we can generally represent, if $t_0 \leq t \le t_1$, as: $f(s(t))
+= f(s(t_0)) + \tfrac{t - t_0}{t_1 - t_0} \cdot \left(f(s(t_1)) -
+f(s(t_0))\right)$. Here is a list with some of them:
+
+* Uniform Distribution of Deaths (UDD) / Linear: $f(y) = y$
+  
+  $$
+  s(t) = s(t_0) + \frac{t - t_0}{t_1 - t_0} \cdot \left(s(t_1) - s(t_0)\right)
+  $$
+
+* Constant Force (CF): $f(y) = \log(y)$
+  
+  $$
+  \log(s(t)) = \log(s(t_0)) + \frac{t - t_0}{t_1 - t_0} \cdot \left(\log(s(t_1)) - \log(s(t_0)) \right) \rightarrow s(t) = s(t_0)^\tfrac{t_1 - t}{t_1 - t_0} \cdot s(t_1)^\tfrac{t - t_0}{t_1 - t_0}
+  $$
+  We can see the **force of mortality**:
+  
+  $$
+  -\frac{d}{dt}(\log(s(t))) = -\frac{1}{t_1 - t_0}\log \left(\frac{s(t_0)}{s(t_1)} \right)
+  $$
+  will be **positive** and constant for every time between $t_0$ and $t_1$.
+  
+  
+* Balducci / Hyperbolic: $f(y) = \tfrac{1}{y}$
+
+  $$
+  \frac{1}{s(t)} = \frac{1}{s(t_0)} + \frac{t - t_0}{t_1 - t_0}\left(\frac{1}{s(t_1)} - \frac{1}{s(t_0)}\right) \rightarrow s(t) = \frac{t \cdot \left(s(t_0) - s(t_1)\right) + t_1 \cdot s(t_1) - t_0 \cdot s(t_0)}{(t_1 - t_0) \cdot s(t_1) \cdot s(t_0)}
+  $$
+
+## *Comments on* Extrapolation
+
+¿Extrapolation?. There is no such a thing. What you are talking about is,
+probably, made up somehow a limit value for your function and try to go from
+the latest known point to that limit using the smoothest possible path,
+probably with one of the functions defined above. 
+
+```{r echo=FALSE, out.width = "70%", class = "center-pic"}
+img1_path <- "./extrapolation.png"
+include_graphics(img1_path)
+```
+
+Extrapolation is always a lie, and you should not lie, but because **_everybody
+lies_**, sometimes you will have to use it. So, make it cool, none loves bad
+liars. As we live in a mathematically simplified world, it is common that the 
+best way to extrapolate is that which preserves the properties that make 
+**simple** the extrapolated function (continuity, derivability, being defined 
+on the totality or a compact subset of the group to which its domain belongs, 
+etc.). Expert criteria, so used to boasting itself in this field, must be 
+studied with extreme caution (extreme distrust).
+
+# R-specific notes
+When you are using the `Survival::coxph` function to execute a Cox PH model,
+your must be careful about how did you express your model formul\ae. First of
+all, you must [check
+this](https://cran.r-project.org/web/packages/survival/survival.pdf), but I
+have found something really useful
+[here](https://stat.ethz.ch/pipermail/r-help-es/2015-February/008501.html) that
+I don't really want to forget:
+
+1. If you use `target ~ var1 * var2` model will be adjusted with `var1`, `var2`
+   and their interaction `var1:var2`. Nothing crazy here.
+2. If you use `target ~ var1 * strata(var2)` model will be adjusted with
+   `var1`, `var2` and their interaction `var1:var2`; and one hazard baseline
+   function will be adjusted for every value of `var2`.
+3. If you use `target ~ var1 + strata(var2)` model will be adjusted with `var1`
+   and one hazard baseline function will be adjusted for every value of `var2`.
+4. If you use `target ~ var1 * strata(var2) + strata(var3)` model will be
+   adjusted with `var1`, `var2` and their interaction `var1:var2`; and one
+   hazard baseline function will be adjusted for every possible pair of values
+   of (`var2`, `var3`).
+
+```{r, eval=TRUE, echo=FALSE}
+message("It seems pretty easy to understand but it is not easy to find and
+because the models will have slightly differences on their coefficients from not
+equal but equivalent ones, this could make you lose hours as it made to me.")
+```
+
