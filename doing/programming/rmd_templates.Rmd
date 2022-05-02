@@ -1,0 +1,251 @@
+---
+title: "Rmarkdown Templates"
+author: "Santiago B. Pérez Pita - <`r paste0(Sys.getenv('USERNAME'), '@gruposantander.com')`>"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 4
+    toc_float: true
+    number_sections: false
+    fig_width: 7
+    fig_height: 6
+    fig_caption: true
+    df_print: kable
+    highlight: zenburn # default, tango, pygments, kate, monochrome, espresso, zenburn, haddock textmate
+options:
+    scipen: 1
+    digits: 2
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+# Install commonly used packages
+options(repos="https://cran.rstudio.com" )
+list_of_packages <- c(
+  "knitr",
+  "kableExtra",
+  "ggplot2",
+  "png"
+  )
+new_packages <- list_of_packages[
+  !(list_of_packages %in% installed.packages()[,"Package"])
+  ]
+if (length(new_packages) > 0){
+  install.packages(new_packages)
+}
+
+# Load needed packages
+for (load_this in list_of_packages){
+  library(load_this, character.only = TRUE)
+}
+
+# Template setup
+knitr::opts_chunk$set(echo = TRUE, error = TRUE)
+
+# Nice warnings, errors and messages
+knitr::knit_hooks$set(
+    # To watch error use error=T and stop function
+    error = function(x, options) {
+        paste('\n\n<div class="alert alert-danger">',
+              gsub('##', ' ',
+                gsub('^##\ Error in eval\\(expr, envir, enclos\\):',
+                     "\U0001f480 **ERROR**: ", x)),
+              '</div>', sep = '\n')
+    },
+    # To watch warning use warning function
+    warning = function(x, options) {
+        paste('\n\n<div class="alert alert-warning">',
+              gsub('##', ' ',
+                   gsub('^##\ Warning:', '\U26a0\Ufe0f **WARNING**: ', x)),
+              '</div>', sep = '\n')
+    },
+    # To watch message use message function
+    message = function(x, options) {
+        paste('\n\n<div class="alert alert-info">',
+              gsub('##', ' ',
+                   gsub('^##\ ', '\U0001f4ac **INFO**: ', x)),
+              '</div>', sep = '\n')
+    },
+    class = function(before, options, envir) {
+        if(before){
+            sprintf("<div class = '%s'>", options$class)
+        }else{
+            "</div>"
+        }
+    }
+)
+```
+
+<!-- Add my touch to the basic output -->
+<style>
+    p {
+        text-align: justify;
+    }
+    
+    .alert a {
+      font-weight: bold;
+    }
+
+    .center-pic img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+    }
+</style>
+
+<!-- 
+HOW TO
+What are you able to do now:
+    + Use:
+        ```{r, eval=TRUE, echo=FALSE}
+            message("A standard message")
+        ```
+        ```{r, eval=TRUE, echo=FALSE}
+            warning("A warning message")
+        ```
+        ```{r, eval=TRUE, echo=FALSE}
+            stop("A error message")
+        ```
+    To add really cool formatted messages to your document.
+    You can still use standard markdown syntax inside that messages. AWESOME!
+    
+    + Use:
+        ```{r echo=FALSE, out.width = "70%", class = "center-pic"}
+            include_graphics("/path/to/your/image.png")
+        ```
+    To show centered and not too wide pictures.
+
+FEATURES
+How your document will be rendered:
+    + Justified: Because we hate chaotic line lengths.
+    + Dark Code theme: Because it is how we are used to write it.
+    + Floating TOC: Because it is what makes it useful.
+
+FOR REALS
+If you have previous knowledge:
+    + You can add style features editing the CSS code between <style> tags.
+    Don't use a standalone file for a template, it will be copied everywhere.
+    + If you use the Vim shortcuts you have B(egin) mark at first editable line.
+
+TODOS
+Every help would be welcomed:
+    + A header and footer will probably make html looking better.
+
+
+ENJOY IT!
+--->
+
+
+```{r, eval=TRUE, echo=FALSE, error=TRUE}
+warning(
+'The whole tutorial I have supossed that you have R > 3.6 and RStudio
+installed!')
+```
+
+## Basics
+
+These are the steps that are needed independently from the output type. I expect
+to cover customization steps soon. 
+
+### Create an R package:
+
+This may sound like a simple task but it's easier if someone explains. Open your
+Rstudio and make a new project (`File > New Project`):
+
+* Select from new folder
+* Give it a cool name with just letters and numbers (mine: irrbbTemplates)
+
+
+### Choose template name
+
+Into the package folder create the structure 
+`inst > rmarkdown > templates > template_name`. You can create it using the
+`usethis` package and `usethis::use_rmarkdown_template(template_name)` function
+or by hand. Make sure that you are using some awesome name for your template and
+not `template_name`. You can create as many templates as you want, each one into
+its own folder (`template_name`)
+
+### Bring your template to life
+
+Into your `template_name` folder create a `.yaml` file with 3 lines:
+
+* `name: template_name`. Better if you don't change this.
+* `description: template description`. Feel free to write everything that can
+help your template users understand what this template is for.
+* `create_dir: FALSE`. Boolean, if template use requires a folder for itself say
+`TRUE`.
+
+### Set the default document
+
+Into your `template_name` folder create a `skeleton` folder with the
+`skeleton.Rmd` file inside that should be openned each time someone is using
+your template. If you need any additional files (images, css, ...) make sure
+that you put them inside this folder.
+
+### Final folders structure
+
+```
+package_name
+|___inst
+    |___templates
+        |___template_name1
+        |   |___template.yaml
+        |   |___skeleton
+        |       |___skeleton.Rmd
+        |       |___mycss.css
+        |       |___mylogo.png
+        |       |___whoknowswhat.wkw
+        |       |___...
+        |___template_name2
+        |   |___template.yaml
+        |   |___skeleton
+        |       |___skeleton.Rmd
+        |       |___mycss.css
+        |       |___mylogo.png
+        |       |___whoknowswhat.wkw
+        |       |___...
+        |___and so on ...
+```
+
+```{r, eval=TRUE, echo=FALSE, error=TRUE}
+message(
+"If you have multiple files into your `skeleton` folder, everytime someone
+use the template all that files are going to travel with the template file, and
+R is going to create a separate folder to host them (the document file + the
+additional files).
+
+This is going to make your template users have that files copied everywhere,
+and errors could rise if they use weird folder names (ñ, <space>, etc.) and R
+can't create the folder (and that names are pretty common around us). So I 
+highly recommend to avoid the use of separate files, and try to get as far as
+you can using only the `skeleton.Rmd`. But this is just what I found better for
+myself.")
+```
+
+### Share the package
+
+Before sharing your package you will probably want to compress it into a
+`.tar.gz` or `.zip` file, which is the usual way, but it is not necessary. To
+make your package available for everyone you just need to give them the
+`package_name` folder (with everything that is inside) and once this package is
+in some local location, run:
+
+```{r, eval=FALSE}
+install.packages("/path/to/your/package", type = "source", repos = NULL)
+```
+
+Ensure that you have change `/path/to/your/package` with the real path to your
+package.
+
+And that's it, now if you do: `File > New > Rmarkdown > From Template` your
+should see any template that was contained into the package.
+
+
+You should have an easy-to-share template that your colleagues must be lovin.
+Enjoy!
+
+
+## Customization
+

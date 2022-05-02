@@ -1,0 +1,816 @@
+---
+title: "C++ For C Programmers"
+author: "Santiago Breogán Pérez Pita - <santibreo@gmail.com>"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    number_sections: false
+    fig_width: 7
+    fig_height: 6
+    fig_caption: true
+    df_print: kable
+    highlight: zenburn
+options:
+    scipen: 1
+    digits: 2
+urlcolor: blue
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r echo=FALSE, eval=FALSE}
+highlight_ options = c("default", "tango", "pygments", "kate", "monochrome", "espresso",
+                       "zenburn", "haddock", "textmate")
+```
+# Previous Concepts
+La función `main()` debe siempre finalizar con `return 0;` ya que es el código que se va a ejecutar por defecto. Las variables son "contenedores" en los que podemos almacenar información **tipificada**. Para definirlas usaremos la siguiente estructura:
+```cpp
+string name = "John"; // option 1
+int age; age = 70; // option 2
+// Another datatypes
+char grade = 'A';
+float density = 3.65; // Less decimal numbers than double
+double density = 1/3 // More decimal numbers than float
+bool isMale = true; // or false
+```
+
+Cuando definimos funciones, lo primero que ponemos es el tipo de dato que va a retornar la función. Si usamos `void` estamos indicando que la función no devuelve nada. Igual que cuando creamos variables, podemos tipificar la función y definirla luego.
+
+La notación de los bucles y condicionales es `keyword(when){what}` disponemos de los operadores `or = ||`, `and = &&` y `not = !`. La sentencia `switch` equivale a múltiples `if else`, y se emplea con la siguiente notación:
+```cpp
+switch(compare_value){
+    case 0:
+        cout << "Compare value is zero";
+        break; // avoid the check of other cases
+    case 1:
+        cout << "Compare value is one";
+        break;
+    // and so on
+}
+```
+
+En C++ podemos definir arrays de dos dimensiones de forma similar a como hacemos con los de una dimensión `int numberGrid[3][2] = {{1,2},{3,4},{5,6}};` y para acceder a sus elementos internos empleamos los paréntesis rectangulares dos veces (`[fila][columna]`).
+
+Los **punteros** son direcciones de la memoria. Cuando creamos una variable abrimos un "contenedor" en la memoria, en el que almacenemos la información contenida en la variable. Todos estos valores se almacenan en la memoria RAM, donde se identifican mediante una dirección. Incluyendo `&` delante de la variable, indicamos que queremos el puntero (la dirección de memoria) donde se almacena la variable. Podemos también crear una variable puntero lo que tiene sentido de la siguiente forma:
+```cpp
+int age = 27;
+int p_age = &age;
+```
+
+Los debemos considerar simplemente otro tipo de dato. Los punteros se tipan como la variable cuya dirección en memoria están almacenando. Si usamos `*p_age = *&age` estamos "desreferenciando" el puntero, de forma que obtenemos el valor que haya almacenado en la dirección a la que está apuntando. 
+
+Las clases son nuevos tipos de datos que generamos para describir objetos más complejos de los que trae C++ por defecto.
+```cpp
+class Book {
+    public:
+        string title;
+        string author;
+        int pages;
+};
+
+int main(){
+    Book book1;
+    book1.title = "Harry Potter";
+    book1.author = "J. K. Rowling";
+    book1.pages = 500;
+}
+```
+
+Los constructores son funciones que se llaman cada vez que declaramos un objeto de una clase (la función `__init__(self)` de python). En C++ funcionan de la siguiente forma:
+```cpp
+class Book {
+    public:
+        string title;
+        string author;
+        int pages;
+        Book(){
+            cout << "Creating a Book - object" << endl;
+        }
+};
+
+int main(){
+    Book book1;
+    book1.title = "Harry Potter";
+    book1.author = "J. K. Rowling";
+    book1.pages = 500;
+}
+```
+
+Es simplemente un proceso de la clase con el mismo nombre que la clase. Estos constructores admiten argumentos, de forma que podemos inicializar los objetos con determinada información. 
+
+# 1º Módulo
+
+## Graph theory
+C++ is a better C. Creado por los desarrolladores de UNIX. El prototipo previo fue SIL (System Implementation Language).
+
+C++ fue creado por Stroustrup, 13 años más tarde con 63 palabras clave (C tenía 29), soporte para programación imperativa, orientada a objetos y genérica. Su creador procedía de una tradición de programación orientada a objetos y traslado sus conocimientos a C, en lo que en un primer momento se llamo _C con clases_. Este lenguaje evolucionó hasta soportar también otros tipos de programación. C++ tiene más características que C y es más simple, luego por eso decimos que es esencialmente mejor.
+
+Si comparamos con Java, Java es más puramente orientado a objetos, y tiene las JVM mientras que C++ se compila directamente a C. Por lo tanto suele ser el lenguaje de alto nivel que mejor se compila. Para la comunidad de programadores podríamos decir que están parejos.
+
+## Getting started
+Object Orientations no es sobre el control de flujo pero exige que te sientas cómodo con la recursividad. Un objeto es un tipo de dato y sus operaciones pueden definirse de forma nativa o por el propio usuario. OOP permite la extensión de tipos, de forma que una vez se genera una clase esta puede llevar asociado un tipo. Podemos decir así que la característica esencial de la programación orientada a objetos es la extensión de tipos.
+
+## Converting a C Programm
+Codigo asociado al cálculo de _odds_ en un juego de dados:
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define SIDES 6
+#define R_SIDE (rand() % SIDES +1)
+void main()
+{
+	srand(clock());
+	printf("\nEnter number of trials:");
+	scanf("%d", &trials);
+	for(j=0; j<trials; ++j)
+		outcomes[(d1 = R_SIDE) + (d2 = R_SIDE)]++;
+	printf("probability\n")
+	for(j=2; j<n_dice*SIDES +1: ++j)
+		printf("j = %d    p = %lf\n", j, (double)(outcomes[j])/trials);
+	return 0;
+}
+```
+Todos los comandos/macros _(#cosas)_ son lo que llamamos comandos de preprocesado, y en __C++__ trataremos de no usarlos más. El uso del reloj como _seed_ de los números aleatorios es una forma de evitar el comportamiento determinista de nuestro ordenador. 
+
+## Using C++ Code & C++ improvements & C++ advantages
+Ahora el código de nuestro programa en __C++__ quedaría:
+```cpp
+//The following program computes the probability for dice possibilities
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+const int sides = 6: //replaces de defines statements
+inline int r_sides(){return(rand() % sides +1);}
+
+int main(void)
+{
+	const int n_dice = 2;
+	int d1, d2;
+	srand(clock())
+	cout<< "\nEnter number of trials: ";
+	int trials;
+	cin>> trials;
+	int* outcomes = new int[n_dice * sides +1]
+	for(int j=0; j<trials; ++j)
+		outcomes[(d1 = r_sides()) + (d2 = r_sides())]++;
+	cout<< "probability\n"
+	for(int j=2; j<n_dice*sides +1: ++j)
+		cout << "j = " << j << " p = "
+			 << static_cast<double>(outcomes[j]/trials
+			 << endl;
+	return 0;
+}
+```
+Un _namespace_ es un contexto, podemos cargar distintos contextos e incluso mezclarlos. _inline_ es una nueva palabra clave, es un _compiler directive_ que nos permite evitar llamadas al compilador. Vemos además aparecer __<<__ que es lo que se llama _overloaded_ y lo que hace es cargar en el prompt lo que venga después.
+
+Bjarne Stroustrup: _"I don't think 'purity' is a virtue. The signal strngth of C++ is exactly that it supports several effective styles of programming (several paradigms, if you must), and combinations of these styles. Often, the most elegant, most efficient, and the most maintainable solution involves more than one style (paradigm)."_
+
+## C++ is better than C
++ More type safe: int, char, double, int* (pointer type), etc
++ More libraries
++ Less reliance on preprocesoor
++ OO vs imperative
+
+C fue diseñado para ser compilado en una arquitectura local, y que esa compilación estuviera altamente optimizada.  
+
+## C Swap Function & Swap Function in C++
+Podemos ver:
+```c
+void swap(int* i, int* j){
+	int temp = *i;
+	*i = *j;
+	*j = temp;
+}
+void swap_double(double* i, double* j){
+	double temp = *i;
+	*i = *j;
+	*j = temp;
+}
+
+// To call swap we must use
+swap(&par1, &par2)
+```
+
+Pointers consumen direcciones, es decir, no les importa el contenido grabado en esa dirección si no los bits alojados allí, contengan lo que contengan.  El símbolo `*` al principio indica _dereference_ que significa que estamos mirando a la dirección representada por la variable. Así en la tercera línea el contenido de la dirección j se está moviendo a la i. La segunda función está para demostrar que necesitamos otra función, con prácticamente el mismo código, para hacer lo mismo, con parámetros de un tipo distinto.
+
+Ahora en C++ podemos verlo también:
+```cpp
+#include <iostream>
+using namespace std;
+inline void swap(int& i, int& j){
+	int temp = i;
+	i = j;
+	j = temp;
+}
+inline void swap(double& i, double& j){
+	double temp = i;
+	i = j;
+	j = temp;
+}
+```
+IO significa type safe y es conveniente e intuitivo. Inline para hacer el código más eficiente que llamando al compilador. C++ tiene _overloading_ lo que significa que podemos alojar dos funciones en el mismo contexto coon el mismo nombre, en función de los tipos de los argumentos el compilador llamará a una o a la otra. De esta forma el _overloading_ implica distinción por el tipo y el número de argumentos que se pasen a la función. Más adelante veremos `template` que es una opción incluso más poderosa.
+
+`cout` y `<<` _(bit shift operator)_ se encuentran en la librería __*iostream*__. `inline` se emplea para declarar funciones de una forma más rápida, pero evita llamar al compilador, luego solo debe usarse con funciones cortas.
+
+## Generics
+En la programación en C++, _generics_ hace referencia al uso de templates. Los templates son para evitar la reescritura de código que es esencialmente muy similar (como una receta) pero con ligeras variaciones (ingredientes distintos).
+```cpp
+#include <iostream>
+using namespace std;
+template <class T>
+inline void swap(T& i, T& j){
+	T temp = i;
+	i = j;
+	j = temp;
+}
+```
+
+template es una nueva palabra clave, lo que viene detrás de class es un identificador, que se suele marcar en mayúsculas por convención. Lo llamamos metavariable y va a ser sustituido por un tipo de dato. Añadiendo esa línea ya tendríamos una función `swap` universal. La sustitución de `T` por el tipo de dato la hace el compilador automáticamente al encontrar algo que coincide con `T`.
+
+Ejemplo de template para una función que suma los elementos de un vector:
+```cpp
+//The following program computes the probability for dice possibilities
+#include <iostream>
+using namespace std;
+template <class SUM>
+inline void sum(const SUM data[], int size, SUM s=0){
+	for(int i=0; i < size; i++)
+		s += data[i];
+	return s
+}
+```
+
+# 2º Módulo
+_Enum types_ fueron creados para ser un tipo simple que permitiera generar un pequeño conjunto de constantes con nombres asignados como un tipo. Al principio era un tipo integral:
+```cpp
+enum Answers{Yes, No, Maybe}; // Yes = 0, No = 1. Maybe = 2
+```
+
+Que también podían no tener nombre, o ser asignadas explícitamente, de forma que enteros específicos eran empleados como enumeradores. 
+```cpp
+enum {FahrenheitBoiling = 100, CelsiusBoiling = 212} 
+```
+
+Ocurría que valores enteros específicos podían ser ambiguos, al estar definidos para varios enumeradores. Por ello se introdujo la clase _enum_.
+```cpp
+enum class Permission{Yes, No};
+enum class AnswerClass{Yes, No, Maybe};
+```
+
+Para el caso de los enumeradores planos, estos eran convertidos a enteros automáticamente, sin embargo, al ser una clase esto dejó de ser así. 
+```cpp
+int i = Answers::Yes //Ningún problema
+int j = AnswerClass::Yes //Error
+int j = static_cast<int>(AnswerClass::Yes) //Es lo necesario ahora
+```
+
+Podemos especificar el tipo de entero subyacente mediante dos puntos.
+```cpp
+enum class CarType:short{Sedan, Coupe, SUV, Convertible}
+```
+
+Admitiéndose `char, short, int, long, longlong` y sus formas sin signo. 
+
+_Ira Pohl supplementary example on overloading operator:_
+```cpp
+#include<iostream>
+#include<cstdint>
+using namespace std;
+enum class days:std::int8_t{
+	SUNDAY,MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY
+};
+//unlike plain enums C++11 enum class is typesafe and does not silently
+//convert to int
+ostream& operator<<(ostream& out, const days& d){
+	out << static_cast<int>(d); return out;
+}
+days operator++(days& d){ //PREFIX OPERATOR
+	d = static_cast<days>((static_cast<int>(d) + 1) % 7); return d;
+}
+days operator++(days& d, int){ //POSTFIX OPERATOR
+	days temp = d;
+ 	d = static_cast<days>((static_cast<int>(d) + 1) % 7);
+ 	return temp;
+}
+int main(){
+ 	days today{days::MONDAY};
+ 	std::cout << "Demonstrate class enum" << std::endl;
+ 	std::cout << "MONDAY VALUE IS " << today << std::endl;
+ 	std::cout << "INCREMENT VALUE IS " << ++today << std::endl;
+ 	std::cout << "INCREMENT VALUE IS " << today++ << std::endl;
+ 	std::cout << "INCREMENT VALUE IS " << today << std::endl;
+ 	return 0;
+}
+```
+## C++ Functions and Generics, Graph Algorithms
+Hay nuevos argumentos que vamos a ver en nuestras funciones:
+
++ Argumentos _default_, listas de variables
++ Constantes
++ De tipo múltiple como un _generic_
++ El operador _overloading_
+
+Con _overloading_ nos referimos, por ejemplo, al operador _bit shift_ (`<<`) nosotros crearemos los nuestros propios. Un programa que sume un array tipo _double_ en C:
+```c
+double sum(double data[], int size){
+    double s = 0.0; int i;
+    for(i=0; i<size; ++i){
+        s += data[i];
+    }
+    return s;
+}
+```
+
+_Generics_ hace referencia a una forma universal de programar. Supongamos que queremos hacer en C++ una suma que normalmente empiece en cero, pero no siempre.
+```cpp
+template<class T> // T is generic type
+T sum(const T data[], int size, T s=0){
+    for(int i=0; i < size; ++i){
+        s += data[i]; // += must work for T type
+    }
+}
+```
+En este caso `T` es _generic_ y `s` es un parámetro _default_. Podemos llamar a la función como `sum(scores, 36)` o `sum(scores, 36, 25)`  para sumar un vector de 36 elementos o a esa suma añadirle el valor 25. Podría continuar nuestro _script_ como:
+```cpp
+int main(){
+    cout << "template for sum()" << endl;
+    int a[] = {1, 2, 3};
+    int b[] = {2.1, 2.2, 2.3}
+    cout << sum(a, 3) << endl;
+    cout << sum(b, 3) << endl;
+}
+```
+En ambos caso el parámetro que almacena la suma va a ser cero, pero en uno tipo entero y en el otro tipo _double_. Los elementos del array original no van a ser modificados y los parámetros sencillos como el tamaño del array son referidos mediante un valor y no pueden ser modificados por la rutina de llamada. Este concepto se conoce como _"const correctness"_.
+
+## Multiple Template Arguments
+Hasta ahora lo que hemos visto son templates que presentan, tan sólo, un argumento genérico. Sin embargo esto no tiene que ser necesariamente así, es habitual que sea así, es incluso conveniente, pero no es imprescindible.
+```cpp
+template<class T1, class T2>
+void copy(const T1 source[], T2 destination[], int size){
+    for(int i=0; i< size; ++i)
+        destination[i] = static_cast<T2>(source[i])
+}
+```
+
+En este caso usar `static_cast` es una opción más que razonable ya que _type safety_ es una de las mejoras de C++ frente a C, aunque algunos  operadores `cast` se consideran inseguros como `reinterpret_cast`, `const_cast` y 
+
+Debemos tener en mente que lo mejor es tener un argumento genérico, desde luego los menos posibles es una imposición, ya que demasiada libertad puede conducir al caos. 
+
+## Graph Theory and Algorithms & Graph as Data Structure
+El gráfico complet de N nodos es aquel en que podemos viajar desde todos los nodos a cualquier otro nodo del grafo. El *grado* (orden) de un nodo es el número de caminos que salen de él, el número de caminos que salen de un nodo en un gráfo N completo es N-1.
+
+Los conceptos más rtelevantes de la teoría de grafos, o las gráficas como estructuras de datos son:
+
+* Matrix de conexiones (o distancias)
+* Lista de representación de las uniones
+* Tradeoffs (gráficas como ADT)
+
+$$
+\begin{pmatrix} 
+1 & 1 & 1 & 1\\
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 1\\
+0 & 1 & 1 & 0
+\end{pmatrix}
+\quad
+=
+\quad
+\begin{matrix} 
+1 & - & - & 2\\
+\downarrow & \searrow & \nearrow & \uparrow\\
+\downarrow & \nearrow & \searrow & \uparrow\\
+3 & - & - & 4
+\end{matrix}
+$$
+
+Cuando un nodo puede ir a sí mismo (como el 1 en nuestro caso) hay un loop, aunque vamos a ignorarlo ya que no son de especial relevancia. Llamamos _sparse_ graph a aquella en la que todos sus nodos son de grado 1 salvo uno de ellos. 
+
+## Dijkstra Shortest Path
+Un problema clásico de teoría de grafos es encontrar la distancia más corta entre dos puntos. Solemos plantearlos en 2 pasos:
+
+1. Incluimos el nodo _source_ sabiendo que la distancia a sí mismo es 0, e incluimos todos sus sucesores inmediatos con su distacia, en los que llamamos el conjunto abierto.
+2. Elegimos un nodo del conjunto abierto, que debe ser aquel con menor distancia. Si el nodo seleccionado no es el objetivo volvemos al paso 1. considerando el nuevo nodo como nodo source.
+
+Si llamamos al nodo origen $s$ y al objetivo $j$ y pasamos por un nodo intermedio $n$, nuestra función coste sería $c(s-n) + c(n-j)$. Si $j$ está en el conjunto cerrado, el algoritmo nos dice que tenemos probablemente la menor distancia, si está en el conjunto abierto repetimos el proceso de los sucesores. Podemos encontrar también nodos _stop_ que no presenten sucesores.
+
+## C++ Creating Types & Enum and Operator Overloading & Example: Typedef Days
+Los tipos nativos de C++ son `short, int, double, char, long, long double, int*, ...`. Los tipos son muy importante $3/4 \neq 3.0/4$ así que debemos ser cuidadosos con ellos. 
+
+`enum` es un tipo que suele contener palabras en mayúsculas y que asocia a su contenido tipos enteros ordenados empezando en 0. Se emplean para agrupar constantes que están relacionadas. 
+
+```cpp
+typedef enum days{SUN, MON, TUE, WED, THU, FRI, SAT} days;
+
+inline days operator++ (days d){
+    return static_cast<days>((static_cast<int>)(d) +1) % 7)
+}
+```
+
+Con ese _chunk_ de código lo que hacemos es redefinir *(overload)* el operador incremento para que funcione con nuestro recién definido tipo diario, dándonos el día siguiente. 
+
+```cpp
+ostream& operator<<
+(ostream& out, const days& d){
+    switch (d){
+        case SUN: out << "SUN"; break;
+        case MON: out << "MON"; break;
+        ...
+    }
+    return out;
+}
+//operator << is normally left bit shift
+```
+
+De esta forma tendríamos el operador `<<` _overloaded_ para nuestro nuevo tipo de datos que hemos definido antes. Es interesante ir habituándonos al uso que hacemos de `&` para manipular los argumentos por su referencia y no copias locales y de `CONST` para establecer que no es mutable dicha referencia.
+
+Poniendo todo esto en uso nos queda:
+```cpp
+int main(){
+    days d = MON, e;
+    e = ++d;
+    cout<<d<<'\t'<<e<<endl;
+}
+```
+
+Podemos incrementar el campo de definición de un operador, no hay ningún problema en ese sentido, pero no podemos cambiar *(overwrite)* su significado. Lo vemos con un ejemplo:
+```cpp
+int a = 5; // binario: 000 000 000 000 010 1 (separados contamos mejor)
+int b = a << 3; // binario: 000 000 000 010 100 0 = decimal: 40
+// El operador desplaza el binario 3 espacios a la izquierda
+```
+
+La precedencia y asociatividad del operador no se puede manipular.
+
+## Natural Way to Build Widgets & C++ Point
+En C++ podemos definir funciones para los nuevos tipos que hayamos definido previamente con el comando `struc`, de manera que `struc` presenta distintas capas de opacidad, ya que permite incluir funciones. En c++ aparece además `class`, que se comporta de forma similar a `struc`. 
+
+En C: .
+```c
+typedef struct point{double x,y;} point;
+void add_points(point* p1, point* p2, point* sum){
+    sum -> x = p1 -> x + p2 -> x;
+    sum -> y = p1 -> y + p2 -> y;
+}
+```
+La estructura presenta dos datos, que se suman cada uno por su lado.
+Los campos son los datos y las funciones _scope_ mamnipulan la estructura usando operaciones puntero. 
+
+En C++ definir un punto geométrico es mucho más simple:
+```cpp
+class point{
+    public:
+        double x, y;
+};
+
+\\Mejor definido
+class point{
+    public:
+        double getx(){return x;} // inline function
+        void setx(double v){x = v} // mutator
+    private:
+        double x, y;
+}
+```
+
+Lo primero que nos debe llamar la atención es la palabra clave `public`, otras opciones son `private` y `protected`. Lo que hacen es definir la accesibilidad a las variables:
+
+* `public` = Cualquiera puede ver las variables alojadas en la clase.
+* `private` = Tan solo las funciones con _scope_ a este tipo de datos pueden ver esas variables.
+* `protected` = Son accesibles para las mismas funciones que las variables privadas y además para las clases derivadas de esta.
+
+En OOP debemos tratar de construir nuestros nuevos objetos tan similares a los pbjetos que ya conocemos como nos sea posible. 
+```cpp
+point operator+ (point& p1, point& p2){
+    point sum = {p1.x + p2.x, p1.y + p2.y};
+    return sum;
+}
+
+ostream& operator << (ostream& out, const point& p){
+    out << "(" << p.x << ", " << p.y << ")";
+    return out
+}
+
+/* Usual signature for overloading ostream& operator<<
+(ostream& out, const my_type&, v) both arguments are 
+passed by reference my_type is passed with a const modifier
+so as not to be modified.
+*/
+```
+
+No solemos sobreescribir operadores fuera del dominio de las matemáticas, pero dentro es importante definir los operadores habituales, pues es común esperar que estos funcionen. La norma para redefinir el operador _left bit shift_ es la que se define en el _chunk_, los valores se pasan por referencia.
+
+El uso de tipos nuevos se parece mucho a los tipos nativos, esa es nuestra meta como bueno OO programadores. Los miembros de una clase tienen acceso a los miembros privados. Al definir una nueva clase tenemos que definir el constructor, que es la forma de construir el tipo por defecto. `point(){x = y = 0.0;}` sería un ejemplo para el punto, pero hay muchos otros, por ejemplo usando el puntero a sí mismo _(self-pointer)_ `point(){this -> x = 0.0, this -> y = 0.0}`.  
+
+# 3º Módulo
+
+## C++ Classes & Object Orientation
+Los objetos pueden ser cualquier cosa, cuando declaramos una variable, lo que ocurre es que declaramos, localizamos e inicializamos.
+```cpp
+int main(){
+    int i = 9, j = 3;
+    cout << "i is " << i <<" j is "<< j <<endl;
+    {
+        int i = j + 2;
+        cout << "i is " << i <<" j is "<< j <<endl;
+    }
+    cout << "i is " << i <<" j is "<< j <<endl;
+}
+```
+Cuando generamos un bloque interno, las variables del externo se transforman en variables escondidas y prevalecen las internas, al salir de un bloque interno las variables internas son destruidas. 
+
+```cpp
+class point{
+    public:
+        point(double x=0.0, double y=0.0):x(x),y(y){} // Constructor
+        double getx(){return x;}
+        void setx(double v){x=v}
+    ...
+    private:
+        double x, y;
+};
+```
+Con este nuevo constructor para punto ya hemos visto 3 diferentes, pero el que está asociado con un mejor uso de C++ es este último: `point(): x(0,0),y(0,0){}` ya que estamos usando una lista de inicialización de forma que los valores son inicializaciones, y no asignaciones, lo que mejora mucho nuestro campo de acción. Solo en los constructores se permite esta notación.
+
+## More constructors
+Los constructores son entidades muy relevantes de la programación en C++. Cumplen varias funciones:
+
+* Inicializan: Los valores de las variables
+* Asignan
+* Convierten: Nos permiten pasar de un tipo a otro.
+* Certifican: Se pueden además usar para comprobar la corrección de lo que se está haciendo, ya que compruban la corrección de los tipos.
+
+La asignación se emplea para controlar el uso de la memoria de forma robusta. Los destructores(`~classname(){...}) se nos pueden olvidar, siempre que no haya resgo con la memoria:
+```cpp
+struct slistelem{char data; slistelem* next;}
+
+class slist{
+    //slingly linked list
+    public:
+        slist():h(0){} // empty list
+        ~slist() {release();} destructor
+        // ... more methods
+    private:
+        slistelem* h; //list head
+}
+```
+
+Este código pone un elemento al frente de la lista.
+```cpp
+void slist::prepend (char* c){
+    slistelem* temp = new slistelem:
+    // allocation fails, bad_alloc exception thrown
+    temp -> next = h; //single link
+    temp -> data = c;
+    h = temp //update h
+}
+```
+
+Este sería su destructor
+```cpp
+slist::~slist(){
+    cout << "destructor called" << endl;
+    //just for demostration -debug
+    release(); //march thru list with deletes
+}
+```
+
+## Using Dijkstra's Algorithm & The `is_connected` algorithm
+En los grafos tenemos _nodes and edges_ (nodos/vértices y aristas). Los consideramos desconectados si no hay forma de ir de un nodo a cuanquier otro, y totalmente conectados (o completos) si de cualquier nodo puedo ir a cualquier otro.
+
+Para dibujar un grafo en C++
+```cpp
+bool** graph; //pointer that stores boolean values
+    srand(time(0)); //seed rand()
+    graph = new bool *size[]
+    for(int i = 0; i < size; ++i)
+        graph[i] = new bool[size];
+// heap created 2D array of Bool.
+```
+
+Este programa generará una matriz como la que vimos, que dispondrá de valores booleanos, si la posición $(3,4)$ tiene un `TRUE` significarña que los nodos 3 y 4 están conectados. Definimos ahora densidad como la probabilidad de que exista una conexión. Por ejemplo si hemos definido la densidad del grafo como 0.19: 
+```cpp
+for (int i = 0; i < size; ++i)
+    for (int j = i; j<size; ++j)
+        if (i==j) graph [i][j] = false; // No loops
+            else graph[i][j] = graph[j][i] = (prob() < 0.19)
+```
+
+Al ser simétrica sabemos que se trata de un grafo no-dirigido. Es importante ver que según el grafo aumenta el número de nodos, a igual densidad, cada vez es más probable que el grafo sea completo. 
+
+El algoritmo `is_conected` está basado en los siguiente pasos:
+
+1. It starts with node 0 and determines which nodes can be reached from this one.
+2. Hacemos un _set_ (abierto) con esos nodos y otro con el nodo cero, como el primero del _set_ cerrado. 
+3. En cada iteración añadimos un nodo al _set_ cerrado que eliminamos del _set_ abierto.
+4. Esto acabará en que o el _set_ cerrado contiene todos los nodos, luego el grafo es completo, o no se han alcanzado nodos nuevos, luego el grafo no es completo.
+
+```cpp
+bool is_connected(bool *graph[], int size){
+    int old_size = 0, c_size = 0;
+    bool* close = new_bool[size];
+    bool* open = new_bool[size];
+    for (int i = 0; i < size; ++i)
+        open[i] = close[i] = false;
+        
+    open[0] = true;
+}
+
+while (c_size < size){
+    for (int i = 0; i < size; ++i){
+        old_size = c_size;
+        if (open[i] && (close[i] == false)){
+            close[i] = true; c size++;
+        }
+    }
+}
+```
+
+`c_size` es el tamaño del _set_ cerrado. Hay que ser conscientes de que la resolución nunca requirirá más de `n` iteraciones, siendo `n` el número de nodos.
+
+## Complex Aggregates / list element & Element: List
+
+Nos vamos a centrar en una estructura de datos compleja, que a veces se denomina como lista autoreferida. 
+```cpp
+struct list_element{
+    list_element (int n = 0, list_element* ptr = 0):
+        d(n), next(ptr){}
+    int d;
+    list_element* next;
+};
+
+// Another way to do the same
+class list_element{
+    public:
+        list_element (int n = 0, list_element* ptr = 0):
+            d(n), next(prt){}
+        int d;
+        list_element* next;
+};
+```
+
+La forma preferible de hacerlo es la segunda, ya que no usamos `struct`, que es para estructuras de datos simples. Presenta dos valores _default_, el primero es un cero, y el siguiente es un puntero, que apunta a la posición en que se encuentra el cero, que en versiones modernas de C++ es algo que podríamos haber hecho con _nullpointer_, con `list_element* ptr = nullptr` esta forma de hacerlo nos facilita trabajar con conversiones. 
+
+Definimos una lista como la suma de una estructura de almacenamiento de datos y un cursor, que te indica en qué posición estás:
+```cpp
+class list{
+    public:
+        list(): head(0), cursor(0){}
+        void prepend(int n); // insert at front value n
+        int get_element(){return cursor -> d}
+        void advance(){cursor = cursor -> next;}
+        void print();
+    private:
+        list_element* head;
+        list_element* cursor;
+};
+```
+
+La librería `standard` usa una generalización del cursor que es el iterador. Debemos ver que `cursor(0)` es el cursor, con el puntero señalando al posicicón cero, (también podríamos haber usado `nullptr`). A través de un _template_ podríamos adapatar la lista para cualquier tipo de datos. Ahora toca aprender `prepend`:
+```cpp
+void list::prepend(int n){
+    if (head == 0) // empty list case
+        cursor = head = new list_element(n, head);
+    else //add to front-chain
+        head = new list_element(n, head)
+}
+```
+
+Por ejemplo, si tenemos una lista con un 7 y un 3 `<head> - 7 - 3 - <end>` lo que ocurre al hacer `prepend(5)` es lo siguite: `<head> - 5 - 7 - 3 - <end>`
+
+## `Print()` chaining & More Elaborate List
+`Print()` se define ahora:
+```cpp
+void list::print{
+    list element* h = head;
+    while(h != 0){ // idiom for chaining
+        cout << h -> d << ", ";
+        h = h -> next;
+    }
+    cout << "###" << endl;
+}
+```
+
+Debemos manterner en mente como emplear la recursión y el _overload_ `<<` para la lista. Podemos ya meternos con el uso de las listas.
+
+```cpp
+int main(){
+    list a, b;
+    a.prepend(9); a.prepend(8);
+    cout << "list a " << endl;
+    a.print();
+    for (int i = 0; i < 40; ++i)
+        h.prepend(i*i)
+    cout << " list b " << endl;
+    b.print();
+}
+```
+
+Las cosas de uso común están en la librería estándar, y las listas presentan el siguiente aspecto.
+```cpp
+class list{
+    public: list():head(0), cursor(0){};
+        list(const int* arr, int n);
+        list(const list& lst); //copy constructor
+        ...
+        ~list(); //delete
+    private:
+        list_element* head
+        list_element* cursor;
+}
+```
+
+Normalmente, las cosas definidas en la librería estándar tienen varios constructores (*default*, *copy*, *move*, etc), también se suelen definir constructores para definir datos y el constructor.
+
+Tenemos dos formas de copiar en C++, copia profunda, y copia referencial (*deep* vs. *shallow*). Las copias profundas requieren más recursos, y nos permiten modificar el objeto copiado sin afectar al original. En las listas, lo que hacemos es definir un constructor copia, para la copia profunda.
+```cpp
+list::list(const list& lst){
+    if (lst.head == 0){
+        head = 0; cursor = 0;
+    }
+    else{
+        cursor = lst.head;
+        list_element* h = new list_element();
+        list_element* previous;
+        head = h;
+        h -> d = lst.head -> d;
+        previous = h;
+    }
+    for (cursor = lst.head; cursor!=0;){ // equivalent to while
+        h = new  list_element();
+        h -> d = cursor -> d;
+        previous -> next = h;
+        cursor = cursor -> next;
+        previous = h;
+    }
+    cursor = head;
+}
+```
+
+Hemos copiado cada elemento y la posición del cursor, luego tenemos una copia de la lista original.
+
+## Destructor & Dinamic Data Structures in STL
+Cada cosa en la que usamos `new` queremos decir que es algo que estaba deslocalizado, debemos ser cuidadosos con aquello que tenemos localizado y deslocalizado, ya que C++ implica un control riguroso del uso de memoria.
+```cpp
+int main(){
+    list a, b;
+    int data[10] = {3,4,6,7,-3,5}; // array
+    list d(data, 6);
+    list e{Cdata, 10}; // Remaining values are zeros
+    a.prepend(9); a.prepend(8);
+    cout << " list a " << endl;
+    a.print()
+    for (int i = 0; i < 40;  ++i){
+        b.prepend(i*i)
+        cout << " list b " << endl;
+        b.print();
+        list c(b);
+        c.print();
+        d.print();
+        e.print();
+    }
+}
+```
+
+La librería estándar contiene `vector` como strectura de datos, que podemos emplear como arrays primitivos. Una recomendación para ser un buen programador de C++ es abandonar las estructuras de datos de C. En la librería estándar tenemos también `list`, que nos permite recorrerla de forma bidireccional. Son tremendamente útiles cuando queremos modificarlas _on air_ 
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+

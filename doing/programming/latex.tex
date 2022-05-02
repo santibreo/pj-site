@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{ifthen}
+\usepackage{amsmath} %\text{} command needs this package
+\begin{document}
+    Demonstration of @for loop:
+
+    \makeatletter
+    \@for\sun:={rising,setting}\do{The sun is \sun. }
+    \makeatother
+
+    \newcounter{int}
+
+    @whilenum loop:
+    
+    \setcounter{int}{0}
+    \makeatletter
+    \@whilenum\value{int}<20\do
+    {\stepcounter{int}\ifthenelse{\isodd{\value{int}}}{\theint\text{ }}{}}
+    \makeatother
+    
+    "loop repeat" loop:
+    
+    \setcounter{int}{1}
+    \loop
+    \theint
+    \text{ }\addtocounter{int}{2}\ifnum\value{int}<20
+    \repeat
+\end{document}

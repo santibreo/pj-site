@@ -1,0 +1,41 @@
+---
+title: "Resumen"
+author: "Santi"
+date: "15/3/2019"
+output: html_document
+---
+## Previous Concepts
+* __Maldición de la dimensión__: Al aumentar las dimensiones los volúmenes aumentan exponencialmente así que los datos de la muestra tienden a volverse dispersos, complicando cualquier método que requiera significación estadística. Suele ocurrir que se requiera un aumento exponencial del número de filas acorde al aumento de dimensiones.
+
+* __Serie Temporal Estacionaria__: Es aquella cuya distribución de probabilidad no depende del tiempo. Las series no estacionarias tendrán una media y/o varianza que dependerá del tiempo o mostrará una tendencia.
+
+* __ARIMA / Box-Jenkins model__:
+$$\Phi(B^s)\phi_p(B)(1-B)^d(1-B)^D X_t = \theta_q(P)\Theta_Q(B^s) \epsilon_t$$
+Donde B es un operador tal que: $B^pX_t = X_{t-p}; s$ es la periodicidad y las variables minúsculas se refieren a los órdenes de la parte no-estacional del modelo y las mayúsculas a los órdenes de la parte estacional siendo: $p/P$ el orden del modelo autorregresivo, $q/Q$ el orden de la componente de media móvil y $d/D$ es el orden de diferenciación (d=0 implica serie temporal estacionaria, d>0 serie no estacionaria). Por último $\epsilon_t$ es una secuencia de variables aleatorias de media y varianza constantes.
+
+* __Coeficientes cepstral__: Definición basada en los coeficientes de modelos AR.
+
+$$c_n = -\alpha_1\ \ \ \ \ \ \ \text{si }n = 1$$
+
+$$c_n = -\alpha_n - \sum_{m=1}^{n-1}(1 - \tfrac{m}{n})\alpha_m c_{n-m}\ \ \ \ \ \ \ \text{si } 1 \lt n \leq p$$
+
+$$c_n = -\sum_{m=1}^{p}(1 - \tfrac{m}{n})\alpha_m c_{n-m}\ \ \ \ \ \ \ \text{si } p \lt n$$
+
+
+## Summary
+Propone el uso de Linear Predictive Coding (LPC) cepstrum para el clustering, usando la distancia euclídea como medida de disimilaridad. El modelo se emplea sobre ARIMA time-series y permite discriminar entre los distintos modelos ARIMA empleados. 
+
+Otras aproximaciones emplean Discrete Fourier Transform (DFT) y de nuevo la distancia euclídea para determinar la similaridad, esta aproximación elimina el ruido normalmente asociado a altas frecuencias y el teorema de Parseval nos garantiza que así no hay falsas expulsiones. Otras aproximaciones han usado Discrete Wavelet Transform (DWT) y Principal Component Analysis (PCA) para medir la similaridad.
+
+La definición pulcra de similaridad podríamos decir que es: *Dada una familia de transformaciones $F$ decimos que X e Y son $F$-similares si existe una transformación $f$ dentro de $F$ tal que tomando una larga secuencia X' de X esta puede ser aproximadamente mapeada a otra larga de secuencia Y' de Y.*
+Para las series temporales de acciones Gavrilov encontró que normalizar los datos siempre mejoraba los resultados del clustering. Pero para los mejores resultados de clustering las series no permitían reducir su dimensionalidad. Una serie temporal son observaciones de una variable, con **4 componentes: tendencia, ciclo, persistencia estocástica y elemento aleatorio.**. Podemos obtener estas cuatro componentes analizando las series con un modelo Box-Jenkins estacional (o ARIMA). 
+
+El paper propone la distancia euclídea entre LPC cepstra como la mejor medida de similaridad para series generadas por diferentes modelos ARIMA, abordando los problemas relacionados con la longitud de las series. Su sentido de la similaridad parte de la idea de que dos series son similares si los modelos que las ajustan están próximos, probabilísticamente ambas series se comportarán de forma similar.
+
+El análisis Cepstral es un procesado de señal no lineal con multitud de aplicaciones. **Se define cepstrum como la transformada de Fourier inversa del logaritmo del espectro de amplitudes a corto plazo. Tenemos así cepstrum real y complejo que serán la transformada de Fourier inversa de la parte real y compleja del logaritmo de la transformada de Fourier de la serie temporal.** *[As easy as it sounds]*. El cepstrum empleado usando los parámetros del modelo ARIMA se llama LPC cepstrum, nosotros lo llamaremos cepstrum indistintamente.
+
+Para evaluar los clusterings se emplean dos medidas, la similaridad entre clusterings, que se define como: $$ Sim(G,A) = \frac{\sum_{i}^{k} max_{j} Sim(G_i, A_j)}{k}\ \ \text{con }Sim(G_i, A_j) = \frac{2|G_i \cap A_j|}{|G_i| + |A_j|}$$
+Y también se usa la anchura de la silueta, una medida que cae en entre -1 y 1 para cada objeto clusterizado, significando -1 que está mal clusterizado, 0 que cae entre 2 clústers y 1 que está bien clusterizado. 
+
+Para medir la diferencia entre modelos AR debemos no solo tener en cuenta la diferencia entre los coeficientes, sino también el peso de los coeficientes asociados a cada instante previo. A menor orden del coeficiente menor es su importancia. La distancia cepstral tiene en cuenta este efecto, mientras que ni la distancia Manhattan ni la euclídea lo tendrían y un modelo euclídeo con pesos serían dependiente de los parámetros del modelo. Además los coeficientes cepstral decaen rápidamente a 0 lo que nos permite reducir la dimensionalidad. Si miramos las diferencias entre dos series calculadas por distintos métodos, podemos ver que tanto la distancia entre los coeficientes DFT (de la serie y de la función de autocorrelación) como DWT tienen una dependencia muy fuerte del número de coeficientes calculados, decayendo muy rápido según lo retenemos menos. Sin embargo la distancia del modelo cepstral permanece invariante ante el uso entre 10 y 256 coeficientes.
+

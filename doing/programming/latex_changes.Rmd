@@ -1,0 +1,177 @@
+---
+title: "Cambios en Latex"
+author: "Santiago B. Pérez Pita - <`r paste0(Sys.getenv('USERNAME'), '@gruposantander.com')`>"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    number_sections: false
+    fig_width: 7
+    fig_height: 6
+    fig_caption: true
+    df_print: kable
+    highlight: zenburn # default, tango, pygments, kate, monochrome, espresso, zenburn, haddock textmate
+options:
+    scipen: 1
+    digits: 2
+urlcolor: blue
+---
+```{r setup, include=FALSE}
+# Install commonly used packages
+options(repos="https://cran.rstudio.com" )
+list_of_packages <- c(
+  "knitr",
+  "kableExtra",
+  "ggplot2",
+  "png"
+  )
+new_packages <- list_of_packages[
+  !(list_of_packages %in% installed.packages()[,"Package"])
+  ]
+if (length(new_packages) > 0){
+  install.packages(new_packages)
+}
+
+# Load needed packages
+for (load_this in list_of_packages){
+  library(load_this, character.only = TRUE)
+}
+
+# Template setup
+knitr::opts_chunk$set(echo = TRUE, error = TRUE)
+
+# Nice warnings, errors and messages
+knitr::knit_hooks$set(
+    # To watch error use error=T and stop function
+    error = function(x, options) {
+        paste('\n\n<div class="alert alert-danger">',
+              gsub('##', '\n',
+                gsub('^##\ Error in eval\\(expr, envir, enclos\\):',
+                     paste(emo::ji("skull"),'**ERROR**: '), x)),
+              '</div>', sep = '\n')
+    },
+    # To watch warning use warning function
+    warning = function(x, options) {
+        paste('\n\n<div class="alert alert-warning">',
+              gsub('##', '\n',
+                   gsub('^##\ Warning:', paste(emo::ji("warning"),'**WARNING**: '), x)),
+              '</div>', sep = '\n')
+    },
+    # To watch message use message function
+    message = function(x, options) {
+        paste('\n\n<div class="alert alert-info">',
+              gsub('##', '\n',
+                   gsub('^##\ ', paste(emo::ji("pencil2"),'**INFO**: '), x)),
+              '</div>', sep = '\n')
+    },
+    class = function(before, options, envir) {
+        if(before){
+            sprintf("<div class = '%s'>", options$class)
+        }else{
+            "</div>"
+        }
+    }
+)
+```
+
+<!-- Add my touch to the basic output -->
+<style>
+    p {
+        text-align: justify;
+    }
+    
+    .alert a {
+      font-weight: bold;
+    }
+
+    .center-pic img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+    }
+</style>
+
+<!-- 
+HOW TO
+What are you able to do now:
+    + Use:
+        ```{r, eval=TRUE, echo=FALSE}
+            message("A standard message")
+        ```
+        ```{r, eval=TRUE, echo=FALSE}
+            warning("A warning message")
+        ```
+        ```{r, eval=TRUE, echo=FALSE}
+            stop("A error message")
+        ```
+    To add really cool formatted messages to your document.
+    You can still use standard markdown syntax inside that messages. AWESOME!
+    
+    + Use:
+        ```{r echo=FALSE, out.width = "70%", class = "center-pic"}
+            include_graphics("/path/to/your/image.png")
+        ```
+    To show centered and not too wide pictures.
+
+FEATURES
+How your document will be rendered:
+    + Justified: Because we hate chaotic line lengths.
+    + Dark Code theme: Because it is how we are used to write it.
+    + Floating TOC: Because it is what makes it useful.
+
+FOR REALS
+If you have previous knowledge:
+    + You can add style features editing the CSS code between <style> tags.
+    Don't use a standalone file for a template, it will be copied everywhere.
+    + If you use the Vim shortcuts you have B(egin) mark at first editable line.
+
+TODOS
+Every help would be welcomed:
+    + A header and footer will probably make html looking better.
+
+
+ENJOY IT!
+--->
+
+## List of TODOS
+
+Here I am saving all the changes that I want to make into the Latex repository
+but I don't have found time to do them yet:
+
+1. Separate Packages, Macros and Templates. We must have two `.sty` files, one
+    with the **packages needed (and maybe some that are frequently used)** for
+    the macros and templates. And then the standard `.tex` files that we use to
+    create Validation reports.
+
+2. Rewrite the effect of `romanos` option, based on this minimal example:
+    ```{latex, eval=FALSE}
+    \documentclass{article}
+    \usepackage[utf8]{inputenc}
+    \usepackage[english]{babel}
+    
+    \pagenumbering{roman}
+    
+    \begin{document}
+    \tableofcontents
+    
+    \section{First section}
+    \setcounter{page}{3}
+    
+    Some text here...
+    
+    \section{Second section}
+    Some more text here..
+    
+    \section{Heading on Level 1 (section)}
+    \pagenumbering{arabic}
+    
+    More text here...
+    \end{document}
+    ```
+
+3. Remove all the packages that are not used, leaving just the needed and
+    useful ones.
+
