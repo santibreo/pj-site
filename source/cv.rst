@@ -34,7 +34,7 @@ lasted one year and made us rotate through 3 areas of the Corporation:
 
 * **Cibersecurity** (*Red Team*)
 
-  * Virtual machines replication of simple network architectures to evaluate the impact of hacking strategies (tunneling to local server through a windows server exposed to the Internet).
+  * Virtual machines replication of simple network architectures to evaluate the impact of hacking strategies (tunneling to local server through a Windows server exposed to the Internet).
   * Files metadata and contents indexing in Elasticsearch database monitorized with Kibana and development of a webUI (Flask) to query the system. All deployed using Docker containers.
   * Development of a Python library to transform json format to Microsoft Office documents automating audit reports.
 
