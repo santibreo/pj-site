@@ -764,8 +764,12 @@ Reading a code base requires too much effort to reason about a whole program and
 
 To test it we have to add to ``build.sbt`` file:
 
+
+.. code-block:: scala
+
    libraryDependencies += "org.scalameta" %% "munit" % "0.7.19" % Test
    testFrameworks += new TestFramework("munit.Framework")
+
 
 .. code-block:: scala
 

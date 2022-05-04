@@ -801,10 +801,10 @@
 </pre></div>
 </div>
 <p>To test it we have to add to <code class="docutils literal notranslate"><span class="pre">build.sbt</span></code> file:</p>
-<blockquote>
-<div><p>libraryDependencies += “org.scalameta” %% “munit” % “0.7.19” % Test
-testFrameworks += new TestFramework(“munit.Framework”)</p>
-</div></blockquote>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">&quot;org.scalameta&quot;</span> <span class="o">%%</span> <span class="s">&quot;munit&quot;</span> <span class="o">%</span> <span class="s">&quot;0.7.19&quot;</span> <span class="o">%</span> <span class="nc">Test</span>
+<span class="n">testFrameworks</span> <span class="o">+=</span> <span class="k">new</span> <span class="nc">TestFramework</span><span class="p">(</span><span class="s">&quot;munit.Framework&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// FILE src/test/scala/testexample/Program.scala</span>
 <span class="k">package</span> <span class="n">testexample</span>
 
