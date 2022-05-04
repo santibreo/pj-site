@@ -101,7 +101,7 @@ Courses and certifications
 * *Web development Introduction*. 20 hours. Universidad Politécnica de Madrid.
 * *IBM Containers and Kubernetes Introduction*. 80 hours.
   `IBM Certification <https://www.credly.com/badges/a165823c-0b13-45af-804e-eb5e4f549f5d/public_url>`_.
-
+* *Azure Fundamentals*. `Microsoft Certification <https://www.credly.com/badges/77572e06-6238-43c7-b561-67660ff8c9d4/public_url>`_.
 
 Personal Projects
 =================

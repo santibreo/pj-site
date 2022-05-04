@@ -1,0 +1,414 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quants interview &#8212; PJnotes 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/pj_touch.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="COVID-19, first thoughts" href="2020-03-14-covid-19.html" />
+    <link rel="prev" title="Effective Programming in Scala" href="../learning/2022-05-03-Effective_programming_in_Scala.html" />
+   
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../_static/css/pj_print.css" media="print", type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  </head><body>
+    <header>
+        <div class="logo-box">
+            <svg height="70" width="26">
+            <path d="M 3 59
+                     l 0 -42
+                     A 10 10 1 0 1 23 17
+                     l 0 37
+                     A 7 7 1 0 1 9 54
+                     l 0 -30
+                     A 5 5 1 0 1 19 24
+                     l 0 20" stroke="black" stroke-width="2" fill="none"/>
+            </svg>
+            <a href="../../index.html">Prophet<br>Jeremy's<br>
+                <span style="font-family:PT Serif Caption; color:var(--special-words); font-size:20px">
+                    notes
+                </span>
+            </a>
+        </div>
+        <input id="nav-toggle" type="checkbox" class="nav-toggle">
+        <nav>
+            <ul>
+                <li><a href=../../cv.html>CV</a></li>
+                <li><a href=../../about.html>About</a></li>
+                <li><a href=../../recommendations.html>Recommendations</a></li>
+            </ul>
+        </nav>
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span class="nav-toggle-m1 nav-toggle-mvert"></span>
+            <span class="nav-toggle-m2 nav-toggle-mdiag"></span>
+            <span class="nav-toggle-m3 nav-toggle-mdiag"></span>
+            <span class="nav-toggle-m4 nav-toggle-mvert"></span>
+        </label>
+    </header>
+    <div class="container">
+        
+        <input id="sidebar-toggle" type="checkbox" class="sidebar-toggle">
+        <div class="sidebar">
+
+
+
+<h3>Navigate: 
+      <a href="../learning/2022-05-03-Effective_programming_in_Scala.html" title="previous document">&lArr;</a>
+      <a href="2020-03-14-covid-19.html" title="next document">&rArr;</a></h3>
+<div class="toc">
+    <ul>
+<li><a class="reference internal" href="#">Quants interview</a><ul>
+<li><a class="reference internal" href="#math-problems">Math problems</a><ul>
+<li><a class="reference internal" href="#circle-points">Circle points</a></li>
+<li><a class="reference internal" href="#paper-strip">Paper strip</a></li>
+<li><a class="reference internal" href="#right-way">Right way</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#financial-problems">Financial problems</a><ul>
+<li><a class="reference internal" href="#black-scholes-equation">Black-Scholes equation</a></li>
+<li><a class="reference internal" href="#the-interview">The interview</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+<script src="../../_static/js/toc.js"></script>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search:</h3>
+  <form class="search" action="../../search.html" method="get">
+      <input class="search-box" type="text" name="q" aria-labelledby="searchlabel" />
+      <input class="search-button" type="submit" value="&lt;" />
+  </form>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+<hr>
+<div class="social-icons">
+    
+    <a href="mailto:santibreo@gmail.com?subject=We want to hire you">
+        <i class="fa fa-envelope"></i>
+    </a>
+    
+    
+    <a href=https://github.com/santibreo><i class="fab fa-github"></i></a>
+    
+    <a href=https://twitter.com/santibreo><i class="fab fa-twitter"></i></a>
+    
+    <a href=https://www.linkedin.com/in/santibreo/><i class="fab fa-linkedin"></i></a>
+    
+</div>
+<hr>
+</div>
+        <label for="sidebar-toggle" class="sidebar-toggle-label">
+            <span></span>
+        </label>
+        
+        <div class="content">
+        
+  <div class="section" id="quants-interview">
+<h1>Quants interview<a class="headerlink" href="#quants-interview" title="Permalink to this headline"> &sect;</a></h1>
+<p>At least once in your life you have to be interviewed by a team of quants. You
+won’t probably love that experience but is something that everyone should face,
+to prove that you are now an adult.</p>
+<p>I was interviewed by the XVA quants of Santander Bank, January of this year. I
+know almost nothing about how to evaluate derivatives and even about what they
+are so I had really low expectations, but people told me that they will make
+math questions more than financial ones. Knowing that, I have prepared tons of
+probability problems (as much as I can in 2 days), 2 of them I want to share
+with you.</p>
+<div class="section" id="math-problems">
+<h2>Math problems<a class="headerlink" href="#math-problems" title="Permalink to this headline"> &sect;</a></h2>
+<p>These are problems that I found looking in the Internet and I think that they are beautiful.</p>
+<div class="section" id="circle-points">
+<h3>Circle points<a class="headerlink" href="#circle-points" title="Permalink to this headline"> &sect;</a></h3>
+<p><strong>If you take 3 random points into a circle, What is the probability of them
+staying into the same semicircle?</strong></p>
+<p>Let’s take 2 random points into a circle, they will always be into the same
+semicircle, so define the shortest distance between them as <span class="math notranslate nohighlight">\(a\)</span>. The third
+point now have both, the semicircle defined from the first point to the center
+that contains the second point and the semicircle defined from the second point
+to the center that contains the first point, allowed to be inside. We can
+understand it better looking at the diagram:</p>
+<a class="reference internal image-reference" href="../../_images/circle_diagram.png"><img alt="Problem Diagram" class="align-center" src="../../_images/circle_diagram.png" style="width: 70%;" /></a>
+<p>If we take a circle of length 1, <span class="math notranslate nohighlight">\(a\)</span> is going to be between 0 and 0.5 with
+100% of probability and then we need our third point to stay outside of the
+region of length <span class="math notranslate nohighlight">\(a\)</span>. So the expected value is:</p>
+<div class="math notranslate nohighlight">
+\[\langle f(x) \rangle = 1 - \frac{1}{\tfrac{1}{2}}\int_0^{\tfrac{1}{2}}xdx\]</div>
+<p>So it is:</p>
+<div class="math notranslate nohighlight">
+\[P(3\ points\ in\ the\ same\ semicircle) = \frac{3}{4}\]</div>
+<p>You can check this out with this chunk of Python code (which is pretty slow,
+but gives a fast approximation):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">random</span>  <span class="c1"># Bad module - function naming</span>
+
+<span class="k">def</span> <span class="nf">simulate</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">hits</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">random</span><span class="p">()</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">a</span><span class="p">:</span>
+            <span class="n">hits</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">score</span> <span class="o">=</span> <span class="n">hits</span> <span class="o">/</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2"> done. Current score is: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Predicted: </span><span class="si">{</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="si">:</span><span class="s2">.2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Difference: </span><span class="si">{</span><span class="nb">abs</span><span class="p">((</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span> <span class="o">-</span> <span class="n">score</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span>
+    <span class="n">simulate</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="paper-strip">
+<h3>Paper strip<a class="headerlink" href="#paper-strip" title="Permalink to this headline"> &sect;</a></h3>
+<p><strong>If you have a strip of paper, and you cut it twice, What is the probability
+of the resulting 3 strips to form a triangle?</strong></p>
+<div class="danger admonition">
+<p class="admonition-title">ERROR</p>
+<p>Be careful, <strong>the first solution is wrong</strong>. I just leave it here because
+sometimes (weird times) mistakes are beautiful. Correct answer is <a class="reference internal" href="#right-way"><span class="std std-ref">here</span></a>.</p>
+</div>
+<p>This problem sounds pretty similar to the previous one but it is not exactly
+the same. The condition here is that <strong>any sum of a pair of sides must be lower
+than the other side</strong>, so let’s suppose that we start with a strip of 1 unit
+length. We cut it once, so we have 2 strips, one of length <span class="math notranslate nohighlight">\(a\)</span> and the other
+of length <span class="math notranslate nohighlight">\(1-a\)</span>. The second cut will always be into the <span class="math notranslate nohighlight">\(1-a\)</span> length strip,
+as you can watch in this diagram:</p>
+<a class="reference internal image-reference" href="../../_images/strip_diagram.png"><img alt="Problem diagram" class="align-center" src="../../_images/strip_diagram.png" style="width: 70%;" /></a>
+<p>It’s easy to understand that just one half of the times our first random cut
+will make <span class="math notranslate nohighlight">\(a\)</span> lower than 0.5. Then, the second cut must be greater than
+<span class="math notranslate nohighlight">\(0.5-a\)</span> so it plus the previous are longer than 0.5 but must be lower than
+0.5 itself. So we just have to calculate the <strong>expected value</strong> of this:</p>
+<div class="math notranslate nohighlight">
+\[\langle f(x) \rangle = \frac{1}{\tfrac{1}{2}}\int_0^{\tfrac{1}{2}}\frac{x}{1-x}dx\]</div>
+<p>Solve it:</p>
+<div class="math notranslate nohighlight">
+\[\langle f(x) \rangle = 2 \cdot \int_0^{\tfrac{1}{2}}\left[\frac{1}{1-x} - 1 \right] dx\]</div>
+<p>And get:</p>
+<div class="math notranslate nohighlight">
+\[\langle f(x) \rangle = 2 \log(2) - 1\]</div>
+<p>So this is the probability of the second cut to give a good piece, but to have the total probability of the problem we need to multiply by one half, which is the probability of the first cut to give a good piece. So <strong>the final solution is</strong>:</p>
+<div class="math notranslate nohighlight">
+\[P(3\ pieces\ form\ a\ triangle) = \log(2) - \frac{1}{2}\]</div>
+<p>And as before, you can check it out with this code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">random</span>  <span class="c1"># Bad module - function naming</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log</span>
+
+<span class="k">def</span> <span class="nf">simulate</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">hits</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">random</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span><span class="o">*</span> <span class="n">random</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
+                <span class="n">hits</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">hits</span> <span class="o">/</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2"> done. Current score is: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Predicted: </span><span class="si">{</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Difference: </span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="n">score</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span>
+    <span class="n">simulate</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="right-way">
+<span id="id1"></span><h3>Right way<a class="headerlink" href="#right-way" title="Permalink to this headline"> &sect;</a></h3>
+<p>I have made an unnecessary assumption, and that makes me reach a wrong
+solution. To make this well we have to think about 2 <strong>independent</strong> cuts
+(let’s call them <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>), and the solution will seem pretty obvious.
+The conditions are:</p>
+<ul class="simple">
+<li><p>One of the cuts must be lower than 0.5 and the other must be higher, which happens half of the times (lower - higher and higher - lower).</p></li>
+<li><p>The absolute difference between them must be lower than 0.5.</p></li>
+</ul>
+<p>First condition is too straightforward so let’s talk about second one. We can
+solve it just ignoring the <span class="math notranslate nohighlight">\(x\)</span>-dependence of the probability density function
+used in the expected value evaluated above, but to show a different way, we can
+define <span class="math notranslate nohighlight">\(a\)</span> for the highest of <span class="math notranslate nohighlight">\(\{x,\ y\}\)</span> and <span class="math notranslate nohighlight">\(b\)</span> for the lowest. Using
+them we can define dependent integration limits:</p>
+<div class="math notranslate nohighlight">
+\[P(|x-y| &lt; 0.5) = P(a-b &gt; 0.5) = \frac{1}{\tfrac{1}{2}\cdot\tfrac{1}{2}}\int_0^{\tfrac{1}{2}}db\int_{\tfrac{1}{2}}^{b + \tfrac{1}{2}}da = \frac{1}{2}\]</div>
+<p>So this multiplied by one half, (the other condition probability) give us:</p>
+<div class="math notranslate nohighlight">
+\[P(3\ pieces\ form\ a\ triangle) = \frac{1}{4}\]</div>
+<p>Which is the <strong>correct answer</strong>. As before, here is the code to check it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">random</span>  <span class="c1"># Bad module - function naming</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log</span>
+
+<span class="k">def</span> <span class="nf">simulate</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">hits</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="p">(),</span> <span class="n">random</span><span class="p">()</span>
+        <span class="k">if</span> <span class="p">((</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="n">hits</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">hits</span> <span class="o">/</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2"> done. Current score is: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Predicted: </span><span class="si">{</span><span class="mf">0.25</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Difference: </span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="mf">0.25</span> <span class="o">-</span> <span class="n">score</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span>
+    <span class="n">simulate</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If quants ask you something like this, they will be expecting you to answer correctly in around 3-5 minutes. This problems are just for training, but let you demonstrate that you have pretty basic notions about statistics.</p>
+</div>
+</div>
+<div class="section" id="financial-problems">
+<h2>Financial problems<a class="headerlink" href="#financial-problems" title="Permalink to this headline"> &sect;</a></h2>
+<p>These are the problems that make them earn money, so you can’t avoid this. Of
+course there’s a lot to learn about this matter but if you understand the
+basics, you could have a ridiculously small hope.</p>
+<div class="section" id="black-scholes-equation">
+<h3>Black-Scholes equation<a class="headerlink" href="#black-scholes-equation" title="Permalink to this headline"> &sect;</a></h3>
+<p>This is the most famous equation in derivatives evaluation, and everyone must know it if he wants to be part of the business. As I said I know almost nothing about derivatives so honestly, I can’t say (barely understand) why it is that important, but I can explain how to obtain it.</p>
+<p>Let’s suppose that you are one of the cool guys and you want to evaluate an
+option. If you don’t know what an option is you don’t need to, for me is just
+something which’s price relies on time and another thing with a random
+behaviour (usually a stock, I prefer to call it the underlying, feels more like
+a variable). So the option value can be defined like: <span class="math notranslate nohighlight">\(V(t, S)\)</span>. Where the
+<span class="math notranslate nohighlight">\(S\)</span> stands for the underlying (the random <em>thing</em>). From now on you can feel
+that everything that we are doing is just moving the randomness deeper into
+equations, and that’s somehow true. But they are rich and we are not so this
+must be somehow true too, <em>theoretically</em> true.</p>
+<ul class="simple">
+<li><p>Let’s suppose that the underlying price can be predicted using the equation
+of the <a class="reference external" href="https://en.wikipedia.org/wiki/Geometric_Brownian_motion">geometric Brownian
+motion</a></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+dS(t, W) &amp;=&amp; S(\mu dt + \sigma dW) \\
+where:\ W\ &amp;is&amp; stochastic\ (dW\ \propto \sqrt{dt}).\\
+\mu\ &amp;is&amp; the\ drift\ (percentage).\\
+\sigma\ &amp;is&amp; the\ standard\ deviation\ (percentage).
+\end{eqnarray}\end{split}\]</div>
+<ul class="simple">
+<li><p>Now we want to know how <span class="math notranslate nohighlight">\(V(t, S)\)</span> change, so we need:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{eqnarray}
+dV(t, S) = \frac{\partial V}{\partial S} dS + \frac{\partial V}{\partial t} dt + \frac{1}{2} \left[ \frac{\partial^2 V}{\partial S^2} dS^2 + \frac{\partial^2 V}{\partial t^2} dt^2 + 2\frac{\partial^2 V}{\partial S \partial t} dtdS \right]
+\end{eqnarray}\]</div>
+<ul class="simple">
+<li><p>Here we can say that terms on <span class="math notranslate nohighlight">\(dt\)</span> which’s order is higher than 1 won’t
+be considered. Furthermore we can replace <span class="math notranslate nohighlight">\(dW^2\)</span> with <span class="math notranslate nohighlight">\(dt\)</span> (this is also
+called <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4%27s_lemma">the Itô’s lemma</a>):</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{eqnarray}
+dV(t, S) = \frac{\partial V}{\partial S} dS + \frac{\partial V}{\partial t} dt + \frac{1}{2} \frac{\partial^2 V}{\partial S^2} S^2 \sigma^2 dt
+\end{eqnarray}\]</div>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<ul class="simple">
+<li><p>Replace <span class="math notranslate nohighlight">\(dS\)</span> and get <strong>the differential equation for the option value</strong>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{eqnarray}
+dV(t, S) = \left(\mu S \frac{\partial V}{\partial S} + \frac{\partial V}{\partial t} + \frac{S^2 \sigma^2}{2} \frac{\partial^2 V}{\partial S^2} \right) dt + \sigma S \frac{\partial V}{\partial S} dW
+\end{eqnarray}\]</div>
+<p>Now comes the financial part. We are going to build what’s called a delta-hedge portfolio. That’s what you build when you have options and you want to protect yourself from changes in their underlying price. The change in this portfolio’s value is measured like:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+\Pi &amp;=&amp; -V + \frac{\partial V}{\partial S}S\\
+d\Pi &amp;=&amp; -dV + \frac{\partial V}{\partial S}dS\\
+d\Pi &amp;=&amp; -\left(\frac{\partial V}{\partial t} + \frac{S^2 \sigma^2}{2} \frac{\partial^2 V}{\partial S^2} \right) dt\\
+\end{eqnarray}\end{split}\]</div>
+<p>It’s uncertainty term (<span class="math notranslate nohighlight">\(dW\)</span>) has vanished, so it is a riskless portfolio.
+The rate of return of every riskless portfolio must be equal to the return of a
+<a class="reference external" href="https://en.wikipedia.org/wiki/Zero-coupon_bond">zero coupon bond</a> which is the
+riskless product par excellence.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+dB = B \cdot r dt \rightarrow d\Pi = \Pi \cdot r dt\\
+\end{eqnarray}\end{split}\]</div>
+<p>And all we have to do know is equate our 2 formulas and simplify, to finally get <strong>the Black-Scholes partial differential equation</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+r\left(-V + S\frac{\partial V}{\partial S} \right) dt = -\left(\frac{\partial V}{\partial t} + \frac{S^2 \sigma^2}{2} \frac{\partial^2 V}{\partial S^2} \right) dt\\
+\frac{\partial V}{\partial t} + \frac{S^2 \sigma^2}{2} \frac{\partial^2 V}{\partial S^2} + rS\frac{\partial V}{\partial S} - rV = 0
+\end{eqnarray}\end{split}\]</div>
+<p>There are many numerical methods to solve the equation and it has analytical solutions for some boundary conditions. But I won’t go further on this.</p>
+</div>
+<div class="section" id="the-interview">
+<h3>The interview<a class="headerlink" href="#the-interview" title="Permalink to this headline"> &sect;</a></h3>
+<p>So you have prepared this kind of problems and you feel comfortable with any medium-level math situation. You are willing to get so focused on the problems you forget you are in an interview. And you reach the quant’s space. Everyone has his lunch over the table and it seems like they spend a lot of time with their computers. No blackboards, no super-cool coffee machine, no knick-knacks to avoid your brain getting out of sugar. Not what I was expecting but let’s give it a try.</p>
+<p>2 guys sat around me in a table into a meeting room, and asked me about my background, if I know what a CAP is (I barely knew it), and they told me that we were in a Liborg transition (we are getting into an unknown place for me) so… <strong>If Liborg’s value follows a standard normal probability distribution, how would you evaluate a CAP?</strong>.</p>
+<p>OK. I wasn’t expecting that. I was wearing a wool sweater and I started sweating and felt my heart racing. All I had were just doubts. But what should I do.</p>
+<p>A CAP is a product that pays the maximum of Liborg’s price minus a constant value, and zero, so:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+V(L) &amp;=&amp; \max(L-K, 0)\\
+where\ K\ &amp;is&amp; a\ constant.\\
+L\ &amp;is&amp; the\ Liborg's\ price.
+\end{eqnarray}\end{split}\]</div>
+<p>But they had told me that the Liborg’s price follows a standard normal
+distribution (<span class="math notranslate nohighlight">\(\mathcal{N}(\mu, \sigma)\)</span>) so I just need to get the expected
+value:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+\langle V(L) \rangle &amp;=&amp; \frac{1}{\sqrt{2\pi\sigma}}\int_{-\infty}^{\infty}\max(L-K, 0) \exp\left(\frac{-(L-\mu)^2}{\sigma^2}\right)dL\\
+\langle V(L) \rangle &amp;=&amp; \frac{1}{\sqrt{2\pi\sigma}}\int_{K}^{\infty}(L-K) \exp\left(\frac{-(L-\mu)^2}{\sigma^2}\right)dL
+\end{eqnarray}\end{split}\]</div>
+<p>Of course we need to keep going, even if this is currently an analytical solution. Let’s make the easiest part (this is as far as I got in the interview):</p>
+<div class="math notranslate nohighlight">
+\[\begin{eqnarray}
+\frac{-K}{\sqrt{2\pi\sigma}}\int_{K}^{\infty}\ \exp\left(\frac{-(L-\mu)^2}{\sigma^2}\right)dL = \frac{-K}{\sqrt{2\pi\sigma}} \Phi(-K)
+\end{eqnarray}\]</div>
+<p>And now the hardest one:</p>
+<div class="math notranslate nohighlight">
+\[\begin{eqnarray}
+\frac{1}{\sqrt{2\pi\sigma}}\left[\int_{K}^{\infty} (L-\mu)\exp\left(\frac{-(L-\mu)^2}{\sigma^2}\right)dL + \mu\int_{K}^{\infty} \exp\left(\frac{-(L-\mu)^2}{\sigma^2}\right)dL \right]
+\end{eqnarray}\]</div>
+<p>Of course this is the same that we had before for <span class="math notranslate nohighlight">\(K\)</span> but for <span class="math notranslate nohighlight">\(\mu\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{eqnarray}
+\frac{\mu}{\sqrt{2\pi\sigma}}\int_{K}^{\infty}\ \exp\left(\frac{-(L-\mu)^2}{\sigma^2}\right)dL = \frac{\mu}{\sqrt{2\pi\sigma}} \Phi(-K)
+\end{eqnarray}\]</div>
+<p>Using a new variable:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+u = \frac{-(L-\mu)^2}{\sigma^2} &amp;\rightarrow&amp; (L-\mu)dL = \frac{-\sigma^2}{2}du\\
+-\frac{\sigma^2}{2\sqrt{2\pi\sigma}}\int_{-\tfrac{(K-\mu)^2}{\sigma^2}}^{-\infty}\ e^u du &amp;=&amp; \frac{\sigma^2}{2\sqrt{2\pi\sigma}} \exp{\left(-\frac{(K-\mu)^2}{\sigma^2}\right)}
+\end{eqnarray}\end{split}\]</div>
+<p>And finally putting all together:</p>
+<div class="math notranslate nohighlight">
+\[\begin{eqnarray}
+\langle V(L) \rangle = \frac{1}{\sqrt{2\pi\sigma}} \left[ \frac{\sigma^2}{2} \exp{\left(-\frac{(K-\mu)^2}{\sigma^2}\right)} + (\mu - K)\Phi(-K) \right]
+\end{eqnarray}\]</div>
+<p>And that’s it. I got out of the interview thinking that it was a too hard question for just a Junior interview (without any experience in derivatives evaluation) but once I got home, I thought about it more closely and didn’t find it so difficult.</p>
+<p><em>I didn’t pass the interview</em> (sad life).</p>
+</div>
+</div>
+</div>
+
+
+        </div>
+    </div>
+    <div class="footer">&copy;2021, Prophet Jeremy.
+       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+       &nbsp;&amp;&nbsp;<a href="https://github.com/santibreo/pj-theme">PJnotes 1.0.0</a>
+      
+    </div>
+
+    
+  </body>
+</html>
