@@ -74,12 +74,11 @@ Education
 * **MSc in BigData & Business Analytics**
 
   (2018 - 2019) Universidad Complutense de Madrid
-  [`find out why I got honours <https://santibreo.github.io/2019-BigData_master/>`_]
-
+  [`Homework <https://santibreo.github.io/2019-BigData_master/>`_]
 * **University degree in Physics**
 
   (2013 - 2018) Universidad Complutense de Madrid
-* **University degree in Architecture** (*uncompleted*)
+* **University degree in Architecture** (*unfinished*)
 
   (2010 - 2013) Universidad Politécnica de Madrid
 * **Technological Baccalaureate**

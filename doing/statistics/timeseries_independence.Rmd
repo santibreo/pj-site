@@ -82,11 +82,11 @@ knitr::knit_hooks$set(
     p {
         text-align: justify;
     }
-    
+
     li {
         text-align: justify;
     }
-    
+
     .alert a {
       font-weight: bold;
     }
@@ -103,7 +103,7 @@ knitr::knit_hooks$set(
     }
 </style>
 
-<!-- 
+<!--
 HOW TO
 What are you able to do now:
     + Use:
@@ -118,7 +118,7 @@ What are you able to do now:
         ```
     To add really cool formatted messages to your document.
     You can still use standard markdown syntax inside that messages. AWESOME!
-    
+
     + Use:
         ```{r echo=FALSE, out.width = "70%", class = "center-pic"}
             include_graphics("/path/to/your/image.png")
@@ -150,4 +150,4 @@ ENJOY IT!
 * Kernel methods: Hilbert-Schmidt Information Criterion (HSIC)
 * Distance-based methods: Distance correlation (Dcorr)
 
-Both have shown to be equivalent and only differ because their default kernel or metric choice is different. **Multiscale Graph Correlation (MGC)** is an optimized version of Dcorr and has achieve good results at low sample sizes and high dimensionality. 
+Both have shown to be equivalent and only differ because their default kernel or metric choice is different. **Multiscale Graph Correlation (MGC)** is an optimized version of Dcorr and has achieve good results at low sample sizes and high dimensionality.
