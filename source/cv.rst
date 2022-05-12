@@ -5,7 +5,7 @@
 Curriculum Vitae
 ================
 
-During the last year of my Physics degree, an exercise on the Ising Model put me in contact with Linux, programming and modelling complex systems. Soon after I was into the world of data science building forest and networks and understanding how the machine learns. Since then I have become a Linux enthusiast (Arch ⊕ Vim for the win), always trying to increase my practical knowledge without neglecting the theoretical part.
+During the last year of my Physics degree, an exercise on the Ising Model put me in contact with Linux, programming and modelling complex systems. Soon after I was into the world of data science building forest and networks and understanding how the machines learn. Since then I have become a Linux enthusiast (Arch ⊕ Vim for the win), always trying to increase my practical knowledge without neglecting the theoretical part.
 
 
 Experience
@@ -15,7 +15,7 @@ ALM Analyst and developer (2020 - now)
 --------------------------------------
 
 * Compliance of clients ALM and IRRBB models with corresponding supervisory authority guidances and requirements.
-* Implementation of QALM (ALM tool) on different clients. VBA scripting for data validation and groovy scripting for task automation.
+* Implementation of QALM (ALM tool) on different clients. Python, VBA and groovy scripting for data validation and task automation.
 * Fund Transfer Pricing model proposal and general framework definition.
 
 Risk Analyst I for Santander Internal Validation (2020 - 2021)
@@ -63,10 +63,8 @@ Intern at Santander Analytics (2018 - 2019)
 On my own (2015 - 2018)
 -----------------------
 
-* Private and academy teacher of Mathematics, Physics, Chemistry and Technical
-  Drawing.
+* Private and academy teacher of Mathematics, Physics, Chemistry and Technical Drawing.
 * Graffiti and decoration in shops, cultural centres and schools.
-
 
 Education
 =========
@@ -99,11 +97,11 @@ Courses and certifications
 Personal Projects
 =================
 
-* San Carlos Hospital colaboration.
-* Cripto Trading Bot.
-* This Sphinx theme and extension.
-* > 95% (0.8222) score in
-  `Pump it Up: Data Mining the Water Table <https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/leaderboard/>`_.
+* **San Carlos Hospital collaboration**: ML to anticipate patients prognosis in Madrid hospitals.
+* **Cripto Trading Bot**: Track prices and train dynamic strategy to make money with cripto currencies.
+* **This Sphinx theme and extension**: Have a nice place to read and publish your notes.
+* **> 95% (0.8222) score in**
+  `Pump it Up: Data Mining the Water Table <https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/leaderboard/>`_: Classical ML models to detect faulty water pumps in developing countries.
 
 
 Aptitudes and Skills
