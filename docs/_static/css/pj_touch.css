@@ -788,7 +788,7 @@ SIDEBAR APPEARANCE
 }
 
 
-@media screen and (min-width: 1500px) {
+@media screen and (min-width: 1680px) {
     header {
         padding-inline: var(--desktop-big-padding);
     }
@@ -802,7 +802,7 @@ SIDEBAR APPEARANCE
 
 @media screen and (min-width: 870px) {
     .content {
-        max-width: unset;
+        max-width: 72%;
         width: -webkit-fill-available;
     }
 
