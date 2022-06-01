@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Red+Hat+Mono:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif+Caption&display=swap');
 
@@ -65,10 +67,10 @@ html {
 ARTICLES APPEARANCE
 =============================================================================*/
 body {
-	margin: 0;
-	font-family: 'Work Sans', sans-serif;
-    font-size: 16px;
-	font-weight: 400;
+    margin: 0;
+    font-family: 'Nunito', sans-serif; /* 'Work Sans', sans-serif;*/
+    font-size: 18px;
+    font-weight: 400;
     color: var(--body-font);
     background: var(--global-background);
     scroll-padding-top: var(--header-height); /* height of sticky header */
@@ -105,6 +107,33 @@ span.highlighted {
 div.math {
     max-width: 100%;
     overflow: auto;
+}
+
+.underline-text {
+    text-decoration: underline;
+}
+.strikethrough-text {
+    text-decoration: line-through;
+}
+.highlight-text-yellow {
+    background-color: #fffa0740;
+    border-inline: 2px solid #fffa0770;
+}
+.highlight-text-purple {
+    background-color: #b94de340;
+    border-inline: 2px solid #b94de370;
+}
+.highlight-text-blue {
+    background-color: #4dd2e340;
+    border-inline: 2px solid #4dd2e370;
+}
+.highlight-text-red {
+    background-color: #CC222240;
+    border-inline: 2px solid #CC222270;
+}
+.highlight-text-green {
+    background-color: #7FFF0040;
+    border-inline: 2px solid #7FFF0070;
 }
 
 
@@ -156,6 +185,7 @@ blockquote {
 
 /* CODE */
 pre, .pre {
+    font-family: 'Red Hat Mono', monospace;
     font-size: 0.9em;
 }
 
@@ -335,7 +365,7 @@ CONTENT APPEARANCE
 .footer {
     align-items: center;
     justify-content: flex-end;
-    font-size: calc(0.4em + 0.8vw);
+    font-size: 0.8em;
     height: 1.1em;
 }
 
@@ -417,7 +447,7 @@ CV APPEARANCE
     color: var(--global-background);
     height: 1em;
     font-size: 0.9em;
-    font-family: helvetica;
+    font-family: Helvetica;
 }
 
 ul.cv-aptitudes {
@@ -783,7 +813,6 @@ SIDEBAR APPEARANCE
 
     .container, .footer{
         padding-inline: var(--desktop-padding);
-        font-size: 1em;
     }
 }
 
@@ -795,7 +824,6 @@ SIDEBAR APPEARANCE
 
     .container, .footer{
         padding-inline: var(--desktop-big-padding);
-        font-size: 1em;
     }
 }
 

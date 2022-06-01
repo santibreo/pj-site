@@ -51,6 +51,29 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
+# List of roles that I add to Sphinx for a better documentation
+rst_prolog = """
+.. role:: underline
+   :class: underline-text
+
+.. role:: strikethrough
+   :class: strikethrough-text
+
+.. role:: highlight
+   :class: highlight-text-yellow
+
+.. role:: highlight-purple
+   :class: highlight-text-purple
+
+.. role:: highlight-blue
+   :class: highlight-text-blue
+
+.. role:: highlight-red
+   :class: highlight-text-red
+
+.. role:: highlight-green
+   :class: highlight-text-green
+"""
 
 # -- Options for HTML output -------------------------------------------------
 
