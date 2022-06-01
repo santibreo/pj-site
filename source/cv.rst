@@ -91,7 +91,7 @@ Courses and certifications
 Side projects
 =============
 
-* **San Carlos Hospital collaboration**: ML to anticipate patients prognosis in Madrid hospitals.
+* **San Carlos Hospital** `collaboration <https://santibreo.github.io/2019-BigData_master/essays/12_tfm.html>`_: ML to anticipate patients prognosis in Madrid hospitals.
 * **Cripto Trading Bot**: Track prices and train dynamic strategy to make money with cripto currencies.
 * **This Sphinx theme and extension**: Have a nice place to read and publish your notes.
 * **Top 5% score (0.8222) at**
