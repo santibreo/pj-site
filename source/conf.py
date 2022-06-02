@@ -85,7 +85,7 @@ html_theme_path = [
 ]
 html_theme = 'pjnotes_theme'
 html_permalinks = True
-html_permalinks_icon = ' &sect;'
+html_permalinks_icon = '&sect;'
 html_favicon = "_static/favicon.ico"
 html_copy_source = False
 html_show_source_link = False

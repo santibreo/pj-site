@@ -35,7 +35,7 @@ Set the following parameters up in the ``conf.py`` file (words between angle bra
   - From Confluence, click your profile image on the top-right corner and then Profile. Under your public name, click on Manage your account.
   - On the Atlassian Account panel, click on Security on the sidebar, and then the third item: Create and manage your API Tokens.
   - On blue at the top, click on Create API Token, give it an ”easy to know for what it is” name and save it to your environment variables (or your usual method to remember these things).
-* Your space key click from your Personal Space Overview click on Space Settings on the sidebar and then Manage Space > Space details and ``confluence_space_key = <your_space_key_with_'~'_upfront>"``.
+* Your space key: Click from your Personal Space Overview click on Space Settings on the sidebar and then Manage Space > Space details and ``confluence_space_key = <space_key_with_'~'_upfront>"``.
 * Create the root page for your documentation, all pages included in the master ”toctree” will inherit from this page. Id can be found on page URL: ``confluence_publish_root = <page_key>``.
 
 Workflow
@@ -83,4 +83,4 @@ Answer the prompted questions and configure the Sphinx documentation in the ``so
 Writing
 =======
 
-When I feel like writing about any subtopic, I open the corresponding ``.rst`` file if already been created or if it is entirely brand new, I create a new file or even a new topic folder. To **use math directives**, I am using the `_Sphinx sphinx.ext.imgmath extension <https://www.sphinx-doc.org/en/master/usage/extensions/math.html#module-sphinx.ext.imgmath>`_ (the easiest way to make it work in Windows is by installing MikTeX), which renders equations to images and then inserts them in corresponding places.
+When I feel like writing about any subtopic, I open the corresponding ``.rst`` file if already been created or if it is entirely brand new, I create a new file or even a new topic folder. To **use math directives**, I am using the `Sphinx sphinx.ext.imgmath extension <https://www.sphinx-doc.org/en/master/usage/extensions/math.html#module-sphinx.ext.imgmath>`_ (the easiest way to make it work in Windows is by installing MikTeX), which renders equations to images and then inserts them in corresponding places.

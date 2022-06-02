@@ -35,7 +35,7 @@ lasted one year and made us rotate through 3 areas of the Corporation:
 
 * **Cibersecurity** (*Red Team*)
 
-  * [KVM ⊕ Bash]: Hacking lab measure impact of penetration strategies.
+  * [KVM ⊕ Bash]: Hacking lab to measure the impact of penetration strategies.
   * [Docker ⊕ Flask ⊕ Elasticsearch]: Files metadata and contents indexed and searchable through an API and webUI.
   * [Python]: Library to transform json format to Microsoft Office documents.
 

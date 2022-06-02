@@ -365,7 +365,7 @@ CONTENT APPEARANCE
 .footer {
     align-items: center;
     justify-content: flex-end;
-    font-size: 0.8em;
+    font-size: 0.57em;
     height: 1.1em;
 }
 
@@ -463,7 +463,7 @@ li.cv-aptitude {
     margin: unset;
     margin-bottom: 0.4em;
     width: calc(96% / 4);
-    min-width: 150px;
+    min-width: 140px;
     display: flex;
     justify-content: space-between;
 }
@@ -881,6 +881,10 @@ SIDEBAR APPEARANCE
     .logo {
         margin-left: 1em;
         margin-block: 0px;
+    }
+
+    .footer {
+        font-size: 0.8em;
     }
 }
 

@@ -114,21 +114,21 @@
         <div class="content">
         
   <div class="section" id="sphinx-to-confluence">
-<h1>Sphinx to Confluence<a class="headerlink" href="#sphinx-to-confluence" title="Permalink to this headline"> &sect;</a></h1>
+<h1>Sphinx to Confluence<a class="headerlink" href="#sphinx-to-confluence" title="Permalink to this headline">&sect;</a></h1>
 <p>I am used to taking notes about almost everything I learned with Sphinx, now I can quickly share them with all my colleagues through Confluence. Main advantage about this method is that I can use it to share sensitive information without publishing static HTML website anywhere, which is public on both Github and Bitbucket (cloud versions).</p>
 <div class="admonition-tl-dr admonition">
 <p class="admonition-title">TL;DR</p>
 <p>Follow instructions described in <a class="reference external" href="https://sphinxcontrib-confluencebuilder.readthedocs.io/en/stable/tutorial/">this tutorial</a> using parameters defined in <a class="reference internal" href="#configuration">Configuration</a></p>
 </div>
 <div class="section" id="how-am-i-doing-this">
-<h2>How am I doing this<a class="headerlink" href="#how-am-i-doing-this" title="Permalink to this headline"> &sect;</a></h2>
+<h2>How am I doing this<a class="headerlink" href="#how-am-i-doing-this" title="Permalink to this headline">&sect;</a></h2>
 <p>After a bit of research, I have encountered the combination of Git ⊕ Sphinx ⊕ ReestructuredText, the most suitable stack to take and publish notes.</p>
 <p>ReestructuredText is used as a markup language for my notes because it is more affluent than Markdown.</p>
 <p>Git tracks changes in <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files (as they are plain text).</p>
 <p>Sphinx automatically compiles notes and publishes <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files to Confluence (check out <a class="reference external" href="https://sphinxcontrib-confluencebuilder.readthedocs.io">this extension</a>. Sphinx has additional extensions to enrich documentation functionalities, such as rendering Latex equations or building mermaid diagrams.</p>
 </div>
 <div class="section" id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline"> &sect;</a></h2>
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">&sect;</a></h2>
 <p>Set the following parameters up in the <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> file (words between angle braces, e.g. &lt;username&gt;, must be provided by you):</p>
 <ul class="simple">
 <li><p>The BASE URL of our company: <code class="docutils literal notranslate"><span class="pre">confluence_server_url</span> <span class="pre">=</span> <span class="pre">&quot;https://&lt;company</span> <span class="pre">domain&gt;/wiki&quot;</span></code> (if using Atlassian Cloud).</p></li>
@@ -137,7 +137,7 @@
 - From Confluence, click your profile image on the top-right corner and then Profile. Under your public name, click on Manage your account.
 - On the Atlassian Account panel, click on Security on the sidebar, and then the third item: Create and manage your API Tokens.
 - On blue at the top, click on Create API Token, give it an ”easy to know for what it is” name and save it to your environment variables (or your usual method to remember these things).</p></li>
-<li><p>Your space key click from your Personal Space Overview click on Space Settings on the sidebar and then Manage Space &gt; Space details and <code class="docutils literal notranslate"><span class="pre">confluence_space_key</span> <span class="pre">=</span> <span class="pre">&lt;your_space_key_with_'~'_upfront&gt;&quot;</span></code>.</p></li>
+<li><p>Your space key: Click from your Personal Space Overview click on Space Settings on the sidebar and then Manage Space &gt; Space details and <code class="docutils literal notranslate"><span class="pre">confluence_space_key</span> <span class="pre">=</span> <span class="pre">&lt;space_key_with_'~'_upfront&gt;&quot;</span></code>.</p></li>
 <li><p>Create the root page for your documentation, all pages included in the master ”toctree” will inherit from this page. Id can be found on page URL: <code class="docutils literal notranslate"><span class="pre">confluence_publish_root</span> <span class="pre">=</span> <span class="pre">&lt;page_key&gt;</span></code>.</p></li>
 </ul>
 <p>Workflow</p>
@@ -178,8 +178,8 @@ sphinx-quickstart
 </div>
 </div>
 <div class="section" id="writing">
-<h2>Writing<a class="headerlink" href="#writing" title="Permalink to this headline"> &sect;</a></h2>
-<p>When I feel like writing about any subtopic, I open the corresponding <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file if already been created or if it is entirely brand new, I create a new file or even a new topic folder. To <strong>use math directives</strong>, I am using the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/math.html#module-sphinx.ext.imgmath">_Sphinx sphinx.ext.imgmath extension</a> (the easiest way to make it work in Windows is by installing MikTeX), which renders equations to images and then inserts them in corresponding places.</p>
+<h2>Writing<a class="headerlink" href="#writing" title="Permalink to this headline">&sect;</a></h2>
+<p>When I feel like writing about any subtopic, I open the corresponding <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file if already been created or if it is entirely brand new, I create a new file or even a new topic folder. To <strong>use math directives</strong>, I am using the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/math.html#module-sphinx.ext.imgmath">Sphinx sphinx.ext.imgmath extension</a> (the easiest way to make it work in Windows is by installing MikTeX), which renders equations to images and then inserts them in corresponding places.</p>
 </div>
 </div>
 
