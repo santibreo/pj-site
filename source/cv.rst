@@ -5,7 +5,7 @@
 Curriculum Vitae
 ================
 
-During the last year of my Physics degree, an exercise on the Ising Model put me in contact with Linux, programming and modelling complex systems. Soon after I was into the world of data science building forest and networks and understanding how the machines learn. Since then I have become a Linux enthusiast (Arch ⊕ Vim for the win), always trying to increase my practical knowledge without neglecting the theoretical part.
+I am a Math enthusiast whose heart was stolen by Linux. At first Maple and Matlab, but then Python, R, Scala and Go came to shape my ideas. Fan of trying and failing and breaking things, I've worked mostly in data analysis roles, but I've also been developing for a hacking team or validating risk assessment models since I have been in this sector for more than 4 years now. I am a puzzle lover and really need challenging work to feel in shape.
 
 
 Experience
