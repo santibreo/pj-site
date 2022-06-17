@@ -26,6 +26,11 @@ if errorlevel 9009 (
 )
 
 %SPHINXBUILD% -M %1 %SOURCEDIR% %BUILDDIR% %SPHINXOPTS% %O%
+if %1%==html (
+    rmdir /S /Q %BUILDDIR%\docs
+    ren html docs
+    echo The HTML pages are now in docs.
+)
 goto end
 
 :help

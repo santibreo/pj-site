@@ -7,9 +7,9 @@ Lo que esperamos perder lo cubre la LGD, lo que no esperamos lo cubre el capital
 
 * Impairment: Lo que vamos a ver con mayor profundidad durante la formación. Hasta que no se sospechaba una pérdida no se reconocían provisiones. Aquí hay mogollón de jerga que desconozco y hace referencia a sistemas de cálculo antiguos. Ahora se define unos stages en los que se agrupan todos los activos en función del riesgo. Cada stage requiere del cálculo de unas métricas e implica unas restricciones.
 
-* Hedge accounting: 
+* Hedge accounting:
 
-Pérdida esperada - provisiones, pérdida inesperada - capital. Los métodos de cálculo son distintos, y eso da lugar a diferencias entre ellos. Cuando las provisiones exceden el capital, regulador contento, en caso contrario, se avecinan problemas. Existen varios documentos normativos, que aunque cada vez son más prescindibles, conviene conocer. El IRFS9 es una norma basada en principios, ergo está sujeta a interpretación. Como modelizadores las inconsistencias entre Default y stage, casos de Default ubicados en stage2, no deben importarnos, ya que nuestra PE está calculada en base al Default regulatorio. 
+Pérdida esperada - provisiones, pérdida inesperada - capital. Los métodos de cálculo son distintos, y eso da lugar a diferencias entre ellos. Cuando las provisiones exceden el capital, regulador contento, en caso contrario, se avecinan problemas. Existen varios documentos normativos, que aunque cada vez son más prescindibles, conviene conocer. El IRFS9 es una norma basada en principios, ergo está sujeta a interpretación. Como modelizadores las inconsistencias entre Default y stage, casos de Default ubicados en stage2, no deben importarnos, ya que nuestra PE está calculada en base al Default regulatorio.
 Unbiased Probability Wighted se define un peso para cada escenario y se calcula la probabilidad ponderada. A priori en el desarrollo no se deben conocer los escenarios ni sus probabilidades. Se promedia la PE de cada escenario y luego se promedia sobre los escenarios.
 
 

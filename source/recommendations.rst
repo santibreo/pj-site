@@ -6,7 +6,7 @@ A lot of the work that I exhibit here comes from Youtube channels, or websites,
 or another blogs that are doing an excellent work.  One of the reasons why I
 have started this blog is to put all their work together. Here I have decided
 to play a collector role more than a creator one.  Of course the posts tagged
-as _project_ are personal, even if I have started getting inspiration from one
+as *project* are personal, even if I have started getting inspiration from one
 of these.
 
 Lets stop talking about me, and start talking about the ones that deserve:

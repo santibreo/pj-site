@@ -40,7 +40,7 @@ $$
 \begin{aligned}
 \rho_{k} & =\text{corr}(e_{t}, e_{t-k})=\frac{\text{cov}(e_{t}, e_{t-k})}{\sqrt{\text{var}(e_{t})\text{var}(e_{t-k})}} = \frac{\text{cov}(e_{t}, e_{t-l})}{\text{var}(e_{t})} \\
 & = \frac{\rho^{k}\sigma_{v}^{2}/(1-\rho^{2})}{\sigma_{v}^{2}/(1-\rho^{2})} \\
-& = \rho^{k} 
+& = \rho^{k}
 \end{aligned}
 $$
 
@@ -63,7 +63,7 @@ Error term dependent on itself in previous periods $\rightarrow$ **serially corr
 
 $$
  \begin{aligned}
- y_{t} = f(x_{t}) + \varepsilon_{t} && \varepsilon_{t}=g(\varepsilon_{t-1}) 
+ y_{t} = f(x_{t}) + \varepsilon_{t} && \varepsilon_{t}=g(\varepsilon_{t-1})
  \end{aligned}
 $$
 
@@ -72,7 +72,7 @@ $$
 * If serial correlation in errors has not been removed, LSE is biased in small and large samples. Check it with correlogram or Lagrange multiplier tests
 
 * What values of $p$ and $q$ minimize information criteria such as AIC, SC or BIC
-  
+
   $$
   \begin{aligned}
 \text{AIC}=\ln{\bigg(\frac{SSE}{T}\bigg)} + \frac{2K}{T}
@@ -84,7 +84,7 @@ $$
 $$
 \begin{aligned}
 \text{cov}(y_{t}, y_{s}) = \text{cov}(e_{t}, e_{s}) = 0 && \text{for} &&  t \neq s
-\end{aligned} 
+\end{aligned}
 $$
 
 **Stationarity**: Variables are stationary, which means that a variable is not explosive, nor trending and not wandering aimlessly without returning to its mean.

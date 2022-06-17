@@ -17,7 +17,7 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Quants interview" href="../math/2020-01-03-black-scholes-quants.html" />
+    <link rel="next" title="Effective Programming in Scala" href="2022-05-03-Effective_programming_in_Scala.html" />
     <link rel="prev" title="Rmarkdown (nice) posts" href="2020-08-13-rmarkdown_posts.html" />
    
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
@@ -69,7 +69,7 @@
 
 <h3>Navigate: 
       <a href="2020-08-13-rmarkdown_posts.html" title="previous document">&lArr;</a>
-      <a href="../math/2020-01-03-black-scholes-quants.html" title="next document">&rArr;</a></h3>
+      <a href="2022-05-03-Effective_programming_in_Scala.html" title="next document">&rArr;</a></h3>
 <div class="toc">
     <ul>
 <li><a class="reference internal" href="#">IBM Containers and Kubernetes</a><ul>
@@ -127,9 +127,9 @@
         <div class="content">
         
   <section id="ibm-containers-and-kubernetes">
-<h1>IBM Containers and Kubernetes<a class="headerlink" href="#ibm-containers-and-kubernetes" title="Permalink to this headline"> &sect;</a></h1>
+<h1>IBM Containers and Kubernetes<a class="headerlink" href="#ibm-containers-and-kubernetes" title="Permalink to this headline">&sect;</a></h1>
 <section id="containers">
-<h2>Containers<a class="headerlink" href="#containers" title="Permalink to this headline"> &sect;</a></h2>
+<h2>Containers<a class="headerlink" href="#containers" title="Permalink to this headline">&sect;</a></h2>
 <p>A container is an executable unit of software, in which the application code is
 packaged along with its libraries and dependencies in common ways, so it can be
 run anywhere (on-premises or in the cloud). Containers take the form of an OS
@@ -143,7 +143,7 @@ ip quickly and scale horizontally. They are also platform independent and allow
 to scale each component of an application individually as for microservices.</p>
 </section>
 <section id="docker">
-<h2>Docker<a class="headerlink" href="#docker" title="Permalink to this headline"> &sect;</a></h2>
+<h2>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">&sect;</a></h2>
 <p>It has become the standard on containerization, is a software platform for
 building and running containers launched in 2013. It provides a straightforward
 way to build and run containers. Docker is commonly used throw Docker CLI,
@@ -156,7 +156,7 @@ push/pull ← Stores images or retrieves them from remotes locations
 </pre></div>
 </div>
 <section id="images-dockerfile">
-<h3>Images (Dockerfile)<a class="headerlink" href="#images-dockerfile" title="Permalink to this headline"> &sect;</a></h3>
+<h3>Images (Dockerfile)<a class="headerlink" href="#images-dockerfile" title="Permalink to this headline">&sect;</a></h3>
 <p>They outline all the steps necessary to build an image. A container is
 different from its image. Images are immutable, if you change it, it is a new
 image. On the other hand, a container is an instance of an image.</p>
@@ -193,7 +193,7 @@ repository, the usual path is: <code class="docutils literal notranslate"><span 
 in our machine.</p>
 </section>
 <section id="running-containers">
-<h3>Running Containers<a class="headerlink" href="#running-containers" title="Permalink to this headline"> &sect;</a></h3>
+<h3>Running Containers<a class="headerlink" href="#running-containers" title="Permalink to this headline">&sect;</a></h3>
 <p>Let’s suppose we have the following Dockerfile:</p>
 <div class="highlight-Dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span> <span class="s">node:9.4.0-alpine</span>
 <span class="k">COPY</span> app.js .
@@ -213,7 +213,7 @@ push our image with: <code class="docutils literal notranslate"><span class="pre
 </section>
 </section>
 <section id="container-orchestrations">
-<h2>Container Orchestrations<a class="headerlink" href="#container-orchestrations" title="Permalink to this headline"> &sect;</a></h2>
+<h2>Container Orchestrations<a class="headerlink" href="#container-orchestrations" title="Permalink to this headline">&sect;</a></h2>
 <p>Over time, new applications are written and deploy, and applications take new
 components that run independently, to avoid this becoming an overwhelming
 containers swarm, container orchestrations are used.</p>
@@ -235,7 +235,7 @@ deploy or build applications, it does not prescribe logging, monitoring or
 alerting solutions and does not provide built-in middleware, databases or other
 services.</p>
 <section id="architecture">
-<h3>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline"> &sect;</a></h3>
+<h3>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">&sect;</a></h3>
 <p>A deployment in Kubernetes is called a <strong>cluster</strong>. The control plane makes
 decisions about the cluster and response to events. An example would be
 scheduling workloads or creating new resources.</p>
@@ -280,7 +280,7 @@ identify and group a set of objects, used by Kubernetes controllers to monitor
 resources.</p>
 </section>
 <section id="basic-objects">
-<h3>Basic Objects<a class="headerlink" href="#basic-objects" title="Permalink to this headline"> &sect;</a></h3>
+<h3>Basic Objects<a class="headerlink" href="#basic-objects" title="Permalink to this headline">&sect;</a></h3>
 <p>Pod: Simplest unit. Represents processes runnings in a cluster. Encapsulates a
 container or multiple. Replicating them serves to scale horizontally:</p>
 <div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>apiVersion: v1
@@ -353,7 +353,7 @@ spec:
 </div>
 </section>
 <section id="kubectl-cli">
-<h3><code class="docutils literal notranslate"><span class="pre">kubectl</span></code> CLI<a class="headerlink" href="#kubectl-cli" title="Permalink to this headline"> &sect;</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">kubectl</span></code> CLI<a class="headerlink" href="#kubectl-cli" title="Permalink to this headline">&sect;</a></h3>
 <p>Key tool for working with Kubernetes, clusters and workloads running on
 clusters. 2 families of commands:</p>
 <p><strong>Imperative</strong>: Quickly create, update and delete Kubernetes objects and easy
@@ -380,7 +380,7 @@ that state.</p>
 production systems.</p>
 </section>
 <section id="using-kubernetes">
-<h3>Using Kubernetes<a class="headerlink" href="#using-kubernetes" title="Permalink to this headline"> &sect;</a></h3>
+<h3>Using Kubernetes<a class="headerlink" href="#using-kubernetes" title="Permalink to this headline">&sect;</a></h3>
 <p>The most relevant command is <code class="docutils literal notranslate"><span class="pre">apply</span></code> that, as explained above, works both
 in files and directories. <code class="docutils literal notranslate"><span class="pre">get</span></code> and <code class="docutils literal notranslate"><span class="pre">describe</span></code> operate on namespaces former
 listing resources (deployments) and second showing details:</p>
@@ -399,7 +399,7 @@ nginx-deployment <span class="m">3</span>/3         <span class="m">3</span>    
 </section>
 </section>
 <section id="managing-applications">
-<h2>Managing Applications<a class="headerlink" href="#managing-applications" title="Permalink to this headline"> &sect;</a></h2>
+<h2>Managing Applications<a class="headerlink" href="#managing-applications" title="Permalink to this headline">&sect;</a></h2>
 <p>Key concepts on manage Kubernetes applications are: ReplicaSets, auto-scaling,
 rolling updates, ConfigMaps and Secrets and Service binding.</p>
 <p><strong>ReplicaSets</strong>: Are used to manage pods, ensuring the current number of pods
@@ -561,7 +561,7 @@ application. When a service is bind to a cluster deployment the credentials are
 available as a mounted Secret volume.</p>
 </section>
 <section id="kubernetes-ecosystem">
-<h2>Kubernetes Ecosystem<a class="headerlink" href="#kubernetes-ecosystem" title="Permalink to this headline"> &sect;</a></h2>
+<h2>Kubernetes Ecosystem<a class="headerlink" href="#kubernetes-ecosystem" title="Permalink to this headline">&sect;</a></h2>
 <p>As stated on its own description Kubernetes is surrounded by a <em>large and
 rapidly growing ecosystem</em>. Kubernetes is not an all-inclusive platform as a
 service, providing a more flexible model rather than a more opinionated one.
@@ -731,7 +731,7 @@ metrics as number of requests between services and response times.</p>
     </div>
     <div class="footer">&copy;2021, Prophet Jeremy.
        Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
-       &nbsp;&amp;&nbsp;<a href="https://github.com/santibreo">PJnotes 1.0.0</a>
+       &nbsp;&amp;&nbsp;<a href="https://github.com/santibreo/pj-theme">PJnotes 1.0.0</a>
       
     </div>
 

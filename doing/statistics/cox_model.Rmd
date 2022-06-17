@@ -82,19 +82,19 @@ knitr::knit_hooks$set(
     p {
         text-align: justify;
     }
-    
+
     li {
         text-align: justify;
     }
-    
+
     .alert a {
       font-weight: bold;
     }
-    
+
     .sourceCode {
         overflow: inherit;
     }
-    
+
     .center-pic img {
         display: block;
         margin-left: auto;
@@ -103,7 +103,7 @@ knitr::knit_hooks$set(
     }
 </style>
 
-<!-- 
+<!--
 HOW TO
 What are you able to do now:
     + Use:
@@ -118,7 +118,7 @@ What are you able to do now:
         ```
     To add really cool formatted messages to your document.
     You can still use standard markdown syntax inside that messages. AWESOME!
-    
+
     + Use:
         ```{r echo=FALSE, out.width = "70%", class = "center-pic"}
             include_graphics("/path/to/your/image.png")
@@ -176,7 +176,7 @@ $$
 We now define the **hazard rate** as the probability that the duration will end
 $dt$ time after $t$, given that it has lasted until time $t$. In other words,
 the hazard rate is the probability that one individual will experience the
-event at time $t$ while that individual is at risk for experiencing the event. 
+event at time $t$ while that individual is at risk for experiencing the event.
 $$
 \begin{align}
 \lambda (t) &= \lim_{dt \rightarrow 0} \frac{Prob(t \leq T \leq t + dt\ |\ T \gt t)}{dt}\\
@@ -189,7 +189,7 @@ $$
 Now using that $\tfrac{dS(t)}{dt} = -f(t)$ we can say:
 $$
 \lambda (t) = -\frac{d}{dt}\log(S(t)) \iff S(t) = \exp \left( -\int_0^t \lambda(x)dx \right)
-$$ 
+$$
 
 And finally we called **the cumulative hazard rate function**:
 $$
@@ -249,7 +249,7 @@ One indicator will become very handy now, **fail / censored /dead status
 indicator** of each subject that can be define as:
 $$
 \begin{align}
-\delta_n &= 
+\delta_n &=
 \begin{cases}
 0\ if\ n\ subject\ is\ alive\\
 1\ if\ n\ subject\ is\ dead / censored
@@ -336,13 +336,13 @@ $$
 * $\beta_j \lt 0$ means increasing $X_j$ is associated with lower risk and thus
   longer survival times. $\beta_j \gt 0$ means the opposite.
 * The *hazard ratio* for any 2 subjects:
-  
+
   $$
   \widehat{HR} = \frac{\lambda_a(t, \textbf{X}_a)}{\lambda_b(t, \textbf{X}_b)} = \exp\left( \pmb{\beta} \cdot (\pmb{X}_a - \pmb{X}_b) \right)\\
   if\ X_{ja} = X_{jb}\ \forall\ j\ -\ \{j = i\}\ and\ \pmb{X}_{ia} = \pmb{X}_{ib} - 1\  then:\\
   \widehat{HR} = \exp\left( \beta_i \right)
   $$
-  
+
   This is why the model is called **proportional hazard ratios** and $\beta_j$
   the **log hazard ratio**. If 3 subjects share all the risk factor values but
   one and have identical increments one with respect to each other in that risk
@@ -442,7 +442,7 @@ There are a few ways to adapt the model to recursive events. I have found 5:
    subject.
 
     However, since the model does not require time-varying covariates this
-    model is more flexible. 
+    model is more flexible.
 
 4. **The frailty model**: This model introduces a random covariate that induces
    dependence among recurrent event times. It is common to use random effects
@@ -462,24 +462,24 @@ methods, that we can generally represent, if $t_0 \leq t \le t_1$, as: $f(s(t))
 f(s(t_0))\right)$. Here is a list with some of them:
 
 * Uniform Distribution of Deaths (UDD) / Linear: $f(y) = y$
-  
+
   $$
   s(t) = s(t_0) + \frac{t - t_0}{t_1 - t_0} \cdot \left(s(t_1) - s(t_0)\right)
   $$
 
 * Constant Force (CF): $f(y) = \log(y)$
-  
+
   $$
   \log(s(t)) = \log(s(t_0)) + \frac{t - t_0}{t_1 - t_0} \cdot \left(\log(s(t_1)) - \log(s(t_0)) \right) \rightarrow s(t) = s(t_0)^\tfrac{t_1 - t}{t_1 - t_0} \cdot s(t_1)^\tfrac{t - t_0}{t_1 - t_0}
   $$
   We can see the **force of mortality**:
-  
+
   $$
   -\frac{d}{dt}(\log(s(t))) = -\frac{1}{t_1 - t_0}\log \left(\frac{s(t_0)}{s(t_1)} \right)
   $$
   will be **positive** and constant for every time between $t_0$ and $t_1$.
-  
-  
+
+
 * Balducci / Hyperbolic: $f(y) = \tfrac{1}{y}$
 
   $$
@@ -491,7 +491,7 @@ f(s(t_0))\right)$. Here is a list with some of them:
 ¿Extrapolation?. There is no such a thing. What you are talking about is,
 probably, made up somehow a limit value for your function and try to go from
 the latest known point to that limit using the smoothest possible path,
-probably with one of the functions defined above. 
+probably with one of the functions defined above.
 
 ```{r echo=FALSE, out.width = "70%", class = "center-pic"}
 img1_path <- "./extrapolation.png"
@@ -500,11 +500,11 @@ include_graphics(img1_path)
 
 Extrapolation is always a lie, and you should not lie, but because **_everybody
 lies_**, sometimes you will have to use it. So, make it cool, none loves bad
-liars. As we live in a mathematically simplified world, it is common that the 
-best way to extrapolate is that which preserves the properties that make 
-**simple** the extrapolated function (continuity, derivability, being defined 
-on the totality or a compact subset of the group to which its domain belongs, 
-etc.). Expert criteria, so used to boasting itself in this field, must be 
+liars. As we live in a mathematically simplified world, it is common that the
+best way to extrapolate is that which preserves the properties that make
+**simple** the extrapolated function (continuity, derivability, being defined
+on the totality or a compact subset of the group to which its domain belongs,
+etc.). Expert criteria, so used to boasting itself in this field, must be
 studied with extreme caution (extreme distrust).
 
 # R-specific notes
