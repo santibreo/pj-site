@@ -15,8 +15,8 @@ neglecting the theoretical part.
 Experience
 ==========
 
-ALM Analyst and developer (2020 - now)
---------------------------------------
+ALM Analyst and developer for QuantAI Lab (2020 - now)
+------------------------------------------------------
 
 * Implementation of QALM (ALM tool) on different clients.
 * Compliance of clients ALM and IRRBB models with corresponding supervisory authority guidances.
