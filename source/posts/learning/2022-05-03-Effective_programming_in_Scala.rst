@@ -489,7 +489,7 @@ Definitions introduce **names** that can be reused, which comes with drawbacks:
    val paint = 3.5
    val facade = area.facade * paint
 
-To place a definition inside a package the ``package`` clause must be used at the top of the file. Names can be referred by their fully qualified name ``areas.facade``. It is good practice put source files mirroring the packages structure (emulating Python behaviour), e.g. object ``effective.example.Hello`` should be defined in `src/main/scala/effective/example/Hello.scala`. To avoid cumbersome naming we can import names writing at the top of the file:
+To place a definition inside a package the ``package`` clause must be used at the top of the file. Names can be referred by their fully qualified name ``areas.facade``. It is good practice put source files mirroring the packages structure (emulating Python behaviour), e.g. object ``effective.example.Hello`` should be defined in ``src/main/scala/effective/example/Hello.scala``. To avoid cumbersome naming we can import names writing at the top of the file:
 
 .. code-block:: scala
 
@@ -798,8 +798,11 @@ Generally, it would be impossible to write test cases manually for the whole dom
 
 In this case the library required is ScalaCheck, which comes integrated with MUnit, so following lines would be needed:
 
+.. code-block:: scala
+
    libraryDependencies += "org.scalameta" %% "munit-scalacheck" % "0.7.19" % Test
    testFrameworks += new TestFramework("munit.Framework")
+
 
 Considering that the input must be greater than 2, the test would be written:
 

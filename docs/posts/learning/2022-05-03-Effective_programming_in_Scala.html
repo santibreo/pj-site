@@ -1,17 +1,17 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Effective Programming in Scala &#8212; PJnotes 0.0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/pj_touch.css" />
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
@@ -186,10 +186,10 @@
         
         <div class="content">
         
-  <section id="effective-programming-in-scala">
-<h1>Effective Programming in Scala<a class="headerlink" href="#effective-programming-in-scala" title="Permalink to this headline">&sect;</a></h1>
-<section id="basics">
-<h2>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">&sect;</a></h2>
+  <div class="section" id="effective-programming-in-scala">
+<h1>Effective Programming in Scala<a class="headerlink" href="#effective-programming-in-scala" title="Permalink to this heading">&sect;</a></h1>
+<div class="section" id="basics">
+<h2>Basics<a class="headerlink" href="#basics" title="Permalink to this heading">&sect;</a></h2>
 <p>For symbolic operations <strong>infix syntax</strong> is preferred over <strong>dot-notation</strong>, so, for example:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kc">true</span> <span class="o">&amp;&amp;</span> <span class="kc">true</span>   <span class="c1">// prefered</span>
 <span class="kc">true</span><span class="p">.</span><span class="o">&amp;&amp;</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>  <span class="c1">// equivalent</span>
@@ -197,8 +197,8 @@
 <span class="mi">1</span><span class="p">.</span><span class="o">+</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>    <span class="c1">// equivalent</span>
 </pre></div>
 </div>
-<section id="types">
-<h3>Types<a class="headerlink" href="#types" title="Permalink to this headline">&sect;</a></h3>
+<div class="section" id="types">
+<h3>Types<a class="headerlink" href="#types" title="Permalink to this heading">&sect;</a></h3>
 <ul class="simple">
 <li><p>Boolean: <code class="docutils literal notranslate"><span class="pre">true</span></code> and <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></li>
 <li><p>Int: 32-bit signed integer, i.e.: <span class="math notranslate nohighlight">\(x \in [-2^{31}, 2^{31} - 1]\)</span>.</p></li>
@@ -213,9 +213,9 @@
 <p>In worksheets there is no distinction between compilation and evaluation.</p>
 </div>
 <p>Types can be explicitly indicated like so: <code class="docutils literal notranslate"><span class="pre">val</span> <span class="pre">number:</span> <span class="pre">Int</span> <span class="pre">=</span>&#160; <span class="pre">5</span> <span class="pre">*</span> <span class="pre">3</span></code>, however, in general the compiler is able to infer such types.</p>
-</section>
-<section id="methods">
-<h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">&sect;</a></h3>
+</div>
+<div class="section" id="methods">
+<h3>Methods<a class="headerlink" href="#methods" title="Permalink to this heading">&sect;</a></h3>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span> <span class="n">door</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="mf">1.5</span>
 <span class="k">def</span> <span class="nf">house</span><span class="p">(</span><span class="n">facade</span><span class="p">:</span> <span class="nc">Double</span><span class="p">,</span> <span class="n">window</span><span class="p">:</span> <span class="nc">Double</span><span class="p">):</span> <span class="nc">Double</span> <span class="o">=</span>
   <span class="n">facade</span> <span class="o">-</span> <span class="n">door</span> <span class="o">-</span> <span class="n">window</span> <span class="o">*</span> <span class="mi">2</span>
@@ -229,9 +229,9 @@
 </div>
 <p>Explicit result types are not necessary but recommended to improve code readability.</p>
 <p>Finally, names introduced within a block are not visible outside that block.</p>
-</section>
-<section id="branching">
-<h3>Branching<a class="headerlink" href="#branching" title="Permalink to this headline">&sect;</a></h3>
+</div>
+<div class="section" id="branching">
+<h3>Branching<a class="headerlink" href="#branching" title="Permalink to this heading">&sect;</a></h3>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">showPrice</span><span class="p">(</span><span class="n">paintingArea</span><span class="p">:</span> <span class="nc">Double</span><span class="p">,</span> <span class="n">paintPrice</span><span class="p">:</span> <span class="nc">Double</span><span class="p">):</span> <span class="nc">String</span> <span class="o">=</span>
   <span class="kd">val</span> <span class="n">price</span> <span class="o">=</span> <span class="n">paintingArea</span> <span class="o">*</span> <span class="n">paintPrice</span>
   <span class="k">if</span> <span class="n">price</span> <span class="o">&gt;</span> <span class="mi">100</span> <span class="k">then</span>
@@ -245,9 +245,9 @@
 <p class="admonition-title">Warning</p>
 <p>In Scala 2 the condition was written parenthesized (‘(…)’)</p>
 </div>
-</section>
-<section id="evaluations">
-<h3>Evaluations<a class="headerlink" href="#evaluations" title="Permalink to this headline">&sect;</a></h3>
+</div>
+<div class="section" id="evaluations">
+<h3>Evaluations<a class="headerlink" href="#evaluations" title="Permalink to this heading">&sect;</a></h3>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span> <span class="n">tenSquared</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">10</span>
 <span class="k">def</span> <span class="nf">tenSquared</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">10</span>
 </pre></div>
@@ -257,13 +257,13 @@
 <p class="admonition-title">Note</p>
 <p><code class="docutils literal notranslate"><span class="pre">???</span></code> is a useful ally when you are designing. It allows you sketch some pieces of code here and there without having to fully implement them.</p>
 </div>
-</section>
-</section>
-<section id="domain-modeling">
-<h2>Domain Modeling<a class="headerlink" href="#domain-modeling" title="Permalink to this headline">&sect;</a></h2>
+</div>
+</div>
+<div class="section" id="domain-modeling">
+<h2>Domain Modeling<a class="headerlink" href="#domain-modeling" title="Permalink to this heading">&sect;</a></h2>
 <p>When we talk about <strong>levels of abstraction</strong> high level means more abstract, being the lowest level each instance itself (a door, a window, a facade) and higher levels those enclosing one or more of these concepts (shape).</p>
-<section id="case-classes">
-<h3>Case classes<a class="headerlink" href="#case-classes" title="Permalink to this headline">&sect;</a></h3>
+<div class="section" id="case-classes">
+<h3>Case classes<a class="headerlink" href="#case-classes" title="Permalink to this heading">&sect;</a></h3>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">case</span> <span class="k">class</span> <span class="nc">Rectangle</span><span class="p">(</span><span class="n">width</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nc">Int</span><span class="p">)</span>
   <span class="kd">val</span> <span class="n">area</span> <span class="o">=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
 
@@ -272,9 +272,9 @@
 </pre></div>
 </div>
 <p>Case classes are immutable, they come with a <code class="docutils literal notranslate"><span class="pre">copy</span></code> method to create a copy updating some fields.</p>
-</section>
-<section id="sealed-traits">
-<h3>Sealed traits<a class="headerlink" href="#sealed-traits" title="Permalink to this headline">&sect;</a></h3>
+</div>
+<div class="section" id="sealed-traits">
+<h3>Sealed traits<a class="headerlink" href="#sealed-traits" title="Permalink to this heading">&sect;</a></h3>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">sealed</span> <span class="k">trait</span> <span class="nc">Shape</span>
 <span class="k">case</span> <span class="k">class</span> <span class="nc">Rectangle</span><span class="p">(</span><span class="n">width</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nc">Int</span><span class="p">)</span> <span class="k">extends</span> <span class="nc">Shape</span>
 <span class="k">case</span> <span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="n">radius</span><span class="p">:</span> <span class="nc">Int</span><span class="p">)</span> <span class="k">extends</span> <span class="nc">Shape</span>
@@ -289,18 +289,18 @@
 </pre></div>
 </div>
 <p>This way Rectangle and Circle are subtypes of Shape. The most common use of Shape is to recover its concrete type using a <code class="docutils literal notranslate"><span class="pre">match</span></code> expression. If match does not match all the cases the compiler will warn. <strong>Wildcard pattern</strong> (<code class="docutils literal notranslate"><span class="pre">case</span> <span class="pre">_</span></code>) can be used to match the rest of patterns.</p>
-</section>
-<section id="enumerations">
-<h3>Enumerations<a class="headerlink" href="#enumerations" title="Permalink to this headline">&sect;</a></h3>
+</div>
+<div class="section" id="enumerations">
+<h3>Enumerations<a class="headerlink" href="#enumerations" title="Permalink to this heading">&sect;</a></h3>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="nc">PrimaryColor</span><span class="p">:</span>
   <span class="k">case</span> <span class="nc">Red</span><span class="p">,</span> <span class="nc">Blue</span><span class="p">,</span> <span class="nc">Green</span>
 </pre></div>
 </div>
 <p>This is just syntactic sugar for a sealed trait and case objects useful when alternative values of a type are not classes of values but singleton values (exactly 3 in the example). Enumerations provide a <code class="docutils literal notranslate"><span class="pre">values</span></code> operation that enumerates all their possible values as an Array. Also the operation <code class="docutils literal notranslate"><span class="pre">valueOf</span></code> allows to pass the singleton as a String.</p>
-</section>
-</section>
-<section id="standard-library">
-<h2>Standard Library<a class="headerlink" href="#standard-library" title="Permalink to this headline">&sect;</a></h2>
+</div>
+</div>
+<div class="section" id="standard-library">
+<h2>Standard Library<a class="headerlink" href="#standard-library" title="Permalink to this heading">&sect;</a></h2>
 <p>It includes a lot of domain-agnostic data structures and utility functions as:</p>
 <ul class="simple">
 <li><p>Collections</p></li>
@@ -308,8 +308,8 @@
 <li><p>Math functions</p></li>
 <li><p>Asynchronous execution</p></li>
 </ul>
-<section id="lists">
-<h3>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">&sect;</a></h3>
+<div class="section" id="lists">
+<h3>Lists<a class="headerlink" href="#lists" title="Permalink to this heading">&sect;</a></h3>
 <p>One of the most useful is the <code class="docutils literal notranslate"><span class="pre">List</span></code> which can include one data type (all elements must have the same type) and preserves the order:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">case</span> <span class="k">class</span> <span class="nc">AddressBook</span><span class="p">(</span><span class="n">contacts</span><span class="p">:</span> <span class="nc">List</span><span class="p">[</span><span class="nc">Contact</span><span class="p">])</span>
 <span class="k">case</span> <span class="k">class</span> <span class="nc">Contact</span><span class="p">(</span>
@@ -352,9 +352,9 @@
 </div>
 <p>When we use pattern matching on lists we can use the <code class="docutils literal notranslate"><span class="pre">Nil</span></code> element to identify empty list, or the wildcard pattern to match all non-treated cases.</p>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">head</span></code>, <code class="docutils literal notranslate"><span class="pre">tail</span></code> or their index (beginning with 0) we can access individual elements in a list. There are also other valuable methods <code class="docutils literal notranslate"><span class="pre">split</span></code>, <code class="docutils literal notranslate"><span class="pre">take</span></code>, <code class="docutils literal notranslate"><span class="pre">drop</span></code>, (just try them).</p>
-</section>
-<section id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">&sect;</a></h3>
+</div>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">&sect;</a></h3>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span> <span class="n">increment</span><span class="p">:</span> <span class="nc">Int</span> <span class="o">=&gt;</span> <span class="nc">Int</span> <span class="o">=</span>
   <span class="n">x</span> <span class="o">=&gt;</span>
     <span class="kd">val</span> <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
@@ -373,10 +373,10 @@
 </pre></div>
 </div>
 <p>Functions support what is called <strong>placeholder syntax</strong>: <code class="docutils literal notranslate"><span class="pre">val</span> <span class="pre">increment:</span> <span class="pre">Int</span> <span class="pre">=&gt;</span> <span class="pre">Int</span> <span class="pre">=</span> <span class="pre">_</span> <span class="pre">+</span> <span class="pre">1</span></code> where underscore “<code class="docutils literal notranslate"><span class="pre">_</span></code>” is a placeholder occupying the place of the passed argument. An also valid notations would be: <code class="docutils literal notranslate"><span class="pre">val</span> <span class="pre">increment</span> <span class="pre">=</span> <span class="pre">(_:</span> <span class="pre">Int)</span> <span class="pre">+</span> <span class="pre">1</span></code>. There is also valid to use the <strong>wildcard pattern</strong> when we are ignoring the arguments provided, e.g. <code class="docutils literal notranslate"><span class="pre">val</span> <span class="pre">constant</span> <span class="pre">=</span> <span class="pre">(_:</span> <span class="pre">Int)</span> <span class="pre">=&gt;</span> <span class="pre">42</span></code>.</p>
-</section>
-</section>
-<section id="collections-most-common">
-<h2>Collections (most common)<a class="headerlink" href="#collections-most-common" title="Permalink to this headline">&sect;</a></h2>
+</div>
+</div>
+<div class="section" id="collections-most-common">
+<h2>Collections (most common)<a class="headerlink" href="#collections-most-common" title="Permalink to this heading">&sect;</a></h2>
 <p>One if the most relevant members of collections has already been treated (<code class="docutils literal notranslate"><span class="pre">List</span></code>). As illustrative 3 types of collections will be compared:</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">List</span></code> which is an immutable sequence.</p></li>
@@ -424,12 +424,12 @@
 <p>To reverse a list using the <code class="docutils literal notranslate"><span class="pre">reverse</span></code> method is preferred</p>
 </div>
 <p>Another way to transform collections is using <code class="docutils literal notranslate"><span class="pre">groupBy</span></code>, that separates elements into groups defined by a partition function which is a non-injective function of the collection elements.</p>
-<section id="tuples">
-<h3>Tuples<a class="headerlink" href="#tuples" title="Permalink to this headline">&sect;</a></h3>
+<div class="section" id="tuples">
+<h3>Tuples<a class="headerlink" href="#tuples" title="Permalink to this heading">&sect;</a></h3>
 <p><strong>A tuple is a collection of fixed size but the values may have different types</strong>. The syntax <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">-&gt;</span> <span class="pre">b</span></code> (seen recently for dictionaries) constructs a tuple, it is a shorthand for <code class="docutils literal notranslate"><span class="pre">(a,</span> <span class="pre">b)</span></code>, which is more general. More generally a tuple of type <code class="docutils literal notranslate"><span class="pre">(T1,</span> <span class="pre">T2,</span> <span class="pre">…,</span> <span class="pre">Tn)</span></code> is a type containing <code class="docutils literal notranslate"><span class="pre">n</span></code> elements of type <code class="docutils literal notranslate"><span class="pre">T1</span></code>, <code class="docutils literal notranslate"><span class="pre">T2</span></code>, … and <code class="docutils literal notranslate"><span class="pre">Tn</span></code> respectively. Tuples can also be deconstructed: <code class="docutils literal notranslate"><span class="pre">val</span> <span class="pre">(x,</span> <span class="pre">y)</span> <span class="pre">=</span> <span class="pre">(10.0,</span> <span class="pre">20.0)</span></code> or accessed using indexes.</p>
-</section>
-<section id="sequences-vs-maps">
-<h3>Sequences vs Maps<a class="headerlink" href="#sequences-vs-maps" title="Permalink to this headline">&sect;</a></h3>
+</div>
+<div class="section" id="sequences-vs-maps">
+<h3>Sequences vs Maps<a class="headerlink" href="#sequences-vs-maps" title="Permalink to this heading">&sect;</a></h3>
 <p>When using collections we must differentiate between sequences and maps. <code class="docutils literal notranslate"><span class="pre">List</span></code> or <code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code> are examples of sequences, while <code class="docutils literal notranslate"><span class="pre">Map</span></code> is not. Sequences have <code class="docutils literal notranslate"><span class="pre">.head</span></code> and <code class="docutils literal notranslate"><span class="pre">.tail</span></code> methods for the first and <strong>the rest</strong> items.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -455,9 +455,9 @@
 <p class="admonition-title">Note</p>
 <p><code class="docutils literal notranslate"><span class="pre">.get</span></code> returns and Option as there may not be an element associated with the passed key</p>
 </div>
-</section>
-<section id="option">
-<h3>Option<a class="headerlink" href="#option" title="Permalink to this headline">&sect;</a></h3>
+</div>
+<div class="section" id="option">
+<h3>Option<a class="headerlink" href="#option" title="Permalink to this heading">&sect;</a></h3>
 <p>Is a special collection cases that at most has one element. It is parametrized by the type of the element.</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">case</span> <span class="k">class</span> <span class="nc">Contact</span><span class="p">(</span>
   <span class="n">name</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
@@ -476,9 +476,9 @@
 <p class="admonition-title">Note</p>
 <p>In Scala there is a <code class="docutils literal notranslate"><span class="pre">null</span></code> value but it is not used to model optional values.</p>
 </div>
-</section>
-<section id="loops">
-<h3>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">&sect;</a></h3>
+</div>
+<div class="section" id="loops">
+<h3>Loops<a class="headerlink" href="#loops" title="Permalink to this heading">&sect;</a></h3>
 <p>3 ways of implementing loops, using factorial example:</p>
 <ol class="arabic">
 <li><p>Iterating on the standard collections.</p>
@@ -520,8 +520,8 @@
 <p class="admonition-title">Note</p>
 <p>We have use a special collection Range: <code class="docutils literal notranslate"><span class="pre">(begin</span> <span class="pre">to</span> <span class="pre">end</span> <span class="pre">by</span> <span class="pre">step)</span></code>.</p>
 </div>
-<section id="for-loop">
-<h4>For loop<a class="headerlink" href="#for-loop" title="Permalink to this headline">&sect;</a></h4>
+<div class="section" id="for-loop">
+<h4>For loop<a class="headerlink" href="#for-loop" title="Permalink to this heading">&sect;</a></h4>
 <p><strong>For</strong> loop is really common and in Scala follows the expression: <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">(</span> <span class="pre">s</span> <span class="pre">)</span> <span class="pre">yield</span> <span class="pre">e</span></code>. Where <code class="docutils literal notranslate"><span class="pre">s</span></code> is a sequence of generators and filters and <code class="docutils literal notranslate"><span class="pre">e</span></code> is an expression whose value is returned by an iteration:</p>
 <ul class="simple">
 <li><p>A generator is of the form <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">&lt;-</span> <span class="pre">e</span></code>, where <code class="docutils literal notranslate"><span class="pre">p</span></code>  is a pattern and <code class="docutils literal notranslate"><span class="pre">e</span></code> is an expression whose values is a collection.</p></li>
@@ -546,10 +546,10 @@
 </pre></div>
 </div>
 <p>The expression <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">e</span> <span class="pre">do</span> <span class="pre">s</span></code> is also available, but it does not create a new collection, it is translated to <code class="docutils literal notranslate"><span class="pre">foreach</span></code> method.</p>
-</section>
-</section>
-<section id="concatenating">
-<h3>Concatenating<a class="headerlink" href="#concatenating" title="Permalink to this headline">&sect;</a></h3>
+</div>
+</div>
+<div class="section" id="concatenating">
+<h3>Concatenating<a class="headerlink" href="#concatenating" title="Permalink to this heading">&sect;</a></h3>
 <p>The usual way to concatenate collection is the <code class="docutils literal notranslate"><span class="pre">++</span></code> method, which is immutable (original collections remains unchanged). However, mutable collections as <code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code> allow calling it using the <code class="docutils literal notranslate"><span class="pre">++=</span></code> notation that modifies LHS sequence. We can also prepend elements in a mutable way with <code class="docutils literal notranslate"><span class="pre">+=:</span></code>, all symbolic methods have alphabetic equivalents:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">+</span></code> ≡ <code class="docutils literal notranslate"><span class="pre">updated</span></code></p></li>
@@ -562,10 +562,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">++=</span></code> ≡ <code class="docutils literal notranslate"><span class="pre">addAll</span></code></p></li>
 </ul>
 <p>Mutable collections must be used when specific mutable operations are required.</p>
-</section>
-</section>
-<section id="organize-code">
-<h2>Organize code<a class="headerlink" href="#organize-code" title="Permalink to this headline">&sect;</a></h2>
+</div>
+</div>
+<div class="section" id="organize-code">
+<h2>Organize code<a class="headerlink" href="#organize-code" title="Permalink to this heading">&sect;</a></h2>
 <p>Definitions introduce <strong>names</strong> that can be reused, which comes with drawbacks:</p>
 <ol class="arabic simple">
 <li><p>Collisions (or clashes) when 2 different things use the same name.</p></li>
@@ -584,7 +584,7 @@
 <span class="kd">val</span> <span class="n">facade</span> <span class="o">=</span> <span class="n">area</span><span class="p">.</span><span class="n">facade</span> <span class="o">*</span> <span class="n">paint</span>
 </pre></div>
 </div>
-<p>To place a definition inside a package the <code class="docutils literal notranslate"><span class="pre">package</span></code> clause must be used at the top of the file. Names can be referred by their fully qualified name <code class="docutils literal notranslate"><span class="pre">areas.facade</span></code>. It is good practice put source files mirroring the packages structure (emulating Python behaviour), e.g. object <code class="docutils literal notranslate"><span class="pre">effective.example.Hello</span></code> should be defined in <cite>src/main/scala/effective/example/Hello.scala</cite>. To avoid cumbersome naming we can import names writing at the top of the file:</p>
+<p>To place a definition inside a package the <code class="docutils literal notranslate"><span class="pre">package</span></code> clause must be used at the top of the file. Names can be referred by their fully qualified name <code class="docutils literal notranslate"><span class="pre">areas.facade</span></code>. It is good practice put source files mirroring the packages structure (emulating Python behaviour), e.g. object <code class="docutils literal notranslate"><span class="pre">effective.example.Hello</span></code> should be defined in <code class="docutils literal notranslate"><span class="pre">src/main/scala/effective/example/Hello.scala</span></code>. To avoid cumbersome naming we can import names writing at the top of the file:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">effective</span><span class="p">.</span><span class="nn">example</span><span class="p">.</span><span class="nc">Hello</span>         <span class="c1">// imports just Hello</span>
 <span class="k">import</span> <span class="nn">effective</span><span class="p">.</span><span class="nn">example</span><span class="p">.</span><span class="nc">Hello</span><span class="p">.</span><span class="n">foo</span>     <span class="c1">// imports just foo</span>
 <span class="k">import</span> <span class="nn">effective</span><span class="p">.</span><span class="nn">example</span><span class="p">.{</span><span class="nc">Hello</span><span class="p">,</span> <span class="nc">Bar</span><span class="p">}</span>  <span class="c1">// import both Hello and Bar</span>
@@ -601,16 +601,16 @@
 <p>Imports can be made either from packages or objects.</p>
 </div>
 <p>The definitions introduced by the standard library live in the <code class="docutils literal notranslate"><span class="pre">scala</span></code> package: <code class="docutils literal notranslate"><span class="pre">scala.util.Random</span></code>, <code class="docutils literal notranslate"><span class="pre">scala.Int</span></code> or <code class="docutils literal notranslate"><span class="pre">scala.collection.immutable.List</span></code>. Some entities are imported automatically on every Scala program.</p>
-<section id="developer-workflow">
-<h3>Developer Workflow<a class="headerlink" href="#developer-workflow" title="Permalink to this headline">&sect;</a></h3>
+<div class="section" id="developer-workflow">
+<h3>Developer Workflow<a class="headerlink" href="#developer-workflow" title="Permalink to this heading">&sect;</a></h3>
 <p>Compile a program consists of invoking the compiler on all source files turning them into executable JVM bytecode. It requires:</p>
 <ul class="simple">
 <li><p>Constructing the application classpath by fetching library dependencies.</p></li>
 <li><p>Generating parts of the source code or resources (assets, data types, …).</p></li>
 </ul>
 <p><strong>Build tools</strong> manage compilation tasks for you:</p>
-<section id="sbt">
-<h4>sbt<a class="headerlink" href="#sbt" title="Permalink to this headline">&sect;</a></h4>
+<div class="section" id="sbt">
+<h4>sbt<a class="headerlink" href="#sbt" title="Permalink to this heading">&sect;</a></h4>
 <p><a class="reference external" href="https://www.scala-sbt.org/">sbt</a> is the most commonly build tool used in Scala, but not the only one: Maven, Gradle, Mill, … are other possibilities. An sbt project is a directory with 2 files: <cite>project/build.properties</cite> and <cite>build.sbt</cite>. The first one defines the version of sbt used to compile the project, while the second defines the Scala version and other project details. After compiling a project results are cached at <cite>target</cite> directory. <strong>sbt is an incremental compiling tool</strong>. A brief example of an execution diagram would be:</p>
 <a class="reference internal image-reference" href="../../_images/sbt_diagram.PNG"><img alt="sbt diagram" src="../../_images/sbt_diagram.PNG" style="width: 80%;" /></a>
 <p>We can identify <strong>settings</strong> marked as grey rectangles and parametrized in build, which are evaluated once and <strong>tasks</strong> marked as blue rectangles and evaluated at each invocation. <strong>Tasks</strong> are parametrized by settings, values and other  tasks.</p>
@@ -630,14 +630,14 @@
 <span class="n">hello</span><span class="o">-</span><span class="n">sbt</span> <span class="o">/</span> <span class="nc">Compile</span> <span class="o">/</span> <span class="n">unmanagedSources</span> <span class="o">/</span> <span class="n">includeFilter</span>
 </pre></div>
 </div>
-</section>
-<section id="program-entry-point">
-<h4>Program entry point<a class="headerlink" href="#program-entry-point" title="Permalink to this headline">&sect;</a></h4>
+</div>
+<div class="section" id="program-entry-point">
+<h4>Program entry point<a class="headerlink" href="#program-entry-point" title="Permalink to this heading">&sect;</a></h4>
 <p>Scala worksheets are evaluated line by line from top to bottom. A program is evaluated by calling its “entry point” which is a method located in an arbitrary source file. The entry point is a method annotated with <code class="docutils literal notranslate"><span class="pre">&#64;main</span></code>, and method arguments must be provided. Basic types are accepted.</p>
-</section>
-</section>
-<section id="encapsulation">
-<h3>Encapsulation<a class="headerlink" href="#encapsulation" title="Permalink to this headline">&sect;</a></h3>
+</div>
+</div>
+<div class="section" id="encapsulation">
+<h3>Encapsulation<a class="headerlink" href="#encapsulation" title="Permalink to this heading">&sect;</a></h3>
 <p>Following code example:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DatabaseAccess</span><span class="p">(</span><span class="n">connection</span><span class="p">:</span> <span class="nc">Connection</span><span class="p">):</span>
   <span class="k">def</span> <span class="nf">readData</span><span class="p">():</span> <span class="nc">List</span><span class="p">[</span><span class="nc">Data</span><span class="p">]</span> <span class="o">=</span>
@@ -667,8 +667,8 @@
 <p>Standard collections is a reach hierarchy example:</p>
 <a class="reference internal image-reference" href="../../_images/collections.PNG"><img alt="collections hierarchy" src="../../_images/collections.PNG" style="width: 50%;" /></a>
 <p>At the top of the hierarchy is the <code class="docutils literal notranslate"><span class="pre">Any</span></code> type.</p>
-<section id="case-classes-vs-simple-classes">
-<h4>Case classes vs “Simple” classes<a class="headerlink" href="#case-classes-vs-simple-classes" title="Permalink to this headline">&sect;</a></h4>
+<div class="section" id="case-classes-vs-simple-classes">
+<h4>Case classes vs “Simple” classes<a class="headerlink" href="#case-classes-vs-simple-classes" title="Permalink to this heading">&sect;</a></h4>
 <p>As indicated above, case classes are for aggregation whereas “simple” classes are for encapsulation. This means that case classes parameters are promoted to public members while constructor parameters of “simple” classes remain private (by default). It can be consider that a case class is a special case of a “simple” class. When a case class is defined:</p>
 <ul class="simple">
 <li><p>Constructor parameters are promoted to public members.</p></li>
@@ -682,9 +682,9 @@
 <li><p>Can extend traits and override members.</p></li>
 <li><p>Create abstraction levels.</p></li>
 </ul>
-</section>
-<section id="sealed-traits-vs-simple-traits">
-<h4>Sealed traits vs “Simple” traits<a class="headerlink" href="#sealed-traits-vs-simple-traits" title="Permalink to this headline">&sect;</a></h4>
+</div>
+<div class="section" id="sealed-traits-vs-simple-traits">
+<h4>Sealed traits vs “Simple” traits<a class="headerlink" href="#sealed-traits-vs-simple-traits" title="Permalink to this heading">&sect;</a></h4>
 <p>Sealed traits have a fixed number of concrete subclasses and they have to be defined in the same file as the sealed trait. So <strong>exhaustively checking pattern matching</strong> is only possible with sealed traits. Despite those, both sealed and “simple” traits:</p>
 <ul class="simple">
 <li><p>Define a new type with no constructor.</p></li>
@@ -693,9 +693,9 @@
 <li><p>Create abstraction levels.</p></li>
 </ul>
 <p>Case classes and sealed traits are about <strong>sets of possible values</strong>, e.g. type <code class="docutils literal notranslate"><span class="pre">Boolean</span></code> has 2 possible values, type <code class="docutils literal notranslate"><span class="pre">Option[Boolean]</span></code> has 3, etc. On the other hand, “simple” traits and classes act like interfaces that provide a specific set of operations, e.g. the type <code class="docutils literal notranslate"><span class="pre">Boolean</span></code> has logic operations like <code class="docutils literal notranslate"><span class="pre">||</span></code> or <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>.</p>
-</section>
-<section id="opaque-type-aliases">
-<h4>Opaque type aliases<a class="headerlink" href="#opaque-type-aliases" title="Permalink to this headline">&sect;</a></h4>
+</div>
+<div class="section" id="opaque-type-aliases">
+<h4>Opaque type aliases<a class="headerlink" href="#opaque-type-aliases" title="Permalink to this heading">&sect;</a></h4>
 <p>Imagine the following situation:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">case</span> <span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="nc">Long</span><span class="p">):</span>
   <span class="o">???</span>
@@ -768,11 +768,11 @@
 <p class="admonition-title">Note</p>
 <p>Compiler looks for extension methods in scope of definition of opaque types</p>
 </div>
-</section>
-</section>
-</section>
-<section id="code-reasoning">
-<h2>Code reasoning<a class="headerlink" href="#code-reasoning" title="Permalink to this headline">&sect;</a></h2>
+</div>
+</div>
+</div>
+<div class="section" id="code-reasoning">
+<h2>Code reasoning<a class="headerlink" href="#code-reasoning" title="Permalink to this heading">&sect;</a></h2>
 <p>The usual strategy to manage complexity consists of breaking down complex programs into smaller ones, and combine those. This strategy is not effective if local reasoning is not possible (i.e. combining programs requires knowledge about their internals).</p>
 <p>Operations that, in addition to returning a value also “do something” out of the control of the program have <strong>side-effects</strong> and must be handled carefully. They are classified as:</p>
 <ul class="simple">
@@ -786,8 +786,8 @@
 </div>
 <p>“Pure” alternatives to side-effects introduce accidental complexity by requiring developers to explicitly carry over the context the operate on.</p>
 <p>Plain classes equality is checked by comparing the “identity” of their instances whereas case classes equality is checked by comparing the values carried by their instances. It is good practice prefer immutable data types over mutable ones.</p>
-<section id="testing">
-<h3>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">&sect;</a></h3>
+<div class="section" id="testing">
+<h3>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">&sect;</a></h3>
 <p>Reading a code base requires too much effort to reason about a whole program and type system ensures correct combination of parts but relies on the assumption of correctly modeled things. <strong>Unit testing</strong> consists of calling a program with inputs for which expected result is well known. Imagine a package:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// FILE src/main/scala/testexample/Program.scala</span>
 <span class="k">package</span> <span class="n">testexample</span>
@@ -824,15 +824,15 @@
 </pre></div>
 </div>
 <p>When writing unit test is a good practice to check all the corner cases.</p>
-</section>
-<section id="property-based">
-<h3>Property based<a class="headerlink" href="#property-based" title="Permalink to this headline">&sect;</a></h3>
+</div>
+<div class="section" id="property-based">
+<h3>Property based<a class="headerlink" href="#property-based" title="Permalink to this heading">&sect;</a></h3>
 <p>Generally, it would be impossible to write test cases manually for the whole domain space. Alternative approach is to generate random input data, in which case we can only specify general <strong>properties</strong> that must be correct for all possible inputs, e.g. in the above <code class="docutils literal notranslate"><span class="pre">fibonacci</span></code> method the output for any number must be the sum of the outputs for the 2 previous numbers.</p>
 <p>In this case the library required is ScalaCheck, which comes integrated with MUnit, so following lines would be needed:</p>
-<blockquote>
-<div><p>libraryDependencies += “org.scalameta” %% “munit-scalacheck” % “0.7.19” % Test
-testFrameworks += new TestFramework(“munit.Framework”)</p>
-</div></blockquote>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">&quot;org.scalameta&quot;</span> <span class="o">%%</span> <span class="s">&quot;munit-scalacheck&quot;</span> <span class="o">%</span> <span class="s">&quot;0.7.19&quot;</span> <span class="o">%</span> <span class="nc">Test</span>
+<span class="n">testFrameworks</span> <span class="o">+=</span> <span class="k">new</span> <span class="nc">TestFramework</span><span class="p">(</span><span class="s">&quot;munit.Framework&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>Considering that the input must be greater than 2, the test would be written:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// FILE src/test/scala/testexample/Program.scala</span>
 <span class="k">package</span> <span class="n">testexample</span>
@@ -857,13 +857,13 @@ testFrameworks += new TestFramework(“munit.Framework”)</p>
 </pre></div>
 </div>
 <p>Properties refer to <strong>invariants</strong> and <strong>identities</strong> of the code, it is important to not reimplement the system when testing.</p>
-</section>
-<section id="mocking">
-<h3>Mocking<a class="headerlink" href="#mocking" title="Permalink to this headline">&sect;</a></h3>
+</div>
+<div class="section" id="mocking">
+<h3>Mocking<a class="headerlink" href="#mocking" title="Permalink to this heading">&sect;</a></h3>
 <p>In a system made of components, one of them may depend on others, but, how do we test one component without having to set up all components?. Solution: <strong>Mock</strong> required components. Mocking consists in providing a fake implementation of a component. One example would be the <code class="docutils literal notranslate"><span class="pre">DatabaseAccess</span></code> example used above. However, this solution could become unaffordable, so we can use a mocking library such as ScalaMock, which uses advanced techniques available on the JVM to create fake component implementations (TODO: mastering these is out of the scope of this course).</p>
-</section>
-<section id="integration-testing">
-<h3>Integration testing<a class="headerlink" href="#integration-testing" title="Permalink to this headline">&sect;</a></h3>
+</div>
+<div class="section" id="integration-testing">
+<h3>Integration testing<a class="headerlink" href="#integration-testing" title="Permalink to this heading">&sect;</a></h3>
 <p>Integration refers the testing of the complete system as new problems can arise when assembling parts together. With MUnit we can set up and shut down a resource for the lifetime of a single test.</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HttpServerSuite</span> <span class="k">extends</span> <span class="n">munit</span><span class="p">.</span><span class="nc">FunSuite</span><span class="p">:</span>
   <span class="kd">val</span> <span class="n">withHttpServer</span> <span class="o">=</span> <span class="nc">FunFixture</span><span class="p">[</span><span class="nc">HttpServer</span><span class="p">](</span>
@@ -890,9 +890,9 @@ testFrameworks += new TestFramework(“munit.Framework”)</p>
 </pre></div>
 </div>
 <p>Compiler plugin scoverage enables test coverage. In Scala <strong>tests are written before implementing a bugfix</strong> so not yet fixed program should not pass the test and after fix it should be passed.</p>
-</section>
-<section id="type-directed-programming">
-<h3>Type-Directed Programming<a class="headerlink" href="#type-directed-programming" title="Permalink to this headline">&sect;</a></h3>
+</div>
+<div class="section" id="type-directed-programming">
+<h3>Type-Directed Programming<a class="headerlink" href="#type-directed-programming" title="Permalink to this heading">&sect;</a></h3>
 <p>As the compiler is able to infer types from values it is also able to infer values from types (when there is exactly one “obvious” value for a type).</p>
 <p>A method is polymorphic when it can adapt to different types of inputs, like <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">sort[A](xs:</span> <span class="pre">List[A]):</span> <span class="pre">List[A]</span></code>. For further parameters that adapt the method to different types, compiler can infer their value, if we:</p>
 <ol class="arabic">
@@ -976,8 +976,8 @@ testFrameworks += new TestFramework(“munit.Framework”)</p>
 </pre></div>
 </div>
 <p>An arbitrary number of given definitions can be chained until a terminal definition is reached.</p>
-<section id="scala-3-vs-scala-2">
-<h4>Scala 3 vs. Scala 2<a class="headerlink" href="#scala-3-vs-scala-2" title="Permalink to this headline">&sect;</a></h4>
+<div class="section" id="scala-3-vs-scala-2">
+<h4>Scala 3 vs. Scala 2<a class="headerlink" href="#scala-3-vs-scala-2" title="Permalink to this heading">&sect;</a></h4>
 <p>In Scala 2 context parameters use the keyword <code class="docutils literal notranslate"><span class="pre">implicit</span></code>:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Scala 3</span>
 <span class="k">def</span> <span class="nf">sort</span><span class="p">[</span><span class="nc">A</span><span class="p">](</span><span class="n">as</span><span class="p">:</span> <span class="nc">List</span><span class="p">[</span><span class="nc">A</span><span class="p">])(</span><span class="k">using</span> <span class="n">ordering</span><span class="p">:</span> <span class="nc">Ordering</span><span class="p">[</span><span class="nc">A</span><span class="p">]):</span> <span class="nc">List</span><span class="p">[</span><span class="nc">A</span><span class="p">]</span>
@@ -1017,9 +1017,9 @@ testFrameworks += new TestFramework(“munit.Framework”)</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-</section>
-<section id="extension-methods">
-<h4>Extension methods<a class="headerlink" href="#extension-methods" title="Permalink to this headline">&sect;</a></h4>
+</div>
+<div class="section" id="extension-methods">
+<h4>Extension methods<a class="headerlink" href="#extension-methods" title="Permalink to this heading">&sect;</a></h4>
 <p><strong>Extension methods</strong> allow to add methods to a type outside the type definition, e.g., to add the <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> operation to any type <code class="docutils literal notranslate"><span class="pre">A</span></code> for which there is a given <code class="docutils literal notranslate"><span class="pre">Ordering[A]</span></code> instance:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">trait</span> <span class="nc">Ordering</span><span class="p">[</span><span class="nc">A</span><span class="p">]:</span>
   <span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nc">A</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nc">A</span><span class="p">):</span> <span class="nc">Int</span>
@@ -1028,19 +1028,19 @@ testFrameworks += new TestFramework(“munit.Framework”)</p>
 </pre></div>
 </div>
 <p>They are applicable if they are visible or the are defined in a companion object associated with the type <code class="docutils literal notranslate"><span class="pre">T</span></code> or if they are defined in a given instance associated with the type <code class="docutils literal notranslate"><span class="pre">T</span></code>.</p>
-</section>
-<section id="implicit-conversions">
-<h4>Implicit conversions<a class="headerlink" href="#implicit-conversions" title="Permalink to this headline">&sect;</a></h4>
+</div>
+<div class="section" id="implicit-conversions">
+<h4>Implicit conversions<a class="headerlink" href="#implicit-conversions" title="Permalink to this heading">&sect;</a></h4>
 <p><strong>Implicit conversions</strong> make it possible to convert an expression to a different type.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Scala supports a syntax similar to Python for repeated parameters like <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">printSquares(xs:</span> <span class="pre">Int*)</span></code> so repeated parameters can only appear at the end of parameter list.</p>
 </div>
-</section>
-</section>
-</section>
-<section id="error-handling">
-<h2>Error handling<a class="headerlink" href="#error-handling" title="Permalink to this headline">&sect;</a></h2>
+</div>
+</div>
+</div>
+<div class="section" id="error-handling">
+<h2>Error handling<a class="headerlink" href="#error-handling" title="Permalink to this heading">&sect;</a></h2>
 <p>Possible errors when running a program come from inputs (so user can fix), programming (so programmer can fix) and hardware/external (someone else’s can fix).</p>
 <p>Exceptions can be thrown at any point of the execution of the program, <strong>interrupting the execution unless they are caught by a surrounding exception handler</strong>. In Scala exceptions are raised using <code class="docutils literal notranslate"><span class="pre">throw</span></code> expression:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">attemptSomething</span><span class="p">():</span> <span class="nc">Unit</span> <span class="o">=</span>
@@ -1071,8 +1071,8 @@ testFrameworks += new TestFramework(“munit.Framework”)</p>
 <p>Exceptions follow <em>throwable hierarchy</em>:</p>
 <a class="reference internal image-reference" href="../../_images/throwable_hierarchy.PNG"><img alt="Throwable hierarchy" src="../../_images/throwable_hierarchy.PNG" style="width: 80%;" /></a>
 <p>Fatal exceptions like <code class="docutils literal notranslate"><span class="pre">OutOfMemoryError</span></code> should never be caught. Scala provides <code class="docutils literal notranslate"><span class="pre">scala.util.control.NonFatal</span></code> to catch all non-fatal exceptions:</p>
-<section id="defensive-programming">
-<h3>Defensive programming<a class="headerlink" href="#defensive-programming" title="Permalink to this headline">&sect;</a></h3>
+<div class="section" id="defensive-programming">
+<h3>Defensive programming<a class="headerlink" href="#defensive-programming" title="Permalink to this heading">&sect;</a></h3>
 <p>Exceptions should be used as a last resort. One common practice is defining an exception error handler at the beginning of a program and explicitly indicate in the result type of the method that it can either succeed or fail, which is achieved with <strong>``Try`` type, that wraps the program implementation</strong>.</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">scala</span><span class="p">.</span><span class="nn">util</span><span class="p">.</span><span class="nc">Try</span>
 
@@ -1141,9 +1141,9 @@ testFrameworks += new TestFramework(“munit.Framework”)</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">recover(f:</span> <span class="pre">PartialFunction[Throwable,</span> <span class="pre">A]):</span> <span class="pre">Try[A]</span></code>: If it is defined for the type of failure that is being obtained from the underlying value, it converts it to a success, if not the failure simply propagates.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">recoverWith(f:</span> <span class="pre">PartialFunction[Throwable,</span> <span class="pre">Try[A]]):</span> <span class="pre">Try[A]</span></code>: Similar to the <code class="docutils literal notranslate"><span class="pre">recover</span></code> but with a continuation function that may also fail the conversion.</p></li>
 </ul>
-</section>
-<section id="validating-data">
-<h3>Validating data<a class="headerlink" href="#validating-data" title="Permalink to this headline">&sect;</a></h3>
+</div>
+<div class="section" id="validating-data">
+<h3>Validating data<a class="headerlink" href="#validating-data" title="Permalink to this heading">&sect;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In practice, third-party libraries are used to handle validation exceptions. Here just the general reasoning is outlined.</p>
@@ -1171,10 +1171,10 @@ testFrameworks += new TestFramework(“munit.Framework”)</p>
 <li><p>Validate a collection of values with <code class="docutils literal notranslate"><span class="pre">validateEach</span></code></p></li>
 </ul>
 <p>Read <a class="reference internal" href="#parsing-a-list-of-dates-from-a-file"><span class="std std-ref">Parsing a list of dates from a file</span></a> to see a showcase.</p>
-</section>
-</section>
-<section id="concurrent-programming">
-<h2>Concurrent programming<a class="headerlink" href="#concurrent-programming" title="Permalink to this headline">&sect;</a></h2>
+</div>
+</div>
+<div class="section" id="concurrent-programming">
+<h2>Concurrent programming<a class="headerlink" href="#concurrent-programming" title="Permalink to this heading">&sect;</a></h2>
 <p>A lot of applications are powered by systems made of several physical machines (nodes) communicating together. 2 concerns immediately arise from this architecture:</p>
 <ul class="simple">
 <li><p>What happens if clients modify system state simultaneously</p></li>
@@ -1220,8 +1220,8 @@ testFrameworks += new TestFramework(“munit.Framework”)</p>
     <span class="p">.</span><span class="n">recover</span> <span class="p">{</span> <span class="k">case</span> <span class="nc">NonFatal</span><span class="p">(</span><span class="n">exception</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="kc">false</span> <span class="p">}</span>
 </pre></div>
 </div>
-<section id="execution-context">
-<h3>Execution context<a class="headerlink" href="#execution-context" title="Permalink to this headline">&sect;</a></h3>
+<div class="section" id="execution-context">
+<h3>Execution context<a class="headerlink" href="#execution-context" title="Permalink to this heading">&sect;</a></h3>
 <p>By default Scala provides a thread-pool with as many threads as the number of physical processors. So parallelism level is equal to the number of processors. Third-parties can provided custom execution contexts (with a different number of threads). All methods defined on <code class="docutils literal notranslate"><span class="pre">Future</span></code> (like <code class="docutils literal notranslate"><span class="pre">map</span></code> or <code class="docutils literal notranslate"><span class="pre">zip</span></code>) follows the notation:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">trait</span> <span class="nc">Future</span><span class="p">[</span><span class="nc">A</span><span class="p">]:</span>
   <span class="k">def</span> <span class="nf">map</span><span class="p">[</span><span class="nc">B</span><span class="p">](</span><span class="n">f</span><span class="p">:</span> <span class="nc">A</span> <span class="o">=&gt;</span> <span class="nc">B</span><span class="p">)(</span><span class="k">using</span> <span class="nc">ExecutionContext</span><span class="p">):</span> <span class="nc">Future</span><span class="p">[</span><span class="nc">B</span><span class="p">]</span>
@@ -1230,12 +1230,12 @@ testFrameworks += new TestFramework(“munit.Framework”)</p>
 </div>
 <p>Meaning that the <code class="docutils literal notranslate"><span class="pre">ExecutionContext</span></code> is an additional parameter. Sometimes tasks block a thread while doing nothing, in such cases more threads than the number of physical processors must be created to not starve the thread-pool, which is achieved by wrapping code inside <code class="docutils literal notranslate"><span class="pre">concurrent.blocking</span></code>.</p>
 <hr class="docutils" />
-</section>
-</section>
-<section id="business-logic">
-<h2>Business Logic<a class="headerlink" href="#business-logic" title="Permalink to this headline">&sect;</a></h2>
-<section id="video-streaming-footprint">
-<h3>Video Streaming Footprint<a class="headerlink" href="#video-streaming-footprint" title="Permalink to this headline">&sect;</a></h3>
+</div>
+</div>
+<div class="section" id="business-logic">
+<h2>Business Logic<a class="headerlink" href="#business-logic" title="Permalink to this heading">&sect;</a></h2>
+<div class="section" id="video-streaming-footprint">
+<h3>Video Streaming Footprint<a class="headerlink" href="#video-streaming-footprint" title="Permalink to this heading">&sect;</a></h3>
 <ul class="simple">
 <li><p>Data centers consume 0.000072 kWh/MB of video</p></li>
 <li><p>Mobile Networks consume 0.00088 kWh/MB of video</p></li>
@@ -1271,9 +1271,9 @@ testFrameworks += new TestFramework(“munit.Framework”)</p>
 <span class="n">footprint</span><span class="p">(</span><span class="n">highQualityAndMobile</span><span class="p">)</span> <span class="c1">// : Double = 0.51408</span>
 </pre></div>
 </div>
-</section>
-<section id="card-game-set">
-<h3>Card Game: Set<a class="headerlink" href="#card-game-set" title="Permalink to this headline">&sect;</a></h3>
+</div>
+<div class="section" id="card-game-set">
+<h3>Card Game: Set<a class="headerlink" href="#card-game-set" title="Permalink to this heading">&sect;</a></h3>
 <p>A card has the following properties:</p>
 <ul class="simple">
 <li><p>Shape: Diamond, squiggle or oval</p></li>
@@ -1316,9 +1316,9 @@ testFrameworks += new TestFramework(“munit.Framework”)</p>
 <span class="p">)</span> <span class="c1">// : Boolean = true</span>
 </pre></div>
 </div>
-</section>
-<section id="basketball">
-<h3>Basketball<a class="headerlink" href="#basketball" title="Permalink to this headline">&sect;</a></h3>
+</div>
+<div class="section" id="basketball">
+<h3>Basketball<a class="headerlink" href="#basketball" title="Permalink to this heading">&sect;</a></h3>
 <p>Given position, shot direction and force evaluate if a ball ig going to pass through the hoop.</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">case</span> <span class="k">class</span> <span class="nc">Position</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nc">Double</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nc">Double</span><span class="p">):</span>
   <span class="k">def</span> <span class="nf">distanceTo</span><span class="p">(</span><span class="n">that</span><span class="p">:</span> <span class="nc">Position</span><span class="p">):</span> <span class="nc">Double</span> <span class="o">=</span> <span class="o">???</span>
@@ -1382,9 +1382,9 @@ testFrameworks += new TestFramework(“munit.Framework”)</p>
 <span class="k">end</span> <span class="nn">isWinningShot</span>
 </pre></div>
 </div>
-</section>
-<section id="managing-addressbook">
-<h3>Managing AddressBook<a class="headerlink" href="#managing-addressbook" title="Permalink to this headline">&sect;</a></h3>
+</div>
+<div class="section" id="managing-addressbook">
+<h3>Managing AddressBook<a class="headerlink" href="#managing-addressbook" title="Permalink to this heading">&sect;</a></h3>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="nc">Address</span> <span class="o">=</span> <span class="p">(</span><span class="nc">Int</span><span class="p">,</span> <span class="nc">String</span><span class="p">)</span> <span class="c1">// Zipcode, Street Name</span>
 <span class="k">given</span> <span class="n">orderingPair</span><span class="p">[</span><span class="nc">A</span><span class="p">,</span> <span class="nc">B</span><span class="p">](</span><span class="k">using</span> <span class="n">ordA</span><span class="p">:</span> <span class="nc">Ordering</span><span class="p">[</span><span class="nc">A</span><span class="p">],</span> <span class="n">ordB</span><span class="p">:</span> <span class="nc">Ordering</span><span class="p">[</span><span class="nc">B</span><span class="p">]):</span> <span class="nc">Ordering</span><span class="p">[(</span><span class="nc">A</span><span class="p">,</span> <span class="nc">B</span><span class="p">)]</span> <span class="k">with</span>
     <span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="n">t1</span><span class="p">:</span> <span class="p">(</span><span class="nc">A</span><span class="p">,</span> <span class="nc">B</span><span class="p">),</span> <span class="n">t2</span><span class="p">:</span> <span class="p">(</span><span class="nc">A</span><span class="p">,</span> <span class="nc">B</span><span class="p">)):</span> <span class="nc">Int</span> <span class="o">=</span>
@@ -1399,9 +1399,9 @@ testFrameworks += new TestFramework(“munit.Framework”)</p>
 <span class="n">sort</span><span class="p">(</span><span class="n">addresses</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="parsing-a-list-of-dates-from-a-file">
-<h3>Parsing a list of dates from a file<a class="headerlink" href="#parsing-a-list-of-dates-from-a-file" title="Permalink to this headline">&sect;</a></h3>
+</div>
+<div class="section" id="parsing-a-list-of-dates-from-a-file">
+<h3>Parsing a list of dates from a file<a class="headerlink" href="#parsing-a-list-of-dates-from-a-file" title="Permalink to this heading">&sect;</a></h3>
 <p>We have 2 different types of errors:</p>
 <ol class="arabic simple">
 <li><p>Errors while reading the file that must abort the program logging to error stream.</p></li>
@@ -1433,9 +1433,9 @@ testFrameworks += new TestFramework(“munit.Framework”)</p>
         <span class="n">println</span><span class="p">(</span><span class="s">s&quot;Successfully parsed dates: </span><span class="si">${</span><span class="n">dates</span><span class="p">.</span><span class="n">mkString</span><span class="p">(</span><span class="s">&quot;, &quot;</span><span class="p">)</span><span class="si">}</span><span class="s">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="fetching-data-from-webservice">
-<h3>Fetching data from webservice<a class="headerlink" href="#fetching-data-from-webservice" title="Permalink to this headline">&sect;</a></h3>
+</div>
+<div class="section" id="fetching-data-from-webservice">
+<h3>Fetching data from webservice<a class="headerlink" href="#fetching-data-from-webservice" title="Permalink to this heading">&sect;</a></h3>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">scala</span><span class="p">.</span><span class="nn">concurrent</span><span class="p">.</span><span class="nc">Future</span>
 <span class="k">import</span> <span class="nn">scala</span><span class="p">.</span><span class="nn">concurrent</span><span class="p">.</span><span class="nc">ExecutionContext</span><span class="p">.</span><span class="nc">Implicits</span><span class="p">.</span><span class="n">_</span>
 <span class="k">import</span> <span class="nn">scala</span><span class="p">.</span><span class="nn">util</span><span class="p">.</span><span class="nc">Random</span>
@@ -1489,15 +1489,15 @@ testFrameworks += new TestFramework(“munit.Framework”)</p>
   <span class="p">}</span>
 </pre></div>
 </div>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
         </div>
     </div>
     <div class="footer">&copy;2021, Prophet Jeremy.
-       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
        &nbsp;&amp;&nbsp;<a href="https://github.com/santibreo/pj-theme">PJnotes 1.0.0</a>
       
     </div>
