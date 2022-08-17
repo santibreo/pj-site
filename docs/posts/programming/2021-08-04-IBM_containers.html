@@ -1,0 +1,741 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>IBM Containers and Kubernetes &#8212; PJnotes 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/pj_touch.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Effective Programming in Scala" href="2022-05-03-Effective_programming_in_Scala.html" />
+    <link rel="prev" title="Rmarkdown (nice) posts" href="2020-08-13-rmarkdown_posts.html" />
+   
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../_static/css/pj_print.css" media="print", type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  </head><body>
+    <header>
+        <div class="logo-box">
+            <svg height="70" width="26">
+            <path d="M 3 59
+                     l 0 -42
+                     A 10 10 1 0 1 23 17
+                     l 0 37
+                     A 7 7 1 0 1 9 54
+                     l 0 -30
+                     A 5 5 1 0 1 19 24
+                     l 0 20" stroke="black" stroke-width="2" fill="none"/>
+            </svg>
+            <a href="../../index.html">Prophet<br>Jeremy's<br>
+                <span style="font-family:PT Serif Caption; color:var(--special-words); font-size:20px">
+                    notes
+                </span>
+            </a>
+        </div>
+        <input id="nav-toggle" type="checkbox" class="nav-toggle">
+        <nav>
+            <ul>
+                <li><a href=../../cv.html>CV</a></li>
+                <li><a href=../../about.html>About</a></li>
+                <li><a href=../../recommendations.html>Recommendations</a></li>
+            </ul>
+        </nav>
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span class="nav-toggle-m1 nav-toggle-mvert"></span>
+            <span class="nav-toggle-m2 nav-toggle-mdiag"></span>
+            <span class="nav-toggle-m3 nav-toggle-mdiag"></span>
+            <span class="nav-toggle-m4 nav-toggle-mvert"></span>
+        </label>
+    </header>
+    <div class="container">
+        
+        <input id="sidebar-toggle" type="checkbox" class="sidebar-toggle">
+        <div class="sidebar">
+
+
+
+<h3>Navigate: 
+      <a href="2020-08-13-rmarkdown_posts.html" title="previous document">&lArr;</a>
+      <a href="2022-05-03-Effective_programming_in_Scala.html" title="next document">&rArr;</a></h3>
+<div class="toc">
+    <ul>
+<li><a class="reference internal" href="#">IBM Containers and Kubernetes</a><ul>
+<li><a class="reference internal" href="#containers">Containers</a></li>
+<li><a class="reference internal" href="#docker">Docker</a><ul>
+<li><a class="reference internal" href="#images-dockerfile">Images (Dockerfile)</a></li>
+<li><a class="reference internal" href="#running-containers">Running Containers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#container-orchestrations">Container Orchestrations</a><ul>
+<li><a class="reference internal" href="#architecture">Architecture</a></li>
+<li><a class="reference internal" href="#basic-objects">Basic Objects</a></li>
+<li><a class="reference internal" href="#kubectl-cli"><code class="docutils literal notranslate"><span class="pre">kubectl</span></code> CLI</a></li>
+<li><a class="reference internal" href="#using-kubernetes">Using Kubernetes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#managing-applications">Managing Applications</a></li>
+<li><a class="reference internal" href="#kubernetes-ecosystem">Kubernetes Ecosystem</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+<script src="../../_static/js/toc.js"></script>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search:</h3>
+  <form class="search" action="../../search.html" method="get">
+      <input class="search-box" type="text" name="q" aria-labelledby="searchlabel" />
+      <input class="search-button" type="submit" value="&lt;" />
+  </form>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+<hr>
+<div class="social-icons">
+    
+    <a href="mailto:santibreo@gmail.com?subject=We want to hire you">
+        <i class="fa fa-envelope"></i>
+    </a>
+    
+    
+    <a href=https://github.com/santibreo><i class="fab fa-github"></i></a>
+    
+    <a href=https://twitter.com/santibreo><i class="fab fa-twitter"></i></a>
+    
+    <a href=https://www.linkedin.com/in/santibreo/><i class="fab fa-linkedin"></i></a>
+    
+</div>
+<hr>
+</div>
+        <label for="sidebar-toggle" class="sidebar-toggle-label">
+            <span></span>
+        </label>
+        
+        <div class="content">
+        
+  <section id="ibm-containers-and-kubernetes">
+<h1>IBM Containers and Kubernetes<a class="headerlink" href="#ibm-containers-and-kubernetes" title="Permalink to this heading">&sect;</a></h1>
+<section id="containers">
+<h2>Containers<a class="headerlink" href="#containers" title="Permalink to this heading">&sect;</a></h2>
+<p>A container is an executable unit of software, in which the application code is
+packaged along with its libraries and dependencies in common ways, so it can be
+run anywhere (on-premises or in the cloud). Containers take the form of an OS
+virtualisation which features of the OS are used to isolate process and control
+the amount of CPU, memory and disk storage. In the case of Linux kernel
+namespaces and c-groups allow this virtualisation. Containers are small and
+portable. The software that boost up this technology was <strong>Docker</strong>. Nowadays,
+a container is a standarization of how we package and share software, so its
+main characteristic is portability. Container do not include a guest OS, spin
+ip quickly and scale horizontally. They are also platform independent and allow
+to scale each component of an application individually as for microservices.</p>
+</section>
+<section id="docker">
+<h2>Docker<a class="headerlink" href="#docker" title="Permalink to this heading">&sect;</a></h2>
+<p>It has become the standard on containerization, is a software platform for
+building and running containers launched in 2013. It provides a straightforward
+way to build and run containers. Docker is commonly used throw Docker CLI,
+which provides commands as:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>build     ← Creates container images <span class="o">(</span>requires Dockerfile<span class="o">)</span>
+tag       ← Copy an image and give it a new name. Tags are pointers to images
+images    ← List all iomages, their repositories and tags, and their size
+run       ← Runs a container locally <span class="o">(</span>usually <span class="k">for</span> testing purposes<span class="o">)</span>
+push/pull ← Stores images or retrieves them from remotes locations
+</pre></div>
+</div>
+<section id="images-dockerfile">
+<h3>Images (Dockerfile)<a class="headerlink" href="#images-dockerfile" title="Permalink to this heading">&sect;</a></h3>
+<p>They outline all the steps necessary to build an image. A container is
+different from its image. Images are immutable, if you change it, it is a new
+image. On the other hand, a container is an instance of an image.</p>
+<p>Images are organized in layers, one after another, containing instructions to
+build the image. So each docker instruction constitutes a read-only layer, and
+a writeable layer is added finally when an image is run as a container. Layers
+can be shared between images, which shaves disk space and network bandwidth.</p>
+<p>The main instructions are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FROM</span></code>: Define base image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RUN</span></code>: Execute arbitrary commands.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENV</span></code>: Set environment variables.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADD</span></code> and <code class="docutils literal notranslate"><span class="pre">COPY</span></code>: Copy files and directories. <code class="docutils literal notranslate"><span class="pre">COPY</span></code> is restricted just
+to local resources while <code class="docutils literal notranslate"><span class="pre">ADD</span></code> allow remote locations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CMD</span></code>: Define default command for container execution. Only one can be
+defined.</p></li>
+</ul>
+<p>Example</p>
+<div class="highlight-Dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:18.04</span>
+<span class="k">COPY</span><span class="w"> </span>. /app
+<span class="k">RUN</span><span class="w"> </span>make /app
+<span class="k">CMD</span><span class="w"> </span>python /app/app.py
+</pre></div>
+</div>
+<p>Container images can be stored in your local machine, but there is a common
+storage to distribute named container images, called container registry, which
+could be public or private. Container registries could also be self-hosted or
+just hosted which abbreviates hosted by provider.</p>
+<p>Images are pushed to registries and pulled from them, depending on what are
+you doing. Inside a registry there are repositories, which are collections of
+similar images, which are tag differently, so when an image is pulled from a
+repository, the usual path is: <code class="docutils literal notranslate"><span class="pre">&lt;hostname&gt;/&lt;repository&gt;:&lt;tag&gt;</span></code> e.g.
+<code class="docutils literal notranslate"><span class="pre">docker.io/ubuntu:18.04</span></code>. We would pull it with: <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">&lt;image_path&gt;</span></code>
+in our machine.</p>
+</section>
+<section id="running-containers">
+<h3>Running Containers<a class="headerlink" href="#running-containers" title="Permalink to this heading">&sect;</a></h3>
+<p>Let’s suppose we have the following Dockerfile:</p>
+<div class="highlight-Dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">node:9.4.0-alpine</span>
+<span class="k">COPY</span><span class="w"> </span>app.js .
+<span class="k">COPY</span><span class="w"> </span>package.json .
+<span class="k">RUN</span><span class="w"> </span>npm install <span class="o">&amp;&amp;</span><span class="se">\</span>
+    apk update <span class="o">&amp;&amp;</span><span class="se">\</span>
+    apk upgrade
+<span class="k">CMD</span><span class="w"> </span>node app.js
+</pre></div>
+</div>
+<p>The command to create an image is: <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span> <span class="pre">-t</span> <span class="pre">my-app:v1</span> <span class="pre">.</span></code>. The
+<code class="docutils literal notranslate"><span class="pre">.</span></code> at the end represents the build context, containing files used to
+generate out image. Once the image has been built we can see out images with;
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">images</span></code>. We can <cite>retag</cite> (or tag for the first time) the
+images. To run an image the command <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">&lt;image_tag&gt;</span></code>. Finally, we can
+push our image with: <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">push</span> <span class="pre">&lt;image_tag&gt;</span></code>.</p>
+</section>
+</section>
+<section id="container-orchestrations">
+<h2>Container Orchestrations<a class="headerlink" href="#container-orchestrations" title="Permalink to this heading">&sect;</a></h2>
+<p>Over time, new applications are written and deploy, and applications take new
+components that run independently, to avoid this becoming an overwhelming
+containers swarm, container orchestrations are used.</p>
+<p>Main tasks relying on containers orchestration tools are:</p>
+<ul class="simple">
+<li><p>Provisioning and deployment</p></li>
+<li><p>Availability</p></li>
+<li><p>Scaling</p></li>
+<li><p>Rolling updates</p></li>
+<li><p>Health checks</p></li>
+</ul>
+<p><strong>Kubernetes</strong> is a container orchestration tools that is self-defined as: <cite>‘A
+portable, extensible, open-source platform for managing containerized worloads
+and services that facilitates both declarative configuration and automation. It
+has a large, rapidly growing ecosystem. Kubernetes services, support, and tools
+are widely available’</cite>. Kubernetes is not a traditional, all-inclusive
+platform as a service (PaaS), does not limit the types of applications, does
+deploy or build applications, it does not prescribe logging, monitoring or
+alerting solutions and does not provide built-in middleware, databases or other
+services.</p>
+<section id="architecture">
+<h3>Architecture<a class="headerlink" href="#architecture" title="Permalink to this heading">&sect;</a></h3>
+<p>A deployment in Kubernetes is called a <strong>cluster</strong>. The control plane makes
+decisions about the cluster and response to events. An example would be
+scheduling workloads or creating new resources.</p>
+<p>All communications in the cluster relies on <strong>Kubernetes API server</strong>. Also a
+key component is the <strong>etcd</strong> which is a highly available key-value store
+(similar to redis) that contains all cluster data, becoming the source of
+truth for the state of the cluster. <strong>Kubernetes scheduler</strong> assigns new
+created Pods to nodes and determines where workloads should run. <strong>Kubernetes
+controller manager</strong> runs all the controller processes, monitors the cluster
+state and ensures the actual and desired state matches. Finally, <strong>Cloud
+controller manager</strong> runs controllers that interact with underlying cloud
+providers, linking clusters into a cloud provider’s API.</p>
+<p>Nodes are worker machines in Kubernetes, managed by the control plane. Kubelet
+communicates with the API server to ensure pods and associated containers are
+running and reports health to the control plane. Container runtime downloads
+images and runs containers being Docker and CRI-O well-known runtime. Lastly
+Kubernetes proxy is a network proxy that maintains network rules that allow
+communication to Pods (workloads of the cluster). A <strong>control loop</strong> is defined
+as a non-terminating loop that regulates the state of the system.</p>
+<p>Kubernetes objects are persistent entities in Kubernetes, that define the
+desired state for your workload. The Kubernetes API is used to work with them,
+mainly throw <code class="docutils literal notranslate"><span class="pre">kubectl</span></code> CLI. The status is the current state of the cluster
+and the spect constitutes the desired state. Namespaces are used to segregate
+components. Each cluster may have several of them. Namespaces provide logical
+separation of a cluster when many teams are using it:</p>
+<ul class="simple">
+<li><p>Virtualization of a physical cluster</p></li>
+<li><p>Segregate cluster by team, project, etc.</p></li>
+<li><p>Necessary with larger numbers.</p></li>
+<li><p>Provides a scope for object names.</p></li>
+</ul>
+<p>Names:</p>
+<ul class="simple">
+<li><p>Each object has a name.</p></li>
+<li><p>Names are unique for a resource type within a namespace (e.g. a pod and a
+deploy can have the same name within a namespace, a pod and another pod can
+have the same name if they belong to different namespaces).</p></li>
+</ul>
+<p>Labels are key/value pairs attached to objects, intended for object
+identification, but not unique, they organize and group objects. Selectors
+identify and group a set of objects, used by Kubernetes controllers to monitor
+resources.</p>
+</section>
+<section id="basic-objects">
+<h3>Basic Objects<a class="headerlink" href="#basic-objects" title="Permalink to this heading">&sect;</a></h3>
+<p>Pod: Simplest unit. Represents processes runnings in a cluster. Encapsulates a
+container or multiple. Replicating them serves to scale horizontally:</p>
+<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>apiVersion: v1
+kind: Pod
+metadata:
+    name: nginx
+spec:
+    containers:
+    - name: nginx
+      image: nginx:1.7.9
+      ports:
+      - containerPort: <span class="m">80</span>
+</pre></div>
+</div>
+<p>ReplicaSet: Group of identical pods that are running. Definition now contains
+the number of replicas and the template used to create each replica. <strong>It is
+not recommended to create ReplicaSets directly</strong>.</p>
+<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+    name: nginx-replicaset
+    labels:
+        app: nginx
+spec:
+    replicas: <span class="m">3</span>
+    selector:
+        matchLabels:
+            app: nginx
+    template:
+        metadata:
+            labels:
+                app: nginx
+        spec:
+            containers:
+                - name: nginx
+                  image: nginx:1.7.9
+                  ports:
+                  - containerPort: <span class="m">80</span>
+</pre></div>
+</div>
+<p>Deployment: Provides updates for Pods and ReplicaSets, allow to run multiple
+replicas of your application and are suitable for stateless applications.
+Deployments are more robust and provide additional objects than ReplicaSets,
+even if simple specifications can look mostly the same. Deployments allow
+rolling updates, so replicas are there to effectively response for counting
+pods while deployments are responsible for orchestrating the roll out of
+new versions.</p>
+<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: nginx-deployment
+    labels:
+        app: nginx
+spec:
+    replicas: <span class="m">3</span>
+    selector:
+        matchLabels:
+            app: nginx
+    template:
+        metadata:
+            labels:
+                app: nginx
+        spec:
+            containers:
+                - name: nginx
+                  image: nginx:1.7.9
+                  ports:
+                  - containerPort: <span class="m">80</span>
+</pre></div>
+</div>
+</section>
+<section id="kubectl-cli">
+<h3><code class="docutils literal notranslate"><span class="pre">kubectl</span></code> CLI<a class="headerlink" href="#kubectl-cli" title="Permalink to this heading">&sect;</a></h3>
+<p>Key tool for working with Kubernetes, clusters and workloads running on
+clusters. 2 families of commands:</p>
+<p><strong>Imperative</strong>: Quickly create, update and delete Kubernetes objects and easy
+to learn. Do not provide audit trail and not really flexible.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl run nginx --image nginx
+</pre></div>
+</div>
+<p>There are imperative commands that use a configuration template, which specify
+and operation, so other members of the team can launch your containers
+properly.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl create -f nginx.yaml
+</pre></div>
+</div>
+<p>Any updates made after configuration file is created will not be automatically
+recorded.</p>
+<p><strong>Declarative</strong>: Configuration files define one or more objects, no operation
+is specified, needed operations are inferred by <code class="docutils literal notranslate"><span class="pre">kubectl</span></code>, works better on
+directories, configuration files define desired state and Kubernetes actualizes
+that state.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl apply -f nginx/
+</pre></div>
+</div>
+<p>All files in a directory will be applied, so this is the preferred method on
+production systems.</p>
+</section>
+<section id="using-kubernetes">
+<h3>Using Kubernetes<a class="headerlink" href="#using-kubernetes" title="Permalink to this heading">&sect;</a></h3>
+<p>The most relevant command is <code class="docutils literal notranslate"><span class="pre">apply</span></code> that, as explained above, works both
+in files and directories. <code class="docutils literal notranslate"><span class="pre">get</span></code> and <code class="docutils literal notranslate"><span class="pre">describe</span></code> operate on namespaces former
+listing resources (deployments) and second showing details:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl get deployment --namespace kube-system
+kubectl describe deployment kube-dns-amd64 --namespace kube-system
+</pre></div>
+</div>
+<p>So to create a deployment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; kubectl apply -f nginx.yaml
+deployment.apps/nginx-deployment created
+&gt;&gt;&gt; kubectl get deployment
+NAME             READY       UP-TO-DATE      AVAILABLE       AGE
+nginx-deployment <span class="m">3</span>/3         <span class="m">3</span>               <span class="m">3</span>               73s
+</pre></div>
+</div>
+</section>
+</section>
+<section id="managing-applications">
+<h2>Managing Applications<a class="headerlink" href="#managing-applications" title="Permalink to this heading">&sect;</a></h2>
+<p>Key concepts on manage Kubernetes applications are: ReplicaSets, auto-scaling,
+rolling updates, ConfigMaps and Secrets and Service binding.</p>
+<p><strong>ReplicaSets</strong>: Are used to manage pods, ensuring the current number of pods
+are always up and running. They can replicate, restart or spin up pods, adding
+existing pods to the deployment or creating them. They ensure the maintain of
+desired state and supersede replica controller. With every deployment a
+ReplicaSet is created. One main idea of Kubernetes is independence between
+objects (loosely coupled yet interconnected), that is why ReplicaSets manage
+pods making use of labels.</p>
+<p>After creating a deployment we can run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; kubectl get replicaset
+NAME                         DESIRED CURRENT READY   AGE
+hello-kubernetes-5655b5446f8 <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       14m
+</pre></div>
+</div>
+<p>It is highly recommended to create deployments instead of ReplicaSets:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; kubectl create -f deployment.yaml
+deployment.apps/hello-kubernetes created
+&gt;&gt;&gt; kubectl get pods
+NAME                                 READY   STATUS  RESTARTS    AGE
+hello-kubernetes-5655b5446f8-2nlqb   <span class="m">1</span>/1     Running <span class="m">0</span>           6s
+&gt;&gt;&gt; kubectl get deploy
+NAME             READY   UP-TO-DATE  AVAILABLE   AGE
+hello-kubernetes <span class="m">1</span>/1     <span class="m">1</span>           <span class="m">1</span>           12s
+&gt;&gt;&gt; kubectl scale deploy hello-kubernetes --replicas<span class="o">=</span><span class="m">3</span>
+NAME                                 READY   STATUS  RESTARTS    AGE
+hello-kubernetes-5655b5446f8-2nlqb   <span class="m">1</span>/1     Running <span class="m">0</span>           33s
+hello-kubernetes-5655b5446f8-5mflw   <span class="m">1</span>/1     Running <span class="m">0</span>           3s
+hello-kubernetes-5655b5446f8-htb7v   <span class="m">1</span>/1     Running <span class="m">0</span>           3s
+</pre></div>
+</div>
+<p>We can check that ReplicaSet is working deleting one of the pods and watching
+how the ReplicaSet immediately recreates it.</p>
+<p><strong>Autoscaling</strong>: We have seen how to scale the applications using ReplicaSets,
+but we can use the Horizontal Pod Autoscaler (HPA) to scale up and down as
+needed, which can be configured based on desired CPU, memory, etc. Autoscale
+is used like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; kubectl autoscale deploy hello-kubernetes<span class="se">\</span>
+&gt;&gt;&gt;                   --min<span class="o">=</span><span class="m">2</span> --max<span class="o">=</span><span class="m">5</span> --cpu-percent<span class="o">=</span><span class="m">10</span>
+<span class="o">[</span><span class="m">16</span>:10:46<span class="o">]</span>
+horizontalpodautoscaler.autoscaling/hello-kubernetes autoscaled
+</pre></div>
+</div>
+<p>The parameter <code class="docutils literal notranslate"><span class="pre">cpu-percent</span></code> triggers the scale. The number of replicas of the
+ReplicaSet is then changed. An HPA can be created as a standalone, but the
+<code class="docutils literal notranslate"><span class="pre">autoscale</span></code> command is highly recommended.</p>
+<p><strong>Rolling Updates</strong>: Are a way to roll out app changes in an automated and
+controlled fashion throughout pods. They work with pod templates such as
+deployments. They allow for roll back. Steps:</p>
+<ol class="arabic">
+<li><p>Add liveness and readiness probes to your deployments. This ensures
+they are marked as ready appropriately.</p></li>
+<li><p>Add a rolling update strategy to your YAML file.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-test</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http=server</span><span class="w"></span>
+<span class="w">  </span><span class="nt">minReadySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">  </span><span class="nt">progressDeadlineSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">600</span><span class="w"></span>
+<span class="w">  </span><span class="nt">strategy</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RollingUpdate</span><span class="w"></span>
+<span class="w">    </span><span class="nt">rollingUpdate</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">maxUnavailable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50%</span><span class="w"></span>
+<span class="w">      </span><span class="nt">maxSurge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
+</pre></div>
+</div>
+<p>It ensures that at least 50% of the pods are always available. Once the image
+is updated in our docker-image repository, we should run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; kubectl <span class="nb">set</span> image deployments/hello-kubernetes<span class="se">\</span>
+&gt;&gt;&gt;                   hello-kubernetes<span class="o">=</span>upkar/hello-kubernetes:2.0
+deployment.extensions/hello-kubernetes image updated
+&gt;&gt;&gt; kubectl rollout status deployment/hello-kubernetes
+deployment <span class="s2">&quot;hello-kubernetes&quot;</span> successfully rolled out
+</pre></div>
+</div>
+<p>This means that the deployment has been correctly updated. With the command
+<code class="docutils literal notranslate"><span class="pre">rollout</span> <span class="pre">undo</span></code> applied to the same deployment we would undo the update.</p>
+</li>
+</ol>
+<p><strong>ConfigMaps</strong> and <strong>Secrets</strong>: Are the way to pass variables to our
+applications. Environment variables should not be hardcoded. ConfigMaps and
+Secrets just differentiate in former contains general (public) environment
+variables while second contains sensitive variables (as API keys). They are
+used to provide configuration for deployments, are reusable across them and
+can be created:</p>
+<ol class="arabic simple">
+<li><p>Using string literals</p></li>
+<li><p>Using and existing “key”=”value” file</p></li>
+<li><p>Providing a ConfigMap YAML descriptor file. First and second method could
+help to create this YAML.</p></li>
+</ol>
+<p>They can be reference from a pod / deployment just as environment variables, or
+mounting as a volume. The easiest way to pass a ConfigMap is just using the
+<code class="docutils literal notranslate"><span class="pre">create</span> <span class="pre">configmap</span></code> as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; kubectl create configmap my-config<span class="se">\</span>
+&gt;&gt;&gt;                --from-literal<span class="o">=</span><span class="nv">MESSAGE</span><span class="o">=</span><span class="s2">&quot;hello from first ConfigMap&quot;</span>
+configmap/my-config created
+</pre></div>
+</div>
+<p>Then you add it to the <code class="docutils literal notranslate"><span class="pre">env</span></code> section of the YAML file of your image:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">...</span><span class="w"></span>
+<span class="nt">env</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MESSAGE</span><span class="w"></span>
+<span class="w">    </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">configMapKeyRef</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-config</span><span class="w"></span>
+<span class="w">            </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MESSAGE</span><span class="w"></span>
+</pre></div>
+</div>
+<p>There are 2 key commands to list and explore available ConfigMaps:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; kubectl get configmaps
+NAME         DATA    AGE
+my-config    <span class="m">1</span>       5m42s
+&gt;&gt;&gt; kubectl describe connfigmap my-config
+Name:        my-config
+Namespace:   default
+Labels:      &lt;none&gt;
+Annotations: &lt;none&gt;
+
+<span class="nv">Data</span>
+<span class="o">====</span>
+MESSAGE:
+----
+hello from first ConfigMap
+Events: &lt;none&gt;
+</pre></div>
+</div>
+<p>A better way to create a ConfigMap is using a file, where variables are defined
+as <code class="docutils literal notranslate"><span class="pre">&lt;key&gt;=&lt;value&gt;</span></code> pairs. Then you just pass the option
+<code class="docutils literal notranslate"><span class="pre">--from-file=&lt;your_file_name&gt;</span></code> to the <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">create</span> <span class="pre">configmap</span></code> command.</p>
+<p>Secrets work mostly as ConfigMaps but the values of the stored keys are not
+printed out by <code class="docutils literal notranslate"><span class="pre">kubectl</span></code> commands. So we can use the same methods described
+above (options <code class="docutils literal notranslate"><span class="pre">--from-literal</span></code> and <code class="docutils literal notranslate"><span class="pre">--from-file</span></code>) but just with
+<code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">create</span> <span class="pre">secret</span> <span class="pre">generic</span></code> command. There is also the option to mount
+secrets as a volume as follows:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello-kubernetes</span><span class="w"></span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">upkar/myapp:latest</span><span class="w"></span>
+<span class="w">          </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"></span>
+<span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api-creds</span><span class="w"></span>
+<span class="w">                </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/etc/api&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="l l-Scalar l-Scalar-Plain">readOnly=true</span><span class="w"></span>
+<span class="w">          </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api-creds</span><span class="w"></span>
+<span class="w">                </span><span class="nt">secret</span><span class="p">:</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api-creds</span><span class="w"></span>
+</pre></div>
+</div>
+<p>IBM provides a bunch of services (most related to NLP) that can be bind to our
+application. When a service is bind to a cluster deployment the credentials are
+available as a mounted Secret volume.</p>
+</section>
+<section id="kubernetes-ecosystem">
+<h2>Kubernetes Ecosystem<a class="headerlink" href="#kubernetes-ecosystem" title="Permalink to this heading">&sect;</a></h2>
+<p>As stated on its own description Kubernetes is surrounded by a <em>large and
+rapidly growing ecosystem</em>. Kubernetes is not an all-inclusive platform as a
+service, providing a more flexible model rather than a more opinionated one.
+The ecosystem provides many services that Kubernetes does not, we have already
+seen many (firsts provided by Docker, the containerization tool):</p>
+<ul class="simple">
+<li><p>Building a container images</p></li>
+<li><p>Storing images in a container registry</p></li>
+<li><p>Logging and monitoring</p></li>
+<li><p>Continous Integration and Delivery (CI/CD)</p></li>
+</ul>
+<p>The <a class="reference external" href="https://github.com/cncf/trailmap">Cloud Native Computing Foundation (CNCF)</a>
+hosts Kubernetes and provides resources to better understand the ecosystem.</p>
+<p><strong>Red Hat OpenShift</strong> is an hybrid cloud (can be run on premises or in public
+or private clouds), enterprise Kubernetes (is the underlying technology)
+application platform (provides additional tools for applications). It is built
+on Kubernetes, provides several services using it (Automated Ops, Over-the-air
+updates, Monitoring, Registry, Networking, Router, KubeVirt, OLM and HELM) and
+offers Platform, Application and Developer services to client deployments. A
+key concept is Origin Kubernetes Distribution (OKD) which is a <em>Kubernetes
+distribution embedded in OpenShift (analogy: Kubernetes (Linux) kernel and OKD
+(Arch) distribution</em>. It adds developer operations-centric tooling on top of
+Kubernetes and its Open Source. Red Hat packages OKD with software, resources
+and official support to create Red Hat OpenShift Container platform which is
+the commercial product (OpenShift is the product and Kubernetes is an open
+source project). OpenShift has its own CLI (<code class="docutils literal notranslate"><span class="pre">oc</span></code>) which add commands to
+<code class="docutils literal notranslate"><span class="pre">kubectl</span></code>. Additionally it has a Web UI and incorporates the Deployment
+Config objects based on old kubernetes object ReplicaSet Controller instead of
+ReplicaSet, they include the capability to add triggers associated to certain
+events. Open Shift is an opinionated platform, so it has prescribed ways of
+deploy and manage your applications, reducing Kubernetes flexibility to gain
+efficiency.</p>
+<p>Cloud native development calls for automation and CI/CD is one example.
+It automates build, test, merge, releasing to a repository and finally deploy.
+For OpenShift a <strong>Build</strong> is the process of transforming inputs into a
+resultant object (source code in a repo to a container image). A
+<strong>BuildConfig</strong> is the blueprint of a Build, defining the process for a build
+to follow. Some Builds are:</p>
+<ul class="simple">
+<li><p>Docker: Requires a repository with a Dockerfile and necessary artifacts,
+invokes the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span></code>  command and pushes the image to the internal
+registry.</p></li>
+<li><p>Source-to-Image (S2I): Is a tool for building reproducible container images
+that injects application source into a container image to produce a
+ready-to-run image, eliminating the necessity to write a Dockerfile and
+including predefined builder images.</p></li>
+<li><p>Custom build: Is the more advanced strategy. It requires to define a builder
+image that is used for the build process, so Custom builder images are
+Docker images containing the logic needed to transform inputs into the
+expected outputs.</p></li>
+</ul>
+<p>An example of BuildConfig would be:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BuildConfig</span><span class="w"></span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build.openshift.io/v1</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">output</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">to</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">imageStreamTag</span><span class="w"></span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;example:latest&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">strategy</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Source</span><span class="w"></span>
+<span class="w">        </span><span class="nt">sourceStrategy</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">from</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">imageStreamTag</span><span class="w"></span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;nodejs:10-5CL&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Git</span><span class="w"></span>
+<span class="w">        </span><span class="nt">git</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;https://github.com/organization/repo&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">contextDir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span><span class="w"></span>
+<span class="w">    </span><span class="nt">triggers</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Generic</span><span class="w"></span>
+<span class="w">        </span><span class="nt">generic</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">secretReference</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-generic-webhook-secret</span><span class="w"></span>
+<span class="w">        </span><span class="nt">-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GitHub</span><span class="w"></span>
+<span class="w">        </span><span class="nt">github</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">secretReference</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-github-webhook-secret</span><span class="w"></span>
+<span class="w">        </span><span class="nt">-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">imageChange</span><span class="w"></span>
+<span class="w">        </span><span class="nt">imageChange</span><span class="p">:</span><span class="w"></span>
+<span class="nt">runspolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Serial</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In it, we must highlight:</p>
+<ul class="simple">
+<li><p>Output: Defines what build will produce</p></li>
+<li><p>Strategy: Defines the strategy that build will use</p></li>
+<li><p>Source: Defines the inputs that build needs.</p></li>
+<li><p>Triggers: Defines the events that can cause build to run.</p></li>
+</ul>
+<p>Special attention is deserved by <strong>Triggers</strong>, that can be: webhooks (both a
+request sent to an OpenShift Container Platform API endpoint or GitHub generic
+webhooks), Image changes (new version available or similar) and Configuration
+changes (when a new BuildConfig is created).</p>
+<p>ImageStream is the way to represent images in OpenShift, which consist of an
+abstraction for referencing images, do not contain image data just pointers to
+images digests (ids) so deployments referencing certain ImageStream will not
+update image even if it a new one is pushed with the same tag, it is necessary
+make the ImageStream to point to the new image for deployments to update.
+Finally, ImageStreams also allow to store source images in internal or external
+registries or other ImageStreams.</p>
+<p><strong>Operators</strong> are used to automate tasks within a cluster. In addition to
+Builds and Pods there are also Custom Resource Definitions (CRDs) which make
+the Kubernetes API more modular and flexible. They can be installed in clusters
+so they are cluster-specific and once one is installed its objects can be
+accessed normally using <code class="docutils literal notranslate"><span class="pre">kubectl</span></code>. CRDs are useful to store and retrieve
+data on Kubernetes API, but <strong>they do not change the actual state of the
+cluster</strong>, for this purpose Custom Controllers are needed. Controllers are
+loops that monitor and reconcile the state of a cluster, so custom controllers
+do the same for custom resources. Combination of custom resources and
+controllers gives a true declarative API, and this combination is called <strong>the
+Operator Pattern</strong>.</p>
+<p>An Operator is then a way to package, deploy and manage a Kubernetes native
+application. Human operators have deep knowledge of the system they oversee
+knowing how to deploy services, how they services should behave and what to do
+if something goes wrong. Software operators capture and automate this logic
+in a way that can be deployed to a cluster.</p>
+<p>In practice, when creating an application a CRD is created for the application,
+having a controller for that CRD, operator logic determines how to reconcile
+actual and desired states. So if one instance of the CRD is created, operator
+know the additional resources and requirements that need to be created.</p>
+<p>In OpenShift exists the OperatorHub where operators are offered and can be
+installed with a simple click. Operators can be grouped in 3 families:
+Red Hat (which are packaged by Red Hat), Certified (which are operators from
+independent software vendors), Community (which are operators created by
+the open-source community but not officially supported by Red Hat) and finally
+Custom (which are defined by the user).</p>
+<p>Microservices is a cornerstone of Cloud native applications, being an
+architectural approach that requires each single application being composed of
+many loosely coupled and independently deployable services that communicate
+throw a well defined API. This architecture has many benefits, as updates and
+developments are easier, but also bring up new challenges as traffic encryption
+between services, canary deployments and A/B testing are required to expose
+different version and see what users prefers, communication also allows
+cascading failures if one of the services fall. <strong>Service mesh</strong> is a dedicated
+layer for making service-to-service communication fast, secure and reliable.
+Provides traffic management, security and observability, being the most
+commonly used Istio.</p>
+<p><strong>Istio</strong> is platform independent but it is commonly used on Kubernetes
+applications. It is composed by 4 modules:</p>
+<ol class="arabic simple">
+<li><p>Connect: Intelligently control flow of traffic and API calls between
+services, conduct a range of tests and upgrade gradually with red/black
+deployments. Enables canary deployments, A/B testing, etc.</p></li>
+<li><p>Secure: Automatically secure your services through managed authentication,
+authorization and encryption of communication between services.</p></li>
+<li><p>Control: Apply policies and ensure that they are enforced, and that
+resources are fairly distributed among containers.</p></li>
+<li><p>Observe: See what is happening with rich automatic tracing, monitoring and
+logging of all your services.</p></li>
+</ol>
+<p>One simple application of Istio can is the flow redirection:</p>
+<a class="reference internal image-reference" href="../../_images/service_mesh_capability.gif"><img alt="flow redirection" src="../../_images/service_mesh_capability.gif" style="width: 70%;" /></a>
+<p>As it is observed, the application flow if redirected gradually from one
+service to another, avoiding a <em>hard change or reset</em>. With Istio traffic
+between services can also be encrypted, and strict policies can be defined
+setting what services can communicate with one another. Also you can see
+metrics as number of requests between services and response times.</p>
+</section>
+</section>
+
+
+        </div>
+    </div>
+    <div class="footer">&copy;2021, Prophet Jeremy.
+       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
+       &nbsp;&amp;&nbsp;<a href="https://github.com/santibreo/pj-theme">PJnotes 1.0.0</a>
+      
+    </div>
+
+    
+  </body>
+</html>

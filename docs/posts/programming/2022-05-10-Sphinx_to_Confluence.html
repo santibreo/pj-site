@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Sphinx to Confluence &#8212; PJnotes 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/pj_touch.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Sphinx (another) introduction tutorial" href="2022-08-17-Sphinx_tutorial.html" />
+    <link rel="prev" title="Effective Programming in Scala" href="2022-05-03-Effective_programming_in_Scala.html" />
+   
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../_static/css/pj_print.css" media="print", type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  </head><body>
+    <header>
+        <div class="logo-box">
+            <svg height="70" width="26">
+            <path d="M 3 59
+                     l 0 -42
+                     A 10 10 1 0 1 23 17
+                     l 0 37
+                     A 7 7 1 0 1 9 54
+                     l 0 -30
+                     A 5 5 1 0 1 19 24
+                     l 0 20" stroke="black" stroke-width="2" fill="none"/>
+            </svg>
+            <a href="../../index.html">Prophet<br>Jeremy's<br>
+                <span style="font-family:PT Serif Caption; color:var(--special-words); font-size:20px">
+                    notes
+                </span>
+            </a>
+        </div>
+        <input id="nav-toggle" type="checkbox" class="nav-toggle">
+        <nav>
+            <ul>
+                <li><a href=../../cv.html>CV</a></li>
+                <li><a href=../../about.html>About</a></li>
+                <li><a href=../../recommendations.html>Recommendations</a></li>
+            </ul>
+        </nav>
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span class="nav-toggle-m1 nav-toggle-mvert"></span>
+            <span class="nav-toggle-m2 nav-toggle-mdiag"></span>
+            <span class="nav-toggle-m3 nav-toggle-mdiag"></span>
+            <span class="nav-toggle-m4 nav-toggle-mvert"></span>
+        </label>
+    </header>
+    <div class="container">
+        
+        <input id="sidebar-toggle" type="checkbox" class="sidebar-toggle">
+        <div class="sidebar">
+
+
+
+<h3>Navigate: 
+      <a href="2022-05-03-Effective_programming_in_Scala.html" title="previous document">&lArr;</a>
+      <a href="2022-08-17-Sphinx_tutorial.html" title="next document">&rArr;</a></h3>
+<div class="toc">
+    <ul>
+<li><a class="reference internal" href="#">Sphinx to Confluence</a><ul>
+<li><a class="reference internal" href="#how-am-i-doing-this">How am I doing this</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#writing">Writing</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+<script src="../../_static/js/toc.js"></script>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search:</h3>
+  <form class="search" action="../../search.html" method="get">
+      <input class="search-box" type="text" name="q" aria-labelledby="searchlabel" />
+      <input class="search-button" type="submit" value="&lt;" />
+  </form>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+<hr>
+<div class="social-icons">
+    
+    <a href="mailto:santibreo@gmail.com?subject=We want to hire you">
+        <i class="fa fa-envelope"></i>
+    </a>
+    
+    
+    <a href=https://github.com/santibreo><i class="fab fa-github"></i></a>
+    
+    <a href=https://twitter.com/santibreo><i class="fab fa-twitter"></i></a>
+    
+    <a href=https://www.linkedin.com/in/santibreo/><i class="fab fa-linkedin"></i></a>
+    
+</div>
+<hr>
+</div>
+        <label for="sidebar-toggle" class="sidebar-toggle-label">
+            <span></span>
+        </label>
+        
+        <div class="content">
+        
+  <section id="sphinx-to-confluence">
+<h1>Sphinx to Confluence<a class="headerlink" href="#sphinx-to-confluence" title="Permalink to this heading">&sect;</a></h1>
+<p>I am used to taking notes about almost everything I learned with Sphinx, now I can quickly share them with all my colleagues through Confluence. Main advantage about this method is that I can use it to share sensitive information without publishing static HTML website anywhere, which is public on both Github and Bitbucket (cloud versions).</p>
+<div class="admonition-tl-dr admonition">
+<p class="admonition-title">TL;DR</p>
+<p>Follow instructions described in <a class="reference external" href="https://sphinxcontrib-confluencebuilder.readthedocs.io/en/stable/tutorial/">this tutorial</a> using parameters defined in <a class="reference internal" href="#configuration">Configuration</a></p>
+</div>
+<section id="how-am-i-doing-this">
+<h2>How am I doing this<a class="headerlink" href="#how-am-i-doing-this" title="Permalink to this heading">&sect;</a></h2>
+<p>After a bit of research, I have encountered the combination of Git ⊕ Sphinx ⊕ ReestructuredText, the most suitable stack to take and publish notes.</p>
+<p>ReestructuredText is used as a markup language for my notes because it is more affluent than Markdown.</p>
+<p>Git tracks changes in <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files (as they are plain text).</p>
+<p>Sphinx automatically compiles notes and publishes <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files to Confluence (check out <a class="reference external" href="https://sphinxcontrib-confluencebuilder.readthedocs.io">this extension</a>. Sphinx has additional extensions to enrich documentation functionalities, such as rendering Latex equations or building mermaid diagrams.</p>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">&sect;</a></h2>
+<p>Set the following parameters up in the <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> file (words between angle braces, e.g. &lt;username&gt;, must be provided by you):</p>
+<ul class="simple">
+<li><p>The BASE URL of our company: <code class="docutils literal notranslate"><span class="pre">confluence_server_url</span> <span class="pre">=</span> <span class="pre">&quot;https://&lt;company</span> <span class="pre">domain&gt;/wiki&quot;</span></code> (if using Atlassian Cloud).</p></li>
+<li><p>Your username: <code class="docutils literal notranslate"><span class="pre">confluence_server_user</span> <span class="pre">=</span> <span class="pre">&quot;&lt;username&gt;&#64;quant.global&quot;</span></code>.</p></li>
+<li><p>Your password: You must create an API KEY as we log in with our Microsoft Account, then define it: <code class="docutils literal notranslate"><span class="pre">confluence_server_pass</span> <span class="pre">=</span> <span class="pre">os.getenv(&quot;&lt;confluence_token_name&gt;&quot;)</span></code>. To create it, you have to follow these steps:
+- From Confluence, click your profile image on the top-right corner and then Profile. Under your public name, click on Manage your account.
+- On the Atlassian Account panel, click on Security on the sidebar, and then the third item: Create and manage your API Tokens.
+- On blue at the top, click on Create API Token, give it an ”easy to know for what it is” name and save it to your environment variables (or your usual method to remember these things).</p></li>
+<li><p>Your space key: Click from your Personal Space Overview click on Space Settings on the sidebar and then Manage Space &gt; Space details and <code class="docutils literal notranslate"><span class="pre">confluence_space_key</span> <span class="pre">=</span> <span class="pre">&lt;space_key_with_'~'_upfront&gt;&quot;</span></code>.</p></li>
+<li><p>Create the root page for your documentation, all pages included in the master ”toctree” will inherit from this page. Id can be found on page URL: <code class="docutils literal notranslate"><span class="pre">confluence_publish_root</span> <span class="pre">=</span> <span class="pre">&lt;page_key&gt;</span></code>.</p></li>
+</ul>
+<p>Workflow</p>
+<p>I am using the following folders structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ConfluenceNotes              ← This is the git repository
+├───.gitignore               ← Ignore all files that are outside source directories
+├───topic-1                  ← Organize your topics, run sphinx-quickstart here
+│   ├───build                ← Contents are automatically generated by Sphinx when compiling
+│   │   ├───confluence
+│   │   │   ├───topic-1
+│   │   │   ├───math
+│   │   │   └───_biblio
+│   │   └───doctrees
+│   │       └───topic-1
+│   └───source               ← Home of notes: conf.py and ``.rst`` files are here
+│       ├───_biblio          ← References ``.rst`` files to be used multiple times
+│       ├───_downloads       ← pdf and other files to be linked
+│       ├───_images          ← Images used in notes
+│       ├───_static          ← Used to add functionality to html compilation
+│       ├───_templates       ← Used to add functionality to html compilation
+│       ├───conf.py          ← Sphinx configuration explained above
+│       └───*.rst            ← Every ``.rst`` file is a different page
+├───topic-2                  ← Next topic. Link to different page in conf.py
+│   └───...
+└───...
+</pre></div>
+</div>
+<p>It may sound much more convoluted than it is, as most of it is just managed by Sphinx and common to all Sphinx documentation projects.</p>
+<p>When I start writing about a new topic, I just run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir &lt;new_topic_folder&gt; <span class="o">&amp;&amp;</span> <span class="nb">cd</span> !$
+sphinx-quickstart
+</pre></div>
+</div>
+<p>Answer the prompted questions and configure the Sphinx documentation in the <code class="docutils literal notranslate"><span class="pre">source/conf.py</span></code> file, which is almost always the same but points to different topic pages.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is my current approach but it may change soon, there is a lot to be said about how sphinxcontrib-confluencebuilder manages root page and how it can help you have a clean and neat document hierarchy.</p>
+</div>
+</section>
+<section id="writing">
+<h2>Writing<a class="headerlink" href="#writing" title="Permalink to this heading">&sect;</a></h2>
+<p>When I feel like writing about any subtopic, I open the corresponding <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file if already been created or if it is entirely brand new, I create a new file or even a new topic folder. To <strong>use math directives</strong>, I am using the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/math.html#module-sphinx.ext.imgmath">Sphinx sphinx.ext.imgmath extension</a> (the easiest way to make it work in Windows is by installing MikTeX), which renders equations to images and then inserts them in corresponding places.</p>
+</section>
+</section>
+
+
+        </div>
+    </div>
+    <div class="footer">&copy;2021, Prophet Jeremy.
+       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
+       &nbsp;&amp;&nbsp;<a href="https://github.com/santibreo/pj-theme">PJnotes 1.0.0</a>
+      
+    </div>
+
+    
+  </body>
+</html>

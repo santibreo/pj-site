@@ -24,6 +24,7 @@ Git tracks changes in ``.rst`` files (as they are plain text).
 
 Sphinx automatically compiles notes and publishes ``.rst`` files to Confluence (check out `this extension <https://sphinxcontrib-confluencebuilder.readthedocs.io>`_. Sphinx has additional extensions to enrich documentation functionalities, such as rendering Latex equations or building mermaid diagrams.
 
+
 Configuration
 =============
 

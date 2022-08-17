@@ -1,33 +1,35 @@
-Sphinx Documentation
-====================
+:date: 17-05-2021
 
-I have been using Sphinx for a few months now so I have decided to make a
-guide on the most common commands that I use, to have them collected together.
-By the way, Sphinx is a pretty well documented tool, even though the
-documentation may seem complicated or disorienting, it is helpful if you give
-it the time it deserves. So this not pretend to be an alternative
-documentation, it is just a register of the most used features by me.
+Sphinx (another) introduction tutorial
+======================================
 
-TL;DR
------
+I have been using Sphinx for documenting my Python code for a few months now so
+I have decided to make a guide on the most common commands that I use, to have
+them collected together.  By the way, Sphinx is a pretty well documented tool,
+even though the documentation may seem complicated or disorienting, it is
+helpful if you give it the time it deserves. So this not pretend to be an
+alternative documentation, it is just a register of the most used features by
+me.
 
-* Start the documentation folder:
+.. admonition:: TL;DR
 
-  .. code-block:: bash
+   * Start the documentation folder:
 
-     sphinx-quickstart
+     .. code-block:: bash
 
-* Create the ``rst`` ``md`` files associated to your package (from sphinx folder):
+        sphinx-quickstart
 
-  .. code-block:: bash
+   * Create the ``rst`` ``md`` files associated to your package (from sphinx folder):
 
-     sphinx-apidoc -e -M -o source ..\python_package
+     .. code-block:: bash
 
-* Create html documentation:
+        sphinx-apidoc -e -M -o source ..\python_package
 
-  .. code-block:: bash
+   * Create html documentation:
 
-    make html
+     .. code-block:: bash
+
+        make html
 
 
 Sphinx is not ReStructuredText
@@ -42,7 +44,7 @@ Markdown, **ReStructuredText**, ... .
 Sphinx supports 2 markup languages: Markdown and ReStructuredText. Even if
 Markdown is much more common nowadays and you are probably more used to it, I
 suggest you to give ReStructuredText a try. It have as many features as you can
-imagine and less limitations than Markdown. Being familiar with both it won't
+imagine and less limitations than Markdown. Being familiar with both won't
 harm you.
 
 Here I left some cool guides on ReStructuredText syntax, which I usually keep
@@ -52,6 +54,7 @@ an eye on from time to time, but you know, Google will be there for you.
 * `Restructured Text (reST) and Sphinx CheatSheet <http://openalea.gforge.inria.fr/doc/openalea/doc/_build/html/source/sphinx/rest_syntax.html>`_
 * `Learn restructured text (RST) in Y minutes <https://learnxinyminutes.com/docs/rst/>`_
 * `A ReStructuredText Prime <https://docutils.sourceforge.io/docs/user/rst/quickstart.html>`_
+
 
 Project structure
 -----------------
@@ -105,13 +108,13 @@ with. It is pretty simple, and allow you to keep everything decently organized.
     - ``_static``: Static files used to give your personal touch when the
       documentation is compiled.
 
-      - ``css``: Personal html style sheets to be loaded after *Read the docs*
-        (or any other theme) ones.
+      - ``css``: Personal html style sheets to be loaded after those used by
+        *Read the docs* (or any other theme).
 
     - ``_templates``: Templates used by Sphinx to create the documentation.
 
 - ``tests``: Unitary tests to check that code changes doesn't affect the current
-  behaviour
+  behaviour.
 
 
 How to use it
@@ -132,6 +135,7 @@ Python with pip installed.
    cd sphinx_docs
    pip install sphinx
    sphinx-quickstart
+
 
 After this it will ask you several questions, the option at the end between
 brackets is the default answer. I am going to help you just with the first:
@@ -202,7 +206,7 @@ use.
        "display_version": True,
        "prev_next_buttons_location": "both",
        "style_external_links": False,
-       "style_nav_header_background": "#ec0000",
+       "style_nav_header_background": "#abcdef",
        # Toc options
        "collapse_navigation": False,
        "sticky_navigation": True,
@@ -215,7 +219,8 @@ use.
    ]
 
 With this configuration the documents will have a really beautiful aspect,
-which is about what we all care about.
+which is all we care about.
+
 
 Github-Pages
 ************
@@ -226,7 +231,7 @@ folder and the documentation will be almost immediately hosted in Github-Pages.
 You should notice that we have added the extension ``sphinx.ext.githubpages`` in
 the configuration file. This extension is not the most useful, it creates a
 file named ``.nojekyll`` when building HTML documentation. The file is empty, so
-add the extension and create the file manually is just as complicated (not
+adding the extension and creating the file manually are just as complicated (not
 much). Now we will edit the ``make.bat`` (yes, Windows version, I expect to have
 the bash version for Mac and Unix soon) file so **Sphinx will act the same
 but the contents when building html documentation, they will be copied to
@@ -287,19 +292,9 @@ don't want duplicated files. ``make.bat`` must be like:
    popd
 
 
-In `Github <https://github.com/santibreo>`_ you must do what is shown in the
-picture, to tell it where is the webpage to be hosted in Github-Pages. You
-will find it in the **_Settings_** of your repository.
-
-
-.. image:: ../_static/img/gh-pages.PNG
-   :width: 70%
-   :alt: Github-Pages
-
-
-
-In the image the URL, the branch and the folder that must be selected are
-highlighted, even if it was pretty straight.
+In `Github <https://github.com/santibreo>`_ you must publish the contents of
+the ``docs`` folder. You will find it in the **_Settings_** of your
+repository.
 
 
 Documenting
@@ -318,22 +313,24 @@ your python functions, classes and methods. Then ensure that you are located at
 First one creates the ``.rst`` files associated to each module in your package.
 The second converts them in html files with the given theme an options.
 
-We are not civil servants
--------------------------
+
+We are not bureaucrats
+----------------------
 
 We did not write the documentation to seem as boring as possible, nor with the
 intention that no one, not even our loved ones, would dare to look at it, **the
 contrary**. So you must dedicate time to think about what your are writing and
-what is the best way to make it understandable. I can't teach you how to make
-you more stylish and attractive at writing, that's up to you. But I can teach
+what is the best way to make it understandable. I can't teach you how become
+more stylish and attractive at writing, that's up to you. But I can teach
 you how to organize your documentation a bit better, and maybe later give you
 some style tips, they are not miracles, but could help you get rid of that
 mascot look from the Olympics in de 70s.
 
+
 Use separate pages
 ******************
 
-Sometimes, if you are working hard at your job, the documentation of your
+Sometimes, if you are working hard at job, the documentation of your
 classes may start to become too long. But you probably want to keep all your
 classes in the same python module because you think that is the way it makes
 sense to organize your code. You can tell Sphinx to use a different page for
@@ -406,13 +403,10 @@ documentation a bit better.
 .. warning::
    As you can see I have added many other extensions related to diagrams, I am
    making UML diagrams using `Graphviz <https://graphviz.org/>`_ and its ``dot``
-   extended language. I am still learning but I have found it lovely.  The
-   download is not available to bank employees (at least it wasn't when I was
-   writing these lines) but if you walk among the olive trees after sunset you
-   can find people willing to pass you the portable, or at least that's what
-   I've been told... .  That's why I am not going to talk deeper about it."
+   extended language. I am still learning but I have found it lovely. That's
+   why I am not going to talk deeper about it
 
-Some of the configurations that you are seeing is just useful for me, and how I
+Some of the configurations that you are seeing are just useful for me, and how I
 write code (I document classes out of ``__init__`` method, if you are here I
 suppose that you know the difference between a class and an instance). If you
 want to see your instance attributes documented, you need to include ``__init__``
@@ -506,44 +500,14 @@ access. You must locate this in the templates location defined in ``conf.py``
    {% endif %}
    {% endblock %}
 
+
 Finally I use to edit minimal theme options, and use my own favicon, to make it
 look more personal.
-
-
-.. code-block:: python
-
-   html_title = ""
-   html_short_title = "Python Package docs"
-   html_theme = "sphinx_rtd_theme"
-   html_logo = os.path.join("_static", "my_logo.png")
-   html_favicon = os.path.join("_static", "my_little_logo.ico")
-   html_theme_options = {
-       "canonical_url": "",
-       "logo_only": True,
-       "display_version": True,
-       "prev_next_buttons_location": "both",
-       "style_external_links": False,
-       "style_nav_header_background": "#ec0000",
-       # Toc options
-       "collapse_navigation": False,
-       "sticky_navigation": True,
-       "navigation_depth": 4,
-       "includehidden": False,
-       "titles_only": True,
-   }
-
-   # Add any paths that contain custom static files (such as style sheets) here,
-   # relative to this directory. They are copied after the builtin static files,
-   # so a file named "default.css" will overwrite the builtin "default.css".
-   html_static_path = ["_static"]
-   html_css_files = [
-       os.path.join("css", "mytouch.css"),
-   ]
 
 
 Afterword
 ---------
 
-I expect you to have enjoyed this travel!.  Probably I would change some of the
+I expect you to have enjoyed this travel!. Probably I would change some of the
 things said here in the near future, so don't forget to come back soon, and if
 you want and have time you can send me some feedback.

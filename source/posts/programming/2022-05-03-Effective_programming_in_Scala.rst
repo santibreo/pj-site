@@ -1203,7 +1203,8 @@ Usually, when combining validated values we want to first validate all values an
 * Chain validation rules with ``flatMap``
 * Validate a collection of values with ``validateEach``
 
-Read :ref:`Parsing a list of dates from a file` to see a showcase.
+
+Read :ref:`posts/programming/2022-05-03-Effective_programming_in_Scala:Parsing a list of dates from a file` to see a showcase.
 
 
 **********************

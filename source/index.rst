@@ -18,8 +18,9 @@ frequency:
    cv
    about
    recommendations
-   posts/learning/*
    posts/math/*
+   posts/programming/*
+   posts/finance/*
 
 
 .. posts:: posts/

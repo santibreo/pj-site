@@ -37,8 +37,11 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx.ext.githubpages",
     "sphinx.ext.autosectionlabel",
-    "pjnotes_theme"
+    "sphinx_pjnotes_theme"
 ]
+
+# Avoid section label collisions
+autosectionlabel_prefix_document = True
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = "paraiso-dark"
