@@ -11,8 +11,8 @@ I am a Math enthusiast whose heart was stolen by Linux. At first Maple and Matla
 Experience
 ==========
 
-Quantitative analyst and developer (2020 - now)
------------------------------------------------
+Quantitative analyst for QuantAI Lab (2021 - now)
+-------------------------------------------------
 
 * [Sphinx]: Documentation automation through Confluence API.
 * [Python ⊕ VBA]: ALM and IRRBB models validation and compliance.

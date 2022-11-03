@@ -37,7 +37,7 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx.ext.githubpages",
     "sphinx.ext.autosectionlabel",
-    "sphinx_pjnotes_theme"
+    "pjnotes_theme"
 ]
 
 # Avoid section label collisions
@@ -86,6 +86,7 @@ rst_prolog = """
 html_theme_path = [
     "../.."
 ]
+
 html_theme = 'pjnotes_theme'
 html_permalinks = True
 html_permalinks_icon = '&sect;'
