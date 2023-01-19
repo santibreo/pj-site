@@ -78,6 +78,7 @@ body {
 
 p, li {
     text-align: justify;
+    overflow-wrap: break-word;
 }
 
 /* HYPERLINKS */
@@ -187,6 +188,7 @@ blockquote {
 pre, .pre {
     font-family: 'Red Hat Mono', monospace;
     font-size: 0.9em;
+    word-wrap: break-word;
 }
 
 pre {
@@ -220,6 +222,7 @@ td.code {
     padding-inline: 10px;
     font-family: Helvetica;
     font-weight: 500;
+    margin-block: 1ex;
 }
 
 .admonition p {
@@ -465,10 +468,23 @@ li.cv-aptitude {
     width: calc(96% / 4);
     min-width: 140px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
 li.cv-aptitude p {
+    margin: 0;
+    width: 100%;
+    margin-inline-start: 1em;
+}
+
+li.cv-aptitude div.progress-bar {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+}
+
+li.cv-aptitude span.progress {
     margin: 0;
     border-bottom: 3px solid var(--progress-bar);
     width: 100%;
@@ -831,7 +847,7 @@ SIDEBAR APPEARANCE
 @media screen and (min-width: 870px) {
     .content {
         width: -webkit-fill-available;
-        overflow-x: hidden;
+        overflow: auto;
     }
 
     .nav-toggle-label {

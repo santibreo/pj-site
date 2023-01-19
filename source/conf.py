@@ -37,7 +37,7 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx.ext.githubpages",
     "sphinx.ext.autosectionlabel",
-    "pjnotes_theme"
+    "pj_theme"
 ]
 
 # Avoid section label collisions

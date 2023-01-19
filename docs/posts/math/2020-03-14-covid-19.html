@@ -1,19 +1,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>COVID-19, first thoughts &#8212; PJnotes 0.0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/pj_touch.css" />
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -122,12 +122,12 @@
         
         <div class="content">
         
-  <div class="section" id="covid-19-first-thoughts">
-<h1>COVID-19, first thoughts<a class="headerlink" href="#covid-19-first-thoughts" title="Permalink to this headline">&sect;</a></h1>
+  <section id="covid-19-first-thoughts">
+<h1>COVID-19, first thoughts<a class="headerlink" href="#covid-19-first-thoughts" title="Permalink to this heading">&sect;</a></h1>
 <p>A lot of material has being created since this disease spreads throw more than 120 countries becoming a global problem. Maybe you, like I am, are supposed to stay at home, trying to interact with as few people as possible.</p>
 <p>So because I am at home, and I have a lot of time, I have decided to make a brief post, analysing the situation from a mathematical point of view, to understand what we are responsible of, and how this is supposed to evolve.</p>
-<div class="section" id="how-diseases-spread">
-<h2>How diseases spread<a class="headerlink" href="#how-diseases-spread" title="Permalink to this headline">&sect;</a></h2>
+<section id="how-diseases-spread">
+<h2>How diseases spread<a class="headerlink" href="#how-diseases-spread" title="Permalink to this heading">&sect;</a></h2>
 <p>The mathematical model to understand how any disease will spread throw population is pretty simple, let’s say that today there are <span class="math notranslate nohighlight">\(N_d\)</span> persons infected and tomorrow we will have <span class="math notranslate nohighlight">\(N_{d+1}\)</span>, so:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
@@ -144,9 +144,9 @@ N(t) &amp;= N_0 \cdot e^{R0 \cdot t} \\
 where\ N_0\ are\ the\ cases\ at\ t &amp;= 0
 \end{aligned}\end{split}\]</div>
 <p>And there we have it, the <strong>exponential growth</strong>, and these are not good news.</p>
-</div>
-<div class="section" id="is-exponential-growth-a-fact">
-<h2>Is exponential growth a fact?<a class="headerlink" href="#is-exponential-growth-a-fact" title="Permalink to this headline">&sect;</a></h2>
+</section>
+<section id="is-exponential-growth-a-fact">
+<h2>Is exponential growth a fact?<a class="headerlink" href="#is-exponential-growth-a-fact" title="Permalink to this heading">&sect;</a></h2>
 <p>Of course it is, at least in the early stages. I have taken some data (corresponding to the publication day) and see how our model adjusts the Covid-19’s spread, but first let’s take a look at the top 5 countries (China, Italy, Iran, South Korea, and Spain) that have most people infected nowadays, and the worldwide records:</p>
 <a class="pic-invert reference internal image-reference" href="../../_images/complete.png"><img alt="Data complete" class="pic-invert" src="../../_images/complete.png" style="width: 100%;" /></a>
 <p>First we must say that clearly it was the 21 <span class="math notranslate nohighlight">\(^{st}\)</span> of February when the problem stopped being just a Chinese problem and became global. Of course that 20K jump on February 17 <span class="math notranslate nohighlight">\(^{th}\)</span> doesn’t sound legit, so I am going to remove China from the global data, and from the list, and compare the remaining countries from February 21 <span class="math notranslate nohighlight">\(^{st}\)</span>.</p>
@@ -172,8 +172,8 @@ where\ N_0\ are\ the\ cases\ at\ t &amp;= 0
 </li>
 </ol>
 <p>With 2 linear regressions we have 3 ways to approximate <span class="math notranslate nohighlight">\(R0\)</span>’s value. Let’s go.</p>
-<div class="section" id="adjusting-number-of-cases">
-<h3>Adjusting number of cases<a class="headerlink" href="#adjusting-number-of-cases" title="Permalink to this headline">&sect;</a></h3>
+<section id="adjusting-number-of-cases">
+<h3>Adjusting number of cases<a class="headerlink" href="#adjusting-number-of-cases" title="Permalink to this heading">&sect;</a></h3>
 <p>As I said I have made this 2 linear regressions getting these results:</p>
 <a class="pic-invert reference internal image-reference" href="../../_images/linearregs.png"><img alt="Linear Models" class="pic-invert" src="../../_images/linearregs.png" style="width: 100%;" /></a>
 <p>The plots are already telling us that these regressions are really good, and fit the data almost perfectly (total numbers of cases fitted a bit better), but we can check some statistics to measure how good they are:</p>
@@ -224,24 +224,21 @@ R0 &amp;= e^{0.20 - 1.49} = 0.2753 \\
 \end{aligned}\end{split}\]</div>
 <p>As we can see it has a 43% of uncertainty which is pretty high to use it, even more if we consider the values coming from the slopes, that have uncertainties around 10 times lower. Once that is said we have obtained:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(R0 = 0.1762 \pm 0.0051\)</span></p></td>
 </tr>
 </tbody>
 </table>
 <p>This number is too big, if it keeps at that value until the end of the month, in the best case scenario (using the lowest <span class="math notranslate nohighlight">\(R0\)</span> value within its uncertainty) we will be facing more than 800K cases (excluding China). To have an idea about what <strong>exponential growth</strong> means, it’s useful to notice that in the worst case scenario we will be facing more than the double of cases. A 5.6% reduction on <span class="math notranslate nohighlight">\(R0\)</span> value means a half reduction in total cases after 20 days.</p>
-</div>
-</div>
-<div class="section" id="r0-interpretation">
-<h2>R0 interpretation<a class="headerlink" href="#r0-interpretation" title="Permalink to this headline">&sect;</a></h2>
+</section>
+</section>
+<section id="r0-interpretation">
+<h2>R0 interpretation<a class="headerlink" href="#r0-interpretation" title="Permalink to this heading">&sect;</a></h2>
 <p>As I have said <span class="math notranslate nohighlight">\(R0\)</span> is the number of secondary cases infected by a primary case. Going back to our first equation (<span class="math notranslate nohighlight">\(N_{d+1} = N_d \cdot (1 + R0)\)</span>) we can now watch how <span class="math notranslate nohighlight">\(R0\)</span> has evolved:</p>
 <a class="pic-invert reference internal image-reference" href="../../_images/r0evol.png"><img alt="R0 evolution" class="pic-invert" src="../../_images/r0evol.png" style="width: 100%;" /></a>
 <p>Here we can see that it has high peeks, usually corresponding to the first cases and then it tends to establish around a value lower than one everywhere but South Korea, which should has made and excellent work, and has reduced this value to almost zero.</p>
-<div class="section" id="being-responsible">
-<h3>Being responsible<a class="headerlink" href="#being-responsible" title="Permalink to this headline">&sect;</a></h3>
+<section id="being-responsible">
+<h3>Being responsible<a class="headerlink" href="#being-responsible" title="Permalink to this heading">&sect;</a></h3>
 <p>That is its definition but we can redefine it using 2 new variables:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(E\)</span> stands for the number of persons that have physical contact with the infected person.</p></li>
@@ -249,9 +246,6 @@ R0 &amp;= e^{0.20 - 1.49} = 0.2753 \\
 </ul>
 <p>So, according to the model, the number of infected persons that we are going to have tomorrow is:</p>
 <table class="docutils align-center">
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(N_{tomorrow} = N_{today} \cdot (1 + E \cdot p)\)</span></p></td>
 </tr>
@@ -259,14 +253,14 @@ R0 &amp;= e^{0.20 - 1.49} = 0.2753 \\
 </table>
 <p>So our intention must be clear (being South Korea), <strong>reduce the parenthesis to zero</strong>. The first one is not exactly a one, there is people recovering from being infected, so our immune system and our health system (we love our medical staff) are cooperating to make it go down.</p>
 <p>But the number of persons that we physically interact with, and the probability of that interaction to result into an infection, each one of us is responsible to make them get lower (to wash your hands and don’t touch your face reduce probability of infection; <strong>to stay at home</strong> reduce the number of persons you physically interact with to almost zero). This is not about isolating yourself, you can see your friends and family throw any device. This is about staying away from people (for a few days).</p>
-</div>
-</div>
-<div class="section" id="model-limitations">
-<h2>Model limitations<a class="headerlink" href="#model-limitations" title="Permalink to this headline">&sect;</a></h2>
+</section>
+</section>
+<section id="model-limitations">
+<h2>Model limitations<a class="headerlink" href="#model-limitations" title="Permalink to this heading">&sect;</a></h2>
 <p>Of course there is a saturation point waiting ahead of any disease spread, as more people get infected lower is the number of people that can get infected. Probably our exponential is just the beginning of a sigmoid. And there should be a correction factor associated with the idea of people used to interact always with the same people, that we can call local factor. Both of these are good news. But it is early to study the infection growth and, as we have seen the exponential growth explains it pretty well (I have used just the last 20 days).</p>
-</div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">&sect;</a></h2>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">&sect;</a></h2>
 <ul class="simple">
 <li><p>This post is inspired in <a class="reference external" href="https://www.youtube.com/watch?v=Kas0tIxDvrg">this video</a>.</p></li>
 <li><p>All the data used to make this post comes <a class="reference external" href="https://ourworldindata.org/coronavirus#deaths-from-covid-19">from here</a>.</p></li>
@@ -277,14 +271,14 @@ R0 &amp;= e^{0.20 - 1.49} = 0.2753 \\
 </ul>
 </li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
         </div>
     </div>
     <div class="footer">&copy;2021, Prophet Jeremy.
-       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
        &nbsp;&amp;&nbsp;<a href="https://github.com/santibreo/pj-theme">PJnotes 1.0.0</a>
       
     </div>

@@ -1,19 +1,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Quants interview &#8212; PJnotes 0.0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/pj_touch.css" />
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -122,8 +122,8 @@
         
         <div class="content">
         
-  <div class="section" id="quants-interview">
-<h1>Quants interview<a class="headerlink" href="#quants-interview" title="Permalink to this headline">&sect;</a></h1>
+  <section id="quants-interview">
+<h1>Quants interview<a class="headerlink" href="#quants-interview" title="Permalink to this heading">&sect;</a></h1>
 <p>At least once in your life you have to be interviewed by a team of quants. You
 won’t probably love that experience but is something that everyone should face,
 to prove that you are now an adult.</p>
@@ -133,11 +133,11 @@ are so I had really low expectations, but people told me that they will make
 math questions more than financial ones. Knowing that, I have prepared tons of
 probability problems (as much as I can in 2 days), 2 of them I want to share
 with you.</p>
-<div class="section" id="math-problems">
-<h2>Math problems<a class="headerlink" href="#math-problems" title="Permalink to this headline">&sect;</a></h2>
+<section id="math-problems">
+<h2>Math problems<a class="headerlink" href="#math-problems" title="Permalink to this heading">&sect;</a></h2>
 <p>These are problems that I found looking in the Internet and I think that they are beautiful.</p>
-<div class="section" id="circle-points">
-<h3>Circle points<a class="headerlink" href="#circle-points" title="Permalink to this headline">&sect;</a></h3>
+<section id="circle-points">
+<h3>Circle points<a class="headerlink" href="#circle-points" title="Permalink to this heading">&sect;</a></h3>
 <p><strong>If you take 3 random points into a circle, What is the probability of them
 staying into the same semicircle?</strong></p>
 <p>Let’s take 2 random points into a circle, they will always be into the same
@@ -175,9 +175,9 @@ but gives a fast approximation):</p>
     <span class="n">simulate</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">8</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="paper-strip">
-<h3>Paper strip<a class="headerlink" href="#paper-strip" title="Permalink to this headline">&sect;</a></h3>
+</section>
+<section id="paper-strip">
+<h3>Paper strip<a class="headerlink" href="#paper-strip" title="Permalink to this heading">&sect;</a></h3>
 <p><strong>If you have a strip of paper, and you cut it twice, What is the probability
 of the resulting 3 strips to form a triangle?</strong></p>
 <div class="danger admonition">
@@ -228,9 +228,9 @@ will make <span class="math notranslate nohighlight">\(a\)</span> lower than 0.5
     <span class="n">simulate</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">8</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="right-way">
-<span id="id1"></span><h3>Right way<a class="headerlink" href="#right-way" title="Permalink to this headline">&sect;</a></h3>
+</section>
+<section id="right-way">
+<span id="id1"></span><h3>Right way<a class="headerlink" href="#right-way" title="Permalink to this heading">&sect;</a></h3>
 <p>I have made an unnecessary assumption, and that makes me reach a wrong
 solution. To make this well we have to think about 2 <strong>independent</strong> cuts
 (let’s call them <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>), and the solution will seem pretty obvious.
@@ -269,15 +269,15 @@ them we can define dependent integration limits:</p>
 </pre></div>
 </div>
 <p>If quants ask you something like this, they will be expecting you to answer correctly in around 3-5 minutes. This problems are just for training, but let you demonstrate that you have pretty basic notions about statistics.</p>
-</div>
-</div>
-<div class="section" id="financial-problems">
-<h2>Financial problems<a class="headerlink" href="#financial-problems" title="Permalink to this headline">&sect;</a></h2>
+</section>
+</section>
+<section id="financial-problems">
+<h2>Financial problems<a class="headerlink" href="#financial-problems" title="Permalink to this heading">&sect;</a></h2>
 <p>These are the problems that make them earn money, so you can’t avoid this. Of
 course there’s a lot to learn about this matter but if you understand the
 basics, you could have a ridiculously small hope.</p>
-<div class="section" id="black-scholes-equation">
-<h3>Black-Scholes equation<a class="headerlink" href="#black-scholes-equation" title="Permalink to this headline">&sect;</a></h3>
+<section id="black-scholes-equation">
+<h3>Black-Scholes equation<a class="headerlink" href="#black-scholes-equation" title="Permalink to this heading">&sect;</a></h3>
 <p>This is the most famous equation in derivatives evaluation, and everyone must know it if he wants to be part of the business. As I said I know almost nothing about derivatives so honestly, I can’t say (barely understand) why it is that important, but I can explain how to obtain it.</p>
 <p>Let’s suppose that you are one of the cool guys and you want to evaluate an
 option. If you don’t know what an option is you don’t need to, for me is just
@@ -347,9 +347,9 @@ r\left(-V + S\frac{\partial V}{\partial S} \right) dt = -\left(\frac{\partial V}
 \frac{\partial V}{\partial t} + \frac{S^2 \sigma^2}{2} \frac{\partial^2 V}{\partial S^2} + rS\frac{\partial V}{\partial S} - rV = 0
 \end{eqnarray}\end{split}\]</div>
 <p>There are many numerical methods to solve the equation and it has analytical solutions for some boundary conditions. But I won’t go further on this.</p>
-</div>
-<div class="section" id="the-interview">
-<h3>The interview<a class="headerlink" href="#the-interview" title="Permalink to this headline">&sect;</a></h3>
+</section>
+<section id="the-interview">
+<h3>The interview<a class="headerlink" href="#the-interview" title="Permalink to this heading">&sect;</a></h3>
 <p>So you have prepared this kind of problems and you feel comfortable with any medium-level math situation. You are willing to get so focused on the problems you forget you are in an interview. And you reach the quant’s space. Everyone has his lunch over the table and it seems like they spend a lot of time with their computers. No blackboards, no super-cool coffee machine, no knick-knacks to avoid your brain getting out of sugar. Not what I was expecting but let’s give it a try.</p>
 <p>2 guys sat around me in a table into a meeting room, and asked me about my background, if I know what a CAP is (I barely knew it), and they told me that we were in a Liborg transition (we are getting into an unknown place for me) so… <strong>If Liborg’s value follows a standard normal probability distribution, how would you evaluate a CAP?</strong>.</p>
 <p>OK. I wasn’t expecting that. I was wearing a wool sweater and I started sweating and felt my heart racing. All I had were just doubts. But what should I do.</p>
@@ -396,15 +396,15 @@ u = \frac{-(L-\mu)^2}{\sigma^2} &amp;\rightarrow&amp; (L-\mu)dL = \frac{-\sigma^
 \end{eqnarray}\]</div>
 <p>And that’s it. I got out of the interview thinking that it was a too hard question for just a Junior interview (without any experience in derivatives evaluation) but once I got home, I thought about it more closely and didn’t find it so difficult.</p>
 <p><em>I didn’t pass the interview</em> (sad life).</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
         </div>
     </div>
     <div class="footer">&copy;2021, Prophet Jeremy.
-       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
        &nbsp;&amp;&nbsp;<a href="https://github.com/santibreo/pj-theme">PJnotes 1.0.0</a>
       
     </div>
