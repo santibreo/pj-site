@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Mocking modules in Python &#8212; PJnotes 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=087266ef" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/pj_touch.css?v=f775ebe6" />
+    <script src="../../_static/documentation_options.js?v=5aa371e9"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Rent or buy, that is the question" href="../finance/2020-11-23-amortization.html" />
+    <link rel="prev" title="Sphinx to Confluence" href="2022-05-10-Sphinx_to_Confluence.html" />
+   
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../_static/css/pj_print.css" media="print", type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  </head><body>
+    <header>
+        <div class="logo-box">
+            <svg height="70" width="26">
+            <path d="M 3 59
+                     l 0 -42
+                     A 10 10 1 0 1 23 17
+                     l 0 37
+                     A 7 7 1 0 1 9 54
+                     l 0 -30
+                     A 5 5 1 0 1 19 24
+                     l 0 20" stroke="black" stroke-width="2" fill="none"/>
+            </svg>
+            <a href="../../index.html">Prophet<br>Jeremy's<br>
+                <span style="font-family:PT Serif Caption; color:var(--special-words); font-size:20px">
+                    notes
+                </span>
+            </a>
+        </div>
+        <input id="nav-toggle" type="checkbox" class="nav-toggle">
+        <nav>
+            <ul>
+                <li><a href=../../cv.html>CV</a></li>
+                <li><a href=../../about.html>About</a></li>
+                <li><a href=../../recommendations.html>Recommendations</a></li>
+            </ul>
+        </nav>
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span class="nav-toggle-m1 nav-toggle-mvert"></span>
+            <span class="nav-toggle-m2 nav-toggle-mdiag"></span>
+            <span class="nav-toggle-m3 nav-toggle-mdiag"></span>
+            <span class="nav-toggle-m4 nav-toggle-mvert"></span>
+        </label>
+    </header>
+    <div class="container">
+        
+        <input id="sidebar-toggle" type="checkbox" class="sidebar-toggle">
+        <div class="sidebar">
+
+
+
+<h3>Navigate: 
+      <a href="2022-05-10-Sphinx_to_Confluence.html" title="previous document">&lArr;</a>
+      <a href="../finance/2020-11-23-amortization.html" title="next document">&rArr;</a></h3>
+<div class="toc">
+    <ul>
+<li><a class="reference internal" href="#">Mocking modules in Python</a><ul>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+<script src="../../_static/js/toc.js"></script>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search:</h3>
+  <form class="search" action="../../search.html" method="get">
+      <input class="search-box" type="text" name="q" aria-labelledby="searchlabel" />
+      <input class="search-button" type="submit" value="&lt;" />
+  </form>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+<hr>
+<div class="social-icons">
+    
+    <a href="mailto:santibreo@gmail.com?subject=We want to hire you">
+        <i class="fa fa-envelope"></i>
+    </a>
+    
+    
+    <a href=https://github.com/santibreo><i class="fab fa-github"></i></a>
+    
+    <a href=https://twitter.com/santibreo><i class="fab fa-twitter"></i></a>
+    
+    <a href=https://www.linkedin.com/in/santibreo/><i class="fab fa-linkedin"></i></a>
+    
+</div>
+<hr>
+</div>
+        <label for="sidebar-toggle" class="sidebar-toggle-label">
+            <span></span>
+        </label>
+        
+        <div class="content">
+        
+  <section id="mocking-modules-in-python">
+<h1>Mocking modules in Python<a class="headerlink" href="#mocking-modules-in-python" title="Link to this heading">&sect;</a></h1>
+<p>When writing unit tests in Python there is an issue that pops up quite often: <em>You are testing something that depends on many of libraries that are not available on your development environment</em>. Normally you do not need that libraries functionality, you are going to mock objects imported from those libraries and assert that they are properly called.</p>
+<p>I have recently come up with a solution for this problem that ensures that everything imported from a user-defined list of libraries (independent from the import level) is a <code class="docutils literal notranslate"><span class="pre">MagicMock</span></code>, lets see how this can be achieved:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># Stdlib</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">importlib</span>
+<span class="linenos"> 4</span><span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">mock</span>
+<span class="linenos"> 5</span><span class="kn">from</span> <span class="nn">types</span> <span class="kn">import</span> <span class="n">ModuleType</span>
+<span class="linenos"> 6</span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Sequence</span>
+<span class="linenos"> 7</span><span class="kn">from</span> <span class="nn">importlib.machinery</span> <span class="kn">import</span> <span class="n">ModuleSpec</span>
+<span class="linenos"> 8</span><span class="kn">from</span> <span class="nn">importlib.abc</span> <span class="kn">import</span> <span class="n">MetaPathFinder</span><span class="p">,</span> <span class="n">Loader</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="k">class</span> <span class="nc">MockModule</span><span class="p">(</span><span class="n">mock</span><span class="o">.</span><span class="n">MagicMock</span><span class="p">):</span>
+<span class="linenos">12</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Mocks a module so anything that is imported from it is also a</span>
+<span class="linenos">13</span><span class="sd">    :class:`MockModule`</span>
+<span class="linenos">14</span><span class="sd">    `&quot;&quot;&quot;</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span>    <span class="k">class</span> <span class="nc">MockModuleLoader</span><span class="p">(</span><span class="n">Loader</span><span class="p">):</span>
+<span class="linenos">17</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;Dummy loader to be used when defining :class:`MockModule` modules&quot;&quot;&quot;</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span>        <span class="k">def</span> <span class="nf">create_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spec</span><span class="p">:</span> <span class="n">ModuleSpec</span><span class="p">):</span>
+<span class="linenos">20</span>            <span class="k">return</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span>        <span class="k">def</span> <span class="nf">exec_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">module</span><span class="p">:</span> <span class="n">ModuleType</span><span class="p">):</span>
+<span class="linenos">23</span>            <span class="k">pass</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<span class="linenos">27</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates an object that you can import things from.</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span><span class="sd">        Args:</span>
+<span class="linenos">30</span><span class="sd">            name: Name of the module.</span>
+<span class="linenos">31</span><span class="sd">            prefix: Fully-qualified name prefix, what is before ``name`` removing</span>
+<span class="linenos">32</span><span class="sd">                last dot (&#39;.&#39;)</span>
+<span class="linenos">33</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">34</span>
+<span class="linenos">35</span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">ModuleType</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+<span class="linenos">36</span>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="linenos">37</span>        <span class="bp">self</span><span class="o">.</span><span class="n">__all__</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">38</span>        <span class="bp">self</span><span class="o">.</span><span class="n">__path__</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">39</span>        <span class="bp">self</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_fully_qualified_name</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">prefix</span><span class="p">)</span>
+<span class="linenos">40</span>        <span class="bp">self</span><span class="o">.</span><span class="n">__loader__</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MockModuleLoader</span><span class="p">()</span>
+<span class="linenos">41</span>        <span class="bp">self</span><span class="o">.</span><span class="n">__spec__</span> <span class="o">=</span> <span class="n">ModuleSpec</span><span class="p">(</span>
+<span class="linenos">42</span>            <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+<span class="linenos">43</span>            <span class="n">loader</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__loader__</span><span class="p">,</span>
+<span class="linenos">44</span>            <span class="n">is_package</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">45</span>        <span class="p">)</span>
+<span class="linenos">46</span>        <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="vm">__name__</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
+<span class="linenos">47</span>        <span class="nb">globals</span><span class="p">()[</span><span class="bp">self</span><span class="o">.</span><span class="vm">__name__</span><span class="p">]</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="linenos">48</span>
+<span class="linenos">49</span>    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="linenos">50</span>        <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">):</span>
+<span class="linenos">51</span>            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MockModule has no attribute </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">52</span>        <span class="bp">self</span><span class="o">.</span><span class="n">__all__</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="linenos">53</span>        <span class="n">child_module</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_fully_qualified_name</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
+<span class="linenos">54</span>        <span class="k">if</span> <span class="n">child_module</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos">55</span>            <span class="n">child_module</span> <span class="o">=</span> <span class="n">MockModule</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">56</span>        <span class="k">return</span> <span class="n">child_module</span>
+<span class="linenos">57</span>
+<span class="linenos">58</span>    <span class="nd">@staticmethod</span>
+<span class="linenos">59</span>    <span class="k">def</span> <span class="nf">get_fully_qualified_name</span><span class="p">(</span><span class="n">mod_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="linenos">60</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;Built fully qualified either for top or lower level packages and</span>
+<span class="linenos">61</span><span class="sd">        modules&quot;&quot;&quot;</span>
+<span class="linenos">62</span>        <span class="n">suffix</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;.&#39;</span> <span class="k">if</span> <span class="n">prefix</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">mod_name</span>
+<span class="linenos">63</span>        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prefix</span><span class="si">}{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="linenos">64</span>
+<span class="linenos">65</span>
+<span class="linenos">66</span><span class="k">class</span> <span class="nc">MockModuleMetaPathFinder</span><span class="p">(</span><span class="n">MetaPathFinder</span><span class="p">):</span>
+<span class="linenos">67</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Finder for :class:`MockModule` so those can be imported&quot;&quot;&quot;</span>
+<span class="linenos">68</span>
+<span class="linenos">69</span>    <span class="k">def</span> <span class="nf">find_spec</span><span class="p">(</span>
+<span class="linenos">70</span>        <span class="bp">self</span><span class="p">,</span>
+<span class="linenos">71</span>        <span class="n">fullname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="linenos">72</span>        <span class="n">path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+<span class="linenos">73</span>        <span class="n">target</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ModuleType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos">74</span>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ModuleSpec</span><span class="p">]:</span>
+<span class="linenos">75</span>        <span class="o">*</span><span class="n">prefixes</span><span class="p">,</span> <span class="n">mod_name</span> <span class="o">=</span> <span class="n">fullname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="linenos">76</span>        <span class="n">mod_parent</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">prefixes</span><span class="p">))</span>
+<span class="linenos">77</span>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mod_parent</span><span class="p">,</span> <span class="n">MockModule</span><span class="p">):</span>
+<span class="linenos">78</span>            <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">mod_parent</span><span class="p">,</span> <span class="n">mod_name</span><span class="p">)</span><span class="o">.</span><span class="n">__spec__</span>
+<span class="linenos">79</span>        <span class="k">return</span> <span class="kc">None</span>
+<span class="linenos">80</span>
+<span class="linenos">81</span>
+<span class="linenos">82</span><span class="c1"># Set the hook so MOCKED_MODULES return mocks for everything requested</span>
+<span class="linenos">83</span><span class="n">sys</span><span class="o">.</span><span class="n">meta_path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">MockModuleMetaPathFinder</span><span class="p">())</span>
+<span class="linenos">84</span>
+<span class="linenos">85</span><span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="linenos">86</span><span class="c1"># Moodules that would provide MagicMocks instead of in-use Python objects</span>
+<span class="linenos">87</span><span class="n">MOCKED_PACKAGES</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos">88</span>    <span class="s1">&#39;unavailable_lib&#39;</span><span class="p">,</span>
+<span class="linenos">89</span><span class="p">]</span>
+<span class="linenos">90</span>
+<span class="linenos">91</span><span class="k">for</span> <span class="n">pkg_name</span> <span class="ow">in</span> <span class="n">MOCKED_PACKAGES</span><span class="p">:</span>
+<span class="linenos">92</span>    <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">pkg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">MockModule</span><span class="p">(</span><span class="n">pkg_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Lets understand what is going on. Until line 85 we are monkey-patching the Python import machinery so every time it looks for a module that comes from a <code class="docutils literal notranslate"><span class="pre">MockedModule</span></code> it is imported also as a <code class="docutils literal notranslate"><span class="pre">MockedModule</span></code>. When you import something in Python what Python does is:</p>
+<ol class="arabic">
+<li><p>Look for its fully-qualified name in <code class="docutils literal notranslate"><span class="pre">sys.modules</span></code> (it is here if it has been imported before). If it is found then <strong>import finishes here</strong>. If not found…</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">find_spec</span></code> method of every <code class="docutils literal notranslate"><span class="pre">MetaPathFinder</span></code> in <code class="docutils literal notranslate"><span class="pre">sys.meta_path</span></code> list is called. What you are doing is registering a new <code class="docutils literal notranslate"><span class="pre">MetaPathFinder</span></code> so, <strong>if a module or class is being imported from a</strong> <code class="docutils literal notranslate"><span class="pre">MockModule</span></code> <strong>then</strong> <code class="docutils literal notranslate"><span class="pre">find_spec</span></code> <strong>returns a new</strong> <code class="docutils literal notranslate"><span class="pre">MockModule</span></code> <strong>spec</strong>.</p>
+<p>If all <code class="docutils literal notranslate"><span class="pre">find_spec</span></code> methods return <code class="docutils literal notranslate"><span class="pre">None</span></code> then <code class="docutils literal notranslate"><span class="pre">ImportError</span></code> is raised, but if anyone has returned a <code class="docutils literal notranslate"><span class="pre">ModuleSpec</span></code> then it is loaded.</p>
+</li>
+<li><p>The way a module is loaded is described by <a class="reference external" href="https://docs.python.org/3/reference/import.html#loading">this code chunk</a>. What is happening in our code is we are abusing that the <code class="docutils literal notranslate"><span class="pre">MetaPathFinder</span></code> has already registered the module in <code class="docutils literal notranslate"><span class="pre">sys.modules</span></code> so we are just getting it.</p></li>
+</ol>
+<p>Rest of the code is just the <code class="docutils literal notranslate"><span class="pre">MockModule</span></code> and <code class="docutils literal notranslate"><span class="pre">MockModuleLoader</span></code> definition which is quite straight forward.</p>
+<p>After executing this code, every of the following statements is perfectly fine:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">unavailable_lib.external_apis</span> <span class="kn">import</span> <span class="n">ExternalApiClient</span>
+<span class="kn">from</span> <span class="nn">unavailable_lib.external_databases</span> <span class="kn">import</span> <span class="n">ExternalDatabaseHandler</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Everything imported this way is going to be a <code class="docutils literal notranslate"><span class="pre">MagicMock</span></code>, so you can check and assert calls as you would normally do.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are a <a class="reference external" href="https://docs.pytest.org/en/latest/">pytest</a> user as you should, adding this code to the <code class="docutils literal notranslate"><span class="pre">conftest.py</span></code> file might solve many problems</p>
+</div>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">&sect;</a></h2>
+<ul class="simple">
+<li><p>Python docs: <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#import">The import statement</a></p></li>
+<li><p>Python docs: <a class="reference external" href="https://docs.python.org/3/reference/import.html#importsystem">The import system</a></p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+    </div>
+    <div class="footer">&copy;2021, Prophet Jeremy.
+       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 7.2.2</a>
+       &nbsp;&amp;&nbsp;<a href="https://github.com/santibreo/pj-theme">PJnotes 1.0.0</a>
+      
+    </div>
+
+    
+  </body>
+</html>

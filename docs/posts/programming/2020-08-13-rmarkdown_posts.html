@@ -1,17 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Rmarkdown (nice) posts &#8212; PJnotes 0.0.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/pj_touch.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=087266ef" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/pj_touch.css?v=f775ebe6" />
+    <script src="../../_static/documentation_options.js?v=5aa371e9"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -114,7 +113,7 @@
         <div class="content">
         
   <section id="rmarkdown-nice-posts">
-<h1>Rmarkdown (nice) posts<a class="headerlink" href="#rmarkdown-nice-posts" title="Permalink to this heading">&sect;</a></h1>
+<h1>Rmarkdown (nice) posts<a class="headerlink" href="#rmarkdown-nice-posts" title="Link to this heading">&sect;</a></h1>
 <p>In this post I am going to explain how I have prepared my Rmarkdown posts to
 look exactly as the standard Markdown posts. It is not as straightforward as
 you could suppose because Rmarkdown is becoming a framework fast, you need to
@@ -123,7 +122,7 @@ look the documentation for <a class="reference external" href="https://bookdown.
 <a class="reference external" href="https://www.bookdown.org/">bookdown</a>, and then find the logic that is hidden
 behind.</p>
 <section id="same-toc">
-<h2>Same TOC<a class="headerlink" href="#same-toc" title="Permalink to this heading">&sect;</a></h2>
+<h2>Same TOC<a class="headerlink" href="#same-toc" title="Link to this heading">&sect;</a></h2>
 <p>I love my nice-looking Table Of Contents which I have found in the Internet.
 I had to make minimal changes in the javascript (I know no javascript) to make
 that worm behave exactly as I want. Of course I have read the way of <a class="reference external" href="https://bookdown.org/yihui/blogdown/templates.html#how-to">dealing
@@ -166,7 +165,7 @@ worm is underneath so that’s all, it works perfectly.</p>
 </ol>
 </section>
 <section id="nice-alerts">
-<h2>Nice alerts<a class="headerlink" href="#nice-alerts" title="Permalink to this heading">&sect;</a></h2>
+<h2>Nice alerts<a class="headerlink" href="#nice-alerts" title="Link to this heading">&sect;</a></h2>
 <p>One of the things that I missed the most in the standard markdown and makes
 me document my code (when using <a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a>)
 with ReStructuredText is the nice alerts, notes and errors that you can put all
@@ -178,38 +177,38 @@ am writting about everything I learn. So the solution is pure Rmarkdown.</p>
 input as html, inside the <cite>divs</cite> with the corresponding <cite>alert</cite> class. As
 R has already a <cite>message</cite>, <cite>warning</cite>, and <cite>stop</cite> function, I will just adapt
 them for my purpose. Here is the code that I have used:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span> <span class="c1"># Nice warnings, errors and messages</span>
-<span class="linenos"> 2</span> <span class="n">knitr</span><span class="o">::</span><span class="n">knit_hooks</span><span class="o">$</span><span class="nf">set</span><span class="p">(</span>
-<span class="linenos"> 3</span>     <span class="c1"># To watch error use error=T and stop function</span>
-<span class="linenos"> 4</span>     <span class="n">error</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="p">{</span>
-<span class="linenos"> 5</span>         <span class="nf">paste</span><span class="p">(</span><span class="s">&#39;\n\n&lt;div class=&quot;alert alert-danger&quot; style=&gt;&#39;</span><span class="p">,</span>
-<span class="linenos"> 6</span>               <span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;##&#39;</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="p">,</span>
-<span class="linenos"> 7</span>                 <span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;^##\ Error in eval\\(expr, envir, enclos\\):&#39;</span><span class="p">,</span>
-<span class="linenos"> 8</span>                      <span class="s">&#39;&lt;i class=&quot;fas fa-skull&quot;&gt;&lt;/i&gt; **ERROR**: &#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)),</span>
-<span class="linenos"> 9</span>               <span class="s">&#39;&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;\n&#39;</span><span class="p">)</span>
-<span class="linenos">10</span>     <span class="p">},</span>
-<span class="linenos">11</span>     <span class="c1"># To watch warning use warning function</span>
-<span class="linenos">12</span>     <span class="n">warning</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="p">{</span>
-<span class="linenos">13</span>         <span class="nf">paste</span><span class="p">(</span><span class="s">&#39;\n\n&lt;div class=&quot;alert alert-warning&quot;&gt;&#39;</span><span class="p">,</span>
-<span class="linenos">14</span>               <span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;##&#39;</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="p">,</span>
-<span class="linenos">15</span>                    <span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;^##\ Warning:&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;i class=&quot;fa fa-exclamation-triangle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; **WARNING**: &#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)),</span>
-<span class="linenos">16</span>               <span class="s">&#39;&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;\n&#39;</span><span class="p">)</span>
-<span class="linenos">17</span>     <span class="p">},</span>
-<span class="linenos">18</span>     <span class="c1"># To watch message use message function</span>
-<span class="linenos">19</span>     <span class="n">message</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="p">{</span>
-<span class="linenos">20</span>         <span class="nf">paste</span><span class="p">(</span><span class="s">&#39;\n\n&lt;div class=&quot;alert alert-info&quot;&gt;&#39;</span><span class="p">,</span>
-<span class="linenos">21</span>               <span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;##&#39;</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="p">,</span>
-<span class="linenos">22</span>                    <span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;^##\ &#39;</span><span class="p">,</span> <span class="s">&#39;&lt;i class=&quot;fas fa-comment-dots&quot;&gt;&lt;/i&gt; **INFO**: &#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)),</span>
-<span class="linenos">23</span>               <span class="s">&#39;&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;\n&#39;</span><span class="p">)</span>
-<span class="linenos">24</span>     <span class="p">},</span>
-<span class="linenos">25</span>     <span class="n">class</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">before</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">envir</span><span class="p">)</span> <span class="p">{</span>
-<span class="linenos">26</span>         <span class="nf">if</span><span class="p">(</span><span class="n">before</span><span class="p">){</span>
-<span class="linenos">27</span>             <span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;&lt;div class = &#39;%s&#39;&gt;&quot;</span><span class="p">,</span> <span class="n">options</span><span class="o">$</span><span class="n">class</span><span class="p">)</span>
-<span class="linenos">28</span>         <span class="p">}</span><span class="n">else</span><span class="p">{</span>
-<span class="linenos">29</span>             <span class="s">&quot;&lt;/div&gt;&quot;</span>
-<span class="linenos">30</span>         <span class="p">}</span>
-<span class="linenos">31</span>     <span class="p">}</span>
-<span class="linenos">32</span> <span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="c1"># Nice warnings, errors and messages</span>
+<span class="linenos"> 2</span><span class="w"> </span><span class="n">knitr</span><span class="o">::</span><span class="n">knit_hooks</span><span class="o">$</span><span class="nf">set</span><span class="p">(</span>
+<span class="linenos"> 3</span><span class="w">     </span><span class="c1"># To watch error use error=T and stop function</span>
+<span class="linenos"> 4</span><span class="w">     </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 5</span><span class="w">         </span><span class="nf">paste</span><span class="p">(</span><span class="s">&#39;\n\n&lt;div class=&quot;alert alert-danger&quot; style=&gt;&#39;</span><span class="p">,</span>
+<span class="linenos"> 6</span><span class="w">               </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;##&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39; &#39;</span><span class="p">,</span>
+<span class="linenos"> 7</span><span class="w">                 </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;^##\ Error in eval\\(expr, envir, enclos\\):&#39;</span><span class="p">,</span>
+<span class="linenos"> 8</span><span class="w">                      </span><span class="s">&#39;&lt;i class=&quot;fas fa-skull&quot;&gt;&lt;/i&gt; **ERROR**: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)),</span>
+<span class="linenos"> 9</span><span class="w">               </span><span class="s">&#39;&lt;/div&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;\n&#39;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="w">     </span><span class="p">},</span>
+<span class="linenos">11</span><span class="w">     </span><span class="c1"># To watch warning use warning function</span>
+<span class="linenos">12</span><span class="w">     </span><span class="n">warning</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">13</span><span class="w">         </span><span class="nf">paste</span><span class="p">(</span><span class="s">&#39;\n\n&lt;div class=&quot;alert alert-warning&quot;&gt;&#39;</span><span class="p">,</span>
+<span class="linenos">14</span><span class="w">               </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;##&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39; &#39;</span><span class="p">,</span>
+<span class="linenos">15</span><span class="w">                    </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;^##\ Warning:&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;&lt;i class=&quot;fa fa-exclamation-triangle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; **WARNING**: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)),</span>
+<span class="linenos">16</span><span class="w">               </span><span class="s">&#39;&lt;/div&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;\n&#39;</span><span class="p">)</span>
+<span class="linenos">17</span><span class="w">     </span><span class="p">},</span>
+<span class="linenos">18</span><span class="w">     </span><span class="c1"># To watch message use message function</span>
+<span class="linenos">19</span><span class="w">     </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">20</span><span class="w">         </span><span class="nf">paste</span><span class="p">(</span><span class="s">&#39;\n\n&lt;div class=&quot;alert alert-info&quot;&gt;&#39;</span><span class="p">,</span>
+<span class="linenos">21</span><span class="w">               </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;##&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39; &#39;</span><span class="p">,</span>
+<span class="linenos">22</span><span class="w">                    </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;^##\ &#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;&lt;i class=&quot;fas fa-comment-dots&quot;&gt;&lt;/i&gt; **INFO**: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)),</span>
+<span class="linenos">23</span><span class="w">               </span><span class="s">&#39;&lt;/div&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;\n&#39;</span><span class="p">)</span>
+<span class="linenos">24</span><span class="w">     </span><span class="p">},</span>
+<span class="linenos">25</span><span class="w">     </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">before</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p">,</span><span class="w"> </span><span class="n">envir</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">26</span><span class="w">         </span><span class="nf">if</span><span class="p">(</span><span class="n">before</span><span class="p">){</span>
+<span class="linenos">27</span><span class="w">             </span><span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;&lt;div class = &#39;%s&#39;&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="o">$</span><span class="n">class</span><span class="p">)</span>
+<span class="linenos">28</span><span class="w">         </span><span class="p">}</span><span class="n">else</span><span class="p">{</span>
+<span class="linenos">29</span><span class="w">             </span><span class="s">&quot;&lt;/div&gt;&quot;</span>
+<span class="linenos">30</span><span class="w">         </span><span class="p">}</span>
+<span class="linenos">31</span><span class="w">     </span><span class="p">}</span>
+<span class="linenos">32</span><span class="w"> </span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Of course, I am using the <a class="reference external" href="https://fontawesome.com/icons?d=gallery">font-awesome icons</a>
@@ -223,7 +222,7 @@ like:</p>
 </div>
 </section>
 <section id="pictures">
-<h2>Pictures<a class="headerlink" href="#pictures" title="Permalink to this heading">&sect;</a></h2>
+<h2>Pictures<a class="headerlink" href="#pictures" title="Link to this heading">&sect;</a></h2>
 <p>The last function <cite>class</cite> in the code chunk is there because I use to add
 pictures using R code, and when I do it, I want to be able to choose the html
 <cite>div</cite> inside which they will be placed. So using the following code chunk:</p>
@@ -232,12 +231,12 @@ pictures using R code, and when I do it, I want to be able to choose the html
 </div>
 <p>With parameters <cite>out.width = “70%”, class = “center-pic”</cite>, and having the
 following class defined at my css:</p>
-<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">center-pic</span><span class="w"> </span><span class="nt">img</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">block</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">margin-left</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">margin-right</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">center-pic</span><span class="w"> </span><span class="nt">img</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">block</span><span class="p">;</span>
+<span class="w">    </span><span class="k">margin-left</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="w">    </span><span class="k">margin-right</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="w">    </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="kt">rem</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>I can have nice looking and centered standalone images. Now I can set the
@@ -251,7 +250,7 @@ with all this technologies, it was a bit challenging.</p>
         </div>
     </div>
     <div class="footer">&copy;2021, Prophet Jeremy.
-       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
+       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 7.2.2</a>
        &nbsp;&amp;&nbsp;<a href="https://github.com/santibreo/pj-theme">PJnotes 1.0.0</a>
       
     </div>

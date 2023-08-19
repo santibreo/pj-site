@@ -1,17 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>IBM Containers and Kubernetes &#8212; PJnotes 0.0.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/pj_touch.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=087266ef" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/pj_touch.css?v=f775ebe6" />
+    <script src="../../_static/documentation_options.js?v=5aa371e9"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -126,9 +125,9 @@
         <div class="content">
         
   <section id="ibm-containers-and-kubernetes">
-<h1>IBM Containers and Kubernetes<a class="headerlink" href="#ibm-containers-and-kubernetes" title="Permalink to this heading">&sect;</a></h1>
+<h1>IBM Containers and Kubernetes<a class="headerlink" href="#ibm-containers-and-kubernetes" title="Link to this heading">&sect;</a></h1>
 <section id="containers">
-<h2>Containers<a class="headerlink" href="#containers" title="Permalink to this heading">&sect;</a></h2>
+<h2>Containers<a class="headerlink" href="#containers" title="Link to this heading">&sect;</a></h2>
 <p>A container is an executable unit of software, in which the application code is
 packaged along with its libraries and dependencies in common ways, so it can be
 run anywhere (on-premises or in the cloud). Containers take the form of an OS
@@ -142,20 +141,20 @@ ip quickly and scale horizontally. They are also platform independent and allow
 to scale each component of an application individually as for microservices.</p>
 </section>
 <section id="docker">
-<h2>Docker<a class="headerlink" href="#docker" title="Permalink to this heading">&sect;</a></h2>
+<h2>Docker<a class="headerlink" href="#docker" title="Link to this heading">&sect;</a></h2>
 <p>It has become the standard on containerization, is a software platform for
 building and running containers launched in 2013. It provides a straightforward
 way to build and run containers. Docker is commonly used throw Docker CLI,
 which provides commands as:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>build     ← Creates container images <span class="o">(</span>requires Dockerfile<span class="o">)</span>
-tag       ← Copy an image and give it a new name. Tags are pointers to images
-images    ← List all iomages, their repositories and tags, and their size
-run       ← Runs a container locally <span class="o">(</span>usually <span class="k">for</span> testing purposes<span class="o">)</span>
-push/pull ← Stores images or retrieves them from remotes locations
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>build<span class="w">     </span>←<span class="w"> </span>Creates<span class="w"> </span>container<span class="w"> </span>images<span class="w"> </span><span class="o">(</span>requires<span class="w"> </span>Dockerfile<span class="o">)</span>
+tag<span class="w">       </span>←<span class="w"> </span>Copy<span class="w"> </span>an<span class="w"> </span>image<span class="w"> </span>and<span class="w"> </span>give<span class="w"> </span>it<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>name.<span class="w"> </span>Tags<span class="w"> </span>are<span class="w"> </span>pointers<span class="w"> </span>to<span class="w"> </span>images
+images<span class="w">    </span>←<span class="w"> </span>List<span class="w"> </span>all<span class="w"> </span>iomages,<span class="w"> </span>their<span class="w"> </span>repositories<span class="w"> </span>and<span class="w"> </span>tags,<span class="w"> </span>and<span class="w"> </span>their<span class="w"> </span>size
+run<span class="w">       </span>←<span class="w"> </span>Runs<span class="w"> </span>a<span class="w"> </span>container<span class="w"> </span>locally<span class="w"> </span><span class="o">(</span>usually<span class="w"> </span><span class="k">for</span><span class="w"> </span>testing<span class="w"> </span>purposes<span class="o">)</span>
+push/pull<span class="w"> </span>←<span class="w"> </span>Stores<span class="w"> </span>images<span class="w"> </span>or<span class="w"> </span>retrieves<span class="w"> </span>them<span class="w"> </span>from<span class="w"> </span>remotes<span class="w"> </span>locations
 </pre></div>
 </div>
 <section id="images-dockerfile">
-<h3>Images (Dockerfile)<a class="headerlink" href="#images-dockerfile" title="Permalink to this heading">&sect;</a></h3>
+<h3>Images (Dockerfile)<a class="headerlink" href="#images-dockerfile" title="Link to this heading">&sect;</a></h3>
 <p>They outline all the steps necessary to build an image. A container is
 different from its image. Images are immutable, if you change it, it is a new
 image. On the other hand, a container is an instance of an image.</p>
@@ -175,9 +174,9 @@ defined.</p></li>
 </ul>
 <p>Example</p>
 <div class="highlight-Dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:18.04</span>
-<span class="k">COPY</span><span class="w"> </span>. /app
-<span class="k">RUN</span><span class="w"> </span>make /app
-<span class="k">CMD</span><span class="w"> </span>python /app/app.py
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>/app
+<span class="k">RUN</span><span class="w"> </span>make<span class="w"> </span>/app
+<span class="k">CMD</span><span class="w"> </span>python<span class="w"> </span>/app/app.py
 </pre></div>
 </div>
 <p>Container images can be stored in your local machine, but there is a common
@@ -192,15 +191,15 @@ repository, the usual path is: <code class="docutils literal notranslate"><span 
 in our machine.</p>
 </section>
 <section id="running-containers">
-<h3>Running Containers<a class="headerlink" href="#running-containers" title="Permalink to this heading">&sect;</a></h3>
+<h3>Running Containers<a class="headerlink" href="#running-containers" title="Link to this heading">&sect;</a></h3>
 <p>Let’s suppose we have the following Dockerfile:</p>
 <div class="highlight-Dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">node:9.4.0-alpine</span>
-<span class="k">COPY</span><span class="w"> </span>app.js .
-<span class="k">COPY</span><span class="w"> </span>package.json .
-<span class="k">RUN</span><span class="w"> </span>npm install <span class="o">&amp;&amp;</span><span class="se">\</span>
-    apk update <span class="o">&amp;&amp;</span><span class="se">\</span>
-    apk upgrade
-<span class="k">CMD</span><span class="w"> </span>node app.js
+<span class="k">COPY</span><span class="w"> </span>app.js<span class="w"> </span>.
+<span class="k">COPY</span><span class="w"> </span>package.json<span class="w"> </span>.
+<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span><span class="o">&amp;&amp;</span><span class="se">\</span>
+<span class="w">    </span>apk<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="se">\</span>
+<span class="w">    </span>apk<span class="w"> </span>upgrade
+<span class="k">CMD</span><span class="w"> </span>node<span class="w"> </span>app.js
 </pre></div>
 </div>
 <p>The command to create an image is: <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span> <span class="pre">-t</span> <span class="pre">my-app:v1</span> <span class="pre">.</span></code>. The
@@ -212,7 +211,7 @@ push our image with: <code class="docutils literal notranslate"><span class="pre
 </section>
 </section>
 <section id="container-orchestrations">
-<h2>Container Orchestrations<a class="headerlink" href="#container-orchestrations" title="Permalink to this heading">&sect;</a></h2>
+<h2>Container Orchestrations<a class="headerlink" href="#container-orchestrations" title="Link to this heading">&sect;</a></h2>
 <p>Over time, new applications are written and deploy, and applications take new
 components that run independently, to avoid this becoming an overwhelming
 containers swarm, container orchestrations are used.</p>
@@ -234,7 +233,7 @@ deploy or build applications, it does not prescribe logging, monitoring or
 alerting solutions and does not provide built-in middleware, databases or other
 services.</p>
 <section id="architecture">
-<h3>Architecture<a class="headerlink" href="#architecture" title="Permalink to this heading">&sect;</a></h3>
+<h3>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">&sect;</a></h3>
 <p>A deployment in Kubernetes is called a <strong>cluster</strong>. The control plane makes
 decisions about the cluster and response to events. An example would be
 scheduling workloads or creating new resources.</p>
@@ -279,45 +278,45 @@ identify and group a set of objects, used by Kubernetes controllers to monitor
 resources.</p>
 </section>
 <section id="basic-objects">
-<h3>Basic Objects<a class="headerlink" href="#basic-objects" title="Permalink to this heading">&sect;</a></h3>
+<h3>Basic Objects<a class="headerlink" href="#basic-objects" title="Link to this heading">&sect;</a></h3>
 <p>Pod: Simplest unit. Represents processes runnings in a cluster. Encapsulates a
 container or multiple. Replicating them serves to scale horizontally:</p>
-<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>apiVersion: v1
-kind: Pod
+<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>apiVersion:<span class="w"> </span>v1
+kind:<span class="w"> </span>Pod
 metadata:
-    name: nginx
+<span class="w">    </span>name:<span class="w"> </span>nginx
 spec:
-    containers:
-    - name: nginx
-      image: nginx:1.7.9
-      ports:
-      - containerPort: <span class="m">80</span>
+<span class="w">    </span>containers:
+<span class="w">    </span>-<span class="w"> </span>name:<span class="w"> </span>nginx
+<span class="w">      </span>image:<span class="w"> </span>nginx:1.7.9
+<span class="w">      </span>ports:
+<span class="w">      </span>-<span class="w"> </span>containerPort:<span class="w"> </span><span class="m">80</span>
 </pre></div>
 </div>
 <p>ReplicaSet: Group of identical pods that are running. Definition now contains
 the number of replicas and the template used to create each replica. <strong>It is
 not recommended to create ReplicaSets directly</strong>.</p>
-<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>apiVersion: apps/v1
-kind: ReplicaSet
+<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>apiVersion:<span class="w"> </span>apps/v1
+kind:<span class="w"> </span>ReplicaSet
 metadata:
-    name: nginx-replicaset
-    labels:
-        app: nginx
+<span class="w">    </span>name:<span class="w"> </span>nginx-replicaset
+<span class="w">    </span>labels:
+<span class="w">        </span>app:<span class="w"> </span>nginx
 spec:
-    replicas: <span class="m">3</span>
-    selector:
-        matchLabels:
-            app: nginx
-    template:
-        metadata:
-            labels:
-                app: nginx
-        spec:
-            containers:
-                - name: nginx
-                  image: nginx:1.7.9
-                  ports:
-                  - containerPort: <span class="m">80</span>
+<span class="w">    </span>replicas:<span class="w"> </span><span class="m">3</span>
+<span class="w">    </span>selector:
+<span class="w">        </span>matchLabels:
+<span class="w">            </span>app:<span class="w"> </span>nginx
+<span class="w">    </span>template:
+<span class="w">        </span>metadata:
+<span class="w">            </span>labels:
+<span class="w">                </span>app:<span class="w"> </span>nginx
+<span class="w">        </span>spec:
+<span class="w">            </span>containers:
+<span class="w">                </span>-<span class="w"> </span>name:<span class="w"> </span>nginx
+<span class="w">                  </span>image:<span class="w"> </span>nginx:1.7.9
+<span class="w">                  </span>ports:
+<span class="w">                  </span>-<span class="w"> </span>containerPort:<span class="w"> </span><span class="m">80</span>
 </pre></div>
 </div>
 <p>Deployment: Provides updates for Pods and ReplicaSets, allow to run multiple
@@ -327,43 +326,43 @@ even if simple specifications can look mostly the same. Deployments allow
 rolling updates, so replicas are there to effectively response for counting
 pods while deployments are responsible for orchestrating the roll out of
 new versions.</p>
-<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>apiVersion: apps/v1
-kind: Deployment
+<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span>apiVersion:<span class="w"> </span>apps/v1
+kind:<span class="w"> </span>Deployment
 metadata:
-    name: nginx-deployment
-    labels:
-        app: nginx
+<span class="w">    </span>name:<span class="w"> </span>nginx-deployment
+<span class="w">    </span>labels:
+<span class="w">        </span>app:<span class="w"> </span>nginx
 spec:
-    replicas: <span class="m">3</span>
-    selector:
-        matchLabels:
-            app: nginx
-    template:
-        metadata:
-            labels:
-                app: nginx
-        spec:
-            containers:
-                - name: nginx
-                  image: nginx:1.7.9
-                  ports:
-                  - containerPort: <span class="m">80</span>
+<span class="w">    </span>replicas:<span class="w"> </span><span class="m">3</span>
+<span class="w">    </span>selector:
+<span class="w">        </span>matchLabels:
+<span class="w">            </span>app:<span class="w"> </span>nginx
+<span class="w">    </span>template:
+<span class="w">        </span>metadata:
+<span class="w">            </span>labels:
+<span class="w">                </span>app:<span class="w"> </span>nginx
+<span class="w">        </span>spec:
+<span class="w">            </span>containers:
+<span class="w">                </span>-<span class="w"> </span>name:<span class="w"> </span>nginx
+<span class="w">                  </span>image:<span class="w"> </span>nginx:1.7.9
+<span class="w">                  </span>ports:
+<span class="w">                  </span>-<span class="w"> </span>containerPort:<span class="w"> </span><span class="m">80</span>
 </pre></div>
 </div>
 </section>
 <section id="kubectl-cli">
-<h3><code class="docutils literal notranslate"><span class="pre">kubectl</span></code> CLI<a class="headerlink" href="#kubectl-cli" title="Permalink to this heading">&sect;</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">kubectl</span></code> CLI<a class="headerlink" href="#kubectl-cli" title="Link to this heading">&sect;</a></h3>
 <p>Key tool for working with Kubernetes, clusters and workloads running on
 clusters. 2 families of commands:</p>
 <p><strong>Imperative</strong>: Quickly create, update and delete Kubernetes objects and easy
 to learn. Do not provide audit trail and not really flexible.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl run nginx --image nginx
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx
 </pre></div>
 </div>
 <p>There are imperative commands that use a configuration template, which specify
 and operation, so other members of the team can launch your containers
 properly.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl create -f nginx.yaml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>nginx.yaml
 </pre></div>
 </div>
 <p>Any updates made after configuration file is created will not be automatically
@@ -372,33 +371,33 @@ recorded.</p>
 is specified, needed operations are inferred by <code class="docutils literal notranslate"><span class="pre">kubectl</span></code>, works better on
 directories, configuration files define desired state and Kubernetes actualizes
 that state.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl apply -f nginx/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>nginx/
 </pre></div>
 </div>
 <p>All files in a directory will be applied, so this is the preferred method on
 production systems.</p>
 </section>
 <section id="using-kubernetes">
-<h3>Using Kubernetes<a class="headerlink" href="#using-kubernetes" title="Permalink to this heading">&sect;</a></h3>
+<h3>Using Kubernetes<a class="headerlink" href="#using-kubernetes" title="Link to this heading">&sect;</a></h3>
 <p>The most relevant command is <code class="docutils literal notranslate"><span class="pre">apply</span></code> that, as explained above, works both
 in files and directories. <code class="docutils literal notranslate"><span class="pre">get</span></code> and <code class="docutils literal notranslate"><span class="pre">describe</span></code> operate on namespaces former
 listing resources (deployments) and second showing details:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl get deployment --namespace kube-system
-kubectl describe deployment kube-dns-amd64 --namespace kube-system
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>--namespace<span class="w"> </span>kube-system
+kubectl<span class="w"> </span>describe<span class="w"> </span>deployment<span class="w"> </span>kube-dns-amd64<span class="w"> </span>--namespace<span class="w"> </span>kube-system
 </pre></div>
 </div>
 <p>So to create a deployment:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; kubectl apply -f nginx.yaml
-deployment.apps/nginx-deployment created
-&gt;&gt;&gt; kubectl get deployment
-NAME             READY       UP-TO-DATE      AVAILABLE       AGE
-nginx-deployment <span class="m">3</span>/3         <span class="m">3</span>               <span class="m">3</span>               73s
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt;<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>nginx.yaml
+deployment.apps/nginx-deployment<span class="w"> </span>created
+&gt;&gt;&gt;<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>deployment
+NAME<span class="w">             </span>READY<span class="w">       </span>UP-TO-DATE<span class="w">      </span>AVAILABLE<span class="w">       </span>AGE
+nginx-deployment<span class="w"> </span><span class="m">3</span>/3<span class="w">         </span><span class="m">3</span><span class="w">               </span><span class="m">3</span><span class="w">               </span>73s
 </pre></div>
 </div>
 </section>
 </section>
 <section id="managing-applications">
-<h2>Managing Applications<a class="headerlink" href="#managing-applications" title="Permalink to this heading">&sect;</a></h2>
+<h2>Managing Applications<a class="headerlink" href="#managing-applications" title="Link to this heading">&sect;</a></h2>
 <p>Key concepts on manage Kubernetes applications are: ReplicaSets, auto-scaling,
 rolling updates, ConfigMaps and Secrets and Service binding.</p>
 <p><strong>ReplicaSets</strong>: Are used to manage pods, ensuring the current number of pods
@@ -409,25 +408,25 @@ ReplicaSet is created. One main idea of Kubernetes is independence between
 objects (loosely coupled yet interconnected), that is why ReplicaSets manage
 pods making use of labels.</p>
 <p>After creating a deployment we can run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; kubectl get replicaset
-NAME                         DESIRED CURRENT READY   AGE
-hello-kubernetes-5655b5446f8 <span class="m">1</span>       <span class="m">1</span>       <span class="m">1</span>       14m
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt;<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>replicaset
+NAME<span class="w">                         </span>DESIRED<span class="w"> </span>CURRENT<span class="w"> </span>READY<span class="w">   </span>AGE
+hello-kubernetes-5655b5446f8<span class="w"> </span><span class="m">1</span><span class="w">       </span><span class="m">1</span><span class="w">       </span><span class="m">1</span><span class="w">       </span>14m
 </pre></div>
 </div>
 <p>It is highly recommended to create deployments instead of ReplicaSets:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; kubectl create -f deployment.yaml
-deployment.apps/hello-kubernetes created
-&gt;&gt;&gt; kubectl get pods
-NAME                                 READY   STATUS  RESTARTS    AGE
-hello-kubernetes-5655b5446f8-2nlqb   <span class="m">1</span>/1     Running <span class="m">0</span>           6s
-&gt;&gt;&gt; kubectl get deploy
-NAME             READY   UP-TO-DATE  AVAILABLE   AGE
-hello-kubernetes <span class="m">1</span>/1     <span class="m">1</span>           <span class="m">1</span>           12s
-&gt;&gt;&gt; kubectl scale deploy hello-kubernetes --replicas<span class="o">=</span><span class="m">3</span>
-NAME                                 READY   STATUS  RESTARTS    AGE
-hello-kubernetes-5655b5446f8-2nlqb   <span class="m">1</span>/1     Running <span class="m">0</span>           33s
-hello-kubernetes-5655b5446f8-5mflw   <span class="m">1</span>/1     Running <span class="m">0</span>           3s
-hello-kubernetes-5655b5446f8-htb7v   <span class="m">1</span>/1     Running <span class="m">0</span>           3s
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt;<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>deployment.yaml
+deployment.apps/hello-kubernetes<span class="w"> </span>created
+&gt;&gt;&gt;<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pods
+NAME<span class="w">                                 </span>READY<span class="w">   </span>STATUS<span class="w">  </span>RESTARTS<span class="w">    </span>AGE
+hello-kubernetes-5655b5446f8-2nlqb<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w"> </span><span class="m">0</span><span class="w">           </span>6s
+&gt;&gt;&gt;<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>deploy
+NAME<span class="w">             </span>READY<span class="w">   </span>UP-TO-DATE<span class="w">  </span>AVAILABLE<span class="w">   </span>AGE
+hello-kubernetes<span class="w"> </span><span class="m">1</span>/1<span class="w">     </span><span class="m">1</span><span class="w">           </span><span class="m">1</span><span class="w">           </span>12s
+&gt;&gt;&gt;<span class="w"> </span>kubectl<span class="w"> </span>scale<span class="w"> </span>deploy<span class="w"> </span>hello-kubernetes<span class="w"> </span>--replicas<span class="o">=</span><span class="m">3</span>
+NAME<span class="w">                                 </span>READY<span class="w">   </span>STATUS<span class="w">  </span>RESTARTS<span class="w">    </span>AGE
+hello-kubernetes-5655b5446f8-2nlqb<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w"> </span><span class="m">0</span><span class="w">           </span>33s
+hello-kubernetes-5655b5446f8-5mflw<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w"> </span><span class="m">0</span><span class="w">           </span>3s
+hello-kubernetes-5655b5446f8-htb7v<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w"> </span><span class="m">0</span><span class="w">           </span>3s
 </pre></div>
 </div>
 <p>We can check that ReplicaSet is working deleting one of the pods and watching
@@ -436,10 +435,10 @@ how the ReplicaSet immediately recreates it.</p>
 but we can use the Horizontal Pod Autoscaler (HPA) to scale up and down as
 needed, which can be configured based on desired CPU, memory, etc. Autoscale
 is used like:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; kubectl autoscale deploy hello-kubernetes<span class="se">\</span>
-&gt;&gt;&gt;                   --min<span class="o">=</span><span class="m">2</span> --max<span class="o">=</span><span class="m">5</span> --cpu-percent<span class="o">=</span><span class="m">10</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt;<span class="w"> </span>kubectl<span class="w"> </span>autoscale<span class="w"> </span>deploy<span class="w"> </span>hello-kubernetes<span class="se">\</span>
+&gt;&gt;&gt;<span class="w">                   </span>--min<span class="o">=</span><span class="m">2</span><span class="w"> </span>--max<span class="o">=</span><span class="m">5</span><span class="w"> </span>--cpu-percent<span class="o">=</span><span class="m">10</span>
 <span class="o">[</span><span class="m">16</span>:10:46<span class="o">]</span>
-horizontalpodautoscaler.autoscaling/hello-kubernetes autoscaled
+horizontalpodautoscaler.autoscaling/hello-kubernetes<span class="w"> </span>autoscaled
 </pre></div>
 </div>
 <p>The parameter <code class="docutils literal notranslate"><span class="pre">cpu-percent</span></code> triggers the scale. The number of replicas of the
@@ -452,31 +451,31 @@ deployments. They allow for roll back. Steps:</p>
 <li><p>Add liveness and readiness probes to your deployments. This ensures
 they are marked as ready appropriately.</p></li>
 <li><p>Add a rolling update strategy to your YAML file.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span><span class="w"></span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"></span>
-<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-test</span><span class="w"></span>
-<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http=server</span><span class="w"></span>
-<span class="w">  </span><span class="nt">minReadySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
-<span class="w">  </span><span class="nt">progressDeadlineSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">600</span><span class="w"></span>
-<span class="w">  </span><span class="nt">strategy</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RollingUpdate</span><span class="w"></span>
-<span class="w">    </span><span class="nt">rollingUpdate</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">maxUnavailable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50%</span><span class="w"></span>
-<span class="w">      </span><span class="nt">maxSurge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-test</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http=server</span>
+<span class="w">  </span><span class="nt">minReadySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">  </span><span class="nt">progressDeadlineSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">600</span>
+<span class="w">  </span><span class="nt">strategy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RollingUpdate</span>
+<span class="w">    </span><span class="nt">rollingUpdate</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">maxUnavailable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50%</span>
+<span class="w">      </span><span class="nt">maxSurge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 </pre></div>
 </div>
 <p>It ensures that at least 50% of the pods are always available. Once the image
 is updated in our docker-image repository, we should run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; kubectl <span class="nb">set</span> image deployments/hello-kubernetes<span class="se">\</span>
-&gt;&gt;&gt;                   hello-kubernetes<span class="o">=</span>upkar/hello-kubernetes:2.0
-deployment.extensions/hello-kubernetes image updated
-&gt;&gt;&gt; kubectl rollout status deployment/hello-kubernetes
-deployment <span class="s2">&quot;hello-kubernetes&quot;</span> successfully rolled out
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt;<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">set</span><span class="w"> </span>image<span class="w"> </span>deployments/hello-kubernetes<span class="se">\</span>
+&gt;&gt;&gt;<span class="w">                   </span>hello-kubernetes<span class="o">=</span>upkar/hello-kubernetes:2.0
+deployment.extensions/hello-kubernetes<span class="w"> </span>image<span class="w"> </span>updated
+&gt;&gt;&gt;<span class="w"> </span>kubectl<span class="w"> </span>rollout<span class="w"> </span>status<span class="w"> </span>deployment/hello-kubernetes
+deployment<span class="w"> </span><span class="s2">&quot;hello-kubernetes&quot;</span><span class="w"> </span>successfully<span class="w"> </span>rolled<span class="w"> </span>out
 </pre></div>
 </div>
 <p>This means that the deployment has been correctly updated. With the command
@@ -498,37 +497,37 @@ help to create this YAML.</p></li>
 <p>They can be reference from a pod / deployment just as environment variables, or
 mounting as a volume. The easiest way to pass a ConfigMap is just using the
 <code class="docutils literal notranslate"><span class="pre">create</span> <span class="pre">configmap</span></code> as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; kubectl create configmap my-config<span class="se">\</span>
-&gt;&gt;&gt;                --from-literal<span class="o">=</span><span class="nv">MESSAGE</span><span class="o">=</span><span class="s2">&quot;hello from first ConfigMap&quot;</span>
-configmap/my-config created
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt;<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>configmap<span class="w"> </span>my-config<span class="se">\</span>
+&gt;&gt;&gt;<span class="w">                </span>--from-literal<span class="o">=</span><span class="nv">MESSAGE</span><span class="o">=</span><span class="s2">&quot;hello from first ConfigMap&quot;</span>
+configmap/my-config<span class="w"> </span>created
 </pre></div>
 </div>
 <p>Then you add it to the <code class="docutils literal notranslate"><span class="pre">env</span></code> section of the YAML file of your image:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">...</span><span class="w"></span>
-<span class="nt">env</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MESSAGE</span><span class="w"></span>
-<span class="w">    </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">configMapKeyRef</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-config</span><span class="w"></span>
-<span class="w">            </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MESSAGE</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">...</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MESSAGE</span>
+<span class="w">    </span><span class="nt">valueFrom</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">configMapKeyRef</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-config</span>
+<span class="w">            </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MESSAGE</span>
 </pre></div>
 </div>
 <p>There are 2 key commands to list and explore available ConfigMaps:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; kubectl get configmaps
-NAME         DATA    AGE
-my-config    <span class="m">1</span>       5m42s
-&gt;&gt;&gt; kubectl describe connfigmap my-config
-Name:        my-config
-Namespace:   default
-Labels:      &lt;none&gt;
-Annotations: &lt;none&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt;<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>configmaps
+NAME<span class="w">         </span>DATA<span class="w">    </span>AGE
+my-config<span class="w">    </span><span class="m">1</span><span class="w">       </span>5m42s
+&gt;&gt;&gt;<span class="w"> </span>kubectl<span class="w"> </span>describe<span class="w"> </span>connfigmap<span class="w"> </span>my-config
+Name:<span class="w">        </span>my-config
+Namespace:<span class="w">   </span>default
+Labels:<span class="w">      </span>&lt;none&gt;
+Annotations:<span class="w"> </span>&lt;none&gt;
 
 <span class="nv">Data</span>
 <span class="o">====</span>
 MESSAGE:
 ----
-hello from first ConfigMap
-Events: &lt;none&gt;
+hello<span class="w"> </span>from<span class="w"> </span>first<span class="w"> </span>ConfigMap
+Events:<span class="w"> </span>&lt;none&gt;
 </pre></div>
 </div>
 <p>A better way to create a ConfigMap is using a file, where variables are defined
@@ -539,20 +538,20 @@ printed out by <code class="docutils literal notranslate"><span class="pre">kube
 above (options <code class="docutils literal notranslate"><span class="pre">--from-literal</span></code> and <code class="docutils literal notranslate"><span class="pre">--from-file</span></code>) but just with
 <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">create</span> <span class="pre">secret</span> <span class="pre">generic</span></code> command. There is also the option to mount
 secrets as a volume as follows:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello-kubernetes</span><span class="w"></span>
-<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">upkar/myapp:latest</span><span class="w"></span>
-<span class="w">          </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"></span>
-<span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w"></span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api-creds</span><span class="w"></span>
-<span class="w">                </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/etc/api&quot;</span><span class="w"></span>
-<span class="w">                </span><span class="l l-Scalar l-Scalar-Plain">readOnly=true</span><span class="w"></span>
-<span class="w">          </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api-creds</span><span class="w"></span>
-<span class="w">                </span><span class="nt">secret</span><span class="p">:</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api-creds</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello-kubernetes</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">upkar/myapp:latest</span>
+<span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api-creds</span>
+<span class="w">                </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/etc/api&quot;</span>
+<span class="w">                </span><span class="l l-Scalar l-Scalar-Plain">readOnly=true</span>
+<span class="w">          </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api-creds</span>
+<span class="w">                </span><span class="nt">secret</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api-creds</span>
 </pre></div>
 </div>
 <p>IBM provides a bunch of services (most related to NLP) that can be bind to our
@@ -560,7 +559,7 @@ application. When a service is bind to a cluster deployment the credentials are
 available as a mounted Secret volume.</p>
 </section>
 <section id="kubernetes-ecosystem">
-<h2>Kubernetes Ecosystem<a class="headerlink" href="#kubernetes-ecosystem" title="Permalink to this heading">&sect;</a></h2>
+<h2>Kubernetes Ecosystem<a class="headerlink" href="#kubernetes-ecosystem" title="Link to this heading">&sect;</a></h2>
 <p>As stated on its own description Kubernetes is surrounded by a <em>large and
 rapidly growing ecosystem</em>. Kubernetes is not an all-inclusive platform as a
 service, providing a more flexible model rather than a more opinionated one.
@@ -613,38 +612,38 @@ Docker images containing the logic needed to transform inputs into the
 expected outputs.</p></li>
 </ul>
 <p>An example of BuildConfig would be:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BuildConfig</span><span class="w"></span>
-<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build.openshift.io/v1</span><span class="w"></span>
-<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span><span class="w"></span>
-<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">output</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">to</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">imageStreamTag</span><span class="w"></span>
-<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;example:latest&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">strategy</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Source</span><span class="w"></span>
-<span class="w">        </span><span class="nt">sourceStrategy</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="nt">from</span><span class="p">:</span><span class="w"></span>
-<span class="w">                </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">imageStreamTag</span><span class="w"></span>
-<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;nodejs:10-5CL&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Git</span><span class="w"></span>
-<span class="w">        </span><span class="nt">git</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;https://github.com/organization/repo&#39;</span><span class="w"></span>
-<span class="w">        </span><span class="nt">contextDir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span><span class="w"></span>
-<span class="w">    </span><span class="nt">triggers</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Generic</span><span class="w"></span>
-<span class="w">        </span><span class="nt">generic</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="nt">secretReference</span><span class="p">:</span><span class="w"></span>
-<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-generic-webhook-secret</span><span class="w"></span>
-<span class="w">        </span><span class="nt">-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GitHub</span><span class="w"></span>
-<span class="w">        </span><span class="nt">github</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="nt">secretReference</span><span class="p">:</span><span class="w"></span>
-<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-github-webhook-secret</span><span class="w"></span>
-<span class="w">        </span><span class="nt">-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">imageChange</span><span class="w"></span>
-<span class="w">        </span><span class="nt">imageChange</span><span class="p">:</span><span class="w"></span>
-<span class="nt">runspolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Serial</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BuildConfig</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build.openshift.io/v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">output</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">to</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">imageStreamTag</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;example:latest&#39;</span>
+<span class="w">    </span><span class="nt">strategy</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Source</span>
+<span class="w">        </span><span class="nt">sourceStrategy</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">from</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">imageStreamTag</span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;nodejs:10-5CL&#39;</span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Git</span>
+<span class="w">        </span><span class="nt">git</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;https://github.com/organization/repo&#39;</span>
+<span class="w">        </span><span class="nt">contextDir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+<span class="w">    </span><span class="nt">triggers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Generic</span>
+<span class="w">        </span><span class="nt">generic</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">secretReference</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-generic-webhook-secret</span>
+<span class="w">        </span><span class="nt">-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GitHub</span>
+<span class="w">        </span><span class="nt">github</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">secretReference</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-github-webhook-secret</span>
+<span class="w">        </span><span class="nt">-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">imageChange</span>
+<span class="w">        </span><span class="nt">imageChange</span><span class="p">:</span>
+<span class="nt">runspolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Serial</span>
 </pre></div>
 </div>
 <p>In it, we must highlight:</p>
@@ -729,7 +728,7 @@ metrics as number of requests between services and response times.</p>
         </div>
     </div>
     <div class="footer">&copy;2021, Prophet Jeremy.
-       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
+       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 7.2.2</a>
        &nbsp;&amp;&nbsp;<a href="https://github.com/santibreo/pj-theme">PJnotes 1.0.0</a>
       
     </div>

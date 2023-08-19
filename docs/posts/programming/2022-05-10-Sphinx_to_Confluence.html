@@ -1,22 +1,21 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Sphinx to Confluence &#8212; PJnotes 0.0.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/pj_touch.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=087266ef" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/pj_touch.css?v=f775ebe6" />
+    <script src="../../_static/documentation_options.js?v=5aa371e9"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Rent or buy, that is the question" href="../finance/2020-11-23-amortization.html" />
+    <link rel="next" title="Mocking modules in Python" href="2023-08-19-Mocking_modules_in_Python.html" />
     <link rel="prev" title="Effective Programming in Scala" href="2022-05-03-Effective_programming_in_Scala.html" />
    
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
@@ -68,7 +67,7 @@
 
 <h3>Navigate: 
       <a href="2022-05-03-Effective_programming_in_Scala.html" title="previous document">&lArr;</a>
-      <a href="../finance/2020-11-23-amortization.html" title="next document">&rArr;</a></h3>
+      <a href="2023-08-19-Mocking_modules_in_Python.html" title="next document">&rArr;</a></h3>
 <div class="toc">
     <ul>
 <li><a class="reference internal" href="#">Sphinx to Confluence</a><ul>
@@ -114,21 +113,21 @@
         <div class="content">
         
   <section id="sphinx-to-confluence">
-<h1>Sphinx to Confluence<a class="headerlink" href="#sphinx-to-confluence" title="Permalink to this heading">&sect;</a></h1>
+<h1>Sphinx to Confluence<a class="headerlink" href="#sphinx-to-confluence" title="Link to this heading">&sect;</a></h1>
 <p>I am used to taking notes about almost everything I learned with Sphinx, now I can quickly share them with all my colleagues through Confluence. Main advantage about this method is that I can use it to share sensitive information without publishing static HTML website anywhere, which is public on both Github and Bitbucket (cloud versions).</p>
 <div class="admonition-tl-dr admonition">
 <p class="admonition-title">TL;DR</p>
 <p>Follow instructions described in <a class="reference external" href="https://sphinxcontrib-confluencebuilder.readthedocs.io/en/stable/tutorial/">this tutorial</a> using parameters defined in <a class="reference internal" href="#configuration">Configuration</a></p>
 </div>
 <section id="how-am-i-doing-this">
-<h2>How am I doing this<a class="headerlink" href="#how-am-i-doing-this" title="Permalink to this heading">&sect;</a></h2>
+<h2>How am I doing this<a class="headerlink" href="#how-am-i-doing-this" title="Link to this heading">&sect;</a></h2>
 <p>After a bit of research, I have encountered the combination of Git ⊕ Sphinx ⊕ ReestructuredText, the most suitable stack to take and publish notes.</p>
 <p>ReestructuredText is used as a markup language for my notes because it is more affluent than Markdown.</p>
 <p>Git tracks changes in <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files (as they are plain text).</p>
 <p>Sphinx automatically compiles notes and publishes <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files to Confluence (check out <a class="reference external" href="https://sphinxcontrib-confluencebuilder.readthedocs.io">this extension</a>. Sphinx has additional extensions to enrich documentation functionalities, such as rendering Latex equations or building mermaid diagrams.</p>
 </section>
 <section id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">&sect;</a></h2>
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">&sect;</a></h2>
 <p>Set the following parameters up in the <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> file (words between angle braces, e.g. &lt;username&gt;, must be provided by you):</p>
 <ul class="simple">
 <li><p>The BASE URL of our company: <code class="docutils literal notranslate"><span class="pre">confluence_server_url</span> <span class="pre">=</span> <span class="pre">&quot;https://&lt;company</span> <span class="pre">domain&gt;/wiki&quot;</span></code> (if using Atlassian Cloud).</p></li>
@@ -167,7 +166,7 @@
 </div>
 <p>It may sound much more convoluted than it is, as most of it is just managed by Sphinx and common to all Sphinx documentation projects.</p>
 <p>When I start writing about a new topic, I just run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir &lt;new_topic_folder&gt; <span class="o">&amp;&amp;</span> <span class="nb">cd</span> !$
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>&lt;new_topic_folder&gt;<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>!$
 sphinx-quickstart
 </pre></div>
 </div>
@@ -178,7 +177,7 @@ sphinx-quickstart
 </div>
 </section>
 <section id="writing">
-<h2>Writing<a class="headerlink" href="#writing" title="Permalink to this heading">&sect;</a></h2>
+<h2>Writing<a class="headerlink" href="#writing" title="Link to this heading">&sect;</a></h2>
 <p>When I feel like writing about any subtopic, I open the corresponding <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file if already been created or if it is entirely brand new, I create a new file or even a new topic folder. To <strong>use math directives</strong>, I am using the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/math.html#module-sphinx.ext.imgmath">Sphinx sphinx.ext.imgmath extension</a> (the easiest way to make it work in Windows is by installing MikTeX), which renders equations to images and then inserts them in corresponding places.</p>
 </section>
 </section>
@@ -187,7 +186,7 @@ sphinx-quickstart
         </div>
     </div>
     <div class="footer">&copy;2021, Prophet Jeremy.
-       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
+       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 7.2.2</a>
        &nbsp;&amp;&nbsp;<a href="https://github.com/santibreo/pj-theme">PJnotes 1.0.0</a>
       
     </div>

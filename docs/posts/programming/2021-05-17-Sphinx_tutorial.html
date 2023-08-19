@@ -1,17 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Sphinx (another) introduction tutorial &#8212; PJnotes 0.0.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/pj_touch.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=087266ef" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/pj_touch.css?v=f775ebe6" />
+    <script src="../../_static/documentation_options.js?v=5aa371e9"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -125,7 +124,7 @@
         <div class="content">
         
   <section id="sphinx-another-introduction-tutorial">
-<h1>Sphinx (another) introduction tutorial<a class="headerlink" href="#sphinx-another-introduction-tutorial" title="Permalink to this heading">&sect;</a></h1>
+<h1>Sphinx (another) introduction tutorial<a class="headerlink" href="#sphinx-another-introduction-tutorial" title="Link to this heading">&sect;</a></h1>
 <p>I have been using Sphinx for documenting my Python code for a few months now so
 I have decided to make a guide on the most common commands that I use, to have
 them collected together.  By the way, Sphinx is a pretty well documented tool,
@@ -142,19 +141,19 @@ me.</p>
 </div>
 </li>
 <li><p>Create the <code class="docutils literal notranslate"><span class="pre">rst</span></code> <code class="docutils literal notranslate"><span class="pre">md</span></code> files associated to your package (from sphinx folder):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sphinx-apidoc -e -M -o <span class="nb">source</span> ..<span class="se">\p</span>ython_package
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sphinx-apidoc<span class="w"> </span>-e<span class="w"> </span>-M<span class="w"> </span>-o<span class="w"> </span><span class="nb">source</span><span class="w"> </span>..<span class="se">\p</span>ython_package
 </pre></div>
 </div>
 </li>
 <li><p>Create html documentation:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make html
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>html
 </pre></div>
 </div>
 </li>
 </ul>
 </div>
 <section id="sphinx-is-not-restructuredtext">
-<h2>Sphinx is not ReStructuredText<a class="headerlink" href="#sphinx-is-not-restructuredtext" title="Permalink to this heading">&sect;</a></h2>
+<h2>Sphinx is not ReStructuredText<a class="headerlink" href="#sphinx-is-not-restructuredtext" title="Link to this heading">&sect;</a></h2>
 <p>When you are new at the business you may confuse this 2 things. Sphinx is a
 software that converts the <em>docstrings</em> in your code into beautiful package
 documentation. A markup language is a computer language that includes tags/flags
@@ -175,7 +174,7 @@ an eye on from time to time, but you know, Google will be there for you.</p>
 </ul>
 </section>
 <section id="project-structure">
-<h2>Project structure<a class="headerlink" href="#project-structure" title="Permalink to this heading">&sect;</a></h2>
+<h2>Project structure<a class="headerlink" href="#project-structure" title="Link to this heading">&sect;</a></h2>
 <p>This is the minimal project structure that I have found most suitable to work
 with. It is pretty simple, and allow you to keep everything decently organized.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>project_name
@@ -236,17 +235,17 @@ behaviour.</p></li>
 </ul>
 </section>
 <section id="how-to-use-it">
-<h2>How to use it<a class="headerlink" href="#how-to-use-it" title="Permalink to this heading">&sect;</a></h2>
+<h2>How to use it<a class="headerlink" href="#how-to-use-it" title="Link to this heading">&sect;</a></h2>
 <p>So lets suppose that you start a new python project, and you do it from console
 because it is how you must do it. These command sequence is console agnostic so
 it might work in any other operating system long as you have a version of
 Python with pip installed.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir project_name
-<span class="nb">cd</span> project_name
-git init
-mkdir sphinx_docs
-<span class="nb">cd</span> sphinx_docs
-pip install sphinx
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>project_name
+<span class="nb">cd</span><span class="w"> </span>project_name
+git<span class="w"> </span>init
+mkdir<span class="w"> </span>sphinx_docs
+<span class="nb">cd</span><span class="w"> </span>sphinx_docs
+pip<span class="w"> </span>install<span class="w"> </span>sphinx
 sphinx-quickstart
 </pre></div>
 </div>
@@ -270,7 +269,7 @@ brackets is the default answer. I am going to help you just with the first:</p>
 </pre></div>
 </div>
 <section id="configuration">
-<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">&sect;</a></h3>
+<h3>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">&sect;</a></h3>
 <p>We will get into <cite>make</cite> files later, for now you must know that the <cite>conf.py</cite> is
 the configuration file for Sphinx. Here I will list some features that I use to
 use.</p>
@@ -326,7 +325,7 @@ use.</p>
 which is all we care about.</p>
 </section>
 <section id="github-pages">
-<h3>Github-Pages<a class="headerlink" href="#github-pages" title="Permalink to this heading">&sect;</a></h3>
+<h3>Github-Pages<a class="headerlink" href="#github-pages" title="Link to this heading">&sect;</a></h3>
 <p>Now let’s edit the make file so the HTML content will be copied to <code class="docutils literal notranslate"><span class="pre">docs</span></code>
 folder and the documentation will be almost immediately hosted in Github-Pages.</p>
 <p>You should notice that we have added the extension <code class="docutils literal notranslate"><span class="pre">sphinx.ext.githubpages</span></code> in
@@ -395,7 +394,7 @@ the <code class="docutils literal notranslate"><span class="pre">docs</span></co
 repository.</p>
 </section>
 <section id="documenting">
-<h3>Documenting<a class="headerlink" href="#documenting" title="Permalink to this heading">&sect;</a></h3>
+<h3>Documenting<a class="headerlink" href="#documenting" title="Link to this heading">&sect;</a></h3>
 <p>Now everything is setup, you should just begin writing cool <em>docstrings</em> in
 your python functions, classes and methods. Then ensure that you are located at
 <code class="docutils literal notranslate"><span class="pre">sphinx_docs</span></code> and run the following commands:</p>
@@ -408,7 +407,7 @@ The second converts them in html files with the given theme an options.</p>
 </section>
 </section>
 <section id="we-are-not-bureaucrats">
-<h2>We are not bureaucrats<a class="headerlink" href="#we-are-not-bureaucrats" title="Permalink to this heading">&sect;</a></h2>
+<h2>We are not bureaucrats<a class="headerlink" href="#we-are-not-bureaucrats" title="Link to this heading">&sect;</a></h2>
 <p>We did not write the documentation to seem as boring as possible, nor with the
 intention that no one, not even our loved ones, would dare to look at it, <strong>the
 contrary</strong>. So you must dedicate time to think about what your are writing and
@@ -418,7 +417,7 @@ you how to organize your documentation a bit better, and maybe later give you
 some style tips, they are not miracles, but could help you get rid of that
 mascot look from the Olympics in de 70s.</p>
 <section id="use-separate-pages">
-<h3>Use separate pages<a class="headerlink" href="#use-separate-pages" title="Permalink to this heading">&sect;</a></h3>
+<h3>Use separate pages<a class="headerlink" href="#use-separate-pages" title="Link to this heading">&sect;</a></h3>
 <p>Sometimes, if you are working hard at job, the documentation of your
 classes may start to become too long. But you probably want to keep all your
 classes in the same python module because you think that is the way it makes
@@ -501,77 +500,77 @@ command that I teach you above because we are using the recent
 creating the html.</p>
 </section>
 <section id="being-more-cool">
-<h3>Being more cool<a class="headerlink" href="#being-more-cool" title="Permalink to this heading">&sect;</a></h3>
+<h3>Being more cool<a class="headerlink" href="#being-more-cool" title="Link to this heading">&sect;</a></h3>
 <p>That’s all. If you have reached this point you have your documentation ready
 and hosted in Github Pages. From now on I will just collect some tips to make
 the documentation look better.</p>
 <p>First of all I always add a <cite>css</cite> file that makes the standard <em>ReadTheDocs</em>
 theme a bit more beautiful.</p>
-<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">p</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">justify</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">p</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">justify</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="nt">dt</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="nt">dt</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="p">.</span><span class="nc">viewcode-link</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">float</span><span class="p">:</span><span class="w"> </span><span class="kc">right</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">.</span><span class="nc">viewcode-link</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">float</span><span class="p">:</span><span class="w"> </span><span class="kc">right</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="p">.</span><span class="nc">wy-menu-vertical</span><span class="w"> </span><span class="nt">li</span><span class="p">.</span><span class="nc">toctree-l1</span><span class="p">.</span><span class="nc">current</span><span class="o">&gt;</span><span class="nt">a</span><span class="o">,</span><span class="w"></span>
-<span class="p">.</span><span class="nc">wy-menu-vertical</span><span class="w"> </span><span class="nt">li</span><span class="p">.</span><span class="nc">toctree-l2</span><span class="p">.</span><span class="nc">current</span><span class="o">&gt;</span><span class="nt">a</span><span class="o">,</span><span class="w"></span>
-<span class="p">.</span><span class="nc">wy-menu-vertical</span><span class="w"> </span><span class="nt">li</span><span class="p">.</span><span class="nc">toctree-l2</span><span class="p">.</span><span class="nc">current</span><span class="w"> </span><span class="nt">li</span><span class="p">.</span><span class="nc">toctree-l3</span><span class="p">.</span><span class="nc">current</span><span class="o">&gt;</span><span class="nt">a</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#fcfcfc</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">.</span><span class="nc">wy-menu-vertical</span><span class="w"> </span><span class="nt">li</span><span class="p">.</span><span class="nc">toctree-l1</span><span class="p">.</span><span class="nc">current</span><span class="o">&gt;</span><span class="nt">a</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">wy-menu-vertical</span><span class="w"> </span><span class="nt">li</span><span class="p">.</span><span class="nc">toctree-l2</span><span class="p">.</span><span class="nc">current</span><span class="o">&gt;</span><span class="nt">a</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">wy-menu-vertical</span><span class="w"> </span><span class="nt">li</span><span class="p">.</span><span class="nc">toctree-l2</span><span class="p">.</span><span class="nc">current</span><span class="w"> </span><span class="nt">li</span><span class="p">.</span><span class="nc">toctree-l3</span><span class="p">.</span><span class="nc">current</span><span class="o">&gt;</span><span class="nt">a</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#fcfcfc</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="p">.</span><span class="nc">wy-menu-vertical</span><span class="w"> </span><span class="nt">li</span><span class="p">.</span><span class="nc">toctree-l2</span><span class="p">.</span><span class="nc">current</span><span class="w"> </span><span class="nt">li</span><span class="p">.</span><span class="nc">toctree-l3</span><span class="o">&gt;</span><span class="nt">a</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#cccccc</span><span class="mi">54</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">.</span><span class="nc">wy-menu-vertical</span><span class="w"> </span><span class="nt">li</span><span class="p">.</span><span class="nc">toctree-l2</span><span class="p">.</span><span class="nc">current</span><span class="w"> </span><span class="nt">li</span><span class="p">.</span><span class="nc">toctree-l3</span><span class="o">&gt;</span><span class="nt">a</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#cccccc</span><span class="mi">54</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="p">.</span><span class="nc">wy-menu-vertical</span><span class="w"> </span><span class="nt">li</span><span class="p">.</span><span class="nc">toctree-l2</span><span class="p">.</span><span class="nc">current</span><span class="w"> </span><span class="nt">li</span><span class="p">.</span><span class="nc">toctree-l3</span><span class="o">&gt;</span><span class="nt">a</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#e3e3e3</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">.</span><span class="nc">wy-menu-vertical</span><span class="w"> </span><span class="nt">li</span><span class="p">.</span><span class="nc">toctree-l2</span><span class="p">.</span><span class="nc">current</span><span class="w"> </span><span class="nt">li</span><span class="p">.</span><span class="nc">toctree-l3</span><span class="o">&gt;</span><span class="nt">a</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#e3e3e3</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="p">.</span><span class="nc">toctree-wrapper</span><span class="p">.</span><span class="nc">compound</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">.</span><span class="nc">toctree-wrapper</span><span class="p">.</span><span class="nc">compound</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Next you should be thinking about the class template, that removes <code class="docutils literal notranslate"><span class="pre">__dunder__</span></code>
 methods and makes the documentation cleaner, by the way it is a Jinja template,
 but I have struggled to find the variables of each class to which you have
 access. You must locate this in the templates location defined in <code class="docutils literal notranslate"><span class="pre">conf.py</span></code></p>
-<div class="highlight-django notranslate"><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">fullname</span> <span class="o">|</span> <span class="nf">escape</span> <span class="o">|</span> <span class="nf">underline</span> <span class="cp">}}</span><span class="x"></span>
+<div class="highlight-django notranslate"><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">fullname</span> <span class="o">|</span> <span class="nf">escape</span> <span class="o">|</span> <span class="nf">underline</span> <span class="cp">}}</span>
 
-<span class="x">.. currentmodule:: </span><span class="cp">{{</span> <span class="nv">module</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">.. currentmodule:: </span><span class="cp">{{</span> <span class="nv">module</span> <span class="cp">}}</span>
 
-<span class="x">.. autoclass:: </span><span class="cp">{{</span> <span class="nv">objname</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">.. autoclass:: </span><span class="cp">{{</span> <span class="nv">objname</span> <span class="cp">}}</span>
 
-<span class="cp">{%</span> <span class="k">block</span> <span class="nv">attributes</span> <span class="cp">%}</span><span class="x"></span>
-<span class="cp">{%</span> <span class="k">if</span> <span class="nv">attributes</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">.. rubric:: </span><span class="cp">{{</span> <span class="kp">_</span><span class="o">(</span><span class="s1">&#39;Attributes&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">attributes</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">attributes</span> <span class="cp">%}</span>
+<span class="x">.. rubric:: </span><span class="cp">{{</span> <span class="kp">_</span><span class="o">(</span><span class="s1">&#39;Attributes&#39;</span><span class="o">)</span> <span class="cp">}}</span>
 
 <span class="x">.. autosummary::</span>
 
-<span class="cp">{%</span>- <span class="k">for</span> <span class="nv">item</span> <span class="k">in</span> <span class="nv">attributes</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">    ~</span><span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span><span class="x">.</span><span class="cp">{{</span> <span class="nv">item</span> <span class="cp">}}</span><span class="x"></span>
-<span class="cp">{%</span>- <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
-<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
-<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span>- <span class="k">for</span> <span class="nv">item</span> <span class="k">in</span> <span class="nv">attributes</span> <span class="cp">%}</span>
+<span class="x">    ~</span><span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span><span class="x">.</span><span class="cp">{{</span> <span class="nv">item</span> <span class="cp">}}</span>
+<span class="cp">{%</span>- <span class="k">endfor</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
 
-<span class="cp">{%</span> <span class="k">block</span> <span class="nv">methods</span> <span class="cp">%}</span><span class="x"></span>
-<span class="cp">{%</span> <span class="k">if</span> <span class="nv">methods</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">methods</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">methods</span> <span class="cp">%}</span>
 
-<span class="cp">{%</span>- <span class="k">for</span> <span class="nv">item</span> <span class="k">in</span> <span class="nv">methods</span> <span class="cp">%}</span><span class="x"></span>
-<span class="cp">{%</span> <span class="k">if</span> <span class="k">not</span> <span class="nv">item.startswith</span><span class="o">(</span><span class="s1">&#39;__&#39;</span><span class="o">)</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">.. automethod:: </span><span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span><span class="x">.</span><span class="cp">{{</span> <span class="nv">item</span> <span class="cp">}}</span><span class="x"></span>
-<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
-<span class="cp">{%</span>- <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span>- <span class="k">for</span> <span class="nv">item</span> <span class="k">in</span> <span class="nv">methods</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">if</span> <span class="k">not</span> <span class="nv">item.startswith</span><span class="o">(</span><span class="s1">&#39;__&#39;</span><span class="o">)</span> <span class="cp">%}</span>
+<span class="x">.. automethod:: </span><span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span><span class="x">.</span><span class="cp">{{</span> <span class="nv">item</span> <span class="cp">}}</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+<span class="cp">{%</span>- <span class="k">endfor</span> <span class="cp">%}</span>
 
-<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
-<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
 </pre></div>
 </div>
 <p>Finally I use to edit minimal theme options, and use my own favicon, to make it
@@ -579,7 +578,7 @@ look more personal.</p>
 </section>
 </section>
 <section id="afterword">
-<h2>Afterword<a class="headerlink" href="#afterword" title="Permalink to this heading">&sect;</a></h2>
+<h2>Afterword<a class="headerlink" href="#afterword" title="Link to this heading">&sect;</a></h2>
 <p>I expect you to have enjoyed this travel!. Probably I would change some of the
 things said here in the near future, so don’t forget to come back soon, and if
 you want and have time you can send me some feedback.</p>
@@ -590,7 +589,7 @@ you want and have time you can send me some feedback.</p>
         </div>
     </div>
     <div class="footer">&copy;2021, Prophet Jeremy.
-       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
+       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 7.2.2</a>
        &nbsp;&amp;&nbsp;<a href="https://github.com/santibreo/pj-theme">PJnotes 1.0.0</a>
       
     </div>
