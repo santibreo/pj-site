@@ -23,7 +23,7 @@ class MockModule(mock.MagicMock):
             pass
 
 
-    def __init__(self, name: str, prefix: str=''):
+    def __init__(self, name: str = '', prefix: str='', *args, **kwargs):
         """Creates an object that you can import things from.
 
         Args:
@@ -31,8 +31,9 @@ class MockModule(mock.MagicMock):
             prefix: Fully-qualified name prefix, what is before ``name`` removing
                 last dot ('.')
         """
-
-        super().__init__(ModuleType(name), name=name)
+        name = name if name else self.__class__.__name__
+        kwargs['name'] = name
+        super().__init__(ModuleType(name), *args, **kwargs)
         self.name = name
         self.__all__ = []
         self.__path__ = []
@@ -52,7 +53,7 @@ class MockModule(mock.MagicMock):
         self.__all__.append(name)
         child_module = sys.modules.get(self.get_fully_qualified_name(name, self.__name__))
         if child_module is None:
-            child_module = MockModule(name, f"{self.__name__}")
+            child_module = MockModule(name=name, prefix="{self.__name__}")
         return child_module
 
     @staticmethod
