@@ -7,7 +7,7 @@
 
     <title>Rmarkdown (nice) posts &#8212; PJnotes 0.0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=087266ef" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/pj_touch.css?v=b6af5cbe" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/pj_touch.css?v=63e29523" />
     <script src="../../_static/documentation_options.js?v=5aa371e9"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
@@ -178,39 +178,70 @@ am writting about everything I learn. So the solution is pure Rmarkdown.</p>
 input as html, inside the <cite>divs</cite> with the corresponding <cite>alert</cite> class. As
 R has already a <cite>message</cite>, <cite>warning</cite>, and <cite>stop</cite> function, I will just adapt
 them for my purpose. Here is the code that I have used:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="c1"># Nice warnings, errors and messages</span>
-<span class="linenos"> 2</span><span class="w"> </span><span class="n">knitr</span><span class="o">::</span><span class="n">knit_hooks</span><span class="o">$</span><span class="nf">set</span><span class="p">(</span>
-<span class="linenos"> 3</span><span class="w">     </span><span class="c1"># To watch error use error=T and stop function</span>
-<span class="linenos"> 4</span><span class="w">     </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 5</span><span class="w">         </span><span class="nf">paste</span><span class="p">(</span><span class="s">&#39;\n\n&lt;div class=&quot;alert alert-danger&quot; style=&gt;&#39;</span><span class="p">,</span>
-<span class="linenos"> 6</span><span class="w">               </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;##&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39; &#39;</span><span class="p">,</span>
-<span class="linenos"> 7</span><span class="w">                 </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;^##\ Error in eval\\(expr, envir, enclos\\):&#39;</span><span class="p">,</span>
-<span class="linenos"> 8</span><span class="w">                      </span><span class="s">&#39;&lt;i class=&quot;fas fa-skull&quot;&gt;&lt;/i&gt; **ERROR**: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)),</span>
-<span class="linenos"> 9</span><span class="w">               </span><span class="s">&#39;&lt;/div&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;\n&#39;</span><span class="p">)</span>
-<span class="linenos">10</span><span class="w">     </span><span class="p">},</span>
-<span class="linenos">11</span><span class="w">     </span><span class="c1"># To watch warning use warning function</span>
-<span class="linenos">12</span><span class="w">     </span><span class="n">warning</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos">13</span><span class="w">         </span><span class="nf">paste</span><span class="p">(</span><span class="s">&#39;\n\n&lt;div class=&quot;alert alert-warning&quot;&gt;&#39;</span><span class="p">,</span>
-<span class="linenos">14</span><span class="w">               </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;##&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39; &#39;</span><span class="p">,</span>
-<span class="linenos">15</span><span class="w">                    </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;^##\ Warning:&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;&lt;i class=&quot;fa fa-exclamation-triangle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; **WARNING**: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)),</span>
-<span class="linenos">16</span><span class="w">               </span><span class="s">&#39;&lt;/div&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;\n&#39;</span><span class="p">)</span>
-<span class="linenos">17</span><span class="w">     </span><span class="p">},</span>
-<span class="linenos">18</span><span class="w">     </span><span class="c1"># To watch message use message function</span>
-<span class="linenos">19</span><span class="w">     </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos">20</span><span class="w">         </span><span class="nf">paste</span><span class="p">(</span><span class="s">&#39;\n\n&lt;div class=&quot;alert alert-info&quot;&gt;&#39;</span><span class="p">,</span>
-<span class="linenos">21</span><span class="w">               </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;##&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39; &#39;</span><span class="p">,</span>
-<span class="linenos">22</span><span class="w">                    </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;^##\ &#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;&lt;i class=&quot;fas fa-comment-dots&quot;&gt;&lt;/i&gt; **INFO**: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)),</span>
-<span class="linenos">23</span><span class="w">               </span><span class="s">&#39;&lt;/div&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;\n&#39;</span><span class="p">)</span>
-<span class="linenos">24</span><span class="w">     </span><span class="p">},</span>
-<span class="linenos">25</span><span class="w">     </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">before</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p">,</span><span class="w"> </span><span class="n">envir</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos">26</span><span class="w">         </span><span class="nf">if</span><span class="p">(</span><span class="n">before</span><span class="p">){</span>
-<span class="linenos">27</span><span class="w">             </span><span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;&lt;div class = &#39;%s&#39;&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="o">$</span><span class="n">class</span><span class="p">)</span>
-<span class="linenos">28</span><span class="w">         </span><span class="p">}</span><span class="n">else</span><span class="p">{</span>
-<span class="linenos">29</span><span class="w">             </span><span class="s">&quot;&lt;/div&gt;&quot;</span>
-<span class="linenos">30</span><span class="w">         </span><span class="p">}</span>
-<span class="linenos">31</span><span class="w">     </span><span class="p">}</span>
-<span class="linenos">32</span><span class="w"> </span><span class="p">)</span>
-</pre></div>
+<div class="highlight-r notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><span class="w"> </span><span class="c1"># Nice warnings, errors and messages</span>
+<span class="w"> </span><span class="n">knitr</span><span class="o">::</span><span class="n">knit_hooks</span><span class="o">$</span><span class="nf">set</span><span class="p">(</span>
+<span class="w">     </span><span class="c1"># To watch error use error=T and stop function</span>
+<span class="w">     </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nf">paste</span><span class="p">(</span><span class="s">&#39;\n\n&lt;div class=&quot;alert alert-danger&quot; style=&gt;&#39;</span><span class="p">,</span>
+<span class="w">               </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;##&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39; &#39;</span><span class="p">,</span>
+<span class="w">                 </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;^##\ Error in eval\\(expr, envir, enclos\\):&#39;</span><span class="p">,</span>
+<span class="w">                      </span><span class="s">&#39;&lt;i class=&quot;fas fa-skull&quot;&gt;&lt;/i&gt; **ERROR**: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)),</span>
+<span class="w">               </span><span class="s">&#39;&lt;/div&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;\n&#39;</span><span class="p">)</span>
+<span class="w">     </span><span class="p">},</span>
+<span class="w">     </span><span class="c1"># To watch warning use warning function</span>
+<span class="w">     </span><span class="n">warning</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nf">paste</span><span class="p">(</span><span class="s">&#39;\n\n&lt;div class=&quot;alert alert-warning&quot;&gt;&#39;</span><span class="p">,</span>
+<span class="w">               </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;##&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39; &#39;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;^##\ Warning:&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;&lt;i class=&quot;fa fa-exclamation-triangle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; **WARNING**: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)),</span>
+<span class="w">               </span><span class="s">&#39;&lt;/div&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;\n&#39;</span><span class="p">)</span>
+<span class="w">     </span><span class="p">},</span>
+<span class="w">     </span><span class="c1"># To watch message use message function</span>
+<span class="w">     </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nf">paste</span><span class="p">(</span><span class="s">&#39;\n\n&lt;div class=&quot;alert alert-info&quot;&gt;&#39;</span><span class="p">,</span>
+<span class="w">               </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;##&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39; &#39;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;^##\ &#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;&lt;i class=&quot;fas fa-comment-dots&quot;&gt;&lt;/i&gt; **INFO**: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)),</span>
+<span class="w">               </span><span class="s">&#39;&lt;/div&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;\n&#39;</span><span class="p">)</span>
+<span class="w">     </span><span class="p">},</span>
+<span class="w">     </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">before</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p">,</span><span class="w"> </span><span class="n">envir</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nf">if</span><span class="p">(</span><span class="n">before</span><span class="p">){</span>
+<span class="w">             </span><span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;&lt;div class = &#39;%s&#39;&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="o">$</span><span class="n">class</span><span class="p">)</span>
+<span class="w">         </span><span class="p">}</span><span class="n">else</span><span class="p">{</span>
+<span class="w">             </span><span class="s">&quot;&lt;/div&gt;&quot;</span>
+<span class="w">         </span><span class="p">}</span>
+<span class="w">     </span><span class="p">}</span>
+<span class="w"> </span><span class="p">)</span>
+</pre></div></td></tr></table></div>
 </div>
 <p>Of course, I am using the <a class="reference external" href="https://fontawesome.com/icons?d=gallery">font-awesome icons</a>
 only here, in my blogdown posts. For the standalone html created when you <cite>knit</cite>
@@ -273,11 +304,13 @@ with all this technologies, it was a bit challenging.</p>
             event.originalEvent.clipboardData.setData("text/plain", copied_text);
             event.originalEvent.preventDefault();
         };
+        /*
         $(document).ready(function() {
                 $('div.highlight').children('pre').attr({'manually-modified': "true"});
                 $('div.highlight').children('pre').bind('copy', copyListener)
             }
         )
+        */
     </script>
     
   </body>

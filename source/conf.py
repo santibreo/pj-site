@@ -93,6 +93,7 @@ html_permalinks_icon = '&sect;'
 html_favicon = "_static/favicon.ico"
 html_copy_source = False
 html_show_source_link = False
+html_codeblock_linenos_style = 'table'
 html_sidebars = {
     '**': ['sb_navigation.html', 'sb_toc.html', 'sb_searchbox.html', 'sb_socialicons.html'],
     'index': ['sb_searchbox.html', 'sb_socialicons.html'],
