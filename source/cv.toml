@@ -1,0 +1,246 @@
+# Experience ------------------------------------------------------------------
+[[experience]]
+position = "Technical Consultant and Developer"
+employer = "Energyworx"
+start = "12/2022"
+end = "10/2023"
+description = ""
+
+[[experience.projects]]
+description = "Automock Python libraries to allow smooth collaboration with externals."
+tech-stack = ["Python"]
+url = "https://github.com/santibreo/pymock-module"
+[[experience.projects]]
+description = "Billing framework for Energyworx Standard project."
+tech-stack = ["Energyworx", "Python"]
+url = ""
+[[experience.projects]]
+description = "BigQuery - BigTable data synchronization."
+tech-stack = ["GCP", "Python", "Docker"]
+url = ""
+
+
+[[experience]]
+position = "Quantitative Analyst"
+employer = "Quant AI Lab"
+start = "03/2021"
+end = "12/2022"
+description = ""
+
+[[experience.projects]]
+description = "PDF OCR."
+tech-stack = ["Python", "OpenCV", "Docker"]
+url = "https://github.com/santibreo/pdfOCR"
+[[experience.projects]]
+description = "Documentation automation through Confluence API."
+tech-stack = ["Python", "Sphinx"]
+[[experience.projects]]
+description = "ALM and IRRBB models validation and compliance."
+tech-stack = ["Python", "VBA"]
+[[experience.projects]]
+description = "QALM (ALM platform) implementation."
+tech-stack = ["Groovy", "VBA"]
+[[experience.projects]]
+description = "Fund Transfer Pricing framework definition."
+
+
+[[experience]]
+position = "Credit Risk Analyst"
+employer = "Banco Santander"
+start = "4/2020"
+end = "03/2021"
+
+[[experience.projects]]
+description = "Gitlab to Github migration."
+tech-stack = ["Git", "Bash"]
+[[experience.projects]]
+description = "ALM and IRRBB models validation and compliance."
+tech-stack = ["Python", "Scipy", "Statsmodels", "Matplotlib", "R"]
+[[experience.projects]]
+description = "Validation report automation."
+tech-stack = ["Latex", "Python"]
+
+
+[[experience]]
+position = "Junior Data Scientist"
+employer = "Banco Santander"
+start = "01/2019"
+end = "04/2020"
+description = "A training programme that involved rotating through 3 working groups."
+
+[[experience.projects]]
+description = "Hacking lab to analyse penetration strategies impact."
+tech-stack = ["KVM", "Bash", "Python"]
+[[experience.projects]]
+description = "WebUI and API for fuzzy searching documents contents and metadata."
+tech-stack = ["Docker", "Flask", "Elasticsearch"]
+[[experience.projects]]
+description = "Python library to convert JSON formatted data into Microsoft Office Documents."
+tech-stack = ["Python", "VBA"]
+[[experience.projects]]
+description = "Cleansing and structuring the electronical devices inventory database."
+tech-stack = ["Dask", "Splunk"]
+[[experience.projects]]
+description = "Cibersecurity alerts and breaches report."
+tech-stack = ["SQL", "PowerBI", "Crowdstrike"]
+[[experience.projects]]
+description = "Financial derivatives risk coefficients certification automation."
+tech-stack = ["Pandas", "Pytorch", "PowerBI"]
+[[experience.projects]]
+description = "WebUI explaining financial derivatives risk coefficients estimation."
+tech-stack = ["Dash", "Dask"]
+[[experience.projects]]
+description = "WebUI comparing portfolio risk evaluation mechanisms."
+tech-stack = ["Dash", "Spark"]
+[[experience.projects]]
+description = "LSTM model to generate stress-test scenarios for financial derivatives risk coefficients."
+tech-stack = ["Numpy", "Pandas", "Keras"]
+
+
+[[experience]]
+position = "Intern"
+employer = "Banco Santander"
+start = "04/2018"
+end = "01/2019"
+
+[[experience.projects]]
+description = "Financial derivatives risk coefficients evaluation."
+tech-stack = ["Xarray", "Python"]
+[[experience.projects]]
+description = "GUI explaining default risk estimation in Counterparty Risk modelling."
+tech-stack = ["TKinter", "RShiny"]
+[[experience.projects]]
+description = "Definition and implementation of Call Money Swaps risk modelling"
+tech-stack = ["Xarray"]
+
+
+# Education -------------------------------------------------------------------
+[[education]]
+title = "MSc BigData & Business Analytics"
+institution = "Universidad Complutense de Madrid"
+when = "2019"
+url = "https://santibreo.github.io/2019-BigData_master/"
+
+[[education]]
+title = "Physics degree"
+institution = "Universidad Complutense de Madrid"
+when = "2018"
+
+[[education]]
+title = "Arquitecture degree (unfinished)"
+institution = "Universidad Politécnica de Madrid"
+when = "2013"
+
+
+# Certifications --------------------------------------------------------------
+[[certification]]
+title = "Effective programming in Scala"
+institution = "École Polytechnique Fédérale de Lausanne"
+when = "2022"
+
+[[certification]]
+title = "Azure Fundamentals"
+institution = "Microsoft"
+when = "2022"
+url = "https://www.credly.com/badges/77572e06-6238-43c7-b561-67660ff8c9d4/public_url"
+
+[[certification]]
+title = "Quantum computing introduction (200 h.)"
+institution = "Universidad Autónoma de Madrid"
+when = "2021"
+
+[[certification]]
+title = "Containers and Kubernetes introduction"
+institution = "IBM"
+when = "2020"
+url = "https://www.credly.com/badges/a165823c-0b13-45af-804e-eb5e4f549f5d/public_url"
+
+[[certification]]
+title = "Web development introduction (120 h.)"
+institution = "Universidad Politécnica de Madrid"
+when = "2019"
+
+
+# Side projects ---------------------------------------------------------------
+[[side-project]]
+title = "Master's thesis"
+description = "Classical machine learning algorithms to anticipate prognosis in emergency department patients"
+[[side-project.collaborators]]
+name = "Innovation unit of Hospital San Carlos de Madrid"
+
+[[side-project]]
+title = "Crypto trading bot"
+description = "Track cryptocurrencies prices and train trading strategies dynamically to detect profitable trades."
+# [[side-project.collaborator]]
+# name = Adrián Ramos
+# url =
+# [[side-project.collaborator]]
+# name = Agustín
+# url =
+
+[[side-project]]
+title = "Sphinx PJNotes extension"
+description = "Use Sphinx for your personal website"
+url = "https://github.com/santibreo/pj-theme"
+
+[[side-project]]
+title = "Data mining the water table (0.8222 score)"
+description = "Classical ML models to detect faulty water pumps in developing countries"
+url = "https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/leaderboard/"
+
+
+# Aptitudes -------------------------------------------------------------------
+[[aptitude]]
+name = "Python"
+score = 10
+[[aptitude]]
+name = "R"
+score = 6
+[[aptitude]]
+name = "Latex"
+score = 9
+[[aptitude]]
+name = "Linux"
+score = 8
+[[aptitude]]
+name = "Matlab"
+score = 6
+[[aptitude]]
+name = "SQL"
+score = 6
+[[aptitude]]
+name = "GCP"
+score = 6
+[[aptitude]]
+name = "MS Office"
+score = 9
+[[aptitude]]
+name = "MongoDB"
+score = 6
+[[aptitude]]
+name = "Front-end"
+score = 8
+[[aptitude]]
+name = "C"
+score = 3
+[[aptitude]]
+name = "C++"
+score = 3
+[[aptitude]]
+name = "Scala"
+score = 5
+[[aptitude]]
+name = "Go"
+score = 2
+[[aptitude]]
+name = "Rust"
+score = 1
+[[aptitude]]
+name = "Teamwork"
+score = 8
+[[aptitude]]
+name = "Enthusiast"
+score = 7
+[[aptitude]]
+name = "Communicative"
+score = 6

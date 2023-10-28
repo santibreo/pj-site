@@ -37,7 +37,7 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx.ext.githubpages",
     "sphinx.ext.autosectionlabel",
-    "pj_theme"
+    "sphinx_pj_theme"
 ]
 
 # Avoid section label collisions
@@ -82,12 +82,13 @@ rst_prolog = """
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-
 html_theme_path = [
-    "../.."
+    "../../sphinx_pj_theme"
 ]
-
-html_theme = 'pjnotes_theme'
+html_css_files = [
+    'css/fontawesome-all.css',
+]
+html_theme = 'sphinx_pj_theme'
 html_permalinks = True
 html_permalinks_icon = '&sect;'
 html_favicon = "_static/favicon.ico"
@@ -95,12 +96,12 @@ html_copy_source = False
 html_show_source_link = False
 html_codeblock_linenos_style = 'table'
 html_sidebars = {
+    'cv*': ['sb_cv.html', 'sb_socialicons.html'],
     '**': ['sb_navigation.html', 'sb_toc.html', 'sb_searchbox.html', 'sb_socialicons.html'],
     'index': ['sb_searchbox.html', 'sb_socialicons.html'],
     'search': [],
     'about': [],
     'recommendations': [],
-    'cv': ['sb_cv.html', 'sb_socialicons.html']#, 'sb_toc.html']
 }
 
 html_theme_options = {
@@ -111,20 +112,37 @@ html_theme_options = {
         "twitter": "https://twitter.com/santibreo",
         "linkedin": "https://www.linkedin.com/in/santibreo/",
     },
+    "main-language": 'english',
     "cv_name": "Santiago Breogán",
     "cv_surname": "Pérez Pita",
     "cv_profile_pic": "cv_profile.png",
-    "cv_job_position": "Data scientist",
     "cv_phone": "600 395 845",
     "cv_location": "Madrid",
+    # After this, fields that are language dependent
+    "cv_job_position": {
+        'english': "Data scientist",
+        'spanish': "Científico de datos",
+    },
     "cv_main_info": {
-        "languages": {
-            "english": 8,
-            "spanish": 10,
+        'english': {
+            "languages": {
+                "english": 8,
+                "spanish": 10,
+            },
+            "Useful info": {
+                "birthdate": "25 July 1992",
+                "driving-license": "B2"
+            }
         },
-        "Useful info": {
-            "birthdate": "25 July 1992",
-            "driving-license": "B2"
+        'spanish': {
+            "idiomas": {
+                "inglés": 8,
+                "castellano": 10,
+            },
+            "Info. útil": {
+                "nacimiento": "25 de Julio, 1992",
+                "permiso de conducir": "B2"
+            }
         }
     },
 }
@@ -132,4 +150,3 @@ html_theme_options = {
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-

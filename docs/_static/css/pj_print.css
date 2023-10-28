@@ -2,9 +2,10 @@ header, .footer {
     display: none;
 }
 
-body {
-    font-size: 12px;
+.content {
+    margin-inline: 3em;
 }
+
 
 .container {
     padding: 0px;
@@ -14,7 +15,9 @@ body {
 .sidebar-toggle-label,
 div#searchbox,
 .sidebar div.sb-navigate,
-.sidebar div.toc {
+.sidebar div.toc,
+.cv-main-picture,
+select.language-picker {
     display: none !important;
 }
 
@@ -34,13 +37,20 @@ div#searchbox,
     opacity: 1;
 }
 
+.sidebar ul, .sidebar li {
+  margin-block: 0.2em;
+  margin-left: 0.5em;
+}
+
 .sidebar hr {
     margin: 0.5em;
 }
 
 .cv-info {
-    display: flex;
+  display: flex;
+  align-items: center;
 }
+
 .cv-main {
     display: flex;
     flex-direction: row;
@@ -53,9 +63,11 @@ div#searchbox,
     flex-grow: 2;
     margin-left: 1.4em;
     margin-right: 0.5em;
+    padding-right: 3em;
 }
 .cv-useful-info-item h4 {
-    margin-block: 0.3em;
+    margin-top: 0.3em;
+    margin-bottom: 0px;
 }
 .cv-useful-info-item > ul {
     display: flex;
