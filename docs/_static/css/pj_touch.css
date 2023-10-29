@@ -564,6 +564,7 @@ li.cv-item-inner {
   font-size: smaller;
   padding-inline: 0.3em;
   margin-right: 0.3em;
+  white-space: nowrap;
 }
 
 .cv-tech-stack-tag i {
