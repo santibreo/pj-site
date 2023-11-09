@@ -109,10 +109,11 @@ html_theme_options = {
     "contact_email": "santibreo@gmail.com",
     "social_urls": {
         "github": "https://github.com/santibreo",
-        "twitter": "https://twitter.com/santibreo",
+        "x-twitter": "https://twitter.com/santibreo",
         "linkedin": "https://www.linkedin.com/in/santibreo/",
     },
-    "main-language": 'english',
+    "main_language": 'english',
+    "cv_url": "https://santibreo.github.io/pj-site/cv.html",
     "cv_name": "Santiago Breogán",
     "cv_surname": "Pérez Pita",
     "cv_profile_pic": "cv_profile.png",
