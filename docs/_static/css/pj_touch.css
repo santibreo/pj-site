@@ -170,7 +170,7 @@ table:not(.highlighttable) td {
 
 /* LISTS */
 ol, ul {
-    padding-inline-start: 15px;
+    padding-inline-start: 20px;
 }
 
 /* BLOCKQUOTES */

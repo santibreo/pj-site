@@ -91,7 +91,7 @@ html_css_files = [
 html_theme = 'sphinx_pj_theme'
 html_permalinks = True
 html_permalinks_icon = '&sect;'
-html_favicon = "_static/favicon.ico"
+#  html_favicon = "_static/favicon.ico"
 html_copy_source = False
 html_show_source_link = False
 html_codeblock_linenos_style = 'table'
@@ -116,7 +116,7 @@ html_theme_options = {
     "cv_url": "https://santibreo.github.io/pj-site/cv.html",
     "cv_name": "Santiago Breogán",
     "cv_surname": "Pérez Pita",
-    "cv_profile_pic": "cv_profile.png",
+    "cv_profile_pic": "",
     "cv_phone": "600 395 845",
     "cv_location": "Madrid",
     # After this, fields that are language dependent

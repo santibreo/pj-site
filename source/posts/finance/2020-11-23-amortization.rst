@@ -1,6 +1,7 @@
 :draft: false
 :date: 23-11-2020
 
+
 =================================
 Rent or buy, that is the question
 =================================
@@ -221,10 +222,10 @@ Now I feel trained enough to give my opinion in the debate: buying or renting,
 how is it less likely to get ruined?. In my city, Madrid, I have found the
 following prices for the purchase and rental of a home:
 
-* Average price per square meter at purchase (last 12 months): 3,718 €/m :math:`^2`.
-* Average price per square meter in the rent (last 12 months): 16'22 €/m :math:`^2`.
+* Average price per square meter at purchase (last 12 months): 3,718 €/m\ :sup:`2`\ .
+* Average price per square meter in the rent (last 12 months): 16'22 €/m\ :sup:`2`\ .
 
-So lets suppose you are getting a house of 85 m :math:`^2`, if you buy
+So lets suppose you are getting a house of 85 m\ :sup:`2`\ , if you buy
 it **asking for its entire price**, you are going to pay, considering that it
 is a second-hand property, around (this is an approximation) 15% of the house
 price as taxes, and looking for fixed rate mortgage I have found the average
@@ -234,7 +235,8 @@ maturity loan, you are going to pay **for buying** the house:
 
 .. math::
 
-   3718 \cdot 85 \cdot (0'15 + 0'1865) = 106,344'10 \text{ €}
+   \text{house price} &= 3718 \cdot 85 = 316,030 \text{ €} \\
+   \text{taxes and interests}  &= \text{house price} \cdot (0'15 + 0'1865) = 106,344'10 \text{ €}
 
 
 With that money, you could rent the same house during:
@@ -248,8 +250,8 @@ So you can actually rent the same house that you are buying for more than 6
 years. You would have paid on average a mortgage fee of 1562'53€ and the rent
 would be instead 1378'70€. Both this situations are out of scope for most of us
 (people around 30 years) but, if you are thinking about buying, you should know
-that you are reducing your savings/investment capacity for the next 20 years
-(or more), and paying to the Bank and the government more than 35% of the house
+that you are reducing your savings / investment capacity for the next 20 years
+(or more), and paying to the Bank and the Government more than 33% of the house
 price for letting you buy it. I consider these results a proper approximation
-in the current scenario.
+to the current (2020) scenario.
 
