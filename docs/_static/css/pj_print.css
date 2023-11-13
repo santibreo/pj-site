@@ -131,7 +131,7 @@ div.cv-main-picture {
     background-color: transparent;
     opacity: 0.8;
     background-size: 5px 5px;
-    background-image: repeating-linear-gradient(45deg, var(--progress-bar) 0, var(--progress-bar) 1px, #fff 0, #fff 50%);
+    background-image: repeating-linear-gradient(45deg, darkgrey 0, darkgrey 1px, #fff 0, #fff 50%);
 }
 
 .progress-bar-out {

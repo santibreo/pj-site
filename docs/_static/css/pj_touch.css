@@ -460,10 +460,10 @@ select.language-picker {
 }
 
 .cv-info > ul li {
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	column-gap: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 3px;
 }
 
 .progress-bar-out {
