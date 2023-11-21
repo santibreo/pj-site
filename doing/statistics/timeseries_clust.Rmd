@@ -4,6 +4,7 @@ author: "Santi"
 date: "15/3/2019"
 output: html_document
 ---
+
 ## Previous Concepts
 * __Maldición de la dimensión__: Al aumentar las dimensiones los volúmenes aumentan exponencialmente así que los datos de la muestra tienden a volverse dispersos, complicando cualquier método que requiera significación estadística. Suele ocurrir que se requiera un aumento exponencial del número de filas acorde al aumento de dimensiones.
 

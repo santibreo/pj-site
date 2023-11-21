@@ -26,11 +26,12 @@ header, .footer {
 }
 
 
-.sidebar-toggle-label,
+.headerlink,
 div#searchbox,
-.sidebar div.sb-navigate,
-.sidebar div.toc,
 .cv-main-picture > img,
+.sidebar div.toc,
+.sidebar-toggle-label,
+.sidebar div.sb-navigate,
 select.language-picker {
   display: none !important;
 }
@@ -137,6 +138,10 @@ div.cv-main-picture {
 .progress-bar-out {
     border: dotted 1px;
     height: 1.3em;
+}
+
+ul.cv-aptitudes span {
+    border-bottom: 3px solid aliceblue;
 }
 
 /* Breaks */
