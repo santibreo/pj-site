@@ -190,7 +190,7 @@ In general, **collection types** are parametrized by the type of their elements.
 
 List presents the following Data Layout
 
-.. image:: ../imgs/list_data_layout.PNG
+.. image:: ../../_static/img/posts/Effective_programming_in_Scala/list_data_layout.PNG
    :width: 70%
    :alt: Lists Data Layout
 
@@ -524,7 +524,7 @@ sbt
 
 `sbt <https://www.scala-sbt.org/>`_ is the most commonly build tool used in Scala, but not the only one: Maven, Gradle, Mill, … are other possibilities. An sbt project is a directory with 2 files: `project/build.properties` and `build.sbt`. The first one defines the version of sbt used to compile the project, while the second defines the Scala version and other project details. After compiling a project results are cached at `target` directory. **sbt is an incremental compiling tool**. A brief example of an execution diagram would be:
 
-.. image:: ../imgs/sbt_diagram.PNG
+.. image:: ../../_static/img/posts/Effective_programming_in_Scala/sbt_diagram.PNG
    :width: 80%
    :alt: sbt diagram
 
@@ -597,7 +597,7 @@ Third visibility is defined as **protected** for members that can be accessed fr
 
 Standard collections is a reach hierarchy example:
 
-.. image:: ../imgs/collections.PNG
+.. image:: ../../_static/img/posts/Effective_programming_in_Scala/collections.PNG
    :width: 50%
    :alt: collections hierarchy
 
@@ -1079,7 +1079,7 @@ Exceptions are chatched with ``try`` - ``catch`` expressions, which are similar 
 
 Exceptions follow *throwable hierarchy*:
 
-.. image:: ../imgs/throwable_hierarchy.PNG
+.. image:: ../../_static/img/posts/Effective_programming_in_Scala/throwable_hierarchy.PNG
    :width: 80%
    :alt: Throwable hierarchy
 

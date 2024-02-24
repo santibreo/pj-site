@@ -33,10 +33,10 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.doctest",
     "sphinx.ext.intersphinx",
+    "sphinx.ext.autosectionlabel",
     "sphinx.ext.mathjax",
     "sphinx.ext.viewcode",
     "sphinx.ext.githubpages",
-    "sphinx.ext.autosectionlabel",
     "sphinx_pj_theme"
 ]
 
@@ -76,6 +76,13 @@ rst_prolog = """
 
 .. role:: highlight-green
    :class: highlight-text-green
+"""
+
+rst_epilog = """
+.. _Python: https://python.org
+.. _Git: https://git-scm.com/
+.. _Flask: https://flask.palletsprojects.com/en/latest/
+.. _Gogs: https://gogs.io/
 """
 
 # -- Options for HTML output -------------------------------------------------

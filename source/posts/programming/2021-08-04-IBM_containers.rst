@@ -673,7 +673,7 @@ applications. It is composed by 4 modules:
 
 One simple application of Istio can is the flow redirection:
 
-.. image:: ../imgs/service_mesh_capability.gif
+.. image:: ../../_static/img/posts/IBM_containers/service_mesh_capability.gif
    :width: 70%
    :alt: flow redirection
 

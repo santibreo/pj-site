@@ -9,7 +9,7 @@ When writing unit tests in Python there is an issue that pops up quite often: *Y
 
 I have recently come up with a solution for this problem that ensures that everything imported from a user-defined list of libraries (independent from the import level) is a ``MagicMock``, lets see how this can be achieved:
 
-.. literalinclude:: ../code/module_mocking.py
+.. literalinclude:: ../_code/module_mocking.py
    :language: python
    :linenos:
 

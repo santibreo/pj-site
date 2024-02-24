@@ -170,7 +170,7 @@ table:not(.highlighttable) td {
 
 /* LISTS */
 ol, ul {
-    padding-inline-start: 20px;
+    padding-inline-start: 15px;
 }
 
 /* BLOCKQUOTES */
@@ -460,10 +460,10 @@ select.language-picker {
 }
 
 .cv-info > ul li {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    column-gap: 3px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	column-gap: 3px;
 }
 
 .progress-bar-out {

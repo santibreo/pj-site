@@ -254,4 +254,3 @@ that you are reducing your savings / investment capacity for the next 20 years
 (or more), and paying to the Bank and the Government more than 33% of the house
 price for letting you buy it. I consider these results a proper approximation
 to the current (2020) scenario.
-

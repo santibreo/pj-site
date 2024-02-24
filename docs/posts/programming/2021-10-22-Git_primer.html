@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Git Primer &#8212; PJnotes 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=087266ef" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/pj_touch.css?v=ad8e698e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome-all.css?v=664df7d6" />
+    <script src="../../_static/documentation_options.js?v=5aa371e9"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Effective Programming in Scala" href="2022-05-03-Effective_programming_in_Scala.html" />
+    <link rel="prev" title="IBM Containers and Kubernetes" href="2021-08-04-IBM_containers.html" />
+   
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../_static/css/pj_print.css" media="print", type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  </head><body>
+    <header>
+        <div class="logo-box">
+            <svg height="70" width="26">
+            <path d="M 3 59
+                     l 0 -42
+                     A 10 10 1 0 1 23 17
+                     l 0 37
+                     A 7 7 1 0 1 9 54
+                     l 0 -30
+                     A 5 5 1 0 1 19 24
+                     l 0 20" stroke="black" stroke-width="2" fill="none"/>
+            </svg>
+            <a href="../../index.html">Prophet<br>Jeremy's<br>
+                <span style="font-family:PT Serif Caption; color:var(--special-words); font-size:20px">
+                    notes
+                </span>
+            </a>
+        </div>
+        <input id="nav-toggle" type="checkbox" class="nav-toggle">
+        <nav>
+            <ul>
+                <li><a href=../../cv.html>CV</a></li>
+                <li><a href=../../about.html>About</a></li>
+                <li><a href=../../recommendations.html>Recommendations</a></li>
+            </ul>
+        </nav>
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span class="nav-toggle-m1 nav-toggle-mvert"></span>
+            <span class="nav-toggle-m2 nav-toggle-mdiag"></span>
+            <span class="nav-toggle-m3 nav-toggle-mdiag"></span>
+            <span class="nav-toggle-m4 nav-toggle-mvert"></span>
+        </label>
+    </header>
+    <div class="container">
+        
+        <input id="sidebar-toggle" type="checkbox" class="sidebar-toggle">
+        <div class="sidebar">
+
+
+
+<div class="sb-navigate">
+    <h3>Navigate: 
+      <a href="2021-08-04-IBM_containers.html" title="previous document">&lArr;</a>
+      <a href="2022-05-03-Effective_programming_in_Scala.html" title="next document">&rArr;</a></h3>
+</div>
+<div class="toc">
+    <ul>
+<li><a class="reference internal" href="#">Git Primer</a><ul>
+<li><a class="reference internal" href="#gitpedia">Gitpedia</a></li>
+<li><a class="reference internal" href="#git-by-yourself">Git by yourself</a><ul>
+<li><a class="reference internal" href="#adding-changes">Adding changes</a></li>
+<li><a class="reference internal" href="#branching">Branching</a></li>
+<li><a class="reference internal" href="#reconciling">Reconciling</a><ul>
+<li><a class="reference internal" href="#merging">Merging</a></li>
+<li><a class="reference internal" href="#rebasing">Rebasing</a></li>
+<li><a class="reference internal" href="#conflicts">Conflicts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#git-with-others">Git with others</a><ul>
+<li><a class="reference internal" href="#pushing">Pushing</a></li>
+<li><a class="reference internal" href="#cloning">Cloning</a></li>
+<li><a class="reference internal" href="#pulling">Pulling</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+<script src="../../_static/js/toc.js"></script>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search:</h3>
+  <form class="search" action="../../search.html" method="get">
+      <input class="search-box" type="text" name="q" aria-labelledby="searchlabel" />
+      <input class="search-button" type="submit" value="&lt;" />
+  </form>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+<hr>
+<div class="social-icons">
+    
+    <a href="mailto:santibreo@gmail.com?subject=We like your CV">
+        <i class="fa fa-envelope"></i>
+        <p class="print-only">santibreo@gmail.com</p>
+    </a>
+    
+    
+    <a href=https://github.com/santibreo>
+        <i class="fab fa-github"></i>
+        <p class="print-only">github.com/santibreo</p>
+
+    </a>
+    
+    <a href=https://twitter.com/santibreo>
+        <i class="fab fa-x-twitter"></i>
+        <p class="print-only">twitter.com/santibreo</p>
+
+    </a>
+    
+    <a href=https://www.linkedin.com/in/santibreo/>
+        <i class="fab fa-linkedin"></i>
+        <p class="print-only">linkedin.com/in/santibreo/</p>
+
+    </a>
+    
+</div>
+<hr>
+</div>
+        <label for="sidebar-toggle" class="sidebar-toggle-label">
+            <span></span>
+        </label>
+        
+        <div class="content">
+        
+  <section id="git-primer">
+<h1>Git Primer<a class="headerlink" href="#git-primer" title="Link to this heading">&sect;</a></h1>
+<p><a class="reference external" href="https://git-scm.com/">Git</a> is a <strong>version control system</strong>, which means it is intended to be used to manage different file versions. You can think about <a class="reference external" href="https://git-scm.com/">Git</a> as a supervisor that is reading the changes that you are doing in files inside a <a class="reference external" href="https://git-scm.com/">Git</a> repository.</p>
+<p>There are tons of “in-depth” <a class="reference external" href="https://git-scm.com/">Git</a> tutorials on the Internet, so here I have just collected the most basic commands and concepts that you need to know to use <a class="reference external" href="https://git-scm.com/">Git</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more technical explanations of the concepts presented here the <a class="reference internal" href="#references"><span class="std std-ref">References</span></a> should be of great help</p>
+</div>
+<p>Finally, <strong>all the commands represented in this document are examples</strong>, they are not supposed to be executed anywhere, but they should work as far as you are using <a class="reference external" href="https://gitforwindows.org/">Git Bash from Git for Windows</a> if you are using Windows, and <a class="reference external" href="https://git-scm.com/">Git</a> installed if you are using Linux or MacOS.</p>
+<section id="gitpedia">
+<h2>Gitpedia<a class="headerlink" href="#gitpedia" title="Link to this heading">&sect;</a></h2>
+<p>There are many concepts that are broadly used when you are working with <a class="reference external" href="https://git-scm.com/">Git</a> but also might be new if you have never worked with it before:</p>
+<dl class="simple">
+<dt>Repo(sitory)</dt><dd><p>This is the key concept and sadly it is also ambiguous. A repository is a directory (a folder for Windows users), in which changes are being tracked using <a class="reference external" href="https://git-scm.com/">Git</a>. This is also called <strong>the root directory</strong>. This directory must have a <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory inside, and there is where <a class="reference external" href="https://git-scm.com/">Git</a> is tracking all the changes. Strictly talking <strong>the</strong> <code class="docutils literal notranslate"><span class="pre">.git</span></code> <strong>directory is the repository</strong>, and the rest of the contents of the root directory are the <strong>worktree</strong>, but everyone uses “repo” to refer to the root directory.</p>
+</dd>
+<dt>Worktree</dt><dd><p>It is a specific version of the <strong>root directory</strong>. When <a class="reference external" href="https://git-scm.com/">Git</a>  tracks the <strong>root directory</strong>, a specific status of the directory can be saved. Each of these saved status has specific worktree.</p>
+</dd>
+<dt>Commit</dt><dd><p>It refers both to the action of save a specific worktree and to the worktree itself. So, once you have <em>committed</em> your changes you can check the worktree associated to that specific <em>commit</em>. Normally, after doing some modifications in the <strong>root directory</strong> you want to save the current status so you commit a set of changes, <a class="reference external" href="https://git-scm.com/">Git</a> then stores them.</p>
+</dd>
+<dt>Branch</dt><dd><p>A <a class="reference external" href="https://git-scm.com/">Git</a> repository is a tree structure. You start having just one branch (the trunk) but then you can create multiple deviations from it. So when you decide to, from a specific commit, start evolving the repository in a different way, you are creating a ramification of the <code class="docutils literal notranslate"><span class="pre">main</span></code> development path, that is a branch.</p>
+</dd>
+<dt>Remote</dt><dd><p><a class="reference external" href="https://git-scm.com/">Git</a> repositories can be replicated. You can tell <a class="reference external" href="https://git-scm.com/">Git</a> that this repository in your machine should be aware of changes in that replica of the repository in that other machine (or also in your machine). Each of those connected repositories is called <strong>remote</strong>. Only changes that have been <em>commited</em> can be shared across replicas.</p>
+</dd>
+<dt>Push</dt><dd><p>Refers to the action of storing changes of your repository in a replica(ted) repository.</p>
+</dd>
+<dt>Pull</dt><dd><p>Refers to the action of storing changes of a replica(ted) repository in your repository.</p>
+</dd>
+<dt>Clone</dt><dd><p>Refers to the action of creating a repository in your machine that replicates a remote repository and normally check a specific worktree.</p>
+</dd>
+</dl>
+</section>
+<section id="git-by-yourself">
+<h2>Git by yourself<a class="headerlink" href="#git-by-yourself" title="Link to this heading">&sect;</a></h2>
+<p><a class="reference external" href="https://git-scm.com/">Git</a> is a great tool for developers to collaborate, but it is not just mean for that. You can use <a class="reference external" href="https://git-scm.com/">Git</a> to have a much clearer understanding on how your projects evolve.</p>
+<p>Lets assume you (as “Developer A”) start working on a project called “my_project” so you create a directory called <code class="docutils literal notranslate"><span class="pre">my_project</span></code> in your computer, located at <code class="docutils literal notranslate"><span class="pre">~/repos/my_project</span></code> (<code class="docutils literal notranslate"><span class="pre">%USERPROFILE%\repos\my_project</span></code> in Windows). If you want to initialize a <a class="reference external" href="https://git-scm.com/">Git</a> repository here you just have to:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/repos/my_project
+git<span class="w"> </span>init
+</pre></div>
+</div>
+<p>Then you must see how <a class="reference external" href="https://git-scm.com/">Git</a> has created the repository folder <code class="docutils literal notranslate"><span class="pre">.git</span></code> inside <code class="docutils literal notranslate"><span class="pre">~/repos/my_project</span></code>.</p>
+<section id="adding-changes">
+<h3>Adding changes<a class="headerlink" href="#adding-changes" title="Link to this heading">&sect;</a></h3>
+<p>Now you create a file called <code class="docutils literal notranslate"><span class="pre">~/repos/my_project/hello_world.txt</span></code> and write something on it. You can check how <a class="reference external" href="https://git-scm.com/">Git</a> see those changes by calling:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status
+</pre></div>
+</div>
+<p>The output would be similar to this one:</p>
+<img alt="Git untracked file" class="align-center" src="../../_images/git_1.png" />
+<p><a class="reference external" href="https://git-scm.com/">Git</a> knows that you have added a new file, but it is saying that it is not tracking it. To tell <a class="reference external" href="https://git-scm.com/">Git</a> to track the file you have to execute:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>./hello_world.txt
+git<span class="w"> </span>status
+</pre></div>
+</div>
+<p>The output would be similar to this one:</p>
+<img alt="Git untracked file" class="align-center" src="../../_images/git_2.png" />
+<p><a class="reference external" href="https://git-scm.com/">Git</a> is telling you that <code class="docutils literal notranslate"><span class="pre">./hello_world.txt</span></code> file <strong>has changed</strong> but the changes are <strong>not registered</strong>, so if you add additional changes to this file, you want be able to recover this specific status using <a class="reference external" href="https://git-scm.com/">Git</a>. To register the changes execute:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add hello world file to the repo&quot;</span><span class="w"> </span>./hello_world.txt
+git<span class="w"> </span>status
+</pre></div>
+</div>
+<p>When you commit your changes it is good practice to add an expressive message, explaining <strong>why</strong> are you registering these changes. Writing good messages is an indicator of your quality as a developer, a lot of teams impose <a class="reference external" href="https://www.conventionalcommits.org/en/v1.0.0/">specific format for commit messages</a>.</p>
+<p>The output would be similar to this one:</p>
+<img alt="Git commited changes" class="align-center" src="../../_images/git_3.png" />
+<p><a class="reference external" href="https://git-scm.com/">Git</a> is telling you that all the changes of the repo are registered, so everything is fine.</p>
+<p>Now lets assume that you keep modifying the <code class="docutils literal notranslate"><span class="pre">hello_world.txt</span></code>, then <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> will show something like this:</p>
+<img alt="Git uncommited changes" class="align-center" src="../../_images/git_4.png" />
+<p>Telling you that there are new changes in <code class="docutils literal notranslate"><span class="pre">hello_world.txt</span></code> and offering you to:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>: Add these changes to the stage, so they will be part of the next commit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">restore</span></code>: Discard these changes and put the file back to the previous (committed) status.</p></li>
+</ul>
+<p>Lets assume you think changes are fine and commit them, now you have 2 commits. You can see them by executing</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log<span class="w"> </span>--oneline
+</pre></div>
+</div>
+<p>The output would be similar to this one:</p>
+<img alt="Git log" class="align-center" src="../../_images/git_5.png" />
+<p>Here you have a lot of information (and <a class="reference external" href="https://git-scm.com/docs/git-log">much more information</a> can be displayed). First thing on each line is the <strong>commit-hash</strong>, it is how <a class="reference external" href="https://git-scm.com/">Git</a> makes reference to each particular status of the repository. For <a class="reference external" href="https://git-scm.com/">Git</a> your repository is just a tree of commits, and you can navigate them smoothly using these hashes. The information between parenthesis is telling you that the current <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> (it is the worktree you are watching) is pointing to branch <code class="docutils literal notranslate"><span class="pre">master</span></code>.</p>
+</section>
+<section id="branching">
+<h3>Branching<a class="headerlink" href="#branching" title="Link to this heading">&sect;</a></h3>
+<p>Now imagine this is a working version and you want to evolve it but do not want to mess with it. Then you have to create a branch and work on it. Execute:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>branch<span class="w"> </span>new
+git<span class="w"> </span>checkout<span class="w"> </span>new
+</pre></div>
+</div>
+<p>You are now in a new branch (you can have the same result by executing <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">new</span></code>). For now both branches <code class="docutils literal notranslate"><span class="pre">master</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code> are identical, lets add a new file called <code class="docutils literal notranslate"><span class="pre">byebye_world.rst</span></code> to this branch and commit the changes.</p>
+<p>And to make life more interesting we are going to modify one more time <code class="docutils literal notranslate"><span class="pre">byebye_world.txt</span></code> in <code class="docutils literal notranslate"><span class="pre">new</span></code> branch and <code class="docutils literal notranslate"><span class="pre">hello_world.txt</span></code> in branch <code class="docutils literal notranslate"><span class="pre">master</span></code>, so our branches have evolved differently. After doing so we can execute:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log<span class="w"> </span>--all<span class="w"> </span>--graph<span class="w"> </span>--oneline
+</pre></div>
+</div>
+<p>The output would be similar to this one:</p>
+<img alt="Git log multiple branches" class="align-center" src="../../_images/git_6.png" />
+<p>The situation now is quite complicated, there are 2 branches, bifurcation has happened at commit <code class="docutils literal notranslate"><span class="pre">51aa02d</span></code>, but each one has evolved differently. If <code class="docutils literal notranslate"><span class="pre">new</span></code> branch is useless we can delete it (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-d</span> <span class="pre">new</span></code>) and keep going with our life, but if not…</p>
+</section>
+<section id="reconciling">
+<h3>Reconciling<a class="headerlink" href="#reconciling" title="Link to this heading">&sect;</a></h3>
+<p>This is the most annoying part of using <a class="reference external" href="https://git-scm.com/">Git</a>, but if you become good at this, you are going to have much more love in your life.</p>
+<p>When there are separate worktrees, in our case <code class="docutils literal notranslate"><span class="pre">master</span></code> and <code class="docutils literal notranslate"><span class="pre">new</span></code>, that we want to reconcile (assume we want to put changes of <code class="docutils literal notranslate"><span class="pre">new</span></code> into <code class="docutils literal notranslate"><span class="pre">master</span></code>) we can follow 2 approaches:</p>
+<section id="merging">
+<h4>Merging<a class="headerlink" href="#merging" title="Link to this heading">&sect;</a></h4>
+<p>The history of <code class="docutils literal notranslate"><span class="pre">new</span></code> worktree is <em>squashed</em> and a new commit in the other <code class="docutils literal notranslate"><span class="pre">master</span></code> worktree is created incorporating all the changes from <code class="docutils literal notranslate"><span class="pre">new</span></code>. Lets do it. Just be sure that you have <code class="docutils literal notranslate"><span class="pre">master</span></code> checked out, and execute:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>merge<span class="w"> </span>new
+git<span class="w"> </span>log<span class="w"> </span>--graph<span class="w"> </span>--oneline
+</pre></div>
+</div>
+<p>The output would be similar to this one:</p>
+<img alt="Git log merged branches" class="align-center" src="../../_images/git_7.png" />
+<p>Now we also have file <code class="docutils literal notranslate"><span class="pre">byebye_world.txt</span></code> in <code class="docutils literal notranslate"><span class="pre">master</span></code> branch with all the changes.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Merge commits are something developers tend to dislike because they are not really expressive. If you use this reconciling strategy you might want to change the message.</p>
+</div>
+</section>
+<section id="rebasing">
+<h4>Rebasing<a class="headerlink" href="#rebasing" title="Link to this heading">&sect;</a></h4>
+<p>The history of <code class="docutils literal notranslate"><span class="pre">new</span></code> worktree is moved into <code class="docutils literal notranslate"><span class="pre">master</span></code> worktree. This is the preferred way because, the source worktree is integrated into target worktree history, so results are clearer. Just execute:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>rebase<span class="w"> </span>new
+git<span class="w"> </span>log<span class="w"> </span>--graph<span class="w"> </span>--oneline<span class="w"> </span>--all
+</pre></div>
+</div>
+<p>The output would be similar to this one:</p>
+<img alt="Git log merged branches" class="align-center" src="../../_images/git_8.png" />
+<p>The result is the same much the log result is much obvious now.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Rebasing is the usual procedure to alter branch history. You can use it for other purposes than reconciling branches, but with great power… Be careful.</p>
+</div>
+<p>To configure <code class="docutils literal notranslate"><span class="pre">rebase</span></code> as reconcile default reconcile strategy you need to run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>pull.rebase<span class="w"> </span><span class="nb">true</span>
+</pre></div>
+</div>
+</section>
+<section id="conflicts">
+<h4>Conflicts<a class="headerlink" href="#conflicts" title="Link to this heading">&sect;</a></h4>
+<p>Normally, when you reconcile 2 worktrees there is going to be conflicts (files that are changed in both worktrees and <a class="reference external" href="https://git-scm.com/">Git</a> do not know how to combine those changes). When that happens you have to <strong>manually</strong> edit the file to define a working version that takes the best from both worktrees. Sometimes this can be tedious and error prone and it is the main reason why developers are afraid of reconciling. There are a lot of literature about how to avoid conflicts (most popular is <a class="reference external" href="https://www.aleksandrhovhannisyan.com/blog/atomic-git-commits/">atomic commits</a>) but the best is that you are prepared for them because they are going to happen. Just take advantage of your editor capabilities and make some tea. It is not going to be as traumatic as you are guessing.</p>
+</section>
+</section>
+</section>
+<section id="git-with-others">
+<h2>Git with others<a class="headerlink" href="#git-with-others" title="Link to this heading">&sect;</a></h2>
+<p>Now that “Developer A” knows how to maintain and work with git repositories it is time to learn how to share your work and collaborate with others.</p>
+<section id="pushing">
+<h3>Pushing<a class="headerlink" href="#pushing" title="Link to this heading">&sect;</a></h3>
+<p>Lets assume that you (Developer A) want to publish your repository <code class="docutils literal notranslate"><span class="pre">~/repos/my_project</span></code> to <code class="docutils literal notranslate"><span class="pre">https://gitserver.com/repos/my_project</span></code> . Just be sure that you have <code class="docutils literal notranslate"><span class="pre">master</span></code> checked out, and execute:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://gitserver.com/repos/my_project
+git<span class="w"> </span>push<span class="w"> </span>--set-upstream<span class="w"> </span>origin<span class="w"> </span>master
+</pre></div>
+</div>
+<p>Here you are doing 2 things:</p>
+<ol class="arabic simple">
+<li><p>Defining a <code class="docutils literal notranslate"><span class="pre">remote</span></code>, named <code class="docutils literal notranslate"><span class="pre">origin</span></code>, that corresponds to the URL <code class="docutils literal notranslate"><span class="pre">https://gitserver.com/repos/my_project</span></code></p></li>
+<li><p><em>Pushing</em> (or publishing) your changes to <code class="docutils literal notranslate"><span class="pre">origin</span></code> remote.</p></li>
+</ol>
+<p>Be aware that your repositories can have more than one remote, the one named <code class="docutils literal notranslate"><span class="pre">origin</span></code> is the one used when you used no arguments (depends on <a class="reference external" href="https://git-scm.com/">Git</a> configuration).</p>
+<p>Now you can connect to the server and see how there is an exact replica of the repository in your local machine.</p>
+</section>
+<section id="cloning">
+<h3>Cloning<a class="headerlink" href="#cloning" title="Link to this heading">&sect;</a></h3>
+<p>Lets assume that you (Developer B) want to make some changes in <code class="docutils literal notranslate"><span class="pre">https://sharepoint/repos/my_project</span></code>. Lets assume that <code class="docutils literal notranslate"><span class="pre">~/repos</span></code> also exists in your machine. Then you have to execute:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://sharepoint/repos/my_project<span class="w"> </span>~/repos/my_project
+<span class="nb">cd</span><span class="w"> </span>~/repos/my_project
+</pre></div>
+</div>
+<p>This way you have a directory <code class="docutils literal notranslate"><span class="pre">~/repos/my_project</span></code> that is a replica of the last version published by Developer A in <code class="docutils literal notranslate"><span class="pre">https://sharepoint/repos/my_project</span></code>. You can now start working as defined in section <a class="reference internal" href="#git-by-yourself"><span class="std std-ref">Git by yourself</span></a>.</p>
+<p>Once your changes are ready to be shared with Developer A, you just have to commit them and <code class="docutils literal notranslate"><span class="pre">push</span></code> (as Developer A did in <a class="reference internal" href="#pushing"><span class="std std-ref">Pushing</span></a>).</p>
+</section>
+<section id="pulling">
+<h3>Pulling<a class="headerlink" href="#pulling" title="Link to this heading">&sect;</a></h3>
+<p>If the worktree published in <code class="docutils literal notranslate"><span class="pre">https://sharepoint/repos/my_project</span></code> changed before you push, you would have to reconcile remote version with your local one before pushing. To do that, you just execute:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>pull<span class="w"> </span>origin
+</pre></div>
+</div>
+<p>When you pull from a remote, <a class="reference external" href="https://git-scm.com/">Git</a> will try to reconcile remote and local worktrees using the strategy defined in your config, so it is highly recommended to set up <code class="docutils literal notranslate"><span class="pre">rebase</span></code> (as explained in <a class="reference internal" href="#rebasing"><span class="std std-ref">Rebasing</span></a>).</p>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">&sect;</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://git-scm.com/">Git</a>: Homepage.</p></li>
+<li><p><a class="reference external" href="https://support.atlassian.com/bitbucket-cloud/docs/tutorial-learn-bitbucket-with-git/">Learn Bitbucket with Git</a>: Company oriented but has great cover of the basics.</p></li>
+<li><p><a class="reference external" href="https://www.atlassian.com/git/tutorials/what-is-version-control">What is version control</a>: For beginners, you can just start here and advance through the whole tutorial.</p></li>
+</ul>
+</section>
+</section>
+
+
+        </div>
+    </div>
+    <div class="footer">&copy;2021, Prophet Jeremy.
+       Powered by:&nbsp;<a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+       &nbsp;&amp;&nbsp;<a href="https://github.com/santibreo/pj-theme">PJnotes 1.0.0</a>
+      
+    </div>
+    <script src="https://kit.fontawesome.com/9558133b44.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        const copyListener = (event) => {
+            const selection = document.getSelection();
+            var copied_text = "";
+            for (let i=0; i < selection.rangeCount; i++) {
+                let original_contents = selection.getRangeAt(i).cloneContents();
+                original_contents.childNodes.forEach(
+                    node => {
+                        if ( node.className == 'linenos' ) {
+                            return;
+                        }
+                        copied_text += ( node.nodeValue ? node.nodeValue : node.innerText );
+                    }
+                )
+            }
+            event.originalEvent.clipboardData.setData("text/plain", copied_text);
+            event.originalEvent.preventDefault();
+        };
+        /*
+        $(document).ready(function() {
+                $('div.highlight').children('pre').attr({'manually-modified': "true"});
+                $('div.highlight').children('pre').bind('copy', copyListener)
+            }
+        )
+        */
+    </script>
+    
+  </body>
+</html>
