@@ -1,5 +1,26 @@
 # Experience ------------------------------------------------------------------
 [[experience]]
+position = "Python AI Specialist"
+employer = "Técnicas Reunidas"
+start = "12/2023"
+end = "now"
+description = "Coordinate a development team for LLM-based applications."
+
+[[experience.projects]]
+description = "App template to standardize users login and files and tasks management"
+tech-stack = ["Python", "FastAPI", "Celery", "Docker"]
+url = ""
+[[experience.projects]]
+description = "Deployment and maintenance of LLM-based applications to in-house servers"
+tech-stack = ["RedHat", "Azure AD", "Docker"]
+url = ""
+[[experience.projects]]
+description = "Deployment and maintenance of GoGS for proper version control within the team"
+tech-stack = ["GoGS", "Git", "SQL", "Docker"]
+url = "https://gogs.io/"
+
+
+[[experience]]
 position = "Technical Consultant and Developer"
 employer = "Energyworx"
 start = "12/2022"

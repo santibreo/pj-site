@@ -6,7 +6,7 @@
 Curriculum Vitae
 ================
 
-I am a Math enthusiast whose heart was stolen by Linux. At first, I used Maple and Matlab, but then R and Python came to shape my ideas (and I am still descending that abstraction ladder). Fan of trying and failing and breaking things, I've worked mainly as a data scientist, sometimes more entangled with code tasks (I have worked as a developer for a hacking team), others with the mathematical part (I have also worked as a financial risk model validator). I am a puzzle lover and really need challenging work to feel in shape.
+I would define myself as a mathematics enthusiast whose heart was stolen by Linux. Since I started modelling complex systems with specialized languages like Maple and Matlab, I understood the universe of possibilities that was opening before me. Soon, I was trying more general-purpose languages like R or Python, and today, I can't resist using the latest language out of the basement of any American college. A fan of trying and failing and breaking and fixing things, I started working primarily as a data scientist, shifting with years to mentoring and team management. I'm a puzzle-lover looking for stimulating work to keep me feeling in shape.
 
 ..  ---------------------------------------------------------------------------
 

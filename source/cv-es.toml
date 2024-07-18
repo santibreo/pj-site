@@ -1,5 +1,26 @@
 # Experience ------------------------------------------------------------------
 [[experience]]
+position = "Especialista en Python para IA"
+employer = "Técnicas Reunidas"
+start = "12/2023"
+end = "now"
+description = "Coordinación del equipo de desarrollo de aplicaciones basadas en LLMs"
+
+[[experience.projects]]
+description = "Template de aplicaciones para estandarizar el inicio de sesión y la gestión de archivos y tareas"
+tech-stack = ["Python", "FastAPI", "Celery", "Docker"]
+url = ""
+[[experience.projects]]
+description = "Despliegue y mantenimiento de aplicaciones basadas en LLMs en servidores locales"
+tech-stack = ["RedHat", "Azure AD", "Docker"]
+url = ""
+[[experience.projects]]
+description = "Despliegue y gestión de GoGS para un correcto control de versiones"
+tech-stack = ["GoGS", "Git", "SQL", "Docker"]
+url = "https://gogs.io/"
+
+
+[[experience]]
 position = "Consultor técnico y desarrollador"
 employer = "Energyworx"
 start = "12/2022"
