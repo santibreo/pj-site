@@ -4,7 +4,7 @@ position = "Python AI Specialist"
 employer = "Técnicas Reunidas"
 start = "12/2023"
 end = "now"
-description = "Coordinate a development team for LLM-based applications."
+description = "Management of the development team for creating LLM-based applications and deploying to mixed servers (in-house and cloud)."
 
 [[experience.projects]]
 description = "App template to standardize users login and files and tasks management"
