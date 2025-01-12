@@ -4,6 +4,8 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif+Caption&display=swap');
 
 :root {
+    --base-color: white;
+    --opus-color: black;
     --header-background: rgba(221, 221, 221, 0.88);
     --global-background: rgb(221, 221, 221);
     --content-background: rgb(210, 210, 210);
@@ -31,12 +33,15 @@
 
 @media(prefers-color-scheme: dark){
     :root {
+        --base-color: black;
+        --opus-color: white;
         --header-background: rgba(34, 34, 34, 0.88);
         --global-background: rgb(34, 34, 34);
         --content-background: rgb(42, 42, 42);
         --code-background: rgba(34, 34, 34);
         --menu-background: rgba(34, 34, 34, 0.9);
         --span-background: rgb(50, 50, 50);
+        --base-color: black;
         --hs-font: #e8e8e8;
         --body-font: #afafaf;
         --progress-bar: #9f9f9f;
@@ -49,13 +54,26 @@ BASIC SETUP
 =============================================================================*/
 *, *::before, *::after {
     box-sizing: border-box;
-    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-color:
+      color(from var(--opus-color) srgb r g b / 0.15)
+      var(--code-background);
     scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 *::-webkit-scrollbar {
   display: none;
+  width: 8px;
+  height: 8px;
+}
+
+/* Style scrollbars when displaying */
+*::-moz-scrollbar-button:decrement,
+*::-moz-scrollbar-button:increment,
+*::-webkit-scrollbar-button:decrement,
+*::-webkit-scrollbar-button:increment {
+  width: 0px;
 }
 
 /* Ultimately, this is the correct place for scroll-padding */
@@ -171,6 +189,7 @@ table:not(.highlighttable) td {
 
 /* LISTS */
 ol, ul {
+    margin-inline-start: 0.4rem;
     padding-inline-start: 15px;
 }
 
@@ -194,6 +213,12 @@ div.highlight {
     background-color: var(--code-background);
 }
 
+code {
+    background-color: var(--code-background);
+    padding-inline: 3px;
+    border-block: 1px solid var(--base-color);
+}
+
 pre, .pre {
     font-family: 'Red Hat Mono', monospace;
     font-size: 0.9em;
@@ -201,11 +226,19 @@ pre, .pre {
 }
 
 pre {
+    border-block: 1px solid var(--base-color);
     background-color: var(--code-background);
     padding: 0.2em;
-    overflow: auto;
+    overflow-x: auto;
 }
 
+div.highlight > pre {
+  scrollbar-width: thin;
+  -ms-overflow-style: unset;  /* IE and Edge */
+}
+div.highlight > pre::-webkit-scrollbar {
+  display: block;
+}
 
 table.highlighttable {
     width: 100%;
